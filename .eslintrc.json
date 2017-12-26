@@ -1,0 +1,11 @@
+{
+  "env": {
+    "jest": true
+  },
+  "extends": ["airbnb", "prettier"],
+  "parser": "babel-eslint",
+  "rules": {
+    "react/jsx-filename-extension": "off",
+    "react/no-did-mount-set-state": "off"
+  }
+}

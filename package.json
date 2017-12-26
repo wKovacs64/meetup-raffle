@@ -1,0 +1,45 @@
+{
+  "name": "meetup-raffle-web",
+  "version": "0.1.0",
+  "description": "Select a raffle winner at your upcoming Meetup.",
+  "author": {
+    "name": "Justin Hall",
+    "email": "justin.r.hall@gmail.com"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "homepage": "https://github.com/wKovacs64/meetup-raffle-web",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/wKovacs64/meetup-raffle-web.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wKovacs64/meetup-raffle-web/issues"
+  },
+  "main": "pages/index.js",
+  "scripts": {
+    "build": "next build",
+    "clean": "rimraf .next",
+    "dev": "next",
+    "format": "prettier --write \"**/*.{js,json,md}\"",
+    "lint": "eslint .",
+    "start": "next start"
+  },
+  "private": true,
+  "dependencies": {
+    "formik": "^0.10.5",
+    "next": "^4.2.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.1.2",
+    "eslint": "^4.14.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "prettier": "^1.9.2"
+  }
+}
