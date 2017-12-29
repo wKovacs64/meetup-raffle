@@ -9,7 +9,7 @@ const CountStepper = ({ field, form: { setFieldValue } }) => (
     defaultValue={field.value}
     onChange={value => setFieldValue(field.name, value)}
     render={({ getInputProps, getIncrementProps, getDecrementProps }) => (
-      <span className="mh3">
+      <span className="mh3-ns">
         <button
           type="button"
           className="bn bg-transparent w2 pointer"
