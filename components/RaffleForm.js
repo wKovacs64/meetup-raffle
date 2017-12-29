@@ -11,6 +11,7 @@ export default () => (
       <Field
         className="input-reset f4 f3-ns ba bw3 b--moon-gray pa2 w-100"
         type="text"
+        id="meetup"
         name="meetup"
         onFocus={e => e.target.select()}
         placeholder="required"
@@ -24,7 +25,12 @@ export default () => (
       >
         Number of winners:
       </label>
-      <Field name="count" component={CountStepper} />
+      <Field
+        name="count"
+        render={formikProps => (
+          <CountStepper inputId="count" {...formikProps} />
+        )}
+      />
     </div>
     <button
       className="db center-ns w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-transparent hover-bg-moon-gray pointer ph5 pv3 shadow-5"

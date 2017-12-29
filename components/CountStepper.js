@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Stepper from 'react-stepper-primitive';
 
-const CountStepper = ({ field, form: { setFieldValue } }) => (
+const CountStepper = ({ inputId, field, form: { setFieldValue } }) => (
   <Stepper
     min={1}
     max={9}
@@ -17,7 +17,12 @@ const CountStepper = ({ field, form: { setFieldValue } }) => (
         >
           <img src="/static/down.svg" alt="decrement" />
         </button>
-        <input className="tc w3 f3 pv1" {...field} {...getInputProps()} />
+        <input
+          id={inputId}
+          className="tc w3 f3 pv1"
+          {...field}
+          {...getInputProps()}
+        />
         <button
           type="button"
           className="bn bg-transparent h3 w3 pointer"
@@ -31,6 +36,7 @@ const CountStepper = ({ field, form: { setFieldValue } }) => (
 );
 
 CountStepper.propTypes = {
+  inputId: PropTypes.string.isRequired,
   field: PropTypes.shape({
     value: PropTypes.any.isRequired,
     name: PropTypes.string.isRequired,
