@@ -9,11 +9,11 @@ export default () => (
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>meetup-raffle</title>
       <link rel="stylesheet" href="/static/tachyons.min.css" />
-      <script src="/static/lib.min.js" />
     </Head>
     <main className="sans-serif near-black">
       <Header />
       <RaffleContainer />
     </main>
+    <script src="/static/lib.min.js" />
   </Fragment>
 );
