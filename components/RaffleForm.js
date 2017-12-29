@@ -5,14 +5,11 @@ import { CountStepper } from '.';
 export default () => (
   <Form>
     <div>
-      <label
-        className="db f4 f3-ns lh-copy dark-blue pb3 pb3-ns"
-        htmlFor="meetup"
-      >
+      <label className="db f4 f3-ns lh-copy dark-blue pb3" htmlFor="meetup">
         Meetup name (from your URL):
       </label>
       <Field
-        className="input-reset f4 f3-ns ba bw3 pa2 w-100"
+        className="input-reset f4 f3-ns ba bw3 b--moon-gray pa2 w-100"
         type="text"
         name="meetup"
         onFocus={e => e.target.select()}
@@ -20,7 +17,7 @@ export default () => (
         required
       />
     </div>
-    <div className="mv4 mv5-ns">
+    <div className="pb3 pb4-ns mv3 mv4-ns">
       <label
         className="db di-ns f4 f3-ns lh-copy dark-blue pv3 pv1-ns"
         htmlFor="count"

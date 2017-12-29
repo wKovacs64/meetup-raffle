@@ -9,21 +9,21 @@ const CountStepper = ({ field, form: { setFieldValue } }) => (
     defaultValue={field.value}
     onChange={value => setFieldValue(field.name, value)}
     render={({ getInputProps, getIncrementProps, getDecrementProps }) => (
-      <span className="mh3-ns">
+      <span className="flex flex-row">
         <button
           type="button"
-          className="bn bg-transparent w2 pointer"
+          className="bn bg-transparent h3 w3 pointer"
           {...getDecrementProps()}
         >
-          <img src="/static/minus.svg" alt="minus" />
+          <img src="/static/down.svg" alt="decrement" />
         </button>
-        <input className="tc w2 pv1" {...field} {...getInputProps()} />
+        <input className="tc w3 f3 pv1" {...field} {...getInputProps()} />
         <button
           type="button"
-          className="bn bg-transparent w2 pointer"
+          className="bn bg-transparent h3 w3 pointer"
           {...getIncrementProps()}
         >
-          <img src="/static/plus.svg" alt="plus" />
+          <img src="/static/up.svg" alt="increment" />
         </button>
       </span>
     )}
