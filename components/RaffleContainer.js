@@ -18,7 +18,7 @@ export class RaffleContainer extends Component {
           initialValues={{
             meetup: 'frontend-devs',
             count: 2,
-            event: '',
+            specificEventId: '',
             meetupApiKey: '',
           }}
           onSubmit={async (
