@@ -22,7 +22,7 @@ export class RaffleContainer extends Component {
             meetupApiKey: '',
           }}
           onSubmit={async (
-            { meetup, count, event, meetupApiKey },
+            { meetup, count, specificEventId, meetupApiKey },
             { setSubmitting },
           ) => {
             setSubmitting(true);
@@ -33,7 +33,7 @@ export class RaffleContainer extends Component {
               ]({
                 meetup,
                 count,
-                event,
+                specificEventId,
                 meetupApiKey,
               });
               if (results.winners) {
