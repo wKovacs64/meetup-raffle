@@ -20,10 +20,17 @@
   "scripts": {
     "build": "next build",
     "clean": "rimraf .next",
+    "deploy": "now --public && now alias",
+    "down": "now rm meetup-raffle -y",
     "dev": "next",
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "lint": "eslint .",
+    "postdeploy": "now rm -s -y meetup-raffle",
     "start": "next start"
+  },
+  "now": {
+    "name": "meetup-raffle",
+    "alias": "meetup-raffle"
   },
   "private": true,
   "dependencies": {
@@ -42,6 +49,7 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
+    "now": "^9.0.1",
     "prettier": "^1.9.2"
   }
 }
