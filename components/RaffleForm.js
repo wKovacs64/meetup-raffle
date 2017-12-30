@@ -5,11 +5,11 @@ import { CountStepper } from '.';
 export default () => (
   <Form>
     <div>
-      <label className="db f4 f3-ns lh-copy dark-blue pb3" htmlFor="meetup">
+      <label className="f4 f3-ns lh-copy dark-blue" htmlFor="meetup">
         Meetup name (from your URL):
       </label>
       <Field
-        className="input-reset f4 f3-ns ba bw3 b--moon-gray pa2 w-100"
+        className="input-reset f4 f3-ns ba bw3 b--moon-gray mt3 pa2 w-100"
         type="text"
         id="meetup"
         name="meetup"
@@ -18,17 +18,16 @@ export default () => (
         required
       />
     </div>
-    <div className="pb3 pb4-ns mv3 mv4-ns">
-      <label
-        className="db di-ns f4 f3-ns lh-copy dark-blue pv3 pv1-ns"
-        htmlFor="count"
-      >
+    <div className="mv4 mb5-ns">
+      <label className="f4 f3-ns lh-copy dark-blue" htmlFor="count">
         Number of winners:
       </label>
       <Field
         name="count"
         render={formikProps => (
-          <CountStepper inputId="count" {...formikProps} />
+          <div className="mt3">
+            <CountStepper inputId="count" {...formikProps} />
+          </div>
         )}
       />
     </div>
