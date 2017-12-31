@@ -14,7 +14,7 @@ export class RaffleContainer extends Component {
 
   componentDidMount() {
     this.setState({
-      meetupApiKey: this.getMeetupApiKey(),
+      meetupApiKey: this.getMeetupApiKey() || '',
     });
   }
 
