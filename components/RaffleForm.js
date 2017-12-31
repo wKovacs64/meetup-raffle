@@ -9,7 +9,7 @@ export default () => (
         Meetup name (from your URL):
       </label>
       <Field
-        className="input-reset f4 f3-ns ba bw3 b--moon-gray mt3 pa2 w-100"
+        className="input-reset f4 f3-ns near-black ba bw3 b--moon-gray mt3 pa2 w-100"
         type="text"
         id="meetup"
         name="meetup"
@@ -43,7 +43,7 @@ export default () => (
             <em>(defaults to soonest upcoming/in-progress event)</em>:
           </label>
           <Field
-            className="input-reset f6 f5-ns ba bw1 b--moon-gray mt3 pa2 w-100"
+            className="input-reset f6 f5-ns near-black ba bw1 b--moon-gray mt3 pa2 w-100"
             type="text"
             id="specificEventId"
             name="specificEventId"
@@ -63,7 +63,7 @@ export default () => (
             <em>(enables full names of winners)</em>:
           </label>
           <Field
-            className="input-reset f6 f5-ns ba bw1 b--moon-gray mt3 pa2 w-100"
+            className="input-reset f6 f5-ns near-black ba bw1 b--moon-gray mt3 pa2 w-100"
             type="text"
             id="meetupApiKey"
             name="meetupApiKey"

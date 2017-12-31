@@ -28,7 +28,7 @@ const CountStepper = ({ inputId, field, form: { setFieldValue } }) => (
         </button>
         <input
           id={inputId}
-          className="tc w3 f3 pv1"
+          className="tc near-black w3 f3 pv1"
           {...field}
           {...getInputProps()}
         />
