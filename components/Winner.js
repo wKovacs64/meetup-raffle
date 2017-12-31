@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Winner = ({ winner }) => (
   <a
-    className="flex flex-column justify-between dim link ba b--dark-blue dark-blue mb3 w4 shadow-5"
+    className="flex flex-column dim link ba b--dark-blue dark-blue mb3 w4 shadow-5"
     href={winner.profileURL}
     target="_blank"
     rel="noopener noreferrer"
@@ -15,7 +15,9 @@ const Winner = ({ winner }) => (
         `}
       </style>
     </span>
-    <p className="tc">{winner.name}</p>
+    <div className="flex flex-grow-1 justify-center items-center">
+      <span className="tc pa3">{winner.name}</span>
+    </div>
   </a>
 );
 
