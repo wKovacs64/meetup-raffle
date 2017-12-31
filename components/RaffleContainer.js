@@ -79,7 +79,7 @@ export class RaffleContainer extends Component {
             if (isSubmitting) {
               return (
                 <div className="tc">
-                  <Loading className="h5 w5" />
+                  <Loading className="h5 w5 dark-blue" />
                 </div>
               );
             }
