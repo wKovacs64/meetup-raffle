@@ -7,27 +7,56 @@ export class RaffleContainer extends Component {
   initialState = {
     error: '',
     winners: [],
+    meetupApiKey: '',
   };
 
   state = this.initialState;
+
+  componentDidMount() {
+    this.setState({
+      meetupApiKey: this.getMeetupApiKey(),
+    });
+  }
+
+  resetState = () => {
+    this.setState({
+      ...this.initialState,
+      meetupApiKey: this.state.meetupApiKey, // preserve
+    });
+  };
+
+  getMeetupApiKey = () => {
+    if (global.window.localStorage) {
+      return global.window.localStorage.getItem('meetupApiKey');
+    }
+    return undefined;
+  };
+
+  storeMeetupApiKey = meetupApiKey => {
+    if (global.window.localStorage) {
+      global.window.localStorage.setItem('meetupApiKey', meetupApiKey);
+    }
+  };
 
   render() {
     return (
       <section className="ph3 pv3 pv4-ns mw6-m mw7-l center-ns">
         <Formik
+          enableReinitialize
           initialValues={{
             meetup: 'frontend-devs',
             count: 2,
             specificEventId: '',
-            meetupApiKey: '',
+            meetupApiKey: this.state.meetupApiKey,
           }}
           onSubmit={async (
             { meetup, count, specificEventId, meetupApiKey },
             { setSubmitting },
           ) => {
             setSubmitting(true);
-            // lib is coming from UMD in /static until StdLib's lib-js is on NPM
+            this.storeMeetupApiKey(meetupApiKey);
             try {
+              // lib is coming from UMD in /static until StdLib's lib-js is on NPM
               const results = await global.window.lib.wKovacs64[
                 'meetup-raffle'
               ]({
@@ -57,9 +86,7 @@ export class RaffleContainer extends Component {
             if (this.state.error || this.state.winners.length) {
               return (
                 <Results
-                  onReset={() => {
-                    this.setState(this.initialState);
-                  }}
+                  onReset={this.resetState}
                   onSubmit={handleSubmit}
                   {...this.state}
                 />
