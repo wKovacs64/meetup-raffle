@@ -4,25 +4,25 @@ import { ErrorMessage, Winner } from '.';
 
 const Results = ({ onReset, onSubmit, error, winners }) => (
   <Fragment>
-    {error && <ErrorMessage problemText={error} />}
+    {error && <ErrorMessage className="mb4" problemText={error} />}
     {!error &&
       !!winners.length && (
-        <div className="flex flex-wrap justify-between justify-around-ns">
+        <div className="flex flex-wrap justify-between justify-around-ns mb4">
           {winners.map(winner => (
             <Winner key={winner.profileURL} winner={winner} />
           ))}
         </div>
       )}
-    <div className="flex flex-wrap justify-around pt3 pt4-m pt5-l">
+    <div className="flex flex-wrap justify-around">
       <button
-        className="w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-transparent hover-bg-moon-gray pointer ph5 pv3 mv2 shadow-5"
+        className="w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-transparent hover-bg-moon-gray pointer ph5 pv3 mb3 mb0-l shadow-5"
         type="button"
         onClick={onReset}
       >
         Reset
       </button>
       <button
-        className="w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-transparent hover-bg-moon-gray pointer ph5 pv3 mv2 shadow-5"
+        className="w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-transparent hover-bg-moon-gray pointer ph5 pv3 mb3 mb0-l shadow-5"
         type="button"
         onClick={onSubmit}
       >

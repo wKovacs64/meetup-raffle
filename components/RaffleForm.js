@@ -31,7 +31,7 @@ export default () => (
         )}
       />
     </div>
-    <div className="mv4 mb5-ns">
+    <div className="mv4">
       <details>
         <summary className="pointer">Advanced Options</summary>
         <div className="mt3">
