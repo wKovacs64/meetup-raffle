@@ -14,6 +14,5 @@ export default () => (
       <Header />
       <RaffleContainer />
     </main>
-    <script src="/static/lib.min.js" />
   </Fragment>
 );

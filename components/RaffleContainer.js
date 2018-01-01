@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Formik } from 'formik';
 import { Loading, RaffleForm, Results } from '.';
 
@@ -56,19 +57,21 @@ export class RaffleContainer extends Component {
             setSubmitting(true);
             this.storeMeetupApiKey(meetupApiKey);
             try {
-              // lib is coming from UMD in /static until StdLib's lib-js is on NPM
-              const results = await global.window.lib.wKovacs64[
-                'meetup-raffle'
-              ]({
-                meetup,
-                count,
-                specificEventId,
-                meetupApiKey,
-              });
-              if (results.winners) {
-                this.setState({ winners: results.winners });
+              const response = await axios.get(
+                'https://wkovacs64.lib.id/meetup-raffle/',
+                {
+                  params: {
+                    meetup,
+                    count,
+                    specificEventId,
+                    meetupApiKey,
+                  },
+                },
+              );
+              if (response.data && response.data.winners) {
+                this.setState({ winners: response.data.winners });
               } else {
-                throw new Error('Malformed results received.');
+                throw new Error('Malformed response received.');
               }
             } catch (err) {
               this.setState({ error: err.message });
