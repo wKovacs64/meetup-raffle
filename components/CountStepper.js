@@ -11,6 +11,7 @@ const CountStepper = ({ inputId, field, form: { setFieldValue } }) => (
     render={({ getInputProps, getIncrementProps, getDecrementProps }) => (
       <span className="flex flex-row">
         <button
+          aria-label="decrement"
           type="button"
           className="bn bg-transparent near-black h3 w3 pointer"
           {...getDecrementProps()}
@@ -33,6 +34,7 @@ const CountStepper = ({ inputId, field, form: { setFieldValue } }) => (
           {...getInputProps()}
         />
         <button
+          aria-label="increment"
           type="button"
           className="bn bg-transparent near-black h3 w3 pointer"
           {...getIncrementProps()}
