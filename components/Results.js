@@ -15,7 +15,6 @@ const Results = ({ onReset, onSubmit, error, winners }) => (
       )}
     <div className="flex flex-wrap justify-around">
       <button
-        aria-label="reset"
         className="w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-transparent hover-bg-moon-gray pointer ph5 pv3 mb3 mb0-l shadow-5"
         type="button"
         onClick={onReset}
@@ -23,7 +22,6 @@ const Results = ({ onReset, onSubmit, error, winners }) => (
         Reset
       </button>
       <button
-        aria-label="draw again"
         className="w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-transparent hover-bg-moon-gray pointer ph5 pv3 mb3 mb0-l shadow-5"
         type="button"
         onClick={onSubmit}
