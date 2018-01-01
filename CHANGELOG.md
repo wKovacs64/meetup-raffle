@@ -1,5 +1,12 @@
 # Change Log
 
+## Version 1.1.2 _(2018-01-01)_
+
+* Fixed core functionality in IE/Edge (ditched `lib-js`)
+* Fixed advanced options in IE/Edge/Safari (ditched `<details>` and `<summary>`
+  elements)
+* Added loading text as the SVG animation doesn't work in IE/Edge
+
 ## Version 1.1.1 _(2017-12-31)_
 
 * Fixed a bug that was causing invalid
