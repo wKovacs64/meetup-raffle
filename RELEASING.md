@@ -15,6 +15,7 @@
 1. Update the `CHANGELOG.md` for the impending release.
 1. `git commit -am "X.Y.Z"` (where X.Y.Z is the new version)
 1. `yarn deploy` (ensure this succeeds before proceeding)
+1. `yarn now alias`
 1. `git checkout master && git merge develop`
 1. `git tag vX.Y.Z` (where X.Y.Z is the new version)
 1. `git push origin master --tags`

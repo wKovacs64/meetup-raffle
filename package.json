@@ -20,12 +20,10 @@
   "scripts": {
     "build": "next build",
     "clean": "rimraf .next",
-    "deploy": "now --public && now alias",
-    "down": "now rm meetup-raffle -y",
+    "deploy": "now --public",
     "dev": "next",
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "lint": "eslint .",
-    "postdeploy": "now rm -s -y meetup-raffle",
     "start": "next start"
   },
   "now": {
