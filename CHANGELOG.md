@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 1.2.0 _(2018-01-02)_
+
+* Removed default Meetup name
+* Added preservation of Meetup name in `LocalStorage`
+
 ## Version 1.1.3 _(2018-01-02)_
 
 * Added "Deploy to now" button to README
