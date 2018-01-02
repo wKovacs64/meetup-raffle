@@ -1,5 +1,12 @@
 # Change Log
 
+## Version 1.1.3 _(2018-01-02)_
+
+* Added "Deploy to now" button to README
+* Added pointer cursor style to advanced options toggle
+* Added missing development dependency
+* Simplified/reduced deployment related npm scripts
+
 ## Version 1.1.2 _(2018-01-01)_
 
 * Fixed core functionality in IE/Edge (ditched `lib-js`)
