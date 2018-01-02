@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 1.3.0 _(2018-01-02)_
+
+* Added GitHub corner
+
 ## Version 1.2.0 _(2018-01-02)_
 
 * Removed default Meetup name
