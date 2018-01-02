@@ -42,7 +42,7 @@ export default class extends Component {
           <button
             aria-label="toggle advanced options"
             type="button"
-            className="link bn bg-transparent pa0 near-black"
+            className="link bn bg-transparent pa0 pointer near-black"
             onClick={() =>
               this.setState({ advancedOpen: !this.state.advancedOpen })
             }
