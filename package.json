@@ -39,6 +39,7 @@
     "react": "^16.2.0",
     "react-css-collapse": "^3.1.0",
     "react-dom": "^16.2.0",
+    "react-github-corner": "^2.0.0",
     "react-stepper-primitive": "^1.0.2"
   },
   "devDependencies": {
