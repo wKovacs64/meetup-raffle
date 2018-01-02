@@ -8,34 +8,37 @@ export class RaffleContainer extends Component {
   initialState = {
     error: '',
     winners: [],
-    meetupApiKey: '',
   };
 
   state = this.initialState;
 
   componentDidMount() {
     this.setState({
-      meetupApiKey: this.getMeetupApiKey() || '',
+      meetup: this.restore('meetup') || '',
+      meetupApiKey: this.restore('meetupApiKey') || '',
     });
   }
 
   resetState = () => {
     this.setState({
+      // reset some
       ...this.initialState,
-      meetupApiKey: this.state.meetupApiKey, // preserve
+      // keep the rest
+      meetup: this.state.meetup,
+      meetupApiKey: this.state.meetupApiKey,
     });
   };
 
-  getMeetupApiKey = () => {
+  restore = key => {
     if (global.window.localStorage) {
-      return global.window.localStorage.getItem('meetupApiKey');
+      return global.window.localStorage.getItem(key);
     }
     return undefined;
   };
 
-  storeMeetupApiKey = meetupApiKey => {
+  preserve = (key, value) => {
     if (global.window.localStorage) {
-      global.window.localStorage.setItem('meetupApiKey', meetupApiKey);
+      global.window.localStorage.setItem(key, value);
     }
   };
 
@@ -45,7 +48,7 @@ export class RaffleContainer extends Component {
         <Formik
           enableReinitialize
           initialValues={{
-            meetup: 'frontend-devs',
+            meetup: this.state.meetup,
             count: 2,
             specificEventId: '',
             meetupApiKey: this.state.meetupApiKey,
@@ -55,7 +58,8 @@ export class RaffleContainer extends Component {
             { setSubmitting },
           ) => {
             setSubmitting(true);
-            this.storeMeetupApiKey(meetupApiKey);
+            this.preserve('meetup', meetup);
+            this.preserve('meetupApiKey', meetupApiKey);
             try {
               const response = await axios.get(
                 'https://wkovacs64.lib.id/meetup-raffle/',
