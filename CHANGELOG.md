@@ -1,5 +1,12 @@
 # Change Log
 
+## Version 1.4.0 _(2018-01-03)_
+
+* Added preservation of winner count in `LocalStorage`
+* Improved error handler to display friendly error message from API
+* Darkened global background color
+* Refactored code into smaller chunks
+
 ## Version 1.3.0 _(2018-01-02)_
 
 * Added GitHub corner
