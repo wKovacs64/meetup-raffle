@@ -5,22 +5,37 @@ import { Loading, RaffleForm, Results } from '.';
 
 export class RaffleContainer extends Component {
   // eslint-disable-next-line react/sort-comp
-  initialState = {
+  initialResults = {
     error: '',
     winners: [],
   };
 
-  state = this.initialState;
+  initialFormValues = {
+    meetup: '',
+    count: 1,
+    specificEventId: '',
+    meetupApiKey: '',
+  };
+
+  state = {
+    ...this.initialResults,
+    ...this.initialFormValues,
+  };
 
   componentDidMount() {
+    const meetup = this.restore('meetup');
+    const count = this.restore('count');
+    const meetupApiKey = this.restore('meetupApiKey');
+
     this.setState({
-      meetup: this.restore('meetup') || '',
-      meetupApiKey: this.restore('meetupApiKey') || '',
+      ...(meetup && { meetup }),
+      ...(count && { count }),
+      ...(meetupApiKey && { meetupApiKey }),
     });
   }
 
-  resetState = () => {
-    this.setState(this.initialState);
+  resetResults = () => {
+    this.setState(this.initialResults);
   };
 
   restore = key => {
@@ -30,9 +45,11 @@ export class RaffleContainer extends Component {
     return undefined;
   };
 
-  preserve = (key, value) => {
+  preserve = data => {
     if (global.window.localStorage) {
-      global.window.localStorage.setItem(key, value);
+      Object.entries(data).forEach(([key, value]) => {
+        global.window.localStorage.setItem(key, value);
+      });
     }
   };
 
@@ -42,18 +59,21 @@ export class RaffleContainer extends Component {
         <Formik
           enableReinitialize
           initialValues={{
-            meetup: this.state.meetup || '',
-            count: 2,
-            specificEventId: '',
-            meetupApiKey: this.state.meetupApiKey || '',
+            meetup: this.state.meetup,
+            count: this.state.count,
+            specificEventId: this.initialFormValues.specificEventId,
+            meetupApiKey: this.state.meetupApiKey,
           }}
           onSubmit={async (
             { meetup, count, specificEventId, meetupApiKey },
             { setSubmitting },
           ) => {
             setSubmitting(true);
-            this.preserve('meetup', meetup);
-            this.preserve('meetupApiKey', meetupApiKey);
+            this.preserve({
+              meetup,
+              count,
+              meetupApiKey,
+            });
             try {
               const response = await axios.get(
                 'https://wkovacs64.lib.id/meetup-raffle/',
@@ -87,7 +107,7 @@ export class RaffleContainer extends Component {
             if (this.state.error || this.state.winners.length) {
               return (
                 <Results
-                  onReset={this.resetState}
+                  onReset={this.resetResults}
                   onSubmit={handleSubmit}
                   {...this.state}
                 />
