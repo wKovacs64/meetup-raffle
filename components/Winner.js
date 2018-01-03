@@ -15,7 +15,7 @@ const Winner = ({ winner }) => (
         `}
       </style>
     </span>
-    <div className="flex flex-grow-1 justify-center items-center">
+    <div className="flex flex-grow-1 justify-center items-center bg-white">
       <span className="tc pa3">{winner.name}</span>
     </div>
   </a>

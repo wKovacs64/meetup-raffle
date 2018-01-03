@@ -14,5 +14,12 @@ export default () => (
       <Header />
       <RaffleContainer />
     </main>
+    <style global jsx>
+      {`
+        html {
+          background-color: #f4f4f4;
+        }
+      `}
+    </style>
   </Fragment>
 );
