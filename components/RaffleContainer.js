@@ -20,13 +20,7 @@ export class RaffleContainer extends Component {
   }
 
   resetState = () => {
-    this.setState({
-      // reset some
-      ...this.initialState,
-      // keep the rest
-      meetup: this.state.meetup,
-      meetupApiKey: this.state.meetupApiKey,
-    });
+    this.setState(this.initialState);
   };
 
   restore = key => {
@@ -48,10 +42,10 @@ export class RaffleContainer extends Component {
         <Formik
           enableReinitialize
           initialValues={{
-            meetup: this.state.meetup,
+            meetup: this.state.meetup || '',
             count: 2,
             specificEventId: '',
-            meetupApiKey: this.state.meetupApiKey,
+            meetupApiKey: this.state.meetupApiKey || '',
           }}
           onSubmit={async (
             { meetup, count, specificEventId, meetupApiKey },
