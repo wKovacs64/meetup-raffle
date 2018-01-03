@@ -59,6 +59,61 @@ export class RaffleContainer extends Component {
     this.setState({ error });
   };
 
+  handleFormikSubmit = async (
+    { meetup, count, specificEventId, meetupApiKey },
+    { setSubmitting },
+  ) => {
+    setSubmitting(true);
+    this.preserve({
+      meetup,
+      count,
+      meetupApiKey,
+    });
+    try {
+      const response = await axios.get(
+        'https://wkovacs64.lib.id/meetup-raffle/',
+        {
+          params: {
+            meetup,
+            count,
+            specificEventId,
+            meetupApiKey,
+          },
+        },
+      );
+      const winners = get(response, 'data.winners');
+      if (winners) {
+        this.setState({ winners });
+      } else {
+        throw new Error('Malformed response received.');
+      }
+    } catch (err) {
+      this.handleApiError(err);
+    }
+    setSubmitting(false);
+  };
+
+  renderFormik = ({ handleSubmit, isSubmitting }) => {
+    if (isSubmitting) {
+      return (
+        <div className="tc">
+          <Loading className="h5 w5 dark-blue" />
+        </div>
+      );
+    }
+    if (this.state.error || this.state.winners.length) {
+      return (
+        <Results
+          onReset={this.resetResults}
+          onSubmit={handleSubmit}
+          error={this.state.error}
+          winners={this.state.winners}
+        />
+      );
+    }
+    return <RaffleForm />;
+  };
+
   render() {
     return (
       <section className="ph3 pv3 pv4-ns mw6-m mw7-l center-ns">
@@ -70,57 +125,8 @@ export class RaffleContainer extends Component {
             specificEventId: this.initialFormValues.specificEventId,
             meetupApiKey: this.state.meetupApiKey,
           }}
-          onSubmit={async (
-            { meetup, count, specificEventId, meetupApiKey },
-            { setSubmitting },
-          ) => {
-            setSubmitting(true);
-            this.preserve({
-              meetup,
-              count,
-              meetupApiKey,
-            });
-            try {
-              const response = await axios.get(
-                'https://wkovacs64.lib.id/meetup-raffle/',
-                {
-                  params: {
-                    meetup,
-                    count,
-                    specificEventId,
-                    meetupApiKey,
-                  },
-                },
-              );
-              if (response.data && response.data.winners) {
-                this.setState({ winners: response.data.winners });
-              } else {
-                throw new Error('Malformed response received.');
-              }
-            } catch (err) {
-              this.handleApiError(err);
-            }
-            setSubmitting(false);
-          }}
-          render={({ handleSubmit, isSubmitting }) => {
-            if (isSubmitting) {
-              return (
-                <div className="tc">
-                  <Loading className="h5 w5 dark-blue" />
-                </div>
-              );
-            }
-            if (this.state.error || this.state.winners.length) {
-              return (
-                <Results
-                  onReset={this.resetResults}
-                  onSubmit={handleSubmit}
-                  {...this.state}
-                />
-              );
-            }
-            return <RaffleForm />;
-          }}
+          onSubmit={this.handleFormikSubmit}
+          render={this.renderFormik}
         />
       </section>
     );
