@@ -4,5 +4,6 @@ export { default as Header } from './Header';
 export { default as Loading } from './Loading';
 export { default as RaffleContainer } from './RaffleContainer';
 export { default as RaffleForm } from './RaffleForm';
+export { default as ResetButtons } from './ResetButtons';
 export { default as Results } from './Results';
 export { default as Winner } from './Winner';

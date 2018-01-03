@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import get from 'lodash.get';
 import { Formik } from 'formik';
-import { Loading, RaffleForm, Results } from '.';
+import { ErrorMessage, Loading, RaffleForm, ResetButtons, Results } from '.';
 
 export class RaffleContainer extends Component {
   // eslint-disable-next-line react/sort-comp
@@ -101,14 +101,20 @@ export class RaffleContainer extends Component {
         </div>
       );
     }
-    if (this.state.error || this.state.winners.length) {
+    if (this.state.error) {
       return (
-        <Results
-          onReset={this.resetResults}
-          onSubmit={handleSubmit}
-          error={this.state.error}
-          winners={this.state.winners}
-        />
+        <Fragment>
+          <ErrorMessage problemText={this.state.error} />
+          <ResetButtons onReset={this.resetResults} onSubmit={handleSubmit} />
+        </Fragment>
+      );
+    }
+    if (this.state.winners.length) {
+      return (
+        <Fragment>
+          <Results winners={this.state.winners} />
+          <ResetButtons onReset={this.resetResults} onSubmit={handleSubmit} />
+        </Fragment>
       );
     }
     return <RaffleForm />;
