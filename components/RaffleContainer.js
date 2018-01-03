@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import get from 'lodash.get';
 import { Formik } from 'formik';
 import { Loading, RaffleForm, Results } from '.';
 
@@ -53,6 +54,11 @@ export class RaffleContainer extends Component {
     }
   };
 
+  handleApiError = err => {
+    const error = get(err, 'response.data.error.message', err.message);
+    this.setState({ error });
+  };
+
   render() {
     return (
       <section className="ph3 pv3 pv4-ns mw6-m mw7-l center-ns">
@@ -92,7 +98,7 @@ export class RaffleContainer extends Component {
                 throw new Error('Malformed response received.');
               }
             } catch (err) {
-              this.setState({ error: err.message });
+              this.handleApiError(err);
             }
             setSubmitting(false);
           }}
