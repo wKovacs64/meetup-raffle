@@ -21,6 +21,7 @@
     "eject": "react-scripts eject",
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "lint": "eslint .",
+    "now-start": "serve build --single",
     "start": "react-scripts start",
     "test": "react-scripts test --env=jsdom"
   },
@@ -37,6 +38,7 @@
     "react-github-corner": "^2.0.0",
     "react-scripts": "1.0.17",
     "react-stepper-primitive": "^1.0.2",
+    "serve": "^6.4.3",
     "tachyons": "^4.9.1"
   },
   "devDependencies": {
