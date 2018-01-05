@@ -235,5 +235,5 @@ $RECYCLE.BIN/
 ### npm ###
 package-lock.json
 
-### next.js ###
-.next
+### Build ###
+build

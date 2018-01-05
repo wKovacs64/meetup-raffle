@@ -8,7 +8,6 @@
   },
   "contributors": [],
   "license": "MIT",
-  "homepage": "https://github.com/wKovacs64/meetup-raffle-web",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/wKovacs64/meetup-raffle-web.git"
@@ -16,32 +15,31 @@
   "bugs": {
     "url": "https://github.com/wKovacs64/meetup-raffle-web/issues"
   },
-  "main": "pages/index.js",
   "scripts": {
-    "build": "next build",
-    "clean": "rimraf .next",
-    "deploy": "now --public",
-    "dev": "next",
+    "build": "react-scripts build",
+    "clean": "rimraf build coverage",
+    "eject": "react-scripts eject",
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "lint": "eslint .",
-    "start": "next start"
-  },
-  "now": {
-    "name": "meetup-raffle",
-    "alias": "meetup-raffle"
+    "now-start": "serve build --single",
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom"
   },
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
+    "emotion": "^8.0.12",
     "formik": "^0.10.5",
     "lodash.get": "^4.4.2",
-    "next": "^4.2.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-css-collapse": "^3.1.0",
     "react-dom": "^16.2.0",
     "react-github-corner": "^2.0.0",
-    "react-stepper-primitive": "^1.0.2"
+    "react-scripts": "1.0.17",
+    "react-stepper-primitive": "^1.0.2",
+    "serve": "^6.4.3",
+    "tachyons": "^4.9.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.1.2",
@@ -51,7 +49,6 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
-    "now": "^9.0.1",
     "prettier": "^1.9.2",
     "rimraf": "^2.6.2"
   }

@@ -122,7 +122,7 @@ export class RaffleContainer extends Component {
 
   render() {
     return (
-      <section className="ph3 pv3 pv4-ns mw6-m mw7-l center-ns">
+      <main className="ph3 pv3 pv4-ns mw6-m mw7-l center-ns">
         <Formik
           enableReinitialize
           initialValues={{
@@ -134,7 +134,7 @@ export class RaffleContainer extends Component {
           onSubmit={this.handleFormikSubmit}
           render={this.renderFormik}
         />
-      </section>
+      </main>
     );
   }
 }
