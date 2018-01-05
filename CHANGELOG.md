@@ -1,5 +1,17 @@
 # Change Log
 
+## Version 2.0.0 _(2018-01-05)_
+
+* Migrated project from `next.js` to `create-react-app`:
+
+  Initially, this project started as a quick experiment with [Zeit's][zeit]
+  [`next.js`][next.js] framework, their CSS-in-JS implementation
+  ([`styled-jsx`][styled-jsx]), and their [`now`][now] platform. As it does not
+  benefit much from SSR or some of the other major features of `next.js`, it is
+  now based off the [`create-react-app`][cra] generator, uses
+  [`emotion`][emotion] CSS, and is deployed as a static site on
+  [Netlify][netlify].
+
 ## Version 1.4.0 _(2018-01-03)_
 
 * Added preservation of winner count in `LocalStorage`
@@ -50,3 +62,10 @@
 * Initial release
 
 [meetup-raffle-stdlib]: https://github.com/wKovacs64/meetup-raffle-stdlib
+[zeit]: https://zeit.co/
+[next.js]: https://github.com/zeit/next.js/
+[styled-jsx]: https://github.com/zeit/styled-jsx
+[now]: https://zeit.co/now
+[cra]: https://github.com/facebookincubator/create-react-app
+[emotion]: https://emotion.sh/
+[netlify]: https://www.netlify.com/
