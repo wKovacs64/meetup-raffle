@@ -40,14 +40,17 @@ export default class extends Component {
         </div>
         <div className="mv4">
           <button
-            aria-label="toggle advanced options"
             type="button"
             className="link bn bg-transparent pa0 pointer near-black"
             onClick={() =>
               this.setState({ advancedOpen: !this.state.advancedOpen })
             }
           >
-            <span className="dib w1" role="img">
+            <span
+              className="dib w1"
+              role="img"
+              aria-label="toggle advanced options"
+            >
               {this.state.advancedOpen ? '▼' : '▶'}
             </span>
             <span className="ph2">Advanced Options</span>
