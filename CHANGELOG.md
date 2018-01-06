@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 2.1.0 _(2018-01-06)_
+
+* Fixed/updated PWA assets and settings
+
 ## Version 2.0.0 _(2018-01-05)_
 
 * Migrated project from `next.js` to `create-react-app`:
