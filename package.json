@@ -1,6 +1,6 @@
 {
   "name": "meetup-raffle-web",
-  "version": "2.1.0",
+  "version": "2.1.1-dev.0",
   "description": "Select a raffle winner at your upcoming Meetup.",
   "author": {
     "name": "Justin Hall",
