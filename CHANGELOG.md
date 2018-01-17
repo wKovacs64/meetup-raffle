@@ -4,7 +4,7 @@
 
 * Returned control of the count stepper value to `react-stepper-primitive` now
   that it supports reinitialization of the `defaultValue` prop
-  (5307a3ae8b2af1beefc4fef30fd97e7f79e36676)
+  ([5307a3ae][5307a3ae])
 
 ## Version 2.1.0 _(2018-01-06)_
 
@@ -79,3 +79,4 @@
 [cra]: https://github.com/facebookincubator/create-react-app
 [emotion]: https://emotion.sh/
 [netlify]: https://www.netlify.com/
+[5307a3ae]: https://github.com/wKovacs64/meetup-raffle-web/commit/5307a3ae8b2af1beefc4fef30fd97e7f79e36676
