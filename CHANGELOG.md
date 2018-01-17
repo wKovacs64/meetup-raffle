@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 2.1.1 _(2018-01-17)_
+
+* Returned control of the count stepper value to `react-stepper-primitive` now
+  that it supports reinitialization of the `defaultValue` prop
+  (5307a3ae8b2af1beefc4fef30fd97e7f79e36676)
+
 ## Version 2.1.0 _(2018-01-06)_
 
 * Fixed/updated PWA assets and settings
