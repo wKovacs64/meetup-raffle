@@ -5696,9 +5696,9 @@ react-scripts@1.1.0:
   optionalDependencies:
     fsevents "1.1.2"
 
-react-stepper-primitive@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/react-stepper-primitive/-/react-stepper-primitive-1.0.2.tgz#489674d38d235ed9ed605077a292a72bc7d8e000"
+react-stepper-primitive@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-stepper-primitive/-/react-stepper-primitive-1.1.0.tgz#4d798458183f071927db3fb23e685bd9d77708ef"
   dependencies:
     numeric-pattern "^1.0.0"
     prop-types "^15.5.10"

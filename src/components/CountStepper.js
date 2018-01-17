@@ -4,9 +4,10 @@ import Stepper from 'react-stepper-primitive';
 
 const CountStepper = ({ inputId, field, form: { setFieldValue } }) => (
   <Stepper
+    enableReinitialize
     min={1}
+    max={9}
     defaultValue={parseInt(field.value, 10)}
-    value={parseInt(field.value, 10)}
     onChange={value => setFieldValue(field.name, value)}
     render={({ getInputProps, getIncrementProps, getDecrementProps }) => (
       <span className="flex flex-row">
