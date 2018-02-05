@@ -4,7 +4,7 @@ import { css, cx } from 'emotion';
 
 const Winner = ({ winner }) => {
   const bgImg = css`
-    background-image: url(${winner.photoURL});
+    background-image: url(${winner.photoURL}), url('/user-placeholder.svg');
   `;
 
   return (
