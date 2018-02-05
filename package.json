@@ -28,8 +28,8 @@
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
-    "emotion": "^8.0.12",
-    "formik": "^0.10.5",
+    "emotion": "^9.0.0",
+    "formik": "^0.11.5",
     "lodash.get": "^4.4.2",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
@@ -38,17 +38,17 @@
     "react-github-corner": "^2.1.0",
     "react-scripts": "1.1.0",
     "react-stepper-primitive": "^1.1.0",
-    "serve": "^6.4.8",
+    "serve": "^6.4.9",
     "tachyons": "^4.9.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
-    "eslint": "^4.15.0",
+    "eslint": "^4.17.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.5.1",
+    "eslint-plugin-react": "^7.6.1",
     "prettier": "^1.10.2",
     "rimraf": "^2.6.2"
   }
