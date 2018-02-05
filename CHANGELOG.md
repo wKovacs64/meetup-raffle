@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 2.2.0 _(2018-02-05)_
+
+* Added a placeholder avatar for winners without a profile image
+
 ## Version 2.1.1 _(2018-01-17)_
 
 * Returned control of the count stepper value to `react-stepper-primitive` now
