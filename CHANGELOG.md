@@ -1,5 +1,11 @@
 # Change Log
 
+## Version 2.3.0 _(2018-03-15)_
+
+* Polyfilled `Object.entries`
+* Replaced `Loading` component with `RingLoader` from
+  [`react-spinners`][react-spinners]
+
 ## Version 2.2.0 _(2018-02-05)_
 
 * Added a placeholder avatar for winners without a profile image
@@ -84,3 +90,4 @@
 [emotion]: https://emotion.sh/
 [netlify]: https://www.netlify.com/
 [5307a3ae]: https://github.com/wKovacs64/meetup-raffle-web/commit/5307a3ae8b2af1beefc4fef30fd97e7f79e36676
+[react-spinners]: https://github.com/davidhu2000/react-spinners
