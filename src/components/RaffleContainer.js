@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import get from 'lodash.get';
+import { RingLoader } from 'react-spinners';
 import { Formik } from 'formik';
-import { ErrorMessage, Loading, RaffleForm, ResetButtons, Results } from '.';
+import { ErrorMessage, RaffleForm, ResetButtons, Results } from '.';
 
 export class RaffleContainer extends Component {
   // eslint-disable-next-line react/sort-comp
@@ -96,8 +97,8 @@ export class RaffleContainer extends Component {
   renderFormik = ({ handleSubmit, isSubmitting }) => {
     if (isSubmitting) {
       return (
-        <div className="tc">
-          <Loading className="h5 w5 dark-blue" />
+        <div className="center h4 w4">
+          <RingLoader size={128} color="#00449e" />
         </div>
       );
     }

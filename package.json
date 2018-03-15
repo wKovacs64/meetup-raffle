@@ -49,6 +49,7 @@
     "react-dom": "^16.2.0",
     "react-github-corner": "^2.1.0",
     "react-scripts": "1.1.1",
+    "react-spinners": "^0.2.6",
     "react-stepper-primitive": "^1.1.0",
     "serve": "^6.5.3",
     "tachyons": "^4.9.1"
