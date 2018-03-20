@@ -11,9 +11,15 @@ const ErrorMessage = ({
   ...props
 }) => (
   <section {...props}>
-    <span className={titleClasses}>{title}</span>
-    <p className={subtitleClasses}>{subtitle}</p>
-    <p className={problemTextClasses}>{problemText}</p>
+    <span className={titleClasses} data-testid="title">
+      {title}
+    </span>
+    <p className={subtitleClasses} data-testid="subtitle">
+      {subtitle}
+    </p>
+    <p className={problemTextClasses} data-testid="problemText">
+      {problemText}
+    </p>
   </section>
 );
 
