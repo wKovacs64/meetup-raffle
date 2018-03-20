@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Winner } from '.';
+import Winner from './Winner';
 
 const Results = ({ winners }) => (
   <Fragment>
