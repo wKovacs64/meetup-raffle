@@ -16,7 +16,9 @@ const Winner = ({ winner }) => {
     >
       <span className={cx('db bg-center cover h4', bgImg)} role="img" />
       <div className="flex flex-grow-1 justify-center items-center bg-white">
-        <span className="tc pa3">{winner.name}</span>
+        <span className="tc pa3" data-testid="name">
+          {winner.name}
+        </span>
       </div>
     </a>
   );
