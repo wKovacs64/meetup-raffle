@@ -5,7 +5,7 @@ import { RingLoader } from 'react-spinners';
 import { Formik } from 'formik';
 import { ErrorMessage, RaffleForm, ResetButtons, Results } from '.';
 
-export class RaffleContainer extends Component {
+export default class extends Component {
   // eslint-disable-next-line react/sort-comp
   initialResults = {
     error: '',
@@ -139,5 +139,3 @@ export class RaffleContainer extends Component {
     );
   }
 }
-
-export default RaffleContainer;
