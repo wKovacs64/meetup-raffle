@@ -66,6 +66,7 @@
     "husky": "0.14.3",
     "lint-staged": "7.0.0",
     "prettier": "1.11.1",
+    "react-testing-library": "^1.1.0",
     "rimraf": "2.6.2"
   }
 }
