@@ -102,6 +102,7 @@ exports[`renders without crashing 1`] = `
               aria-label="decrement"
               type="button"
               class="bn bg-transparent near-black h3 w3 pointer"
+              data-testid="decrement-button"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -120,6 +121,7 @@ exports[`renders without crashing 1`] = `
               type="text"
               id="count"
               class="tc near-black w3 f3 pv1"
+              data-testid="count-input"
               value="1"
               name="count"
               pattern="[0-9]*"
@@ -128,6 +130,7 @@ exports[`renders without crashing 1`] = `
               aria-label="increment"
               type="button"
               class="bn bg-transparent near-black h3 w3 pointer"
+              data-testid="increment-button"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

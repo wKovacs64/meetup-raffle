@@ -15,6 +15,7 @@ const CountStepper = ({ inputId, field, form: { setFieldValue } }) => (
           aria-label="decrement"
           type="button"
           className="bn bg-transparent near-black h3 w3 pointer"
+          data-testid="decrement-button"
           {...getDecrementProps()}
         >
           <svg
@@ -31,6 +32,7 @@ const CountStepper = ({ inputId, field, form: { setFieldValue } }) => (
         <input
           id={inputId}
           className="tc near-black w3 f3 pv1"
+          data-testid="count-input"
           {...field}
           {...getInputProps()}
         />
@@ -38,6 +40,7 @@ const CountStepper = ({ inputId, field, form: { setFieldValue } }) => (
           aria-label="increment"
           type="button"
           className="bn bg-transparent near-black h3 w3 pointer"
+          data-testid="increment-button"
           {...getIncrementProps()}
         >
           <svg
