@@ -37,6 +37,11 @@
       "git add"
     ]
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/components/**/*.js"
+    ]
+  },
   "private": true,
   "dependencies": {
     "axios": "0.18.0",
