@@ -105,7 +105,10 @@ export default class extends Component {
     if (this.state.error) {
       return (
         <Fragment>
-          <ErrorMessage problemText={this.state.error} />
+          <ErrorMessage
+            problemText={this.state.error}
+            data-testid="error-message"
+          />
           <ResetButtons onReset={this.resetResults} onSubmit={handleSubmit} />
         </Fragment>
       );
@@ -113,7 +116,7 @@ export default class extends Component {
     if (this.state.winners.length) {
       return (
         <Fragment>
-          <Results winners={this.state.winners} />
+          <Results winners={this.state.winners} data-testid="results" />
           <ResetButtons onReset={this.resetResults} onSubmit={handleSubmit} />
         </Fragment>
       );

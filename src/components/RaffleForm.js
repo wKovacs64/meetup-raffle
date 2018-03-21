@@ -23,6 +23,7 @@ export default class extends Component {
             onFocus={e => e.target.select()}
             placeholder="required"
             required
+            data-testid="meetup-input"
           />
         </div>
         <div className="mv4">
@@ -45,11 +46,13 @@ export default class extends Component {
             onClick={() =>
               this.setState({ advancedOpen: !this.state.advancedOpen })
             }
+            data-testid="advanced-button"
           >
             <span
               className="dib w1"
               role="img"
               aria-label="toggle advanced options"
+              data-testid="advanced-button-icon"
             >
               {this.state.advancedOpen ? '▼' : '▶'}
             </span>
@@ -71,6 +74,7 @@ export default class extends Component {
                 name="specificEventId"
                 onFocus={e => e.target.select()}
                 placeholder="optional"
+                data-testid="specific-event-id-input"
               />
             </div>
             <div className="mt3">
@@ -94,6 +98,7 @@ export default class extends Component {
                 name="meetupApiKey"
                 onFocus={e => e.target.select()}
                 placeholder="optional"
+                data-testid="meetup-api-key-input"
               />
             </div>
           </Collapse>
@@ -101,6 +106,7 @@ export default class extends Component {
         <button
           className="db center-ns w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-white hover-bg-moon-gray pointer ph5 pv3 shadow-5"
           type="submit"
+          data-testid="draw-button"
         >
           Draw
         </button>
