@@ -6723,9 +6723,9 @@ react-stepper-primitive@1.1.0:
     numeric-pattern "^1.0.0"
     prop-types "^15.5.10"
 
-react-testing-library@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-1.1.0.tgz#6bfb8ffb2df3814b4652a9eac945068cc76eff03"
+react-testing-library@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-1.4.0.tgz#48eff1da8476bc834d652d19c555add601d119b6"
 
 react@16.2.0:
   version "16.2.0"

@@ -9,13 +9,13 @@ const winner = {
 };
 
 describe('Winner', () => {
-  const { container, queryByTestId } = render(<Winner winner={winner} />);
+  const { container, getByTestId } = render(<Winner winner={winner} />);
 
   it('renders', () => {
     expect(container).toMatchSnapshot();
   });
 
   it("includes the winner's name", () => {
-    expect(queryByTestId('name').textContent).toBe(winner.name);
+    expect(getByTestId('name').textContent).toBe(winner.name);
   });
 });

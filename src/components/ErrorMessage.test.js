@@ -9,7 +9,7 @@ const errorProps = {
 };
 
 describe('ErrorMessage', () => {
-  const { container, queryByTestId } = render(<ErrorMessage />);
+  const { container, getByTestId } = render(<ErrorMessage />);
 
   it('renders', () => {
     expect(container).toMatchSnapshot();
@@ -17,17 +17,15 @@ describe('ErrorMessage', () => {
 
   it('renders defaults', () => {
     render(<ErrorMessage />, { container });
-    expect(queryByTestId('title')).toBeTruthy();
-    expect(queryByTestId('subtitle')).toBeTruthy();
-    expect(queryByTestId('problemText')).toBeTruthy();
+    expect(getByTestId('title')).toBeTruthy();
+    expect(getByTestId('subtitle')).toBeTruthy();
+    expect(getByTestId('problemText')).toBeTruthy();
   });
 
   it('renders overrides', () => {
     render(<ErrorMessage {...errorProps} />, { container });
-    expect(queryByTestId('title').textContent).toBe(errorProps.title);
-    expect(queryByTestId('subtitle').textContent).toBe(errorProps.subtitle);
-    expect(queryByTestId('problemText').textContent).toBe(
-      errorProps.problemText,
-    );
+    expect(getByTestId('title').textContent).toBe(errorProps.title);
+    expect(getByTestId('subtitle').textContent).toBe(errorProps.subtitle);
+    expect(getByTestId('problemText').textContent).toBe(errorProps.problemText);
   });
 });

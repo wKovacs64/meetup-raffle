@@ -19,12 +19,12 @@ const params = {
 describe('RaffleContainer', () => {
   const mockLocalStorage = global.window.localStorage; // from setupTests.js
   let container;
-  let queryByTestId;
+  let getByTestId;
 
   const fillOutForm = () => {
     // find elements
-    const meetupInput = queryByTestId('meetup-input');
-    const countInput = queryByTestId('count-input');
+    const meetupInput = getByTestId('meetup-input');
+    const countInput = getByTestId('count-input');
 
     // fill out form
     meetupInput.value = params.meetup;
@@ -34,7 +34,7 @@ describe('RaffleContainer', () => {
   };
 
   const submitForm = async () => {
-    const drawButton = queryByTestId('draw-button');
+    const drawButton = getByTestId('draw-button');
 
     // submit form
     // N.B. must simulate 'submit' here rather than 'click' because drawButton
@@ -46,7 +46,7 @@ describe('RaffleContainer', () => {
   };
 
   beforeEach(() => {
-    ({ container, queryByTestId } = render(<RaffleContainer />));
+    ({ container, getByTestId } = render(<RaffleContainer />));
     jest.clearAllMocks();
   });
 
@@ -89,7 +89,7 @@ describe('RaffleContainer', () => {
     fillOutForm();
     await submitForm();
 
-    expect(queryByTestId('error-message')).toBeTruthy();
+    expect(getByTestId('error-message')).toBeTruthy();
   });
 
   it('resets the form on reset button click', async () => {
@@ -100,9 +100,9 @@ describe('RaffleContainer', () => {
     fillOutForm();
     await submitForm();
 
-    expect(queryByTestId('results')).toBeTruthy();
-    Simulate.click(queryByTestId('reset-button'));
-    expect(queryByTestId('results')).toBeFalsy();
+    expect(getByTestId('results')).toBeTruthy();
+    Simulate.click(getByTestId('reset-button'));
+    expect(() => getByTestId('results')).toThrow();
   });
 
   it("doesn't crash if localStorage is unavailable", () => {
@@ -117,7 +117,7 @@ describe('RaffleContainer', () => {
   });
 
   it('selects current meetup input text on focus', () => {
-    const meetupInput = queryByTestId('meetup-input');
+    const meetupInput = getByTestId('meetup-input');
 
     expect(meetupInput.selectionStart).toBe(0);
     expect(meetupInput.selectionEnd).toBe(0);
@@ -130,8 +130,8 @@ describe('RaffleContainer', () => {
   });
 
   it('toggles advanced options section', () => {
-    const advancedButton = queryByTestId('advanced-button');
-    const advancedButtonIcon = queryByTestId('advanced-button-icon');
+    const advancedButton = getByTestId('advanced-button');
+    const advancedButtonIcon = getByTestId('advanced-button-icon');
 
     // This test isn't great. It would be better to somehow test visibility of
     // the advanced options, but because of how the Collapse component from
@@ -146,7 +146,7 @@ describe('RaffleContainer', () => {
   });
 
   it('selects current specific event ID input text on focus', () => {
-    const specificEventIdInput = queryByTestId('specific-event-id-input');
+    const specificEventIdInput = getByTestId('specific-event-id-input');
 
     expect(specificEventIdInput.selectionStart).toBe(0);
     expect(specificEventIdInput.selectionEnd).toBe(0);
@@ -162,7 +162,7 @@ describe('RaffleContainer', () => {
   });
 
   it('selects current Meetup API key input text on focus', () => {
-    const meetupApiKeyInput = queryByTestId('meetup-api-key-input');
+    const meetupApiKeyInput = getByTestId('meetup-api-key-input');
 
     expect(meetupApiKeyInput.selectionStart).toBe(0);
     expect(meetupApiKeyInput.selectionEnd).toBe(0);

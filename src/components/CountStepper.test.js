@@ -15,7 +15,7 @@ const countStepperProps = {
 };
 
 describe('CountStepper', () => {
-  const { container, queryByTestId } = render(
+  const { container, getByTestId } = render(
     <CountStepper {...countStepperProps} />,
   );
 
@@ -24,17 +24,17 @@ describe('CountStepper', () => {
   });
 
   it('increments', () => {
-    const initialValue = parseInt(queryByTestId('count-input').value, 10);
-    Simulate.click(queryByTestId('increment-button'));
-    expect(parseInt(queryByTestId('count-input').value, 10)).toBe(
+    const initialValue = parseInt(getByTestId('count-input').value, 10);
+    Simulate.click(getByTestId('increment-button'));
+    expect(parseInt(getByTestId('count-input').value, 10)).toBe(
       initialValue + 1,
     );
   });
 
   it('decrements', () => {
-    const initialValue = parseInt(queryByTestId('count-input').value, 10);
-    Simulate.click(queryByTestId('decrement-button'));
-    expect(parseInt(queryByTestId('count-input').value, 10)).toBe(
+    const initialValue = parseInt(getByTestId('count-input').value, 10);
+    Simulate.click(getByTestId('decrement-button'));
+    expect(parseInt(getByTestId('count-input').value, 10)).toBe(
       initialValue - 1,
     );
   });
