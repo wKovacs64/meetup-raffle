@@ -8,7 +8,7 @@ import {
   validateStatus,
 } from './helpers';
 
-async function handler(request, context, callback) {
+const handler = async (request, context, callback) => {
   const headers =
     process.env.NODE_ENV === 'development'
       ? { 'Access-Control-Allow-Origin': '*' }
@@ -54,6 +54,6 @@ async function handler(request, context, callback) {
       body: JSON.stringify({ error: { message: err.message } }),
     });
   }
-}
+};
 
 export { handler };
