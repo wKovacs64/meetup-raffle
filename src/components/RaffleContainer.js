@@ -72,7 +72,7 @@ export default class extends Component {
     });
     try {
       const response = await axios.get(
-        'https://wkovacs64.lib.id/meetup-raffle/',
+        process.env.REACT_APP_MEETUP_RAFFLE_ENDPOINT,
         {
           params: {
             meetup,

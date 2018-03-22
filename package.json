@@ -17,13 +17,16 @@
   },
   "scripts": {
     "build": "react-scripts build",
-    "clean": "rimraf build coverage",
+    "build:functions": "netlify-lambda build src.functions",
+    "clean": "rimraf build build.functions coverage",
+    "dev": "cross-env NODE_ENV=development REACT_APP_MEETUP_RAFFLE_ENDPOINT=http://localhost:9000/draw concurrently \"yarn start\" \"yarn run start:lambda\"",
     "eject": "react-scripts eject",
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "lint": "eslint .",
     "precommit": "lint-staged",
     "start": "react-scripts start",
-    "test": "react-scripts test --env=jsdom"
+    "start:lambda": "netlify-lambda serve src.functions",
+    "test": "cross-env REACT_APP_MEETUP_RAFFLE_ENDPOINT=http://localhost:9000/draw react-scripts test --env=jsdom"
   },
   "lint-staged": {
     "*.js": [
@@ -47,7 +50,9 @@
     "core-js": "2.5.3",
     "emotion": "9.1.0",
     "formik": "0.11.11",
+    "is-number": "5.0.0",
     "lodash.get": "4.4.2",
+    "meetup-randomizer": "3.1.0",
     "prop-types": "15.6.1",
     "react": "16.2.0",
     "react-css-collapse": "3.1.0",
@@ -60,7 +65,9 @@
   },
   "devDependencies": {
     "babel-eslint": "8.2.2",
+    "concurrently": "3.5.1",
     "coveralls": "3.0.0",
+    "cross-env": "5.1.4",
     "eslint": "4.19.1",
     "eslint-config-airbnb": "16.1.0",
     "eslint-config-prettier": "2.9.0",
@@ -69,6 +76,7 @@
     "eslint-plugin-react": "7.7.0",
     "husky": "0.14.3",
     "lint-staged": "7.0.0",
+    "netlify-lambda": "0.2.0",
     "prettier": "1.11.1",
     "react-testing-library": "1.6.0",
     "rimraf": "2.6.2"
