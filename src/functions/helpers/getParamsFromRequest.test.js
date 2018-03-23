@@ -55,6 +55,7 @@ describe('getParamsFromRequest', () => {
       specificEventId: '1234567890',
       meetupApiKey: '1a2b3c4d5e6f',
     };
+
     expect(
       getParamsFromRequest({
         httpMethod: 'GET',
