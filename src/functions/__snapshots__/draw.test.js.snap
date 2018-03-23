@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`draw handles Event not found 1`] = `
+Array [
+  Array [
+    null,
+    Object {
+      "body": "{\\"error\\":{\\"message\\":\\"Sorry, I couldn't find any information on that.\\"}}",
+      "headers": Object {},
+      "statusCode": 404,
+    },
+  ],
+]
+`;
+
+exports[`draw handles Event not public 1`] = `
+Array [
+  Array [
+    null,
+    Object {
+      "body": "{\\"error\\":{\\"message\\":\\"Sorry, their members list is private.\\"}}",
+      "headers": Object {},
+      "statusCode": 404,
+    },
+  ],
+]
+`;
+
+exports[`draw handles Meetup not found 1`] = `
+Array [
+  Array [
+    null,
+    Object {
+      "body": "{\\"error\\":{\\"message\\":\\"Sorry, I couldn't find any information on that.\\"}}",
+      "headers": Object {},
+      "statusCode": 404,
+    },
+  ],
+]
+`;
+
+exports[`draw handles a winner for a valid Meetup Event 1`] = `
+Array [
+  Array [
+    null,
+    Object {
+      "body": "{\\"winners\\":[{\\"name\\":\\"Tiny Rick\\",\\"photoURL\\":\\"https://i.imgur.com/rgDv1wB.jpg\\",\\"profileURL\\":\\"http://rickandmorty.wikia.com/wiki/Tiny_Rick\\"}]}",
+      "headers": Object {},
+      "statusCode": 200,
+    },
+  ],
+]
+`;
+
+exports[`draw handles invalid requests 1`] = `
+Array [
+  Array [
+    null,
+    Object {
+      "body": "{\\"error\\":{\\"message\\":\\"Invalid request, check your query parameters.\\"}}",
+      "headers": Object {},
+      "statusCode": 400,
+    },
+  ],
+]
+`;
+
+exports[`draw handles no upcoming Events found 1`] = `
+Array [
+  Array [
+    null,
+    Object {
+      "body": "{\\"error\\":{\\"message\\":\\"Sorry, I couldn't find any upcoming events.\\"}}",
+      "headers": Object {},
+      "statusCode": 404,
+    },
+  ],
+]
+`;
+
+exports[`draw handles unexpected data 1`] = `
+Array [
+  Array [
+    null,
+    Object {
+      "body": "{\\"error\\":{\\"message\\":\\"Sorry, we received unexpected data for that request.\\"}}",
+      "headers": Object {},
+      "statusCode": 404,
+    },
+  ],
+]
+`;

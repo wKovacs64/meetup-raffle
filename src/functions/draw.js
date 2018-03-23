@@ -24,11 +24,13 @@ const handler = (request, context, callback) => {
       request,
     ));
   } catch (err) {
-    return callback(null, {
-      headers,
-      statusCode: 400,
-      body: JSON.stringify({ error: { message: err.message } }),
-    });
+    return Promise.resolve(
+      callback(null, {
+        headers,
+        statusCode: 400,
+        body: JSON.stringify({ error: { message: err.message } }),
+      }),
+    );
   }
 
   const baseUrl = `https://api.meetup.com/${encodeURIComponent(meetup)}/events`;
@@ -59,7 +61,7 @@ const handler = (request, context, callback) => {
     .catch(err =>
       callback(null, {
         headers,
-        statusCode: 400,
+        statusCode: 404,
         body: JSON.stringify({ error: { message: err.message } }),
       }),
     );
