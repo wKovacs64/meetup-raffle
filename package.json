@@ -45,7 +45,7 @@
   "dependencies": {
     "axios": "0.18.0",
     "core-js": "2.5.3",
-    "emotion": "9.0.2",
+    "emotion": "9.1.0",
     "formik": "0.11.11",
     "lodash.get": "4.4.2",
     "prop-types": "15.6.1",
