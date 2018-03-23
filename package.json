@@ -42,7 +42,7 @@
   "jest": {
     "collectCoverageFrom": [
       "src/components/**/*.js",
-      "src/functions/*.js"
+      "src/functions/**/*.js"
     ]
   },
   "private": true,

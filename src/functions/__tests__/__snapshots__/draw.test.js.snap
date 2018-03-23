@@ -39,7 +39,7 @@ Array [
 ]
 `;
 
-exports[`draw handles a winner for a valid Meetup Event 1`] = `
+exports[`draw handles a valid Meetup Event 1`] = `
 Array [
   Array [
     null,

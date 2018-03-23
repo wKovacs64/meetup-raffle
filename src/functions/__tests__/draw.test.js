@@ -1,6 +1,8 @@
+// N.B. This exists in the __tests__ subfolder (rather than colocated next to
+// draw.js) to avoid being treated as a function by Netlify.
 import mockAxios from 'axios';
-import { MEETUP, EVENT_ID } from './__mocks__/fixtures';
-import { handler } from './draw';
+import { MEETUP, EVENT_ID } from '../__mocks__/fixtures';
+import { handler } from '../draw';
 
 const draw = async (
   { meetup, specificEventId = '', meetupApiKey = '', count = 1 },
@@ -83,7 +85,7 @@ describe('draw', () => {
     expect(cb.mock.calls).toMatchSnapshot();
   });
 
-  it('handles a winner for a valid Meetup Event', async () => {
+  it('handles a valid Meetup Event', async () => {
     mockAxios.get.mockImplementationOnce(() =>
       Promise.resolve({
         status: 204,
