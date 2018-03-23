@@ -1,14 +1,14 @@
-const axios = require('axios');
-const meetupRandomizer = require('meetup-randomizer');
-const {
+import axios from 'axios';
+import meetupRandomizer from 'meetup-randomizer';
+import {
   getParamsFromRequest,
   getIdFromEvent,
   getRsvpsUrl,
   parseEventsResponse,
   validateStatus,
-} = require('./helpers');
+} from './helpers';
 
-exports.handler = (request, context, callback) => {
+const handler = (request, context, callback) => {
   const headers =
     process.env.NODE_ENV === 'development'
       ? { 'Access-Control-Allow-Origin': '*' }
@@ -64,3 +64,5 @@ exports.handler = (request, context, callback) => {
       }),
     );
 };
+
+export { handler };
