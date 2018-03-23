@@ -57,7 +57,7 @@ Array [
   Array [
     null,
     Object {
-      "body": "{\\"error\\":{\\"message\\":\\"Invalid request, check your query parameters.\\"}}",
+      "body": "{\\"error\\":{\\"message\\":\\"The \\\\\\"meetup\\\\\\" query parameter is required and must be a string.\\"}}",
       "headers": Object {},
       "statusCode": 400,
     },

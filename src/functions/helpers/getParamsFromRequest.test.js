@@ -2,7 +2,14 @@ import { getParamsFromRequest } from './getParamsFromRequest';
 
 describe('getParamsFromRequest', () => {
   it('throws on unhandled HTTP methods', () => {
-    expect(() => getParamsFromRequest({ httpMethod: 'POST' })).toThrow();
+    expect(() =>
+      getParamsFromRequest({
+        httpMethod: 'POST',
+        queryStringParameters: {
+          meetup: 'meetup',
+        },
+      }),
+    ).toThrow();
   });
 
   it('throws on invalid count', () => {

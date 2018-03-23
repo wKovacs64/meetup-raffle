@@ -27,20 +27,32 @@ export const getParamsFromRequest = ({
     meetupApiKey = '',
   },
 }) => {
-  if (
-    httpMethod === 'GET' &&
-    meetup &&
-    typeof meetup === 'string' &&
-    isNumber(count) &&
-    typeof specificEventId === 'string' &&
-    typeof meetupApiKey === 'string'
-  ) {
-    return {
-      meetup,
-      count,
-      specificEventId,
-      meetupApiKey,
-    };
+  if (httpMethod !== 'GET') {
+    throw new Error('This API only accepts HTTP GET requests.');
   }
-  throw new Error('Invalid request, check your query parameters.');
+
+  if (!meetup || typeof meetup !== 'string') {
+    throw new Error(
+      'The "meetup" query parameter is required and must be a string.',
+    );
+  }
+
+  if (!isNumber(count)) {
+    throw new Error('The "count" query parameter must be a number.');
+  }
+
+  if (typeof specificEventId !== 'string') {
+    throw new Error('The "specificEventId" query parameter must be a string.');
+  }
+
+  if (typeof meetupApiKey !== 'string') {
+    throw new Error('The "meetupApiKey" query parameter must be a string.');
+  }
+
+  return {
+    meetup,
+    count,
+    specificEventId,
+    meetupApiKey,
+  };
 };
