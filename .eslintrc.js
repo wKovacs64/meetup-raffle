@@ -15,5 +15,15 @@ module.exports = {
     ],
     'react/jsx-filename-extension': 'off',
     'react/no-did-mount-set-state': 'off',
+    'valid-jsdoc': [
+      'error',
+      {
+        prefer: {
+          arg: 'param',
+          argument: 'param',
+          return: 'returns',
+        },
+      },
+    ],
   },
 };
