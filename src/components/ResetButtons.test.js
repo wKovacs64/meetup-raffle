@@ -6,7 +6,7 @@ describe('ResetButtons', () => {
   const onReset = jest.fn();
   const onSubmit = jest.fn();
 
-  const { container, getByTestId } = render(
+  const { container, getByText } = render(
     <ResetButtons onReset={onReset} onSubmit={onSubmit} />,
   );
 
@@ -16,13 +16,13 @@ describe('ResetButtons', () => {
 
   it('calls onReset appropriately', () => {
     expect(onReset).toHaveBeenCalledTimes(0);
-    Simulate.click(getByTestId('reset-button'));
+    Simulate.click(getByText('Reset'));
     expect(onReset).toHaveBeenCalledTimes(1);
   });
 
   it('calls onSubmit appropriately', () => {
     expect(onSubmit).toHaveBeenCalledTimes(0);
-    Simulate.click(getByTestId('submit-button'));
+    Simulate.click(getByText('Draw Again'));
     expect(onSubmit).toHaveBeenCalledTimes(1);
   });
 });

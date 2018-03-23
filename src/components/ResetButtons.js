@@ -7,7 +7,6 @@ const ResetButtons = ({ onReset, onSubmit }) => (
       className="w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-white hover-bg-moon-gray pointer ph5 pv3 mb3 mb0-l shadow-5"
       type="button"
       onClick={onReset}
-      data-testid="reset-button"
     >
       Reset
     </button>
@@ -15,7 +14,6 @@ const ResetButtons = ({ onReset, onSubmit }) => (
       className="w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-white hover-bg-moon-gray pointer ph5 pv3 mb3 mb0-l shadow-5"
       type="button"
       onClick={onSubmit}
-      data-testid="submit-button"
     >
       Draw Again
     </button>

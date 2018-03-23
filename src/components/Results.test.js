@@ -13,7 +13,7 @@ const winners = Array.from(Array(2), (_, idx) => ({
 }));
 
 describe('Results', () => {
-  const { container } = render(<Results winners={winners} />);
+  const { container, getByText } = render(<Results winners={winners} />);
 
   it('renders', () => {
     expect(container).toMatchSnapshot();
@@ -21,7 +21,7 @@ describe('Results', () => {
 
   it('contains all winners', () => {
     winners.forEach(winner => {
-      expect(container.firstChild.innerHTML).toMatch(new RegExp(winner.name));
+      expect(() => getByText(winner.name)).not.toThrow();
     });
   });
 });

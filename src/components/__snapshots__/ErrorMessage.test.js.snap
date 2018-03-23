@@ -5,19 +5,16 @@ exports[`ErrorMessage renders 1`] = `
   <section>
     <span
       class="f4 b"
-      data-testid="title"
     >
       Oops!
     </span>
     <p
       class=""
-      data-testid="subtitle"
     >
       An error was encountered:
     </p>
     <p
       class="bg-red white courier pa2"
-      data-testid="problemText"
     >
       Unknown.
     </p>

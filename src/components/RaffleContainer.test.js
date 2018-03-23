@@ -19,12 +19,14 @@ const params = {
 describe('RaffleContainer', () => {
   const mockLocalStorage = global.window.localStorage; // from setupTests.js
   let container;
+  let getByLabelText;
+  let getByText;
   let getByTestId;
 
   const fillOutForm = () => {
     // find elements
-    const meetupInput = getByTestId('meetup-input');
-    const countInput = getByTestId('count-input');
+    const meetupInput = getByLabelText(/Meetup name/);
+    const countInput = getByLabelText('Number of winners:');
 
     // fill out form
     meetupInput.value = params.meetup;
@@ -34,7 +36,7 @@ describe('RaffleContainer', () => {
   };
 
   const submitForm = async () => {
-    const drawButton = getByTestId('draw-button');
+    const drawButton = getByText('Draw');
 
     // submit form
     // N.B. must simulate 'submit' here rather than 'click' because drawButton
@@ -46,7 +48,9 @@ describe('RaffleContainer', () => {
   };
 
   beforeEach(() => {
-    ({ container, getByTestId } = render(<RaffleContainer />));
+    ({ container, getByLabelText, getByText, getByTestId } = render(
+      <RaffleContainer />,
+    ));
     jest.clearAllMocks();
   });
 
@@ -82,14 +86,13 @@ describe('RaffleContainer', () => {
   });
 
   it('shows an error message on error', async () => {
-    mockAxios.get.mockImplementationOnce(() =>
-      Promise.resolve('malformed response'),
-    );
+    const errorMessage = 'malformed response';
+    mockAxios.get.mockImplementationOnce(() => Promise.resolve(errorMessage));
 
     fillOutForm();
     await submitForm();
 
-    expect(getByTestId('error-message')).toBeTruthy();
+    expect(getByText(errorMessage)).toBeTruthy();
   });
 
   it('resets the form on reset button click', async () => {
@@ -100,9 +103,9 @@ describe('RaffleContainer', () => {
     fillOutForm();
     await submitForm();
 
-    expect(getByTestId('results')).toBeTruthy();
-    Simulate.click(getByTestId('reset-button'));
-    expect(() => getByTestId('results')).toThrow();
+    expect(getByText(mockWinners[0].name)).toBeTruthy();
+    Simulate.click(getByText('Reset'));
+    expect(() => getByText(mockWinners[0].name)).toThrow();
   });
 
   it("doesn't crash if localStorage is unavailable", () => {
@@ -117,7 +120,7 @@ describe('RaffleContainer', () => {
   });
 
   it('selects current meetup input text on focus', () => {
-    const meetupInput = getByTestId('meetup-input');
+    const meetupInput = getByLabelText(/Meetup name/);
 
     expect(meetupInput.selectionStart).toBe(0);
     expect(meetupInput.selectionEnd).toBe(0);
@@ -146,7 +149,7 @@ describe('RaffleContainer', () => {
   });
 
   it('selects current specific event ID input text on focus', () => {
-    const specificEventIdInput = getByTestId('specific-event-id-input');
+    const specificEventIdInput = getByLabelText('Specific event ID');
 
     expect(specificEventIdInput.selectionStart).toBe(0);
     expect(specificEventIdInput.selectionEnd).toBe(0);
@@ -162,7 +165,7 @@ describe('RaffleContainer', () => {
   });
 
   it('selects current Meetup API key input text on focus', () => {
-    const meetupApiKeyInput = getByTestId('meetup-api-key-input');
+    const meetupApiKeyInput = getByLabelText('Meetup API key');
 
     expect(meetupApiKeyInput.selectionStart).toBe(0);
     expect(meetupApiKeyInput.selectionEnd).toBe(0);
