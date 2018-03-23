@@ -8,11 +8,9 @@
  * @returns {string|null} a custom "rsvps" API endpoint URL, or null if no
  * custom URL is necessary
  */
-const getRsvpsUrl = (baseUrl, eventId, apiKey) =>
+export const getRsvpsUrl = (baseUrl, eventId, apiKey) =>
   apiKey
     ? `${baseUrl}/${eventId}/rsvps?only=group.urlname,member,response&key=${encodeURIComponent(
         apiKey,
       )}&sign=true`
     : null;
-
-module.exports = { getRsvpsUrl };
