@@ -18,7 +18,7 @@
   "scripts": {
     "build": "react-scripts build",
     "build:functions": "netlify-lambda build src/functions",
-    "clean": "rimraf build build.functions coverage",
+    "clean": "rimraf build functions coverage",
     "dev": "cross-env NODE_ENV=development REACT_APP_MEETUP_RAFFLE_ENDPOINT=http://localhost:9000/draw concurrently \"yarn start\" \"yarn run start:lambda\"",
     "eject": "react-scripts eject",
     "format": "prettier --write \"**/*.{js,json,md}\"",

@@ -237,4 +237,4 @@ package-lock.json
 
 ### Build ###
 build
-build.functions
+functions
