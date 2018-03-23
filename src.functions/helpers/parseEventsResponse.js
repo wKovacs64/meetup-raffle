@@ -7,7 +7,7 @@
  * @see https://github.com/mzabriskie/axios#response-schema
  * @see https://www.meetup.com/meetup_api/docs/:urlname/events/:id/#get
  */
-export const parseEventsResponse = response => {
+const parseEventsResponse = response => {
   // This case covers invalid Meetup group names as well as invalid event IDs.
   if (response.status === 404) {
     throw new Error("Sorry, I couldn't find any information on that.");
@@ -21,3 +21,5 @@ export const parseEventsResponse = response => {
 
   throw new Error("Sorry, I couldn't find any upcoming events.");
 };
+
+module.exports = { parseEventsResponse };

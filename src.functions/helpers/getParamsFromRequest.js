@@ -1,6 +1,6 @@
-import isNumber from 'is-number';
+const isNumber = require('is-number');
 
-export const getParamsFromRequest = ({
+const getParamsFromRequest = ({
   httpMethod,
   queryStringParameters: {
     meetup,
@@ -26,3 +26,5 @@ export const getParamsFromRequest = ({
   }
   throw new Error('Invalid request, check your query parameters.');
 };
+
+module.exports = { getParamsFromRequest };

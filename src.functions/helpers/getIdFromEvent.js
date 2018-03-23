@@ -6,9 +6,11 @@
  * @throws {Error} event visibility must be "public"
  * @see https://www.meetup.com/meetup_api/docs/:urlname/events/:id/#get
  */
-export const getIdFromEvent = event => {
+const getIdFromEvent = event => {
   if (event.visibility && event.visibility === 'public') {
     return event.id;
   }
   throw new Error('Sorry, their members list is private.');
 };
+
+module.exports = { getIdFromEvent };
