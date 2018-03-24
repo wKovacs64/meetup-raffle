@@ -6,6 +6,7 @@ module.exports = {
   extends: ['airbnb', 'prettier'],
   parser: 'babel-eslint',
   rules: {
+    'import/prefer-default-export': 'off',
     'jsx-a11y/label-has-for': [
       'error',
       {
@@ -14,5 +15,15 @@ module.exports = {
     ],
     'react/jsx-filename-extension': 'off',
     'react/no-did-mount-set-state': 'off',
+    'valid-jsdoc': [
+      'error',
+      {
+        prefer: {
+          arg: 'param',
+          argument: 'param',
+          return: 'returns',
+        },
+      },
+    ],
   },
 };
