@@ -6,6 +6,8 @@ import { Formik } from 'formik';
 import { ErrorMessage, RaffleForm, ResetButtons, Results } from '.';
 
 export default class extends Component {
+  static displayName = 'RaffleContainer';
+
   // eslint-disable-next-line react/sort-comp
   initialResults = {
     error: '',

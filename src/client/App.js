@@ -1,9 +1,13 @@
 import React, { Fragment } from 'react';
 import { Header, RaffleContainer } from './components';
 
-export default () => (
+const App = () => (
   <Fragment>
     <Header />
     <RaffleContainer />
   </Fragment>
 );
+
+App.displayName = 'App';
+
+export default App;

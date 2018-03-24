@@ -25,4 +25,6 @@ ResetButtons.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
+ResetButtons.displayName = 'ResetButtons';
+
 export default ResetButtons;

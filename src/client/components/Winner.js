@@ -32,4 +32,6 @@ Winner.propTypes = {
   }).isRequired,
 };
 
+Winner.displayName = 'Winner';
+
 export default Winner;

@@ -1,7 +1,7 @@
 import React from 'react';
 import GitHubCorner from 'react-github-corner';
 
-export default () => (
+const Header = () => (
   <header className="ph3 pv3 bg-light-red">
     <GitHubCorner
       href="https://github.com/wKovacs64/meetup-raffle"
@@ -26,3 +26,7 @@ export default () => (
     </div>
   </header>
 );
+
+Header.displayName = 'Header';
+
+export default Header;

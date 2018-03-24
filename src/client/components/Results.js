@@ -31,4 +31,6 @@ Results.defaultProps = {
   winners: [],
 };
 
+Results.displayName = 'Results';
+
 export default Results;

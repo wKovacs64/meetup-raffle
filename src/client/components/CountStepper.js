@@ -70,4 +70,6 @@ CountStepper.propTypes = {
   }).isRequired,
 };
 
+CountStepper.displayName = 'CountStepper';
+
 export default CountStepper;

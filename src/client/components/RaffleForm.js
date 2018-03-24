@@ -4,6 +4,8 @@ import { Form, Field } from 'formik';
 import { CountStepper } from '.';
 
 export default class extends Component {
+  static displayName = 'RaffleForm';
+
   state = {
     advancedOpen: false,
   };
