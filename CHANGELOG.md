@@ -89,5 +89,5 @@
 [cra]: https://github.com/facebookincubator/create-react-app
 [emotion]: https://emotion.sh/
 [netlify]: https://www.netlify.com/
-[5307a3ae]: https://github.com/wKovacs64/meetup-raffle-web/commit/5307a3ae8b2af1beefc4fef30fd97e7f79e36676
+[5307a3ae]: https://github.com/wKovacs64/meetup-raffle/commit/5307a3ae8b2af1beefc4fef30fd97e7f79e36676
 [react-spinners]: https://github.com/davidhu2000/react-spinners

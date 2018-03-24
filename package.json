@@ -1,5 +1,5 @@
 {
-  "name": "meetup-raffle-web",
+  "name": "meetup-raffle",
   "version": "2.3.1-dev.0",
   "description": "Select a raffle winner at your upcoming Meetup.",
   "author": {
@@ -10,10 +10,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/wKovacs64/meetup-raffle-web.git"
+    "url": "git+ssh://git@github.com/wKovacs64/meetup-raffle.git"
   },
   "bugs": {
-    "url": "https://github.com/wKovacs64/meetup-raffle-web/issues"
+    "url": "https://github.com/wKovacs64/meetup-raffle/issues"
   },
   "scripts": {
     "build": "yarn build:client && yarn build:functions",

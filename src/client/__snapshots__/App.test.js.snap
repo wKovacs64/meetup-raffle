@@ -6,7 +6,7 @@ exports[`renders without crashing 1`] = `
     class="ph3 pv3 bg-light-red"
   >
     <a
-      href="https://github.com/wKovacs64/meetup-raffle-web"
+      href="https://github.com/wKovacs64/meetup-raffle"
       class="github-corner"
       aria-label="Open GitHub project"
     >

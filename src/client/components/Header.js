@@ -4,7 +4,7 @@ import GitHubCorner from 'react-github-corner';
 export default () => (
   <header className="ph3 pv3 bg-light-red">
     <GitHubCorner
-      href="https://github.com/wKovacs64/meetup-raffle-web"
+      href="https://github.com/wKovacs64/meetup-raffle"
       octoColor="#f4f4f4"
       bannerColor="#111"
     />
