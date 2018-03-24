@@ -71,17 +71,14 @@ export default class extends Component {
       meetupApiKey,
     });
     try {
-      const response = await axios.get(
-        process.env.REACT_APP_MEETUP_RAFFLE_ENDPOINT,
-        {
-          params: {
-            meetup,
-            count,
-            specificEventId,
-            meetupApiKey,
-          },
+      const response = await axios.get(process.env.REACT_APP_DRAW_URL, {
+        params: {
+          meetup,
+          count,
+          specificEventId,
+          meetupApiKey,
         },
-      );
+      });
       const winners = get(response, 'data.winners');
       if (winners) {
         this.setState({ winners });
