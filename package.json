@@ -16,16 +16,17 @@
     "url": "https://github.com/wKovacs64/meetup-raffle-web/issues"
   },
   "scripts": {
-    "build": "react-scripts build",
+    "build": "yarn build:client && yarn build:functions",
+    "build:client": "react-scripts build",
     "build:functions": "netlify-lambda build src/functions",
     "clean": "rimraf build functions coverage",
-    "dev": "cross-env NODE_ENV=development REACT_APP_DRAW_URL=http://localhost:9000/draw concurrently \"yarn start\" \"yarn run start:lambda\"",
     "eject": "react-scripts eject",
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "lint": "eslint .",
     "precommit": "lint-staged",
-    "start": "react-scripts start",
-    "start:lambda": "netlify-lambda serve src/functions",
+    "start": "cross-env NODE_ENV=development REACT_APP_DRAW_URL=http://localhost:9000/draw concurrently \"yarn start:client\" \"yarn run start:functions\"",
+    "start:client": "react-scripts start",
+    "start:functions": "netlify-lambda serve src/functions",
     "test": "cross-env REACT_APP_DRAW_URL=http://localhost:9000/draw react-scripts test --env=jsdom"
   },
   "lint-staged": {
