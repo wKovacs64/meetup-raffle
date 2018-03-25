@@ -18,7 +18,7 @@ exports[`CountStepper renders 1`] = `
     <button
       aria-label="decrement"
       type="button"
-      class="bn bg-transparent near-black h3 w3 pointer"
+      class="bn bg-transparent h3 w3 pointer near-black"
       data-testid="decrement-button"
     >
       <svg
@@ -45,7 +45,7 @@ exports[`CountStepper renders 1`] = `
     <button
       aria-label="increment"
       type="button"
-      class="bn bg-transparent near-black h3 w3 pointer"
+      class="bn bg-transparent h3 w3 pointer near-black"
       data-testid="increment-button"
     >
       <svg

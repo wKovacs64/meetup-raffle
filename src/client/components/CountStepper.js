@@ -1,20 +1,28 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Stepper from 'react-stepper-primitive';
+import { cx } from 'emotion';
 
 const CountStepper = ({
   inputId,
   labelText,
+  min,
+  max,
   field,
   form: { setFieldValue },
 }) => (
   <Stepper
     enableReinitialize
-    min={1}
-    max={9}
+    min={min}
+    max={max}
     defaultValue={parseInt(field.value, 10)}
     onChange={value => setFieldValue(field.name, value)}
-    render={({ getInputProps, getIncrementProps, getDecrementProps }) => (
+    render={({
+      getInputProps,
+      getIncrementProps,
+      getDecrementProps,
+      value,
+    }) => (
       <Fragment>
         {labelText && (
           <div className="mb3">
@@ -27,7 +35,11 @@ const CountStepper = ({
           <button
             aria-label="decrement"
             type="button"
-            className="bn bg-transparent near-black h3 w3 pointer"
+            disabled={value <= min}
+            className={cx(
+              'bn bg-transparent h3 w3 pointer',
+              value <= min ? 'silver' : 'near-black',
+            )}
             data-testid="decrement-button"
             {...getDecrementProps()}
           >
@@ -51,7 +63,11 @@ const CountStepper = ({
           <button
             aria-label="increment"
             type="button"
-            className="bn bg-transparent near-black h3 w3 pointer"
+            disabled={value >= max}
+            className={cx(
+              'bn bg-transparent h3 w3 pointer',
+              value >= max ? 'silver' : 'near-black',
+            )}
             data-testid="increment-button"
             {...getIncrementProps()}
           >
@@ -75,6 +91,8 @@ const CountStepper = ({
 CountStepper.propTypes = {
   inputId: PropTypes.string.isRequired,
   labelText: PropTypes.string,
+  min: PropTypes.number,
+  max: PropTypes.number,
   field: PropTypes.shape({
     value: PropTypes.any.isRequired,
     name: PropTypes.string.isRequired,
@@ -86,6 +104,8 @@ CountStepper.propTypes = {
 
 CountStepper.defaultProps = {
   labelText: '',
+  min: 1,
+  max: 9,
 };
 
 CountStepper.displayName = 'CountStepper';

@@ -34,6 +34,8 @@ export default class extends Component {
               <CountStepper
                 inputId="count"
                 labelText="Number of winners:"
+                min={1}
+                max={9}
                 {...formikProps}
               />
             )}
