@@ -6,7 +6,7 @@ const Results = ({ winners, ...props }) => (
   <Fragment>
     {!!winners.length && (
       <div
-        className="flex flex-wrap justify-between justify-around-ns"
+        className="flex flex-wrap flex-shrink-0 justify-between justify-around-ns"
         {...props}
       >
         {winners.map(winner => (

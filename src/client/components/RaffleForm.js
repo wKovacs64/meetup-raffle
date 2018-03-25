@@ -13,7 +13,7 @@ export default class extends Component {
   render() {
     return (
       <Form>
-        <div>
+        <div className="mt3 mb4 mv4-ns">
           <label className="f4 f3-ns lh-copy dark-blue" htmlFor="meetup">
             Meetup name (from your URL):
           </label>
@@ -103,12 +103,14 @@ export default class extends Component {
             </div>
           </Collapse>
         </div>
-        <button
-          className="db center-ns w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-white hover-bg-moon-gray pointer ph5 pv3 shadow-5"
-          type="submit"
-        >
-          Draw
-        </button>
+        <div className="mv4">
+          <button
+            className="db center-ns w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-white hover-bg-moon-gray pointer ph5 pv3 shadow-5"
+            type="submit"
+          >
+            Draw
+          </button>
+        </div>
       </Form>
     );
   }

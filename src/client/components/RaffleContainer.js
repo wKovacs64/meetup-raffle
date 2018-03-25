@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from 'react';
-import { css, cx } from 'emotion';
+import React, { Component } from 'react';
 import axios from 'axios';
 import get from 'lodash.get';
 import { RingLoader } from 'react-spinners';
@@ -100,14 +99,7 @@ export default class extends Component {
   renderFormik = ({ handleSubmit, isSubmitting }) => {
     if (isSubmitting) {
       return (
-        <div
-          className={cx(
-            'flex justify-center items-center items-start-ns',
-            css`
-              flex-grow: 1;
-            `,
-          )}
-        >
+        <div className="flex flex-grow-1 flex-shrink-0 justify-center items-center items-start-ns mt3 mt4-ns">
           <div className="h4 w4">
             <RingLoader size={128} color="#00449e" />
           </div>
@@ -116,21 +108,21 @@ export default class extends Component {
     }
     if (this.state.error) {
       return (
-        <Fragment>
+        <div className="mt3 mt4-ns">
           <ErrorMessage
             problemText={this.state.error}
             data-testid="error-message"
           />
           <ResetButtons onReset={this.resetResults} onSubmit={handleSubmit} />
-        </Fragment>
+        </div>
       );
     }
     if (this.state.winners.length) {
       return (
-        <Fragment>
+        <div className="mt3 mt4-ns">
           <Results winners={this.state.winners} data-testid="results" />
           <ResetButtons onReset={this.resetResults} onSubmit={handleSubmit} />
-        </Fragment>
+        </div>
       );
     }
     return <RaffleForm />;
@@ -138,14 +130,7 @@ export default class extends Component {
 
   render() {
     return (
-      <main
-        className={cx(
-          'flex flex-column ph3 pv3 pv4-ns w-100 mw6-m mw7-l self-center-ns',
-          css`
-            flex-grow: 1;
-          `,
-        )}
-      >
+      <main className="flex flex-column flex-grow-1 flex-shrink-0 ph3 w-100 mw6-m mw7-l self-center-ns">
         <Formik
           enableReinitialize
           initialValues={{

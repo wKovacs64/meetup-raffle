@@ -3,7 +3,7 @@
 exports[`Results renders 1`] = `
 <div>
   <div
-    class="flex flex-wrap justify-between justify-around-ns"
+    class="flex flex-wrap flex-shrink-0 justify-between justify-around-ns"
   >
     <span>
       Pickle Rick 0
