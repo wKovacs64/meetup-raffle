@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { css, cx } from 'emotion';
 import axios from 'axios';
 import get from 'lodash.get';
 import { RingLoader } from 'react-spinners';
@@ -99,8 +100,15 @@ export default class extends Component {
   renderFormik = ({ handleSubmit, isSubmitting }) => {
     if (isSubmitting) {
       return (
-        <div className="db-ns flex flex-column justify-center content-center vh-75 h-auto-ns">
-          <div className="center h4 w4">
+        <div
+          className={cx(
+            'flex justify-center items-center items-start-ns',
+            css`
+              flex-grow: 1;
+            `,
+          )}
+        >
+          <div className="h4 w4">
             <RingLoader size={128} color="#00449e" />
           </div>
         </div>
@@ -130,7 +138,14 @@ export default class extends Component {
 
   render() {
     return (
-      <main className="ph3 pv3 pv4-ns mw6-m mw7-l center-ns">
+      <main
+        className={cx(
+          'flex flex-column ph3 pv3 pv4-ns w-100 mw6-m mw7-l self-center-ns',
+          css`
+            flex-grow: 1;
+          `,
+        )}
+      >
         <Formik
           enableReinitialize
           initialValues={{

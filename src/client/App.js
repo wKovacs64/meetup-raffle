@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Header, RaffleContainer } from './components';
 
 const App = () => (
-  <Fragment>
+  <div className="flex flex-column">
     <Header />
     <RaffleContainer />
-  </Fragment>
+  </div>
 );
 
 App.displayName = 'App';

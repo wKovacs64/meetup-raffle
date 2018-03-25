@@ -3,7 +3,7 @@
 exports[`RaffleContainer renders 1`] = `
 <div>
   <main
-    class="ph3 pv3 pv4-ns mw6-m mw7-l center-ns"
+    class="flex flex-column ph3 pv3 pv4-ns w-100 mw6-m mw7-l self-center-ns css-1k0aln6"
   >
     <form>
       <div>
