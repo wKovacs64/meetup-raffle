@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 3.0.1 _(2018-03-25)_
+
+* Fixed mobile and PWA vertical spacing issues
+
 ## Version 3.0.0 _(2018-03-25)_
 
 * Replaced [StdLib][stdlib] with [Netlify Functions][netlify-functions]
