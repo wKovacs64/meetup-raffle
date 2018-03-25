@@ -86,67 +86,66 @@ exports[`renders without crashing 1`] = `
       <div
         class="mv4"
       >
-        <label
-          class="f4 f3-ns lh-copy dark-blue"
-          for="count"
-        >
-          Number of winners:
-        </label>
         <div
-          class="mt3"
+          class="mb3"
         >
-          <span
-            class="flex flex-row"
+          <label
+            class="f4 f3-ns lh-copy dark-blue"
+            for="count"
           >
-            <button
-              aria-label="decrement"
-              type="button"
-              class="bn bg-transparent near-black h3 w3 pointer"
-              data-testid="decrement-button"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 40 40"
-                preserveAspectRatio="xMidYMid meet"
-              >
-                <g>
-                  <path
-                    d="m22.5 17.5v-5h-5v5h-5l7.5 10 7.5-10h-5z"
-                  />
-                </g>
-              </svg>
-            </button>
-            <input
-              type="text"
-              id="count"
-              class="tc near-black w3 f3 pv1"
-              data-testid="count-input"
-              value="1"
-              name="count"
-              pattern="[0-9]*"
-            />
-            <button
-              aria-label="increment"
-              type="button"
-              class="bn bg-transparent near-black h3 w3 pointer"
-              data-testid="increment-button"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 40 40"
-                preserveAspectRatio="xMidYMid meet"
-              >
-                <g>
-                  <path
-                    d="m20 12.5l-7.5 10h5v5h5v-5h5l-7.5-10z"
-                  />
-                </g>
-              </svg>
-            </button>
-          </span>
+            Number of winners:
+          </label>
         </div>
+        <span
+          class="flex flex-row"
+        >
+          <button
+            aria-label="decrement"
+            type="button"
+            class="bn bg-transparent near-black h3 w3 pointer"
+            data-testid="decrement-button"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 40 40"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <g>
+                <path
+                  d="m22.5 17.5v-5h-5v5h-5l7.5 10 7.5-10h-5z"
+                />
+              </g>
+            </svg>
+          </button>
+          <input
+            type="text"
+            id="count"
+            class="tc near-black w3 f3 pv1"
+            value="1"
+            name="count"
+            pattern="[0-9]*"
+          />
+          <button
+            aria-label="increment"
+            type="button"
+            class="bn bg-transparent near-black h3 w3 pointer"
+            data-testid="increment-button"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 40 40"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <g>
+                <path
+                  d="m20 12.5l-7.5 10h5v5h5v-5h5l-7.5-10z"
+                />
+              </g>
+            </svg>
+          </button>
+        </span>
       </div>
       <div
         class="mv4"

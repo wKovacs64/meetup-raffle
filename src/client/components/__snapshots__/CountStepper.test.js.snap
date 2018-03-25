@@ -2,6 +2,16 @@
 
 exports[`CountStepper renders 1`] = `
 <div>
+  <div
+    class="mb3"
+  >
+    <label
+      class="f4 f3-ns lh-copy dark-blue"
+      for="foo"
+    >
+      Count:
+    </label>
+  </div>
   <span
     class="flex flex-row"
   >
@@ -28,7 +38,6 @@ exports[`CountStepper renders 1`] = `
       type="text"
       id="foo"
       class="tc near-black w3 f3 pv1"
-      data-testid="count-input"
       name="foo"
       value="5"
       pattern="[0-9]*"

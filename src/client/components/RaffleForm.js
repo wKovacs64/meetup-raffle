@@ -28,15 +28,14 @@ export default class extends Component {
           />
         </div>
         <div className="mv4">
-          <label className="f4 f3-ns lh-copy dark-blue" htmlFor="count">
-            Number of winners:
-          </label>
           <Field
             name="count"
             render={formikProps => (
-              <div className="mt3">
-                <CountStepper inputId="count" {...formikProps} />
-              </div>
+              <CountStepper
+                inputId="count"
+                labelText="Number of winners:"
+                {...formikProps}
+              />
             )}
           />
         </div>

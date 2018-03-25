@@ -4,6 +4,7 @@ import CountStepper from './CountStepper';
 
 const countStepperProps = {
   inputId: 'foo',
+  labelText: 'Count:',
   field: {
     name: 'foo',
     value: 5,
@@ -15,7 +16,7 @@ const countStepperProps = {
 };
 
 describe('CountStepper', () => {
-  const { container, getByTestId } = render(
+  const { container, getByLabelText, getByTestId } = render(
     <CountStepper {...countStepperProps} />,
   );
 
@@ -24,18 +25,24 @@ describe('CountStepper', () => {
   });
 
   it('increments', () => {
-    const initialValue = parseInt(getByTestId('count-input').value, 10);
-    Simulate.click(getByTestId('increment-button'));
-    expect(parseInt(getByTestId('count-input').value, 10)).toBe(
-      initialValue + 1,
+    const initialValue = parseInt(
+      getByLabelText(countStepperProps.labelText).value,
+      10,
     );
+    Simulate.click(getByTestId('increment-button'));
+    expect(
+      parseInt(getByLabelText(countStepperProps.labelText).value, 10),
+    ).toBe(initialValue + 1);
   });
 
   it('decrements', () => {
-    const initialValue = parseInt(getByTestId('count-input').value, 10);
-    Simulate.click(getByTestId('decrement-button'));
-    expect(parseInt(getByTestId('count-input').value, 10)).toBe(
-      initialValue - 1,
+    const initialValue = parseInt(
+      getByLabelText(countStepperProps.labelText).value,
+      10,
     );
+    Simulate.click(getByTestId('decrement-button'));
+    expect(
+      parseInt(getByLabelText(countStepperProps.labelText).value, 10),
+    ).toBe(initialValue - 1);
   });
 });
