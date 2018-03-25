@@ -1,5 +1,19 @@
 # Change Log
 
+## Version 3.0.0 _(2018-03-25)_
+
+* Replaced [StdLib][stdlib] with [Netlify Functions][netlify-functions]
+  ([#6](https://github.com/wKovacs64/meetup-raffle/pull/6))
+* Renamed repository from `meetup-raffle-web` to `meetup-raffle` now that the
+  front-end and back-end are in a single code base
+* Integrated [Renovate][renovate] for automated dependency updates
+* Added `displayName` property to every React component for a better React
+  DevTools experience
+* Disabled increment/decrement buttons when the number of winners to draw is
+  already at a minimum or maximum value
+* Vertically centered the loading animation on mobile
+* Added tests
+
 ## Version 2.3.0 _(2018-03-15)_
 
 * Polyfilled `Object.entries`
@@ -91,3 +105,6 @@
 [netlify]: https://www.netlify.com/
 [5307a3ae]: https://github.com/wKovacs64/meetup-raffle/commit/5307a3ae8b2af1beefc4fef30fd97e7f79e36676
 [react-spinners]: https://github.com/davidhu2000/react-spinners
+[stdlib]: https://stdlib.com/
+[netlify-functions]: https://www.netlify.com/docs/functions/
+[renovate]: https://renovateapp.com/
