@@ -99,7 +99,7 @@ export default class extends Component {
   renderFormik = ({ handleSubmit, isSubmitting }) => {
     if (isSubmitting) {
       return (
-        <div className="db-ns flex flex-column justify-center content-center vh-75">
+        <div className="db-ns flex flex-column justify-center content-center vh-75 h-auto-ns">
           <div className="center h4 w4">
             <RingLoader size={128} color="#00449e" />
           </div>
