@@ -3,7 +3,7 @@
 exports[`renders without crashing 1`] = `
 <div>
   <div
-    class="flex flex-column"
+    class="flex flex-column h-100"
   >
     <header
       class="ph3 pv3 bg-light-red"

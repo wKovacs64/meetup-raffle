@@ -10,8 +10,7 @@ import registerServiceWorker from './registerServiceWorker';
 injectGlobal`
   html,
   body,
-  #root,
-  #root > div {
+  #root {
     height: 100%;
   }
 `;
