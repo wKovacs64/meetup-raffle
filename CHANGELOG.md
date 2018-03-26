@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 3.0.2 _(2018-03-26)_
+
+* Removed excess bottom margin from reset button area
+* Reduced global styling to a minimum
+
 ## Version 3.0.1 _(2018-03-25)_
 
 * Fixed mobile and PWA vertical spacing issues
