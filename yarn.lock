@@ -6849,9 +6849,11 @@ react-stepper-primitive@1.1.0:
     numeric-pattern "^1.0.0"
     prop-types "^15.5.10"
 
-react-testing-library@1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-1.7.0.tgz#680f586997a853dc20a0ba439605c4a54bb3a389"
+react-testing-library@1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-1.8.2.tgz#925b341e3df4df854228dca4ab5831ea854b8ed2"
+  dependencies:
+    wait-for-expect "0.4.0"
 
 react@16.2.0:
   version "16.2.0"
@@ -8383,6 +8385,10 @@ w3c-hr-time@^1.0.1:
   resolved "https://registry.yarnpkg.com/w3c-hr-time/-/w3c-hr-time-1.0.1.tgz#82ac2bff63d950ea9e3189a58a65625fedf19045"
   dependencies:
     browser-process-hrtime "^0.1.2"
+
+wait-for-expect@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/wait-for-expect/-/wait-for-expect-0.4.0.tgz#341c96ab89d6102a0169a9be6cd0de354de92c17"
 
 walker@~1.0.5:
   version "1.0.7"
