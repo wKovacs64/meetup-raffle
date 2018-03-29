@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, Simulate, flushPromises } from 'react-testing-library';
+import { render, Simulate } from 'react-testing-library';
 import mockAxios from 'axios';
 import RaffleContainer from './RaffleContainer';
 
@@ -42,9 +42,6 @@ describe('RaffleContainer', () => {
     // N.B. must simulate 'submit' here rather than 'click' because drawButton
     // does not have an onClick handler assigned explicitly
     Simulate.submit(drawButton);
-
-    // wait for async stuff (like mocked Axios.get() Promise) to resolve
-    await flushPromises();
   };
 
   beforeEach(() => {
