@@ -79,13 +79,13 @@ exports[`renders without crashing 1`] = `
             Meetup name (from your URL):
           </label>
           <input
-            type="text"
-            value=""
             name="meetup"
             class="input-reset f4 f3-ns near-black ba bw3 b--moon-gray mt3 pa2 w-100"
+            type="text"
             id="meetup"
             placeholder="required"
             required=""
+            value=""
           />
         </div>
         <div
@@ -125,12 +125,12 @@ exports[`renders without crashing 1`] = `
               </svg>
             </button>
             <input
-              type="text"
               id="count"
               class="tc near-black w3 f3 pv1"
-              value="1"
               name="count"
+              type="text"
               pattern="[0-9]*"
+              value="1"
             />
             <button
               aria-label="increment"
@@ -192,12 +192,12 @@ exports[`renders without crashing 1`] = `
                 :
               </label>
               <input
-                type="text"
-                value=""
                 name="specificEventId"
                 class="input-reset f6 f5-ns near-black ba bw1 b--moon-gray mt3 pa2 w-100"
+                type="text"
                 id="specificEventId"
                 placeholder="optional"
+                value=""
               />
             </div>
             <div
@@ -220,12 +220,12 @@ exports[`renders without crashing 1`] = `
                 :
               </label>
               <input
-                type="text"
-                value=""
                 name="meetupApiKey"
                 class="input-reset f6 f5-ns near-black ba bw1 b--moon-gray mt3 pa2 w-100"
+                type="text"
                 id="meetupApiKey"
                 placeholder="optional"
+                value=""
               />
             </div>
           </div>
