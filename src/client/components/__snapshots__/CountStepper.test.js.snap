@@ -35,12 +35,12 @@ exports[`CountStepper renders 1`] = `
       </svg>
     </button>
     <input
-      type="text"
       id="foo"
       class="tc near-black w3 f3 pv1"
       name="foo"
-      value="5"
+      type="text"
       pattern="[0-9]*"
+      value="5"
     />
     <button
       aria-label="increment"
