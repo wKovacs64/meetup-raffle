@@ -1,6 +1,6 @@
 import 'tachyons/css/tachyons.css';
 import 'core-js/fn/object/entries';
-import React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import { injectGlobal } from 'emotion';
 import App from './client/App';
@@ -15,5 +15,10 @@ injectGlobal`
   }
 `;
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  document.getElementById('root'),
+);
 registerServiceWorker();
