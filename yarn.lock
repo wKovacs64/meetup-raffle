@@ -6856,9 +6856,9 @@ react-stepper-primitive@1.1.0:
     numeric-pattern "^1.0.0"
     prop-types "^15.5.10"
 
-react-testing-library@1.9.3:
-  version "1.9.3"
-  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-1.9.3.tgz#5fe64e1d081c721ee12dad59a504e76723591e12"
+react-testing-library@1.9.4:
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-1.9.4.tgz#12871a1f2bd94d0a701afde4c04675d2e11d9aea"
   dependencies:
     wait-for-expect "0.4.0"
 
