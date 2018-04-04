@@ -6,6 +6,9 @@
   "major": {
     "automerge": false
   },
+  "node": {
+    "enabled": false
+  },
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0
 }
