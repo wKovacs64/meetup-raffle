@@ -1,4 +1,4 @@
 build
 coverage
-functions
+functions/**
 package.json
