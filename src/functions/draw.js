@@ -8,7 +8,7 @@ import {
   validateStatus,
 } from './helpers';
 
-const handler = (request, context, callback) => {
+const handler = async (request, context, callback) => {
   const headers =
     process.env.NODE_ENV === 'development'
       ? { 'Access-Control-Allow-Origin': '*' }
@@ -24,47 +24,46 @@ const handler = (request, context, callback) => {
       request,
     ));
   } catch (err) {
-    return Promise.resolve(
-      callback(null, {
-        headers,
-        statusCode: 400,
-        body: JSON.stringify({ error: { message: err.message } }),
-      }),
-    );
+    return callback(null, {
+      headers,
+      statusCode: 400,
+      body: JSON.stringify({ error: { message: err.message } }),
+    });
   }
 
-  const baseUrl = `https://api.meetup.com/${encodeURIComponent(meetup)}/events`;
-  const eventUrlSuffix = '?status=upcoming&only=id,visibility';
-  const eventUrl = `${baseUrl}/${encodeURIComponent(
-    specificEventId,
-  )}${eventUrlSuffix}`;
+  try {
+    const baseUrl = `https://api.meetup.com/${encodeURIComponent(
+      meetup,
+    )}/events`;
+    const eventUrlSuffix = '?status=upcoming&only=id,visibility';
+    const eventUrl = `${baseUrl}/${encodeURIComponent(
+      specificEventId,
+    )}${eventUrlSuffix}`;
 
-  return axios
-    .get(eventUrl, { validateStatus })
-    .then(response => {
-      const eventId = getIdFromEvent(parseEventsResponse(response));
-      meetupRandomizer.setCustomApiUrl(
-        getRsvpsUrl(baseUrl, eventId, meetupApiKey),
-      );
-      return meetupRandomizer.run(meetup, eventId, count);
-    })
-    .then(winners => {
-      if (Array.isArray(winners) && winners.length) {
-        return callback(null, {
-          headers,
-          statusCode: 200,
-          body: JSON.stringify({ winners }),
-        });
-      }
-      throw new Error('Sorry, we received unexpected data for that request.');
-    })
-    .catch(err =>
-      callback(null, {
-        headers,
-        statusCode: 404,
-        body: JSON.stringify({ error: { message: err.message } }),
-      }),
+    const response = await axios.get(eventUrl, { validateStatus });
+    const eventId = getIdFromEvent(parseEventsResponse(response));
+
+    meetupRandomizer.setCustomApiUrl(
+      getRsvpsUrl(baseUrl, eventId, meetupApiKey),
     );
+    const winners = await meetupRandomizer.run(meetup, eventId, count);
+
+    if (Array.isArray(winners) && winners.length) {
+      return callback(null, {
+        headers,
+        statusCode: 200,
+        body: JSON.stringify({ winners }),
+      });
+    }
+
+    throw new Error('Sorry, we received unexpected data for that request.');
+  } catch (err) {
+    return callback(null, {
+      headers,
+      statusCode: 404,
+      body: JSON.stringify({ error: { message: err.message } }),
+    });
+  }
 };
 
 export { handler };
