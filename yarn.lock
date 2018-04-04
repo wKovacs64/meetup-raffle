@@ -1972,9 +1972,9 @@ create-ecdh@^4.0.0:
     bn.js "^4.1.0"
     elliptic "^6.0.0"
 
-create-emotion@^9.1.0:
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/create-emotion/-/create-emotion-9.1.0.tgz#e3b7a3be314a5dfb6adcaf1d7a253ae257fc24b4"
+create-emotion@^9.1.1:
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/create-emotion/-/create-emotion-9.1.1.tgz#530bd14ea0a8ac4a4d79b6d8b82b88a48b0270a6"
   dependencies:
     emotion-utils "^9.1.0"
     stylis "^3.5.0"
@@ -2508,12 +2508,12 @@ emotion-utils@^9.1.0:
   version "9.1.0"
   resolved "https://registry.yarnpkg.com/emotion-utils/-/emotion-utils-9.1.0.tgz#7484dbf18f3b1dc1de68559d1ff35a74caa998dc"
 
-emotion@9.1.0:
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/emotion/-/emotion-9.1.0.tgz#498e23854e9f59984195984e0b335d2ff0df0039"
+emotion@9.1.1:
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/emotion/-/emotion-9.1.1.tgz#ee9dd8d5553954ceea9cd0e62402e0afd6802890"
   dependencies:
     babel-plugin-emotion "^9.1.0"
-    create-emotion "^9.1.0"
+    create-emotion "^9.1.1"
 
 emotion@^8.0.8:
   version "8.0.12"
