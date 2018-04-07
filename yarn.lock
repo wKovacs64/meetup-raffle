@@ -2364,6 +2364,13 @@ dom-serializer@0:
     domelementtype "~1.1.1"
     entities "~1.1.1"
 
+dom-testing-library@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-1.0.0.tgz#393fd65712ab3d33fd961163972e2fbeb8c0a7a5"
+  dependencies:
+    jest-matcher-utils "^22.4.3"
+    wait-for-expect "^0.4.0"
+
 dom-urls@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/dom-urls/-/dom-urls-1.1.0.tgz#001ddf81628cd1e706125c7176f53ccec55d918e"
@@ -4576,6 +4583,10 @@ jest-get-type@^22.1.0:
   version "22.1.0"
   resolved "https://registry.yarnpkg.com/jest-get-type/-/jest-get-type-22.1.0.tgz#4e90af298ed6181edc85d2da500dbd2753e0d5a9"
 
+jest-get-type@^22.4.3:
+  version "22.4.3"
+  resolved "https://registry.yarnpkg.com/jest-get-type/-/jest-get-type-22.4.3.tgz#e3a8504d8479342dd4420236b322869f18900ce4"
+
 jest-haste-map@^20.0.4:
   version "20.0.5"
   resolved "https://registry.yarnpkg.com/jest-haste-map/-/jest-haste-map-20.0.5.tgz#abad74efb1a005974a7b6517e11010709cab9112"
@@ -4631,6 +4642,14 @@ jest-matcher-utils@^22.4.0:
     chalk "^2.0.1"
     jest-get-type "^22.1.0"
     pretty-format "^22.4.0"
+
+jest-matcher-utils@^22.4.3:
+  version "22.4.3"
+  resolved "https://registry.yarnpkg.com/jest-matcher-utils/-/jest-matcher-utils-22.4.3.tgz#4632fe428ebc73ebc194d3c7b65d37b161f710ff"
+  dependencies:
+    chalk "^2.0.1"
+    jest-get-type "^22.4.3"
+    pretty-format "^22.4.3"
 
 jest-matchers@^20.0.3:
   version "20.0.3"
@@ -6534,6 +6553,13 @@ pretty-format@^22.4.0:
     ansi-regex "^3.0.0"
     ansi-styles "^3.2.0"
 
+pretty-format@^22.4.3:
+  version "22.4.3"
+  resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-22.4.3.tgz#f873d780839a9c02e9664c8a082e9ee79eaac16f"
+  dependencies:
+    ansi-regex "^3.0.0"
+    ansi-styles "^3.2.0"
+
 private@^0.1.6, private@^0.1.7:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
@@ -6821,10 +6847,11 @@ react-stepper-primitive@1.1.0:
     numeric-pattern "^1.0.0"
     prop-types "^15.5.10"
 
-react-testing-library@1.10.0:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-1.10.0.tgz#1e03e7b48cdf7f9ad87c22faa8ca0cb6b1794612"
+react-testing-library@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-2.0.0.tgz#6c6ee82c00a6c6afa7f86ab688064b4eed9f6e4e"
   dependencies:
+    dom-testing-library "^1.0.0"
     wait-for-expect "0.4.0"
 
 react@16.3.1:
@@ -8360,7 +8387,7 @@ w3c-hr-time@^1.0.1:
   dependencies:
     browser-process-hrtime "^0.1.2"
 
-wait-for-expect@0.4.0:
+wait-for-expect@0.4.0, wait-for-expect@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/wait-for-expect/-/wait-for-expect-0.4.0.tgz#341c96ab89d6102a0169a9be6cd0de354de92c17"
 
