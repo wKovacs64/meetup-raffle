@@ -12,7 +12,7 @@ describe('ErrorMessage', () => {
   const { container, getByText } = render(<ErrorMessage />);
 
   it('renders', () => {
-    expect(container).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders defaults', () => {

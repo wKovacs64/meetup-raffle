@@ -12,7 +12,7 @@ describe('Winner', () => {
   const { container, getByTestId } = render(<Winner winner={winner} />);
 
   it('renders', () => {
-    expect(container).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it("includes the winner's name", () => {

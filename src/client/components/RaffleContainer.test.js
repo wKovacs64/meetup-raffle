@@ -56,7 +56,7 @@ describe('RaffleContainer', () => {
   });
 
   it('renders', () => {
-    expect(container).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('restores data from localStorage (if available)', () => {

@@ -6,6 +6,6 @@ describe('Header', () => {
   const { container } = render(<Header />);
 
   it('renders', () => {
-    expect(container).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

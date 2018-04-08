@@ -1,23 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ErrorMessage renders 1`] = `
-<div>
-  <section>
-    <span
-      class="f4 b"
-    >
-      Oops!
-    </span>
-    <p
-      class=""
-    >
-      An error was encountered:
-    </p>
-    <p
-      class="bg-red white courier pa2"
-    >
-      Unknown.
-    </p>
-  </section>
-</div>
+<section>
+  <span
+    class="f4 b"
+  >
+    Oops!
+  </span>
+  <p
+    class=""
+  >
+    An error was encountered:
+  </p>
+  <p
+    class="bg-red white courier pa2"
+  >
+    Unknown.
+  </p>
+</section>
 `;

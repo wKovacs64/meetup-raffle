@@ -11,7 +11,7 @@ describe('ResetButtons', () => {
   );
 
   it('renders', () => {
-    expect(container).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('calls onReset appropriately', () => {

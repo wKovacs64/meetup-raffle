@@ -21,7 +21,7 @@ describe('CountStepper', () => {
   );
 
   it('renders', () => {
-    expect(container).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('increments', () => {

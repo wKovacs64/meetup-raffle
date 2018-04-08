@@ -1,16 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Results renders 1`] = `
-<div>
-  <div
-    class="flex flex-wrap flex-shrink-0 justify-between justify-around-ns"
-  >
-    <span>
-      Pickle Rick 0
-    </span>
-    <span>
-      Pickle Rick 1
-    </span>
-  </div>
+<div
+  class="flex flex-wrap flex-shrink-0 justify-between justify-around-ns"
+>
+  <span>
+    Pickle Rick 0
+  </span>
+  <span>
+    Pickle Rick 1
+  </span>
 </div>
 `;

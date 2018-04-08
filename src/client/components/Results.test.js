@@ -16,7 +16,7 @@ describe('Results', () => {
   const { container, getByText } = render(<Results winners={winners} />);
 
   it('renders', () => {
-    expect(container).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('contains all winners', () => {

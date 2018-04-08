@@ -1,27 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Winner renders 1`] = `
-<div>
-  <a
-    class="flex flex-column dim link ba b--dark-blue dark-blue mb3 w4 shadow-5"
-    href="https://en.wikipedia.org/wiki/Pickle_Rick"
-    target="_blank"
-    rel="noopener noreferrer"
+<a
+  class="flex flex-column dim link ba b--dark-blue dark-blue mb3 w4 shadow-5"
+  href="https://en.wikipedia.org/wiki/Pickle_Rick"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <span
+    class="db bg-center cover h4 css-ho208l"
+    role="img"
+  />
+  <div
+    class="flex flex-grow-1 justify-center items-center bg-white"
   >
     <span
-      class="db bg-center cover h4 css-ho208l"
-      role="img"
-    />
-    <div
-      class="flex flex-grow-1 justify-center items-center bg-white"
+      class="tc pa3"
+      data-testid="name"
     >
-      <span
-        class="tc pa3"
-        data-testid="name"
-      >
-        Pickle Rick
-      </span>
-    </div>
-  </a>
-</div>
+      Pickle Rick
+    </span>
+  </div>
+</a>
 `;
