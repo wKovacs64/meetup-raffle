@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, Simulate } from 'react-testing-library';
+import { mount } from 'enzyme';
 import mockAxios from 'axios';
 import RaffleContainer from './RaffleContainer';
 
@@ -59,6 +60,26 @@ describe('RaffleContainer', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  it("doesn't crash if localStorage is unavailable", () => {
+    // Remove localStorage temporarily
+    global.window.localStorage = undefined;
+    // Prevent React from logging errors thrown in RaffleContainer
+    jest.spyOn(console, 'error');
+    global.console.error.mockImplementation(() => {});
+
+    expect(() => {
+      // test localStorage.getItem
+      const wrapper = mount(<RaffleContainer />);
+      // test localStorage.setItem
+      wrapper.instance().preserve({ key: 'value' });
+    }).not.toThrow();
+
+    // Restore React error logging
+    global.console.error.mockRestore();
+    // Restore localStorage
+    global.window.localStorage = mockLocalStorage;
+  });
+
   it('restores data from localStorage (if available)', () => {
     expect(mockLocalStorage.getItem).not.toHaveBeenCalled();
     render(<RaffleContainer />);
@@ -103,17 +124,6 @@ describe('RaffleContainer', () => {
     expect(getByText(mockWinners[0].name)).toBeTruthy();
     Simulate.click(getByText('Reset'));
     expect(() => getByText(mockWinners[0].name)).toThrow();
-  });
-
-  it("doesn't crash if localStorage is unavailable", () => {
-    global.window.localStorage = undefined;
-    expect(() => render(<RaffleContainer />)).not.toThrow();
-    // This next one isn't great - Jest will crash if the app throws.
-    expect(async () => {
-      fillOutForm();
-      await submitForm();
-    }).not.toThrow();
-    global.window.localStorage = mockLocalStorage;
   });
 
   it('selects current meetup input text on focus', () => {
