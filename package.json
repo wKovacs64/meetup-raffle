@@ -81,7 +81,7 @@
     "husky": "0.14.3",
     "lint-staged": "7.0.4",
     "netlify-lambda": "0.4.0",
-    "prettier": "1.12.0",
+    "prettier": "1.12.1",
     "react-testing-library": "2.1.1",
     "rimraf": "2.6.2"
   }
