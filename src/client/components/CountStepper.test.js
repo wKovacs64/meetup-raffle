@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, Simulate } from 'react-testing-library';
+import { renderIntoDocument, cleanup, fireEvent } from 'react-testing-library';
 import CountStepper from './CountStepper';
 
 const countStepperProps = {
@@ -16,7 +16,9 @@ const countStepperProps = {
 };
 
 describe('CountStepper', () => {
-  const { container, getByLabelText, getByTestId } = render(
+  afterAll(cleanup);
+
+  const { container, getByLabelText, getByTestId } = renderIntoDocument(
     <CountStepper {...countStepperProps} />,
   );
 
@@ -29,7 +31,7 @@ describe('CountStepper', () => {
       getByLabelText(countStepperProps.labelText).value,
       10,
     );
-    Simulate.click(getByTestId('increment-button'));
+    fireEvent.click(getByTestId('increment-button'));
     expect(
       parseInt(getByLabelText(countStepperProps.labelText).value, 10),
     ).toBe(initialValue + 1);
@@ -40,7 +42,7 @@ describe('CountStepper', () => {
       getByLabelText(countStepperProps.labelText).value,
       10,
     );
-    Simulate.click(getByTestId('decrement-button'));
+    fireEvent.click(getByTestId('decrement-button'));
     expect(
       parseInt(getByLabelText(countStepperProps.labelText).value, 10),
     ).toBe(initialValue - 1);

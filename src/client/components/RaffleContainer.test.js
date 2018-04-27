@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, Simulate } from 'react-testing-library';
+import { renderIntoDocument, cleanup, fireEvent } from 'react-testing-library';
 import { mount } from 'enzyme';
 import mockAxios from 'axios';
 import RaffleContainer from './RaffleContainer';
@@ -31,26 +31,26 @@ describe('RaffleContainer', () => {
 
     // fill out form
     meetupInput.value = params.meetup;
-    Simulate.change(meetupInput);
+    fireEvent.change(meetupInput);
     countInput.value = params.count;
-    Simulate.change(countInput);
+    fireEvent.change(countInput);
   };
 
   const submitForm = async () => {
     const drawButton = getByText('Draw');
 
     // submit form
-    // N.B. must simulate 'submit' here rather than 'click' because drawButton
-    // does not have an onClick handler assigned explicitly
-    Simulate.submit(drawButton);
+    fireEvent.click(drawButton);
   };
 
   beforeEach(() => {
-    ({ container, getByLabelText, getByText, getByTestId } = render(
+    ({ container, getByLabelText, getByText, getByTestId } = renderIntoDocument(
       <RaffleContainer />,
     ));
     jest.clearAllMocks();
   });
+
+  afterEach(cleanup);
 
   afterAll(() => {
     jest.resetAllMocks();
@@ -82,7 +82,7 @@ describe('RaffleContainer', () => {
 
   it('restores data from localStorage (if available)', () => {
     expect(mockLocalStorage.getItem).not.toHaveBeenCalled();
-    render(<RaffleContainer />);
+    renderIntoDocument(<RaffleContainer />);
     expect(mockLocalStorage.getItem).toHaveBeenCalled();
   });
 
@@ -122,7 +122,7 @@ describe('RaffleContainer', () => {
     await submitForm();
 
     expect(getByText(mockWinners[0].name)).toBeTruthy();
-    Simulate.click(getByText('Reset'));
+    fireEvent.click(getByText('Reset'));
     expect(() => getByText(mockWinners[0].name)).toThrow();
   });
 
@@ -133,7 +133,7 @@ describe('RaffleContainer', () => {
     expect(meetupInput.selectionEnd).toBe(0);
 
     fillOutForm();
-    Simulate.focus(meetupInput);
+    fireEvent.focus(meetupInput);
 
     expect(meetupInput.selectionStart).toBe(0);
     expect(meetupInput.selectionEnd).toBe(meetupInput.value.length);
@@ -149,7 +149,7 @@ describe('RaffleContainer', () => {
     // thing that changes is the height of the containing element. At this time,
     // I haven't found a good way to assert true visibility.
     const collapsedIcon = advancedButtonIcon.textContent;
-    Simulate.click(advancedButton);
+    fireEvent.click(advancedButton);
     const expandedIcon = advancedButtonIcon.textContent;
 
     expect(collapsedIcon).not.toBe(expandedIcon);
@@ -162,8 +162,8 @@ describe('RaffleContainer', () => {
     expect(specificEventIdInput.selectionEnd).toBe(0);
 
     specificEventIdInput.value = '12345';
-    Simulate.change(specificEventIdInput);
-    Simulate.focus(specificEventIdInput);
+    fireEvent.change(specificEventIdInput);
+    fireEvent.focus(specificEventIdInput);
 
     expect(specificEventIdInput.selectionStart).toBe(0);
     expect(specificEventIdInput.selectionEnd).toBe(
@@ -178,8 +178,8 @@ describe('RaffleContainer', () => {
     expect(meetupApiKeyInput.selectionEnd).toBe(0);
 
     meetupApiKeyInput.value = '6a7b8c9d0e';
-    Simulate.change(meetupApiKeyInput);
-    Simulate.focus(meetupApiKeyInput);
+    fireEvent.change(meetupApiKeyInput);
+    fireEvent.focus(meetupApiKeyInput);
 
     expect(meetupApiKeyInput.selectionStart).toBe(0);
     expect(meetupApiKeyInput.selectionEnd).toBe(meetupApiKeyInput.value.length);
