@@ -104,13 +104,13 @@ describe('RaffleContainer', () => {
   });
 
   it('shows an error message on error', async () => {
-    const errorMessage = 'malformed response';
+    const errorMessage = 'garbage';
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(errorMessage));
 
     fillOutForm();
     await submitForm();
 
-    expect(getByText(errorMessage)).toBeTruthy();
+    expect(getByText(/Malformed response/)).toBeTruthy();
   });
 
   it('resets the form on reset button click', async () => {
@@ -156,7 +156,7 @@ describe('RaffleContainer', () => {
   });
 
   it('selects current specific event ID input text on focus', () => {
-    const specificEventIdInput = getByLabelText('Specific event ID');
+    const specificEventIdInput = getByLabelText(/Specific event ID/);
 
     expect(specificEventIdInput.selectionStart).toBe(0);
     expect(specificEventIdInput.selectionEnd).toBe(0);
@@ -172,7 +172,7 @@ describe('RaffleContainer', () => {
   });
 
   it('selects current Meetup API key input text on focus', () => {
-    const meetupApiKeyInput = getByLabelText('Meetup API key');
+    const meetupApiKeyInput = getByLabelText(/Meetup API key/);
 
     expect(meetupApiKeyInput.selectionStart).toBe(0);
     expect(meetupApiKeyInput.selectionEnd).toBe(0);
