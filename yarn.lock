@@ -2464,9 +2464,9 @@ dom-serializer@0, dom-serializer@~0.1.0:
     domelementtype "~1.1.1"
     entities "~1.1.1"
 
-dom-testing-library@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-2.0.0.tgz#d845557547df9d012e8e42a5ef24917bcbc8cd27"
+dom-testing-library@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-2.3.1.tgz#4fef32d94c7bd2bb681cfbc3ab277c4a154fd9c5"
   dependencies:
     jest-dom "^1.0.0"
     mutationobserver-shim "^0.3.2"
@@ -7172,11 +7172,11 @@ react-test-renderer@^16.0.0-0:
     prop-types "^15.6.0"
     react-is "^16.3.1"
 
-react-testing-library@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-3.1.0.tgz#f7bf3b5e718144aac968a2209600aa200e1329cf"
+react-testing-library@3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-3.1.1.tgz#e18c5145ee510b64d1a5084e35866ec275b92a94"
   dependencies:
-    dom-testing-library "^2.0.0"
+    dom-testing-library "^2.3.1"
     wait-for-expect "^0.5.0"
 
 react@16.3.2:
