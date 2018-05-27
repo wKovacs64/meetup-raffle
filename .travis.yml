@@ -3,6 +3,8 @@ cache:
   yarn: true
   directories:
     - node_modules
+install:
+  - yarn install --frozen-lockfile
 script:
   - yarn lint
   - yarn test --coverage
