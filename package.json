@@ -24,7 +24,7 @@
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "lint": "eslint .",
     "precommit": "lint-staged",
-    "start": "cross-env NODE_ENV=development REACT_APP_DRAW_URL=http://localhost:9000/draw concurrently \"yarn start:client\" \"yarn run start:functions\"",
+    "start": "cross-env NODE_ENV=development REACT_APP_DRAW_URL=http://localhost:9000/draw concurrently --names \"CLIENT,FUNCTIONS\" --prefix-colors \"bgRed.bold,bgBlue.bold\" \"yarn start:client\" \"yarn run start:functions\"",
     "start:client": "react-scripts start",
     "start:functions": "netlify-lambda serve src/functions",
     "test": "cross-env REACT_APP_DRAW_URL=http://localhost:9000/draw react-scripts test --env=jsdom"
