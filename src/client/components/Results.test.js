@@ -13,13 +13,13 @@ const winners = Array.from(Array(2), (_, idx) => ({
 }));
 
 describe('Results', () => {
-  const { container, getByText } = render(<Results winners={winners} />);
-
   it('renders', () => {
+    const { container } = render(<Results winners={winners} />);
     expect(container.firstChild).toMatchSnapshot();
   });
 
   it('contains all winners', () => {
+    const { getByText } = render(<Results winners={winners} />);
     winners.forEach(winner => {
       expect(() => getByText(winner.name)).not.toThrow();
     });

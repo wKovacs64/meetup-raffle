@@ -19,12 +19,8 @@ const params = {
 
 describe('RaffleContainer', () => {
   const mockLocalStorage = global.window.localStorage; // from setupTests.js
-  let container;
-  let getByLabelText;
-  let getByText;
-  let getByTestId;
 
-  const fillOutForm = () => {
+  const fillOutForm = ({ getByLabelText }) => {
     // find elements
     const meetupInput = getByLabelText(/Meetup name/);
     const countInput = getByLabelText('Number of winners:');
@@ -36,7 +32,7 @@ describe('RaffleContainer', () => {
     fireEvent.change(countInput);
   };
 
-  const submitForm = async () => {
+  const submitForm = async ({ getByText }) => {
     const drawButton = getByText('Draw');
 
     // submit form
@@ -44,9 +40,6 @@ describe('RaffleContainer', () => {
   };
 
   beforeEach(() => {
-    ({ container, getByLabelText, getByText, getByTestId } = renderIntoDocument(
-      <RaffleContainer />,
-    ));
     jest.clearAllMocks();
   });
 
@@ -57,6 +50,7 @@ describe('RaffleContainer', () => {
   });
 
   it('renders', () => {
+    const { container } = renderIntoDocument(<RaffleContainer />);
     expect(container.firstChild).toMatchSnapshot();
   });
 
@@ -87,6 +81,9 @@ describe('RaffleContainer', () => {
   });
 
   it('submits and persists data to localStorage (if available)', async () => {
+    const { getByLabelText, getByText } = renderIntoDocument(
+      <RaffleContainer />,
+    );
     mockAxios.get.mockImplementationOnce(() =>
       Promise.resolve({ data: { winners: mockWinners } }),
     );
@@ -94,8 +91,8 @@ describe('RaffleContainer', () => {
     expect(mockAxios.get).not.toHaveBeenCalled();
     expect(mockLocalStorage.setItem).not.toHaveBeenCalled();
 
-    fillOutForm();
-    await submitForm();
+    fillOutForm({ getByLabelText });
+    await submitForm({ getByText });
 
     expect(mockLocalStorage.setItem).toHaveBeenCalled();
     expect(mockAxios.get).toHaveBeenCalledWith(expect.any(String), {
@@ -104,22 +101,28 @@ describe('RaffleContainer', () => {
   });
 
   it('shows an error message on error', async () => {
+    const { getByLabelText, getByText } = renderIntoDocument(
+      <RaffleContainer />,
+    );
     const errorMessage = 'garbage';
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(errorMessage));
 
-    fillOutForm();
-    await submitForm();
+    fillOutForm({ getByLabelText });
+    await submitForm({ getByText });
 
     expect(getByText(/Malformed response/)).toBeTruthy();
   });
 
   it('resets the form on reset button click', async () => {
+    const { getByLabelText, getByText } = renderIntoDocument(
+      <RaffleContainer />,
+    );
     mockAxios.get.mockImplementationOnce(() =>
       Promise.resolve({ data: { winners: mockWinners } }),
     );
 
-    fillOutForm();
-    await submitForm();
+    fillOutForm({ getByLabelText });
+    await submitForm({ getByText });
 
     expect(getByText(mockWinners[0].name)).toBeTruthy();
     fireEvent.click(getByText('Reset'));
@@ -127,12 +130,13 @@ describe('RaffleContainer', () => {
   });
 
   it('selects current meetup input text on focus', () => {
+    const { getByLabelText } = renderIntoDocument(<RaffleContainer />);
     const meetupInput = getByLabelText(/Meetup name/);
 
     expect(meetupInput.selectionStart).toBe(0);
     expect(meetupInput.selectionEnd).toBe(0);
 
-    fillOutForm();
+    fillOutForm({ getByLabelText });
     fireEvent.focus(meetupInput);
 
     expect(meetupInput.selectionStart).toBe(0);
@@ -140,6 +144,7 @@ describe('RaffleContainer', () => {
   });
 
   it('toggles advanced options section', () => {
+    const { getByTestId } = renderIntoDocument(<RaffleContainer />);
     const advancedButton = getByTestId('advanced-button');
     const advancedButtonIcon = getByTestId('advanced-button-icon');
 
@@ -156,6 +161,7 @@ describe('RaffleContainer', () => {
   });
 
   it('selects current specific event ID input text on focus', () => {
+    const { getByLabelText } = renderIntoDocument(<RaffleContainer />);
     const specificEventIdInput = getByLabelText(/Specific event ID/);
 
     expect(specificEventIdInput.selectionStart).toBe(0);
@@ -172,6 +178,7 @@ describe('RaffleContainer', () => {
   });
 
   it('selects current Meetup API key input text on focus', () => {
+    const { getByLabelText } = renderIntoDocument(<RaffleContainer />);
     const meetupApiKeyInput = getByLabelText(/Meetup API key/);
 
     expect(meetupApiKeyInput.selectionStart).toBe(0);

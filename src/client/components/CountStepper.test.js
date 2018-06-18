@@ -16,17 +16,19 @@ const countStepperProps = {
 };
 
 describe('CountStepper', () => {
-  afterAll(cleanup);
-
-  const { container, getByLabelText, getByTestId } = renderIntoDocument(
-    <CountStepper {...countStepperProps} />,
-  );
+  afterEach(cleanup);
 
   it('renders', () => {
+    const { container } = renderIntoDocument(
+      <CountStepper {...countStepperProps} />,
+    );
     expect(container.firstChild).toMatchSnapshot();
   });
 
   it('increments', () => {
+    const { getByLabelText, getByTestId } = renderIntoDocument(
+      <CountStepper {...countStepperProps} />,
+    );
     const initialValue = parseInt(
       getByLabelText(countStepperProps.labelText).value,
       10,
@@ -38,6 +40,9 @@ describe('CountStepper', () => {
   });
 
   it('decrements', () => {
+    const { getByLabelText, getByTestId } = renderIntoDocument(
+      <CountStepper {...countStepperProps} />,
+    );
     const initialValue = parseInt(
       getByLabelText(countStepperProps.labelText).value,
       10,
