@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderIntoDocument, cleanup, fireEvent } from 'react-testing-library';
+import { render, fireEvent } from 'react-testing-library';
 import CountStepper from './CountStepper';
 
 const countStepperProps = {
@@ -16,17 +16,13 @@ const countStepperProps = {
 };
 
 describe('CountStepper', () => {
-  afterEach(cleanup);
-
   it('renders', () => {
-    const { container } = renderIntoDocument(
-      <CountStepper {...countStepperProps} />,
-    );
+    const { container } = render(<CountStepper {...countStepperProps} />);
     expect(container.firstChild).toMatchSnapshot();
   });
 
   it('increments', () => {
-    const { getByLabelText, getByTestId } = renderIntoDocument(
+    const { getByLabelText, getByTestId } = render(
       <CountStepper {...countStepperProps} />,
     );
     const initialValue = parseInt(
@@ -40,7 +36,7 @@ describe('CountStepper', () => {
   });
 
   it('decrements', () => {
-    const { getByLabelText, getByTestId } = renderIntoDocument(
+    const { getByLabelText, getByTestId } = render(
       <CountStepper {...countStepperProps} />,
     );
     const initialValue = parseInt(

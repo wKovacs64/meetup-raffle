@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderIntoDocument, cleanup, fireEvent } from 'react-testing-library';
+import { render, fireEvent } from 'react-testing-library';
 import { mount } from 'enzyme';
 import mockAxios from 'axios';
 import RaffleContainer from './RaffleContainer';
@@ -43,14 +43,12 @@ describe('RaffleContainer', () => {
     jest.clearAllMocks();
   });
 
-  afterEach(cleanup);
-
   afterAll(() => {
     jest.resetAllMocks();
   });
 
   it('renders', () => {
-    const { container } = renderIntoDocument(<RaffleContainer />);
+    const { container } = render(<RaffleContainer />);
     expect(container.firstChild).toMatchSnapshot();
   });
 
@@ -76,14 +74,12 @@ describe('RaffleContainer', () => {
 
   it('restores data from localStorage (if available)', () => {
     expect(mockLocalStorage.getItem).not.toHaveBeenCalled();
-    renderIntoDocument(<RaffleContainer />);
+    render(<RaffleContainer />);
     expect(mockLocalStorage.getItem).toHaveBeenCalled();
   });
 
   it('submits and persists data to localStorage (if available)', async () => {
-    const { getByLabelText, getByText } = renderIntoDocument(
-      <RaffleContainer />,
-    );
+    const { getByLabelText, getByText } = render(<RaffleContainer />);
     mockAxios.get.mockImplementationOnce(() =>
       Promise.resolve({ data: { winners: mockWinners } }),
     );
@@ -101,9 +97,7 @@ describe('RaffleContainer', () => {
   });
 
   it('shows an error message on error', async () => {
-    const { getByLabelText, getByText } = renderIntoDocument(
-      <RaffleContainer />,
-    );
+    const { getByLabelText, getByText } = render(<RaffleContainer />);
     const errorMessage = 'garbage';
     mockAxios.get.mockImplementationOnce(() => Promise.resolve(errorMessage));
 
@@ -114,9 +108,7 @@ describe('RaffleContainer', () => {
   });
 
   it('resets the form on reset button click', async () => {
-    const { getByLabelText, getByText } = renderIntoDocument(
-      <RaffleContainer />,
-    );
+    const { getByLabelText, getByText } = render(<RaffleContainer />);
     mockAxios.get.mockImplementationOnce(() =>
       Promise.resolve({ data: { winners: mockWinners } }),
     );
@@ -130,7 +122,7 @@ describe('RaffleContainer', () => {
   });
 
   it('selects current meetup input text on focus', () => {
-    const { getByLabelText } = renderIntoDocument(<RaffleContainer />);
+    const { getByLabelText } = render(<RaffleContainer />);
     const meetupInput = getByLabelText(/Meetup name/);
 
     expect(meetupInput.selectionStart).toBe(0);
@@ -144,7 +136,7 @@ describe('RaffleContainer', () => {
   });
 
   it('toggles advanced options section', () => {
-    const { getByTestId } = renderIntoDocument(<RaffleContainer />);
+    const { getByTestId } = render(<RaffleContainer />);
     const advancedButton = getByTestId('advanced-button');
     const advancedButtonIcon = getByTestId('advanced-button-icon');
 
@@ -161,7 +153,7 @@ describe('RaffleContainer', () => {
   });
 
   it('selects current specific event ID input text on focus', () => {
-    const { getByLabelText } = renderIntoDocument(<RaffleContainer />);
+    const { getByLabelText } = render(<RaffleContainer />);
     const specificEventIdInput = getByLabelText(/Specific event ID/);
 
     expect(specificEventIdInput.selectionStart).toBe(0);
@@ -178,7 +170,7 @@ describe('RaffleContainer', () => {
   });
 
   it('selects current Meetup API key input text on focus', () => {
-    const { getByLabelText } = renderIntoDocument(<RaffleContainer />);
+    const { getByLabelText } = render(<RaffleContainer />);
     const meetupApiKeyInput = getByLabelText(/Meetup API key/);
 
     expect(meetupApiKeyInput.selectionStart).toBe(0);
