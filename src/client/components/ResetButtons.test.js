@@ -1,22 +1,20 @@
 import React from 'react';
-import { renderIntoDocument, cleanup, fireEvent } from 'react-testing-library';
+import { render, fireEvent } from 'react-testing-library';
 import ResetButtons from './ResetButtons';
 
 describe('ResetButtons', () => {
   const onReset = jest.fn();
   const onSubmit = jest.fn();
 
-  afterAll(cleanup);
-
   it('renders', () => {
-    const { container } = renderIntoDocument(
+    const { container } = render(
       <ResetButtons onReset={onReset} onSubmit={onSubmit} />,
     );
     expect(container.firstChild).toMatchSnapshot();
   });
 
   it('calls onReset appropriately', () => {
-    const { getByText } = renderIntoDocument(
+    const { getByText } = render(
       <ResetButtons onReset={onReset} onSubmit={onSubmit} />,
     );
     expect(onReset).toHaveBeenCalledTimes(0);
@@ -25,7 +23,7 @@ describe('ResetButtons', () => {
   });
 
   it('calls onSubmit appropriately', () => {
-    const { getByText } = renderIntoDocument(
+    const { getByText } = render(
       <ResetButtons onReset={onReset} onSubmit={onSubmit} />,
     );
     expect(onSubmit).toHaveBeenCalledTimes(0);
