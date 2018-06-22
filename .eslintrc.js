@@ -13,8 +13,9 @@ module.exports = {
         required: { every: ['id'] },
       },
     ],
+    'react/destructuring-assignment': 'off',
     'react/jsx-filename-extension': 'off',
-    'react/no-did-mount-set-state': 'off',
+    'react/jsx-one-expression-per-line': 'off',
     'valid-jsdoc': [
       'error',
       {
