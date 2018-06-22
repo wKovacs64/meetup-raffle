@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Collapse from 'react-css-collapse';
 import { Form, Field } from 'formik';
-import { CountStepper } from '.';
+import CountStepper from './CountStepper';
 
 export default class extends Component {
   static displayName = 'RaffleForm';
@@ -46,7 +46,9 @@ export default class extends Component {
             type="button"
             className="link bn bg-transparent pa0 pointer near-black"
             onClick={() =>
-              this.setState({ advancedOpen: !this.state.advancedOpen })
+              this.setState(({ advancedOpen }) => ({
+                advancedOpen: !advancedOpen,
+              }))
             }
             data-testid="advanced-button"
           >

@@ -3,12 +3,15 @@ import axios from 'axios';
 import get from 'lodash.get';
 import { RingLoader } from 'react-spinners';
 import { Formik } from 'formik';
-import { ErrorMessage, RaffleForm, ResetButtons, Results } from '.';
+import ErrorMessage from './ErrorMessage';
+import RaffleForm from './RaffleForm';
+import ResetButtons from './ResetButtons';
+import Results from './Results';
 
 export default class extends Component {
+  // eslint-disable-next-line react/sort-comp
   static displayName = 'RaffleContainer';
 
-  // eslint-disable-next-line react/sort-comp
   initialResults = {
     error: '',
     winners: [],
