@@ -7022,9 +7022,9 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-css-collapse@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/react-css-collapse/-/react-css-collapse-3.1.0.tgz#0086ce58b1d32dcb0efd5794091936a53470b95e"
+react-css-collapse@3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/react-css-collapse/-/react-css-collapse-3.3.0.tgz#5feda3bb0f00a8eb6fe202c2abba35df8bd00014"
 
 react-dev-utils@^5.0.1:
   version "5.0.1"
