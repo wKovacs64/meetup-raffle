@@ -175,7 +175,7 @@ exports[`renders without crashing 1`] = `
           </span>
         </button>
         <div
-          style="height: 0px; overflow: hidden;"
+          style="height: 0px; overflow: hidden; visibility: hidden;"
         >
           <div
             class="mt3"
