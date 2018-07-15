@@ -4893,9 +4893,9 @@ jest-dom@^1.0.0:
   dependencies:
     jest-matcher-utils "^22.4.3"
 
-jest-emotion@9.2.5:
-  version "9.2.5"
-  resolved "https://registry.yarnpkg.com/jest-emotion/-/jest-emotion-9.2.5.tgz#1608bf20232f183c4073fb3bfe5186b0815a8549"
+jest-emotion@9.2.6:
+  version "9.2.6"
+  resolved "https://registry.yarnpkg.com/jest-emotion/-/jest-emotion-9.2.6.tgz#eeaf25b23fdb2f65e489cc33040395f39e66012d"
   dependencies:
     "@types/jest" "^23.0.2"
     chalk "^2.4.1"
