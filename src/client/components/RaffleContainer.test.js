@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from 'react-testing-library';
+import { render, fireEvent, waitForElement, wait } from 'react-testing-library';
 import { mount } from 'enzyme';
 import mockAxios from 'axios';
 import RaffleContainer from './RaffleContainer';
@@ -90,9 +90,11 @@ describe('RaffleContainer', () => {
     fillOutForm({ getByLabelText });
     await submitForm({ getByText });
 
-    expect(mockLocalStorage.setItem).toHaveBeenCalled();
-    expect(mockAxios.get).toHaveBeenCalledWith(expect.any(String), {
-      params,
+    await wait(() => {
+      expect(mockLocalStorage.setItem).toHaveBeenCalled();
+      expect(mockAxios.get).toHaveBeenCalledWith(expect.any(String), {
+        params,
+      });
     });
   });
 
@@ -104,7 +106,7 @@ describe('RaffleContainer', () => {
     fillOutForm({ getByLabelText });
     await submitForm({ getByText });
 
-    expect(getByText(/Malformed response/)).toBeTruthy();
+    await waitForElement(() => getByText(/Malformed response/));
   });
 
   it('resets the form on reset button click', async () => {
@@ -116,7 +118,7 @@ describe('RaffleContainer', () => {
     fillOutForm({ getByLabelText });
     await submitForm({ getByText });
 
-    expect(getByText(mockWinners[0].name)).toBeTruthy();
+    await waitForElement(() => getByText(mockWinners[0].name));
     fireEvent.click(getByText('Reset'));
     expect(() => getByText(mockWinners[0].name)).toThrow();
   });
