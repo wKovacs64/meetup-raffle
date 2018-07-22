@@ -63,7 +63,7 @@
     "react-scripts": "1.1.4",
     "react-spinners": "0.3.2",
     "react-stepper-primitive": "1.1.0",
-    "tachyons": "4.11.0"
+    "tachyons": "4.11.1"
   },
   "devDependencies": {
     "babel-eslint": "8.2.6",
