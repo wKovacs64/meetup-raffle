@@ -4925,9 +4925,9 @@ jest-docblock@^20.0.3:
   version "20.0.3"
   resolved "https://registry.yarnpkg.com/jest-docblock/-/jest-docblock-20.0.3.tgz#17bea984342cc33d83c50fbe1545ea0efaa44712"
 
-jest-emotion@9.2.6:
-  version "9.2.6"
-  resolved "https://registry.yarnpkg.com/jest-emotion/-/jest-emotion-9.2.6.tgz#eeaf25b23fdb2f65e489cc33040395f39e66012d"
+jest-emotion@9.2.7:
+  version "9.2.7"
+  resolved "https://registry.yarnpkg.com/jest-emotion/-/jest-emotion-9.2.7.tgz#7a854156d1d5ceb95d8f36095a3f81d04109f125"
   dependencies:
     "@types/jest" "^23.0.2"
     chalk "^2.4.1"
