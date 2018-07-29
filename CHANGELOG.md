@@ -2,50 +2,50 @@
 
 ## Version 3.0.2 _(2018-03-26)_
 
-* Removed excess bottom margin from reset button area
-* Reduced global styling to a minimum
+- Removed excess bottom margin from reset button area
+- Reduced global styling to a minimum
 
 ## Version 3.0.1 _(2018-03-25)_
 
-* Fixed mobile and PWA vertical spacing issues
+- Fixed mobile and PWA vertical spacing issues
 
 ## Version 3.0.0 _(2018-03-25)_
 
-* Replaced [StdLib][stdlib] with [Netlify Functions][netlify-functions]
+- Replaced [StdLib][stdlib] with [Netlify Functions][netlify-functions]
   ([#6](https://github.com/wKovacs64/meetup-raffle/pull/6))
-* Renamed repository from `meetup-raffle-web` to `meetup-raffle` now that the
+- Renamed repository from `meetup-raffle-web` to `meetup-raffle` now that the
   front-end and back-end are in a single code base
-* Integrated [Renovate][renovate] for automated dependency updates
-* Added `displayName` property to every React component for a better React
+- Integrated [Renovate][renovate] for automated dependency updates
+- Added `displayName` property to every React component for a better React
   DevTools experience
-* Disabled increment/decrement buttons when the number of winners to draw is
+- Disabled increment/decrement buttons when the number of winners to draw is
   already at a minimum or maximum value
-* Vertically centered the loading animation on mobile
-* Added tests
+- Vertically centered the loading animation on mobile
+- Added tests
 
 ## Version 2.3.0 _(2018-03-15)_
 
-* Polyfilled `Object.entries`
-* Replaced `Loading` component with `RingLoader` from
+- Polyfilled `Object.entries`
+- Replaced `Loading` component with `RingLoader` from
   [`react-spinners`][react-spinners]
 
 ## Version 2.2.0 _(2018-02-05)_
 
-* Added a placeholder avatar for winners without a profile image
+- Added a placeholder avatar for winners without a profile image
 
 ## Version 2.1.1 _(2018-01-17)_
 
-* Returned control of the count stepper value to `react-stepper-primitive` now
+- Returned control of the count stepper value to `react-stepper-primitive` now
   that it supports reinitialization of the `defaultValue` prop
   ([5307a3ae][5307a3ae])
 
 ## Version 2.1.0 _(2018-01-06)_
 
-* Fixed/updated PWA assets and settings
+- Fixed/updated PWA assets and settings
 
 ## Version 2.0.0 _(2018-01-05)_
 
-* Migrated project from `next.js` to `create-react-app`:
+- Migrated project from `next.js` to `create-react-app`:
 
   Initially, this project started as a quick experiment with [Zeit's][zeit]
   [`next.js`][next.js] framework, their CSS-in-JS implementation
@@ -57,52 +57,52 @@
 
 ## Version 1.4.0 _(2018-01-03)_
 
-* Added preservation of winner count in `LocalStorage`
-* Improved error handler to display friendly error message from API
-* Darkened global background color
-* Refactored code into smaller chunks
+- Added preservation of winner count in `LocalStorage`
+- Improved error handler to display friendly error message from API
+- Darkened global background color
+- Refactored code into smaller chunks
 
 ## Version 1.3.0 _(2018-01-02)_
 
-* Added GitHub corner
+- Added GitHub corner
 
 ## Version 1.2.0 _(2018-01-02)_
 
-* Removed default Meetup name
-* Added preservation of Meetup name in `LocalStorage`
+- Removed default Meetup name
+- Added preservation of Meetup name in `LocalStorage`
 
 ## Version 1.1.3 _(2018-01-02)_
 
-* Added "Deploy to now" button to README
-* Added pointer cursor style to advanced options toggle
-* Added missing development dependency
-* Simplified/reduced deployment related npm scripts
+- Added "Deploy to now" button to README
+- Added pointer cursor style to advanced options toggle
+- Added missing development dependency
+- Simplified/reduced deployment related npm scripts
 
 ## Version 1.1.2 _(2018-01-01)_
 
-* Fixed core functionality in IE/Edge (ditched `lib-js`)
-* Fixed advanced options in IE/Edge/Safari (ditched `<details>` and `<summary>`
+- Fixed core functionality in IE/Edge (ditched `lib-js`)
+- Fixed advanced options in IE/Edge/Safari (ditched `<details>` and `<summary>`
   elements)
-* Added loading text as the SVG animation doesn't work in IE/Edge
+- Added loading text as the SVG animation doesn't work in IE/Edge
 
 ## Version 1.1.1 _(2017-12-31)_
 
-* Fixed a bug that was causing invalid
+- Fixed a bug that was causing invalid
   [`meetup-raffle-stdlib`][meetup-raffle-stdlib] requests in the scenario where
   a Meetup API key had never been set
-* Embedded SVGs to disguise image load times
-* Normalized input colors for consistency
-* Tweaked winner layout
-* Adjusted vertical spacing of various elements
+- Embedded SVGs to disguise image load times
+- Normalized input colors for consistency
+- Tweaked winner layout
+- Adjusted vertical spacing of various elements
 
 ## Version 1.1.0 _(2017-12-30)_
 
-* Added advanced options (Meetup.com API key and specific event ID support)
-* Tweaked winner layout
+- Added advanced options (Meetup.com API key and specific event ID support)
+- Tweaked winner layout
 
 ## Version 1.0.0 _(2017-12-29)_
 
-* Initial release
+- Initial release
 
 [meetup-raffle-stdlib]: https://github.com/wKovacs64/meetup-raffle-stdlib
 [zeit]: https://zeit.co/
@@ -112,7 +112,8 @@
 [cra]: https://github.com/facebookincubator/create-react-app
 [emotion]: https://emotion.sh/
 [netlify]: https://www.netlify.com/
-[5307a3ae]: https://github.com/wKovacs64/meetup-raffle/commit/5307a3ae8b2af1beefc4fef30fd97e7f79e36676
+[5307a3ae]:
+  https://github.com/wKovacs64/meetup-raffle/commit/5307a3ae8b2af1beefc4fef30fd97e7f79e36676
 [react-spinners]: https://github.com/davidhu2000/react-spinners
 [stdlib]: https://stdlib.com/
 [netlify-functions]: https://www.netlify.com/docs/functions/

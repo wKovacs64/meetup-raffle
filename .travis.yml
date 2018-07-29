@@ -9,4 +9,4 @@ script:
   - yarn lint
   - yarn test --coverage
 after_success:
-  - "coveralls < coverage/lcov.info"
+  - 'coveralls < coverage/lcov.info'
