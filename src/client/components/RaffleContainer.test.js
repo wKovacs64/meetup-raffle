@@ -26,10 +26,8 @@ describe('RaffleContainer', () => {
     const countInput = getByLabelText('Number of winners:');
 
     // fill out form
-    meetupInput.value = params.meetup;
-    fireEvent.change(meetupInput);
-    countInput.value = params.count;
-    fireEvent.change(countInput);
+    fireEvent.change(meetupInput, { target: { value: params.meetup } });
+    fireEvent.change(countInput, { target: { value: params.count } });
   };
 
   const submitForm = async ({ getByText }) => {
@@ -161,8 +159,7 @@ describe('RaffleContainer', () => {
     expect(specificEventIdInput.selectionStart).toBe(0);
     expect(specificEventIdInput.selectionEnd).toBe(0);
 
-    specificEventIdInput.value = '12345';
-    fireEvent.change(specificEventIdInput);
+    fireEvent.change(specificEventIdInput, { target: { value: '12345' } });
     fireEvent.focus(specificEventIdInput);
 
     expect(specificEventIdInput.selectionStart).toBe(0);
@@ -178,8 +175,7 @@ describe('RaffleContainer', () => {
     expect(meetupApiKeyInput.selectionStart).toBe(0);
     expect(meetupApiKeyInput.selectionEnd).toBe(0);
 
-    meetupApiKeyInput.value = '6a7b8c9d0e';
-    fireEvent.change(meetupApiKeyInput);
+    fireEvent.change(meetupApiKeyInput, { target: { value: '6a7b8c9d0e' } });
     fireEvent.focus(meetupApiKeyInput);
 
     expect(meetupApiKeyInput.selectionStart).toBe(0);
