@@ -13,6 +13,12 @@ module.exports = {
         required: { every: ['id'] },
       },
     ],
+    'jsx-a11y/label-has-associated-control': [
+      'error',
+      {
+        controlComponents: ['Field'], // Formik
+      },
+    ],
     'react/destructuring-assignment': 'off',
     'react/jsx-filename-extension': 'off',
     'react/jsx-one-expression-per-line': 'off',
