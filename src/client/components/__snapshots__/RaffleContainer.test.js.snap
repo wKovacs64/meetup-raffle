@@ -113,6 +113,7 @@ exports[`RaffleContainer renders 1`] = `
       </button>
       <div
         style="height: 0px; overflow: hidden; visibility: hidden;"
+        class="react-css-collapse-transition"
       >
         <div
           class="mt3"
