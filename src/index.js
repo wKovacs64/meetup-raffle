@@ -1,4 +1,4 @@
-import 'tachyons/css/tachyons.css';
+import 'tachyons';
 import 'core-js/fn/object/entries';
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
