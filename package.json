@@ -23,7 +23,6 @@
     "eject": "react-scripts eject",
     "format": "prettier --write \"**/*.{js,json,md,yml}\"",
     "lint": "eslint .",
-    "precommit": "lint-staged",
     "start": "cross-env NODE_ENV=development REACT_APP_DRAW_URL=http://localhost:9000/draw concurrently --names \"CLIENT,FUNCTIONS\" --prefix-colors \"bgRed.bold,bgBlue.bold\" \"yarn start:client\" \"yarn run start:functions\"",
     "start:client": "react-scripts start",
     "start:functions": "netlify-lambda serve src/functions",
