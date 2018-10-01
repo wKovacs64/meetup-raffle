@@ -7249,9 +7249,9 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-css-collapse@3.5.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/react-css-collapse/-/react-css-collapse-3.5.0.tgz#a33cb081034a05588842dae736497ce5463248a3"
+react-css-collapse@3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/react-css-collapse/-/react-css-collapse-3.6.0.tgz#a2a2a90d2cca799f1f8762afc64ee3b75bbe65f7"
 
 react-dev-utils@^5.0.2:
   version "5.0.2"
