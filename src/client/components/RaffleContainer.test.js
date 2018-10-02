@@ -18,7 +18,7 @@ const params = {
 };
 
 describe('RaffleContainer', () => {
-  const mockLocalStorage = global.window.localStorage; // from setupTests.js
+  const { localStorage } = global.window;
 
   const fillOutForm = ({ getByLabelText }) => {
     // find elements
@@ -39,6 +39,7 @@ describe('RaffleContainer', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    global.window.localStorage.clear();
   });
 
   afterAll(() => {
@@ -52,7 +53,8 @@ describe('RaffleContainer', () => {
 
   it("doesn't crash if localStorage is unavailable", () => {
     // Remove localStorage temporarily
-    global.window.localStorage = undefined;
+    delete global.window.localStorage;
+    expect(global.window.localStorage).toBeUndefined();
     // Prevent React from logging errors thrown in RaffleContainer
     jest.spyOn(console, 'error');
     global.console.error.mockImplementation(() => {});
@@ -67,13 +69,21 @@ describe('RaffleContainer', () => {
     // Restore React error logging
     global.console.error.mockRestore();
     // Restore localStorage
-    global.window.localStorage = mockLocalStorage;
+    global.window.localStorage = localStorage;
+    expect(global.window.localStorage).toBeDefined();
   });
 
   it('restores data from localStorage (if available)', () => {
-    expect(mockLocalStorage.getItem).not.toHaveBeenCalled();
-    render(<RaffleContainer />);
-    expect(mockLocalStorage.getItem).toHaveBeenCalled();
+    const firstRender = render(<RaffleContainer />);
+    expect(
+      parseInt(firstRender.getByLabelText(/Number of winners/i).value, 10),
+    ).not.toBe(5);
+    firstRender.unmount();
+    localStorage.setItem('count', 5);
+    const secondRender = render(<RaffleContainer />);
+    expect(
+      parseInt(secondRender.getByLabelText(/Number of winners/i).value, 10),
+    ).toBe(5);
   });
 
   it('submits and persists data to localStorage (if available)', async () => {
@@ -83,13 +93,13 @@ describe('RaffleContainer', () => {
     );
 
     expect(mockAxios.get).not.toHaveBeenCalled();
-    expect(mockLocalStorage.setItem).not.toHaveBeenCalled();
+    expect(localStorage.getItem('count')).toBeNull();
 
     fillOutForm({ getByLabelText });
     await submitForm({ getByText });
 
     await wait(() => {
-      expect(mockLocalStorage.setItem).toHaveBeenCalled();
+      expect(localStorage.getItem('count')).toBeDefined();
       expect(mockAxios.get).toHaveBeenCalledWith(expect.any(String), {
         params,
       });

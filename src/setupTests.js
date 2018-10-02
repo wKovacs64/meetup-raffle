@@ -9,9 +9,3 @@ import 'react-testing-library/cleanup-after-each';
 expect.addSnapshotSerializer(createSerializer(emotion));
 
 Enzyme.configure({ adapter: new Adapter() });
-
-global.window.localStorage = {
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-  clear: jest.fn(),
-};

@@ -26,7 +26,7 @@
     "start": "cross-env NODE_ENV=development REACT_APP_DRAW_URL=http://localhost:9000/draw concurrently --names \"CLIENT,FUNCTIONS\" --prefix-colors \"bgRed.bold,bgBlue.bold\" \"yarn start:client\" \"yarn run start:functions\"",
     "start:client": "react-scripts start",
     "start:functions": "netlify-lambda serve src/functions",
-    "test": "cross-env REACT_APP_DRAW_URL=http://localhost:9000/draw react-scripts test --env=jsdom"
+    "test": "cross-env REACT_APP_DRAW_URL=http://localhost:9000/draw react-scripts test"
   },
   "lint-staged": {
     "*.js": [
@@ -39,6 +39,12 @@
       "git add"
     ]
   },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "jest": {
     "collectCoverageFrom": [
       "src/client/**/*.js",
@@ -59,19 +65,17 @@
     "react-css-collapse": "3.6.0",
     "react-dom": "16.5.2",
     "react-github-corner": "2.3.0",
-    "react-scripts": "1.1.5",
+    "react-scripts": "2.0.3",
     "react-spinners": "0.4.5",
     "react-stepper-primitive": "1.1.0",
     "tachyons": "4.11.1"
   },
   "devDependencies": {
-    "babel-eslint": "10.0.1",
     "concurrently": "4.0.1",
     "coveralls": "3.0.2",
     "cross-env": "5.2.0",
     "enzyme": "3.6.0",
     "enzyme-adapter-react-16": "1.5.0",
-    "eslint": "5.6.1",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-prettier": "3.1.0",
     "eslint-plugin-import": "2.14.0",

@@ -8,8 +8,8 @@ exports[`Winner renders 1`] = `
 <a
   class="flex flex-column dim link ba b--dark-blue dark-blue mb3 w4 shadow-5"
   href="https://en.wikipedia.org/wiki/Pickle_Rick"
-  target="_blank"
   rel="noopener noreferrer"
+  target="_blank"
 >
   <span
     class="db bg-center cover h4 emotion-0"
