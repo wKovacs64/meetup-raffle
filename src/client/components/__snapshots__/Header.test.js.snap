@@ -5,15 +5,15 @@ exports[`Header renders 1`] = `
   class="ph3 pv3 bg-light-red"
 >
   <a
-    href="https://github.com/wKovacs64/meetup-raffle"
-    class="github-corner"
     aria-label="Open GitHub project"
+    class="github-corner"
+    href="https://github.com/wKovacs64/meetup-raffle"
   >
     <svg
-      width="80"
       height="80"
-      viewBox="0 0 250 250"
       style="position: absolute; top: 0px; fill: #f4f4f4; right: 0px;"
+      viewBox="0 0 250 250"
+      width="80"
     >
       <path
         class="octo-banner"
@@ -40,15 +40,17 @@ exports[`Header renders 1`] = `
         class="f3 f2-m f1-l ma0 lh-title near-white"
       >
         <span
-          role="img"
           aria-label="meeting"
+          role="img"
         >
           🤝
         </span>
+         
         meetup-raffle
+         
         <span
-          role="img"
           aria-label="ticket"
+          role="img"
         >
           🎟️
         </span>
