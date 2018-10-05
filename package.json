@@ -86,7 +86,7 @@
     "lint-staged": "7.3.0",
     "netlify-lambda": "0.4.0",
     "prettier": "1.14.3",
-    "react-testing-library": "5.1.1",
+    "react-testing-library": "5.2.0",
     "rimraf": "2.6.2"
   }
 }
