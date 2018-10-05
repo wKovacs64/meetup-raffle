@@ -81,7 +81,7 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.1",
     "eslint-plugin-react": "7.11.1",
-    "husky": "1.1.0",
+    "husky": "1.1.1",
     "jest-emotion": "9.2.11",
     "lint-staged": "7.3.0",
     "netlify-lambda": "0.4.0",
