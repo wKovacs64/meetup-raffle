@@ -28,17 +28,6 @@
     "start:functions": "netlify-lambda serve src/functions",
     "test": "cross-env REACT_APP_DRAW_URL=http://localhost:9000/draw react-scripts test"
   },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "eslint --fix",
-      "git add"
-    ],
-    "*.{json,md,yml}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
   "browserslist": [
     ">0.2%",
     "not dead",
