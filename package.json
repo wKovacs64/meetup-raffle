@@ -72,7 +72,7 @@
     "eslint-plugin-react": "7.11.1",
     "husky": "1.1.2",
     "jest-emotion": "9.2.11",
-    "lint-staged": "8.0.3",
+    "lint-staged": "8.0.4",
     "netlify-lambda": "1.0.2",
     "prettier": "1.14.3",
     "react-testing-library": "5.2.3",
