@@ -74,7 +74,7 @@
     "jest-emotion": "9.2.11",
     "lint-staged": "8.0.4",
     "netlify-lambda": "1.0.3",
-    "prettier": "1.15.1",
+    "prettier": "1.15.2",
     "react-testing-library": "5.2.3",
     "rimraf": "2.6.2"
   }
