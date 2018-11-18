@@ -60,7 +60,7 @@
     "tachyons": "4.11.1"
   },
   "devDependencies": {
-    "concurrently": "4.0.1",
+    "concurrently": "4.1.0",
     "coveralls": "3.0.2",
     "cross-env": "5.2.0",
     "enzyme": "3.7.0",
