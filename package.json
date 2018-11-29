@@ -39,7 +39,9 @@
       "src/client/**/*.js",
       "src/functions/**/*.js"
     ],
-    "snapshotSerializers": ["jest-emotion"]
+    "snapshotSerializers": [
+      "jest-emotion"
+    ]
   },
   "private": true,
   "dependencies": {
