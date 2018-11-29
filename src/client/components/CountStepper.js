@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Stepper from 'react-stepper-primitive';
-import { cx } from 'emotion';
 
 const CountStepper = ({
   inputId,
@@ -36,10 +35,9 @@ const CountStepper = ({
             aria-label="decrement"
             type="button"
             disabled={value <= min}
-            className={cx(
-              'bn bg-transparent h3 w3 pointer',
-              value <= min ? 'silver' : 'near-black',
-            )}
+            className={`bn bg-transparent h3 w3 pointer ${
+              value <= min ? 'silver' : 'near-black'
+            }`}
             data-testid="decrement-button"
             {...getDecrementProps()}
           >
@@ -64,10 +62,9 @@ const CountStepper = ({
             aria-label="increment"
             type="button"
             disabled={value >= max}
-            className={cx(
-              'bn bg-transparent h3 w3 pointer',
-              value >= max ? 'silver' : 'near-black',
-            )}
+            className={`bn bg-transparent h3 w3 pointer ${
+              value >= max ? 'silver' : 'near-black'
+            }`}
             data-testid="increment-button"
             {...getIncrementProps()}
           >
