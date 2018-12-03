@@ -94,7 +94,6 @@ exports[`RaffleContainer renders 1`] = `
     >
       <button
         class="link bn bg-transparent pa0 pointer near-black"
-        data-testid="advanced-button"
         type="button"
       >
         <span

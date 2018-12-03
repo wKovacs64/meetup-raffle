@@ -146,20 +146,18 @@ describe('RaffleContainer', () => {
   });
 
   it('toggles advanced options section', () => {
-    const { getByTestId } = render(<RaffleContainer />);
-    const advancedButton = getByTestId('advanced-button');
-    const advancedButtonIcon = getByTestId('advanced-button-icon');
+    const { getByLabelText } = render(<RaffleContainer />);
+    const advancedButton = getByLabelText(/toggle advanced options/i);
+    const specificEventIdInput = getByLabelText(/Specific event ID/i);
+    const meetupApiKeyInput = getByLabelText(/Meetup API key/i);
 
-    // This test isn't great. It would be better to somehow test visibility of
-    // the advanced options, but because of how the Collapse component from
-    // react-css-collapse works, they are in the DOM all the time and the only
-    // thing that changes is the height of the containing element. At this time,
-    // I haven't found a good way to assert true visibility.
-    const collapsedIcon = advancedButtonIcon.textContent;
+    expect(specificEventIdInput).not.toBeVisible();
+    expect(meetupApiKeyInput).not.toBeVisible();
+
     fireEvent.click(advancedButton);
-    const expandedIcon = advancedButtonIcon.textContent;
 
-    expect(collapsedIcon).not.toBe(expandedIcon);
+    expect(specificEventIdInput).toBeVisible();
+    expect(meetupApiKeyInput).toBeVisible();
   });
 
   it('selects current specific event ID input text on focus', () => {

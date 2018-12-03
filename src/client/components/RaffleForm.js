@@ -50,7 +50,6 @@ export default class extends Component {
                 advancedOpen: !advancedOpen,
               }))
             }
-            data-testid="advanced-button"
           >
             <span
               className="dib w1"
