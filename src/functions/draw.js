@@ -8,7 +8,7 @@ import {
   validateStatus,
 } from './helpers';
 
-const handler = async (request, context, callback) => {
+const handler = async (request, context) => {
   const headers =
     process.env.NODE_ENV === 'development'
       ? { 'Access-Control-Allow-Origin': '*' }
@@ -24,11 +24,11 @@ const handler = async (request, context, callback) => {
       request,
     ));
   } catch (err) {
-    return callback(null, {
+    return {
       headers,
       statusCode: 400,
       body: JSON.stringify({ error: { message: err.message } }),
-    });
+    };
   }
 
   try {
@@ -49,20 +49,20 @@ const handler = async (request, context, callback) => {
     const winners = await meetupRandomizer.run(meetup, eventId, count);
 
     if (Array.isArray(winners) && winners.length) {
-      return callback(null, {
+      return {
         headers,
         statusCode: 200,
         body: JSON.stringify({ winners }),
-      });
+      };
     }
 
     throw new Error('Sorry, we received unexpected data for that request.');
   } catch (err) {
-    return callback(null, {
+    return {
       headers,
       statusCode: 404,
       body: JSON.stringify({ error: { message: err.message } }),
-    });
+    };
   }
 };
 
