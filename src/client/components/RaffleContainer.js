@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import get from 'lodash.get';
+import get from 'lodash/get';
 import { RingLoader } from 'react-spinners';
 import { Formik } from 'formik';
 import ErrorMessage from './ErrorMessage';
