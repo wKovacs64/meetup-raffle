@@ -3,7 +3,6 @@
   "commitMessageTopic": "{{depName}}",
   "automergeType": "branch",
   "automerge": true,
-  "ignoreDeps": ["babel-loader"],
   "major": {
     "automerge": false
   },
