@@ -63,7 +63,6 @@
     "tachyons": "4.11.1"
   },
   "devDependencies": {
-    "babel-loader": "8.0.4",
     "codecov": "3.1.0",
     "concurrently": "4.1.0",
     "cross-env": "5.2.0",
