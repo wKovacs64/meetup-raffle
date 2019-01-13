@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     jest: true,
   },
-  extends: ['airbnb', 'prettier'],
+  extends: ['airbnb', 'prettier', 'prettier/react'],
   parser: 'babel-eslint',
   plugins: ['emotion'],
   rules: {
@@ -26,7 +26,6 @@ module.exports = {
     ],
     'react/destructuring-assignment': 'off',
     'react/jsx-filename-extension': 'off',
-    'react/jsx-one-expression-per-line': 'off',
     'valid-jsdoc': [
       'error',
       {
