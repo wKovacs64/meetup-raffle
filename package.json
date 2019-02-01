@@ -71,7 +71,6 @@
     "cross-env": "5.2.0",
     "enzyme": "3.8.0",
     "enzyme-adapter-react-16": "1.8.0",
-    "eslint": "5.12.1",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-prettier": "4.0.0",
     "eslint-plugin-emotion": "10.0.6",
