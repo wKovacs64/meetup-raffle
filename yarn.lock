@@ -9522,10 +9522,10 @@ react-test-renderer@^16.0.0-0:
     react-is "^16.7.0"
     scheduler "^0.12.0"
 
-react-testing-library@5.5.2:
-  version "5.5.2"
-  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-5.5.2.tgz#d9e73284d9e6323f07484cc5b9ee685f777e734f"
-  integrity sha512-ACJ+nFNYt487oQ6E4ZUsYH2vRoiB3af47mAzg2H6Hh1qvq0yujLW3g1TvjuqZt6mM8aQiEdrNoRuNtCuOV9pZg==
+react-testing-library@5.5.3:
+  version "5.5.3"
+  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-5.5.3.tgz#cfd32da95b29e475003df4f66bd96e34eb5624bd"
+  integrity sha512-67jMsSJHbbm9M0NWvEzjNikDAKRdxivhP6vnpa9xPg/fYh19zkE4rMsFh5YWLpyoomm+e49fg+ubcXaEBYartA==
   dependencies:
     "@babel/runtime" "^7.3.1"
     dom-testing-library "^3.13.1"
