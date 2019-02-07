@@ -63,15 +63,12 @@
     "tachyons": "4.11.1"
   },
   "devDependencies": {
-    "@wkovacs64/eslint-config-react": "1.0.3",
+    "@wkovacs64/eslint-config-react": "2.0.0",
     "codecov": "3.1.0",
     "concurrently": "4.1.0",
     "cross-env": "5.2.0",
     "enzyme": "3.8.0",
     "enzyme-adapter-react-16": "1.9.1",
-    "eslint-config-airbnb": "17.1.0",
-    "eslint-config-airbnb-base": "13.1.0",
-    "eslint-config-prettier": "4.0.0",
     "eslint-plugin-emotion": "10.0.7",
     "eslint-plugin-import": "2.16.0",
     "eslint-plugin-jest": "22.2.2",
