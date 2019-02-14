@@ -9,7 +9,6 @@ import ResetButtons from './ResetButtons';
 import Results from './Results';
 
 export default class extends Component {
-  // eslint-disable-next-line react/sort-comp
   static displayName = 'RaffleContainer';
 
   initialResults = {
@@ -76,17 +75,14 @@ export default class extends Component {
       meetupApiKey,
     });
     try {
-      const response = await axios.get(
-        process.env.REACT_APP_DRAW_URL || '/.netlify/functions/draw',
-        {
-          params: {
-            meetup,
-            count,
-            specificEventId,
-            meetupApiKey,
-          },
+      const response = await axios.get('/.netlify/functions/draw', {
+        params: {
+          meetup,
+          count,
+          specificEventId,
+          meetupApiKey,
         },
-      );
+      });
       const winners = get(response, 'data.winners');
       if (winners) {
         this.setState({ winners });
