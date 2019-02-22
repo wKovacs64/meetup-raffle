@@ -1235,10 +1235,10 @@
     "@webassemblyjs/wast-parser" "1.7.11"
     "@xtuc/long" "4.2.1"
 
-"@wkovacs64/eslint-config-react@2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config-react/-/eslint-config-react-2.0.1.tgz#dc8fdb481733d770fae660e36bf1ce4b87c741b6"
-  integrity sha512-sl24y+WYD90w9qB9ELzew1Illu+Bt6TKuv/oUoELi3h2mu/KmUkJYQWxIj3nJ6rFfV3DP6/Qufigm//Y96G0Gg==
+"@wkovacs64/eslint-config-react@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@wkovacs64/eslint-config-react/-/eslint-config-react-2.1.0.tgz#411a16d8053a8e59515d5b1dc83164ab86359b23"
+  integrity sha512-FFA9aJX8jDKwwm/kHHF5R4ETAesEavIYqtiIKHr1KXyMVJnRRAH+tEcSgof+j1AT5b8fVtVOk2yppFNKDr99Rg==
   dependencies:
     "@wkovacs64/eslint-config" "^4.0.0"
     eslint-config-airbnb "^17.1.0"

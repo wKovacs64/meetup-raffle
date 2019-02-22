@@ -63,7 +63,7 @@
     "tachyons": "4.11.1"
   },
   "devDependencies": {
-    "@wkovacs64/eslint-config-react": "2.0.1",
+    "@wkovacs64/eslint-config-react": "2.1.0",
     "codecov": "3.2.0",
     "concurrently": "4.1.0",
     "cross-env": "5.2.0",
