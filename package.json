@@ -58,7 +58,7 @@
     "react-dom": "16.8.3",
     "react-github-corner": "2.3.0",
     "react-scripts": "2.1.5",
-    "react-spinners": "0.5.1",
+    "react-spinners": "0.5.3",
     "react-stepper-primitive": "1.1.0",
     "tachyons": "4.11.1"
   },
