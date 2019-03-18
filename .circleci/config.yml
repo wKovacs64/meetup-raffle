@@ -18,8 +18,7 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache
-      - run: yarn build
-      - run: yarn lint
+      - run: yarn validate
       - run: yarn test --coverage
       - run: yarn codecov
       - run: yarn semantic-release

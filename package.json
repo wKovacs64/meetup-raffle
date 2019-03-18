@@ -16,7 +16,7 @@
     "url": "https://github.com/wKovacs64/meetup-raffle/issues"
   },
   "scripts": {
-    "build": "yarn build:client && yarn build:functions",
+    "build": "npm-run-all --silent --parallel build:*",
     "build:client": "react-scripts build",
     "build:functions": "netlify-lambda build src/functions",
     "clean": "rimraf build functions coverage",
@@ -27,7 +27,8 @@
     "start": "cross-env NODE_ENV=development concurrently --names \"CLIENT,FUNCTIONS\" --prefix-colors \"bgRed.bold,bgBlue.bold\" \"yarn start:client\" \"yarn run start:functions\"",
     "start:client": "react-scripts start",
     "start:functions": "netlify-lambda serve src/functions",
-    "test": "cross-env react-scripts test"
+    "test": "cross-env react-scripts test",
+    "validate": "npm-run-all --silent --parallel lint build"
   },
   "config": {
     "commitizen": {
@@ -91,6 +92,7 @@
     "jest-emotion": "10.0.9",
     "lint-staged": "8.1.5",
     "netlify-lambda": "1.4.3",
+    "npm-run-all": "4.1.5",
     "prettier": "1.16.4",
     "react-testing-library": "6.0.0",
     "rimraf": "2.6.3",
