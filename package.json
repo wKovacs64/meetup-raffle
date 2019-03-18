@@ -1,6 +1,6 @@
 {
   "name": "meetup-raffle",
-  "version": "3.0.3-dev.0",
+  "version": "0.0.0-semantically-released",
   "description": "Select a raffle winner at your upcoming Meetup.",
   "author": {
     "name": "Justin Hall",
@@ -20,14 +20,21 @@
     "build:client": "react-scripts build",
     "build:functions": "netlify-lambda build src/functions",
     "clean": "rimraf build functions coverage",
+    "cm": "git-cz",
     "eject": "react-scripts eject",
-    "format": "prettier --write \"**/*.{js,json,md,yml}\"",
+    "format": "prettier --write \"**/*.{html,js,json,md,yml,yaml}\"",
     "lint": "eslint .",
     "start": "cross-env NODE_ENV=development concurrently --names \"CLIENT,FUNCTIONS\" --prefix-colors \"bgRed.bold,bgBlue.bold\" \"yarn start:client\" \"yarn run start:functions\"",
     "start:client": "react-scripts start",
     "start:functions": "netlify-lambda serve src/functions",
     "test": "cross-env react-scripts test"
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "private": true,
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -43,7 +50,6 @@
       "jest-emotion"
     ]
   },
-  "private": true,
   "dependencies": {
     "@emotion/core": "10.0.9",
     "axios": "0.18.0",
@@ -63,10 +69,14 @@
     "tachyons": "4.11.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "7.5.2",
+    "@commitlint/config-conventional": "7.5.0",
     "@wkovacs64/eslint-config-react": "2.1.0",
     "codecov": "3.2.0",
+    "commitizen": "3.0.7",
     "concurrently": "4.1.0",
     "cross-env": "5.2.0",
+    "cz-conventional-changelog": "2.1.0",
     "enzyme": "3.9.0",
     "enzyme-adapter-react-16": "1.11.2",
     "eslint-plugin-emotion": "10.0.7",
@@ -83,6 +93,7 @@
     "netlify-lambda": "1.4.3",
     "prettier": "1.16.4",
     "react-testing-library": "6.0.0",
-    "rimraf": "2.6.3"
+    "rimraf": "2.6.3",
+    "semantic-release": "15.13.3"
   }
 }
