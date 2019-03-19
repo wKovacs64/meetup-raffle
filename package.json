@@ -54,7 +54,7 @@
   "dependencies": {
     "@emotion/core": "10.0.9",
     "axios": "0.18.0",
-    "core-js": "3.0.0",
+    "core-js-pure": "3.0.0",
     "formik": "1.5.1",
     "is-number": "7.0.0",
     "lodash": "4.17.11",

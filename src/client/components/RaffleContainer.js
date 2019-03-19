@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import entries from 'core-js-pure/es/object/entries';
 import get from 'lodash/get';
 import { RingLoader } from 'react-spinners';
 import { Formik } from 'formik';
@@ -53,7 +54,7 @@ export default class extends Component {
 
   preserve = data => {
     if (global.window.localStorage) {
-      Object.entries(data).forEach(([key, value]) => {
+      entries(data).forEach(([key, value]) => {
         global.window.localStorage.setItem(key, value);
       });
     }

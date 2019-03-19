@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import 'tachyons';
-import 'core-js/fn/object/entries';
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import { jsx, css, Global } from '@emotion/core';
