@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, fireEvent, waitForElement, wait } from 'react-testing-library';
-import { mount } from 'enzyme';
 import mockAxios from 'axios';
 import RaffleContainer from './RaffleContainer';
 
@@ -59,11 +58,13 @@ describe('RaffleContainer', () => {
     jest.spyOn(console, 'error');
     global.console.error.mockImplementation(() => {});
 
+    const instance = React.createRef();
+
     expect(() => {
       // test localStorage.getItem
-      const wrapper = mount(<RaffleContainer />);
+      render(<RaffleContainer ref={instance} />);
       // test localStorage.setItem
-      wrapper.instance().preserve({ key: 'value' });
+      instance.current.preserve({ key: 'value' });
     }).not.toThrow();
 
     // Restore React error logging
