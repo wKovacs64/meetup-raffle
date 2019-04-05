@@ -27,7 +27,7 @@
     "start": "cross-env NODE_ENV=development concurrently --names \"CLIENT,FUNCTIONS\" --prefix-colors \"bgRed.bold,bgBlue.bold\" \"yarn start:client\" \"yarn run start:functions\"",
     "start:client": "react-scripts start",
     "start:functions": "netlify-lambda serve src/functions",
-    "test": "cross-env react-scripts test",
+    "test": "react-scripts test",
     "validate": "npm-run-all --silent --parallel lint build"
   },
   "config": {
