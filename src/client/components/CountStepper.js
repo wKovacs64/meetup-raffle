@@ -21,67 +21,71 @@ const CountStepper = ({
       getIncrementProps,
       getDecrementProps,
       value,
-    }) => (
-      <Fragment>
-        {labelText && (
-          <div className="mb3">
-            <label className="f4 f3-ns lh-copy dark-blue" htmlFor={inputId}>
-              {labelText}
-            </label>
-          </div>
-        )}
-        <span className="flex flex-row">
-          <button
-            aria-label="decrement"
-            type="button"
-            disabled={value <= min}
-            className={`bn bg-transparent h3 w3 pointer ${
-              value <= min ? 'silver' : 'near-black'
-            }`}
-            data-testid="decrement-button"
-            {...getDecrementProps()}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 40 40"
-              preserveAspectRatio="xMidYMid meet"
+    }) => {
+      const { focused, ...inputProps } = getInputProps();
+
+      return (
+        <Fragment>
+          {labelText && (
+            <div className="mb3">
+              <label className="f4 f3-ns lh-copy dark-blue" htmlFor={inputId}>
+                {labelText}
+              </label>
+            </div>
+          )}
+          <span className="flex flex-row">
+            <button
+              aria-label="decrement"
+              type="button"
+              disabled={value <= min}
+              className={`bn bg-transparent h3 w3 pointer ${
+                value <= min ? 'silver' : 'near-black'
+              }`}
+              data-testid="decrement-button"
+              {...getDecrementProps()}
             >
-              <g>
-                <path d="m22.5 17.5v-5h-5v5h-5l7.5 10 7.5-10h-5z" />
-              </g>
-            </svg>
-          </button>
-          <input
-            id={inputId}
-            className="tc near-black w3 f3 pv1"
-            {...field}
-            {...getInputProps()}
-          />
-          <button
-            aria-label="increment"
-            type="button"
-            disabled={value >= max}
-            className={`bn bg-transparent h3 w3 pointer ${
-              value >= max ? 'silver' : 'near-black'
-            }`}
-            data-testid="increment-button"
-            {...getIncrementProps()}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 40 40"
-              preserveAspectRatio="xMidYMid meet"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 40 40"
+                preserveAspectRatio="xMidYMid meet"
+              >
+                <g>
+                  <path d="m22.5 17.5v-5h-5v5h-5l7.5 10 7.5-10h-5z" />
+                </g>
+              </svg>
+            </button>
+            <input
+              id={inputId}
+              className="tc near-black w3 f3 pv1"
+              {...field}
+              {...inputProps}
+            />
+            <button
+              aria-label="increment"
+              type="button"
+              disabled={value >= max}
+              className={`bn bg-transparent h3 w3 pointer ${
+                value >= max ? 'silver' : 'near-black'
+              }`}
+              data-testid="increment-button"
+              {...getIncrementProps()}
             >
-              <g>
-                <path d="m20 12.5l-7.5 10h5v5h5v-5h5l-7.5-10z" />
-              </g>
-            </svg>
-          </button>
-        </span>
-      </Fragment>
-    )}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 40 40"
+                preserveAspectRatio="xMidYMid meet"
+              >
+                <g>
+                  <path d="m20 12.5l-7.5 10h5v5h5v-5h5l-7.5-10z" />
+                </g>
+              </svg>
+            </button>
+          </span>
+        </Fragment>
+      );
+    }}
   />
 );
 
