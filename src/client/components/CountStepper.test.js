@@ -18,7 +18,7 @@ const countStepperProps = {
 describe('CountStepper', () => {
   it('renders', () => {
     const { container } = render(<CountStepper {...countStepperProps} />);
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it('increments', () => {
