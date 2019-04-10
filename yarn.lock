@@ -9222,11 +9222,6 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-numeric-pattern@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/numeric-pattern/-/numeric-pattern-1.0.0.tgz#e916b720ec5065efb3a87cdc3ec3fb53950e161f"
-  integrity sha1-6Ra3IOxQZe+zqHzcPsP7U5UOFh8=
-
 nwsapi@^2.0.7:
   version "2.0.9"
   resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.0.9.tgz#77ac0cdfdcad52b6a1151a84e73254edc33ed016"
@@ -10962,6 +10957,14 @@ react-github-corner@2.3.0:
   resolved "https://registry.yarnpkg.com/react-github-corner/-/react-github-corner-2.3.0.tgz#73ab17324b670c9cd955567b09663d385cfb05ef"
   integrity sha512-yVh8wtAfVA5CQYn8ygyxtsuCMoyiSEBVnzQJ3ynyWxZ1BzT2MHop4baZn/PnUnU9Yh8mwhLS5Y1RVxM5zNotGw==
 
+react-hooks-testing-library@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-hooks-testing-library/-/react-hooks-testing-library-0.4.0.tgz#601f7eda1e817f57a86ef3fe0a17a1fdd771122b"
+  integrity sha512-N/MBIlycPeeAOJwFloUnwpKLBDH2y0L17srRMw1bI/dCyYYC2zKwg9Xccxwy4HFVAGfO9uweVrAGFvOnc6YvUw==
+  dependencies:
+    "@babel/runtime" "^7.4.2"
+    react-testing-library "^6.0.3"
+
 react-is@^16.8.1:
   version "16.8.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.1.tgz#a80141e246eb894824fb4f2901c0c50ef31d4cdb"
@@ -11040,15 +11043,7 @@ react-spinners@0.5.4:
     prop-types "^15.5.10"
     recompose "0.27.1 - 0.30.0"
 
-react-stepper-primitive@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-stepper-primitive/-/react-stepper-primitive-1.1.0.tgz#4d798458183f071927db3fb23e685bd9d77708ef"
-  integrity sha512-+lRTD+8+DDtrx2J+QB3Ipc4A3/nJYtVwXQImuamhEhmQrBAqwwWntnp3PCJ7e5kQIudba38fJmVdzkwYPiAkJw==
-  dependencies:
-    numeric-pattern "^1.0.0"
-    prop-types "^15.5.10"
-
-react-testing-library@6.1.2:
+react-testing-library@6.1.2, react-testing-library@^6.0.3:
   version "6.1.2"
   resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-6.1.2.tgz#f6bba6eeecedac736eb00b22b4c70bae04535a4f"
   integrity sha512-z69lhRDGe7u/NOjDCeFRoe1cB5ckJ4656n0tj/Fdcr6OoBUu7q9DBw0ftR7v5i3GRpdSWelnvl+feZFOyXyxwg==

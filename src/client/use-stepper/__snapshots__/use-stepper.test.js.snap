@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useStepper provides the correct decrement props in getDecrementProps 1`] = `
+Object {
+  "onClick": [Function],
+}
+`;
+
+exports[`useStepper provides the correct form props in getFormProps 1`] = `
+Object {
+  "onSubmit": [Function],
+}
+`;
+
+exports[`useStepper provides the correct increment props in getIncrementProps 1`] = `
+Object {
+  "onClick": [Function],
+}
+`;
+
+exports[`useStepper provides the correct input props in getInputProps 1`] = `
+Object {
+  "onBlur": [Function],
+  "onFocus": [Function],
+  "pattern": "[0-9]*",
+  "ref": [Function],
+  "type": "text",
+  "value": 0,
+}
+`;
+
+exports[`useStepper returns the correct values 1`] = `
+Object {
+  "decrement": [Function],
+  "focused": false,
+  "getDecrementProps": [Function],
+  "getFormProps": [Function],
+  "getIncrementProps": [Function],
+  "getInputProps": [Function],
+  "increment": [Function],
+  "setValue": [Function],
+  "value": 0,
+}
+`;
