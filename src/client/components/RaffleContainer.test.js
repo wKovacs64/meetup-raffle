@@ -100,7 +100,9 @@ describe('RaffleContainer', () => {
     await submitForm({ getByText });
 
     await wait(() => {
-      expect(localStorage.getItem('count')).toBeDefined();
+      const countInStorage = localStorage.getItem('count');
+      expect(countInStorage).toBeDefined();
+      expect(parseFloat(countInStorage)).toBe(params.count);
       expect(mockAxios.get).toHaveBeenCalledWith(expect.any(String), {
         params,
       });
