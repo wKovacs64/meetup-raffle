@@ -19,8 +19,8 @@ const CountStepper = ({
     min,
     max,
     enableReinitialize: true,
-    defaultValue: parseInt(field.value, 10),
-    onChange: newValue => setFieldValue(field.name, newValue),
+    defaultValue: parseInt(field.value, 10) || 1,
+    onNewValue: newValue => setFieldValue(field.name, newValue),
   });
 
   return (
