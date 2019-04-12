@@ -22,7 +22,6 @@ exports[`useStepper provides the correct input props in getInputProps 1`] = `
 Object {
   "onBlur": [Function],
   "onFocus": [Function],
-  "pattern": "-?[0-9]*",
   "ref": [Function],
   "type": "text",
   "value": 0,

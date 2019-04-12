@@ -64,7 +64,7 @@ exports[`RaffleContainer renders 1`] = `
           class="tc near-black w3 f3 pv1"
           id="count"
           name="count"
-          pattern="-?[0-9]*"
+          pattern="[0-9]*"
           type="text"
           value="1"
         />

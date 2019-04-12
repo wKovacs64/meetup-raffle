@@ -55,10 +55,12 @@ const CountStepper = ({
           </svg>
         </button>
         <input
-          id={inputId}
-          className="tc near-black w3 f3 pv1"
-          {...field}
-          {...getInputProps()}
+          {...getInputProps({
+            ...field,
+            id: inputId,
+            className: 'tc near-black w3 f3 pv1',
+            pattern: '[0-9]*',
+          })}
         />
         <button
           aria-label="increment"
