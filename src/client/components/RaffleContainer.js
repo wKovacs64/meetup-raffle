@@ -31,7 +31,7 @@ export default class extends Component {
 
   componentDidMount() {
     const meetup = this.restore('meetup');
-    const count = this.restore('count');
+    const count = parseInt(this.restore('count'), 10);
     const meetupApiKey = this.restore('meetupApiKey');
 
     this.setState({
