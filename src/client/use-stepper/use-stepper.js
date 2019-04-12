@@ -108,7 +108,7 @@ function useStepper({
       ...otherInputProps,
       type: 'text',
       ref: mergeRefs(ref, inputRef),
-      pattern: '[0-9]*',
+      pattern: '-?[0-9]*',
       onBlur: callAll(onBlur, handleBlur),
       onFocus: callAll(onFocus, handleFocus),
       // When the input is focused, let the user type freely.
