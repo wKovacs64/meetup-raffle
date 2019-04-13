@@ -193,6 +193,23 @@ describe('useStepper', () => {
     expect(onNewValue).toHaveBeenCalledWith(33);
   });
 
+  it('handles decimals', () => {
+    const { result } = renderHook(() =>
+      useStepper({ defaultValue: 1, step: 0.25 }),
+    );
+
+    expect(result.current.value).toBe(1);
+    act(() => result.current.decrement());
+    expect(result.current.value).toBe(0.75);
+    act(() => result.current.increment());
+    act(() => result.current.increment());
+    expect(result.current.value).toBe(1.25);
+    act(() => result.current.setValue(-0.5));
+    expect(result.current.value).toBe(-0.5);
+    act(() => result.current.decrement());
+    expect(result.current.value).toBe(-0.75);
+  });
+
   describe('enableReinitialize', () => {
     it('true: value is updated to new default if defaultValue changes and value has not been modified', () => {
       const { result, rerender } = renderHook(opts => useStepper(opts), {
