@@ -50,7 +50,7 @@ describe('useStepper', () => {
     expect(parseFloat(result.current.value)).toBe(42);
   });
 
-  it('returns the correct values', () => {
+  it('returns the correct properties', () => {
     const { result } = renderHook(() => useStepper());
     expect(result.current).toMatchSnapshot();
   });
@@ -155,6 +155,42 @@ describe('useStepper', () => {
     fireEvent.submit(form);
 
     expect(input).not.toHaveFocus();
+  });
+
+  it('calls onNewValue on blur', () => {
+    const onNewValue = jest.fn();
+    const { getByTestId } = renderForm({ onNewValue });
+    const input = getByTestId('input');
+
+    input.focus();
+    expect(onNewValue).not.toHaveBeenCalled();
+
+    input.blur();
+
+    expect(onNewValue).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls onNewValue after calling setValue', () => {
+    const onNewValue = jest.fn();
+    const { getByTestId } = renderForm({ onNewValue });
+    const setValueTo42Button = getByTestId('set-value-to-42');
+
+    fireEvent.click(setValueTo42Button);
+
+    expect(onNewValue).toHaveBeenCalledWith(42);
+  });
+
+  it('calls onNewValue on change', () => {
+    const onNewValue = jest.fn();
+    const { getByTestId } = renderForm({ onNewValue });
+    const input = getByTestId('input');
+
+    input.focus();
+    expect(onNewValue).not.toHaveBeenCalled();
+
+    fireEvent.change(input, { target: { value: '33' } });
+
+    expect(onNewValue).toHaveBeenCalledWith(33);
   });
 
   describe('enableReinitialize', () => {

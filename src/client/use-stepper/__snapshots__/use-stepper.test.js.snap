@@ -29,7 +29,7 @@ Object {
 }
 `;
 
-exports[`useStepper returns the correct values 1`] = `
+exports[`useStepper returns the correct properties 1`] = `
 Object {
   "decrement": [Function],
   "getDecrementProps": [Function],
