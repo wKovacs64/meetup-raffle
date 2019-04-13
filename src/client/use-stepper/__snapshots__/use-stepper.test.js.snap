@@ -21,6 +21,7 @@ Object {
 exports[`useStepper provides the correct input props in getInputProps 1`] = `
 Object {
   "onBlur": [Function],
+  "onChange": [Function],
   "onFocus": [Function],
   "ref": [Function],
   "type": "text",
@@ -28,10 +29,9 @@ Object {
 }
 `;
 
-exports[`useStepper returns the correct values 1`] = `
+exports[`useStepper returns the correct properties 1`] = `
 Object {
   "decrement": [Function],
-  "focused": false,
   "getDecrementProps": [Function],
   "getFormProps": [Function],
   "getIncrementProps": [Function],

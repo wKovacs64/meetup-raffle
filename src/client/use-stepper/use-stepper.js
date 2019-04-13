@@ -5,77 +5,52 @@ import callAll from './call-all';
 import usePrevious from './use-previous';
 
 function useStepper({
-  value: controlledValue,
   defaultValue = 0,
   step = 1,
   min = -Number.MAX_VALUE,
   max = Number.MAX_VALUE,
-  onChange = () => {},
+  onNewValue = () => {},
   enableReinitialize = false,
 } = {}) {
-  const [currentValue, setCurrentValue] = React.useState(defaultValue);
-  const [focused, setFocused] = React.useState(false);
+  const [value, setValue] = React.useState(defaultValue);
   const previousDefaultValue = usePrevious(defaultValue);
   const inputRef = React.useRef();
 
-  const isControlled = React.useCallback(() => controlledValue !== undefined, [
-    controlledValue,
-  ]);
-
-  const setValue = React.useCallback(
+  const setValueClosestTo = React.useCallback(
     newValue => {
       const adjustedValue = Math.min(max, Math.max(newValue, min));
-      if (!isControlled()) {
-        setCurrentValue(adjustedValue);
-      }
-      onChange(adjustedValue);
+      setValue(adjustedValue);
+      onNewValue(adjustedValue);
     },
-    [isControlled, max, min, onChange],
+    [max, min, onNewValue],
   );
 
-  function getValue() {
-    return isControlled() ? controlledValue : currentValue;
-  }
-
   function increment() {
-    setValue(getValue() + step);
+    setValueClosestTo(value + step);
   }
 
   function decrement() {
-    setValue(getValue() - step);
+    setValueClosestTo(value - step);
   }
 
   function handleFocus() {
-    /* istanbul ignore if: just a sanity check */
-    if (!inputRef.current) {
-      return;
-    }
-
-    setFocused(true);
-    inputRef.current.value = getValue();
-    inputRef.current.setSelectionRange(0, 9999);
+    inputRef.current.value = value;
+    inputRef.current.select();
   }
 
   function handleBlur() {
-    /* istanbul ignore if: just a sanity check */
-    if (!inputRef.current) {
-      return;
-    }
-
-    inputRef.current.blur();
-    setFocused(false);
-
     const inputValue = parseFloat(inputRef.current.value);
-    if (Number.isNaN(inputValue) || inputValue === getValue()) {
-      return;
-    }
+    setValueClosestTo(Number.isNaN(inputValue) ? defaultValue : inputValue);
+  }
 
-    setValue(inputValue);
+  function handleChange(ev) {
+    setValue(ev.target.value);
+    onNewValue(parseFloat(ev.target.value));
   }
 
   function handleSubmit(ev) {
     ev.preventDefault();
-    handleBlur();
+    inputRef.current.blur();
   }
 
   function getFormProps(formProps = {}) {
@@ -103,16 +78,15 @@ function useStepper({
   }
 
   function getInputProps(inputProps = {}) {
-    const { ref, onBlur, onFocus, ...otherInputProps } = inputProps;
+    const { ref, onBlur, onFocus, onChange, ...otherInputProps } = inputProps;
     return {
       ...otherInputProps,
       type: 'text',
       ref: mergeRefs(ref, inputRef),
       onBlur: callAll(onBlur, handleBlur),
       onFocus: callAll(onFocus, handleFocus),
-      // When the input is focused, let the user type freely.
-      // When it isn't, lock it to the current value.
-      ...(focused ? {} : { value: getValue() }),
+      onChange: callAll(onChange, handleChange),
+      value,
     };
   }
 
@@ -124,22 +98,21 @@ function useStepper({
     if (
       enableReinitialize &&
       previousDefaultValue !== defaultValue &&
-      previousDefaultValue === currentValue
+      previousDefaultValue === value
     ) {
-      setValue(defaultValue);
+      setValueClosestTo(defaultValue);
     }
   }, [
     enableReinitialize,
     defaultValue,
     previousDefaultValue,
-    currentValue,
-    setValue,
+    value,
+    setValueClosestTo,
   ]);
 
   return {
-    value: getValue(),
-    setValue,
-    focused,
+    value,
+    setValue: setValueClosestTo,
     increment,
     decrement,
     getFormProps,

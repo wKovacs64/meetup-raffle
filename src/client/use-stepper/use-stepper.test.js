@@ -6,7 +6,6 @@ import useStepper from './use-stepper';
 
 function Counter(props) {
   const {
-    focused,
     setValue,
     getFormProps,
     getInputProps,
@@ -19,14 +18,10 @@ function Counter(props) {
       <button data-testid="decrement" type="button" {...getDecrementProps()}>
         decrement
       </button>
-      <input
-        data-testid="input"
-        {...getInputProps({ onChange: props.onChange })}
-      />
+      <input data-testid="input" {...getInputProps()} />
       <button data-testid="increment" type="button" {...getIncrementProps()}>
         increment
       </button>
-      <span data-testid="focused">{String(focused)}</span>
       <button
         data-testid="set-value-to-42"
         type="button"
@@ -39,10 +34,9 @@ function Counter(props) {
 }
 
 function renderForm(options = {}) {
-  const onChange = options.onChange || jest.fn();
-  const renderResult = render(<Counter onChange={onChange} {...options} />);
+  const renderResult = render(<Counter {...options} />);
   const { value } = renderResult.getByTestId('input');
-  return { value, onChange, ...renderResult };
+  return { value, ...renderResult };
 }
 
 describe('useStepper', () => {
@@ -56,7 +50,7 @@ describe('useStepper', () => {
     expect(parseFloat(result.current.value)).toBe(42);
   });
 
-  it('returns the correct values', () => {
+  it('returns the correct properties', () => {
     const { result } = renderHook(() => useStepper());
     expect(result.current).toMatchSnapshot();
   });
@@ -128,18 +122,6 @@ describe('useStepper', () => {
     expect(input.selectionEnd).toBe(input.value.length);
   });
 
-  it('returns the correct focused state', () => {
-    const { getByTestId } = renderForm();
-    const input = getByTestId('input');
-    const focused = getByTestId('focused');
-
-    expect(focused.textContent).toBe('false');
-
-    fireEvent.focus(input);
-
-    expect(focused.textContent).toBe('true');
-  });
-
   it('updates current value on blur', () => {
     const min = 1;
     const max = 10;
@@ -166,41 +148,66 @@ describe('useStepper', () => {
     const { getByTestId } = renderForm();
     const input = getByTestId('input');
     const form = getByTestId('form');
-    const focused = getByTestId('focused');
 
-    fireEvent.focus(input);
-    expect(focused.textContent).toBe('true');
+    input.focus();
+    expect(input).toHaveFocus();
+
     fireEvent.submit(form);
-    expect(focused.textContent).toBe('false');
+
+    expect(input).not.toHaveFocus();
   });
 
-  it('calls onChange on blur when controlled', () => {
-    const { onChange, getByTestId } = renderForm();
+  it('calls onNewValue on blur', () => {
+    const onNewValue = jest.fn();
+    const { getByTestId } = renderForm({ onNewValue });
     const input = getByTestId('input');
 
-    fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: '42' } });
-    fireEvent.blur(input);
+    input.focus();
+    expect(onNewValue).not.toHaveBeenCalled();
 
-    expect(onChange).toHaveBeenCalledWith(42);
+    input.blur();
+
+    expect(onNewValue).toHaveBeenCalledTimes(1);
   });
 
-  it('calls onChange after setValue (controlled)', () => {
-    const { onChange, getByTestId } = renderForm({ value: 33 });
+  it('calls onNewValue after calling setValue', () => {
+    const onNewValue = jest.fn();
+    const { getByTestId } = renderForm({ onNewValue });
     const setValueTo42Button = getByTestId('set-value-to-42');
 
     fireEvent.click(setValueTo42Button);
 
-    expect(onChange).toHaveBeenCalledWith(42);
+    expect(onNewValue).toHaveBeenCalledWith(42);
   });
 
-  it('calls onChange after setValue (uncontrolled)', () => {
-    const { onChange, getByTestId } = renderForm();
-    const setValueTo42Button = getByTestId('set-value-to-42');
+  it('calls onNewValue on change', () => {
+    const onNewValue = jest.fn();
+    const { getByTestId } = renderForm({ onNewValue });
+    const input = getByTestId('input');
 
-    fireEvent.click(setValueTo42Button);
+    input.focus();
+    expect(onNewValue).not.toHaveBeenCalled();
 
-    expect(onChange).toHaveBeenCalledWith(42);
+    fireEvent.change(input, { target: { value: '33' } });
+
+    expect(onNewValue).toHaveBeenCalledWith(33);
+  });
+
+  it('handles decimals', () => {
+    const { result } = renderHook(() =>
+      useStepper({ defaultValue: 1, step: 0.25 }),
+    );
+
+    expect(result.current.value).toBe(1);
+    act(() => result.current.decrement());
+    expect(result.current.value).toBe(0.75);
+    act(() => result.current.increment());
+    act(() => result.current.increment());
+    expect(result.current.value).toBe(1.25);
+    act(() => result.current.setValue(-0.5));
+    expect(result.current.value).toBe(-0.5);
+    act(() => result.current.decrement());
+    expect(result.current.value).toBe(-0.75);
   });
 
   describe('enableReinitialize', () => {
