@@ -9,6 +9,8 @@ function useStepper({
   step = 1,
   min = -Number.MAX_VALUE,
   max = Number.MAX_VALUE,
+  incrementBy = (augend, addend) => augend + addend,
+  decrementBy = (minuend, subtrahend) => minuend - subtrahend,
   onNewValue = () => {},
   enableReinitialize = false,
 } = {}) {
@@ -33,11 +35,11 @@ function useStepper({
   );
 
   function handleIncrement() {
-    setValueClosestTo(value + step);
+    setValueClosestTo(incrementBy(value, step));
   }
 
   function handleDecrement() {
-    setValueClosestTo(value - step);
+    setValueClosestTo(decrementBy(value, step));
   }
 
   function handleFocus() {
