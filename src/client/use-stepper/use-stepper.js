@@ -32,11 +32,11 @@ function useStepper({
     [max, min, setValueAndNotify],
   );
 
-  function increment() {
+  function handleIncrement() {
     setValueClosestTo(value + step);
   }
 
-  function decrement() {
+  function handleDecrement() {
     setValueClosestTo(value - step);
   }
 
@@ -71,7 +71,7 @@ function useStepper({
     const { onClick, ...otherIncrementProps } = incrementProps;
     return {
       ...otherIncrementProps,
-      onClick: callAll(onClick, increment),
+      onClick: callAll(onClick, handleIncrement),
     };
   }
 
@@ -79,7 +79,7 @@ function useStepper({
     const { onClick, ...otherDecrementProps } = decrementProps;
     return {
       ...otherDecrementProps,
-      onClick: callAll(onClick, decrement),
+      onClick: callAll(onClick, handleDecrement),
     };
   }
 
@@ -119,8 +119,8 @@ function useStepper({
   return {
     value,
     setValue: setValueClosestTo,
-    increment,
-    decrement,
+    increment: handleIncrement,
+    decrement: handleDecrement,
     getFormProps,
     getInputProps,
     getIncrementProps,
