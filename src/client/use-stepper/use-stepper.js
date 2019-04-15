@@ -16,13 +16,20 @@ function useStepper({
   const previousDefaultValue = usePrevious(defaultValue);
   const inputRef = React.useRef();
 
+  const setValueAndNotify = React.useCallback(
+    newValue => {
+      setValue(newValue);
+      onNewValue(parseFloat(newValue));
+    },
+    [onNewValue],
+  );
+
   const setValueClosestTo = React.useCallback(
     newValue => {
       const adjustedValue = Math.min(max, Math.max(newValue, min));
-      setValue(adjustedValue);
-      onNewValue(adjustedValue);
+      setValueAndNotify(adjustedValue);
     },
-    [max, min, onNewValue],
+    [max, min, setValueAndNotify],
   );
 
   function increment() {
@@ -44,8 +51,7 @@ function useStepper({
   }
 
   function handleChange(ev) {
-    setValue(ev.target.value);
-    onNewValue(parseFloat(ev.target.value));
+    setValueAndNotify(ev.target.value);
   }
 
   function handleSubmit(ev) {
