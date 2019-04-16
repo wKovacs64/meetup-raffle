@@ -157,7 +157,7 @@ describe('useStepper', () => {
     expect(input).not.toHaveFocus();
   });
 
-  it('calls onNewValue on blur', () => {
+  it('calls onNewValue on blur if the value has changed', () => {
     const onNewValue = jest.fn();
     const { getByTestId } = renderForm({ onNewValue });
     const input = getByTestId('input');
@@ -165,6 +165,13 @@ describe('useStepper', () => {
     input.focus();
     expect(onNewValue).not.toHaveBeenCalled();
 
+    input.blur();
+
+    expect(onNewValue).not.toHaveBeenCalled();
+
+    input.focus();
+    // can't use fireEvent here
+    input.value = 6;
     input.blur();
 
     expect(onNewValue).toHaveBeenCalledTimes(1);

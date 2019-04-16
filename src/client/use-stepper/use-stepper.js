@@ -9,37 +9,72 @@ function useStepper({
   step = 1,
   min = -Number.MAX_VALUE,
   max = Number.MAX_VALUE,
-  incrementBy = (augend, addend) => augend + addend,
-  decrementBy = (minuend, subtrahend) => minuend - subtrahend,
   onNewValue = () => {},
   enableReinitialize = false,
 } = {}) {
-  const [value, setValue] = React.useState(defaultValue);
   const previousDefaultValue = usePrevious(defaultValue);
   const inputRef = React.useRef();
 
-  const setValueAndNotify = React.useCallback(
+  const getValueClosestTo = React.useCallback(
     newValue => {
-      setValue(newValue);
-      onNewValue(parseFloat(newValue));
+      return Math.min(max, Math.max(newValue, min));
     },
-    [onNewValue],
+    [max, min],
   );
+
+  const initialState = { value: defaultValue };
+
+  const reducer = React.useCallback(
+    (state, action) => {
+      switch (action.type) {
+        case useStepper.types.increment: {
+          const newValue = getValueClosestTo(state.value + step);
+          onNewValue(newValue);
+          return { value: newValue };
+        }
+        case useStepper.types.decrement: {
+          const newValue = getValueClosestTo(state.value - step);
+          onNewValue(newValue);
+          return { value: newValue };
+        }
+        case useStepper.types.setValue: {
+          if (action.payload !== state.value) {
+            onNewValue(parseFloat(action.payload));
+            return { value: action.payload };
+          }
+
+          return state;
+        }
+        /* istanbul ignore next: this will never happen */
+        default:
+          throw new Error(`Unsupported action type: ${action.type}`);
+      }
+    },
+    [getValueClosestTo, onNewValue, step],
+  );
+
+  const [{ value }, dispatch] = React.useReducer(reducer, initialState);
+
+  const setValue = React.useCallback(newValue => {
+    dispatch({
+      type: useStepper.types.setValue,
+      payload: newValue,
+    });
+  }, []);
 
   const setValueClosestTo = React.useCallback(
     newValue => {
-      const adjustedValue = Math.min(max, Math.max(newValue, min));
-      setValueAndNotify(adjustedValue);
+      setValue(getValueClosestTo(newValue));
     },
-    [max, min, setValueAndNotify],
+    [getValueClosestTo, setValue],
   );
 
   function handleIncrement() {
-    setValueClosestTo(incrementBy(value, step));
+    dispatch({ type: useStepper.types.increment });
   }
 
   function handleDecrement() {
-    setValueClosestTo(decrementBy(value, step));
+    dispatch({ type: useStepper.types.decrement });
   }
 
   function handleFocus() {
@@ -53,7 +88,7 @@ function useStepper({
   }
 
   function handleChange(ev) {
-    setValueAndNotify(ev.target.value);
+    setValue(ev.target.value);
   }
 
   function handleSubmit(ev) {
@@ -108,14 +143,15 @@ function useStepper({
       previousDefaultValue !== defaultValue &&
       previousDefaultValue === value
     ) {
-      setValueClosestTo(defaultValue);
+      setValue(getValueClosestTo(defaultValue));
     }
   }, [
     enableReinitialize,
     defaultValue,
     previousDefaultValue,
     value,
-    setValueClosestTo,
+    getValueClosestTo,
+    setValue,
   ]);
 
   return {
@@ -129,5 +165,12 @@ function useStepper({
     getDecrementProps,
   };
 }
+
+// useStepper reducer action types
+useStepper.types = {
+  increment: 'increment',
+  decrement: 'decrement',
+  setValue: 'setValue',
+};
 
 export default useStepper;
