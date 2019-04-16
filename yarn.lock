@@ -8708,10 +8708,10 @@ nerf-dart@^1.0.0:
   resolved "https://registry.yarnpkg.com/nerf-dart/-/nerf-dart-1.0.0.tgz#e6dab7febf5ad816ea81cf5c629c5a0ebde72c1a"
   integrity sha1-5tq3/r9a2Bbqgc9cYpxaDr3nLBo=
 
-netlify-lambda@1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/netlify-lambda/-/netlify-lambda-1.4.4.tgz#aea020ae6704af99e9a19b2f0569738dc9c49505"
-  integrity sha512-2d2b5h+24rRloiGgIoOUY90EPjFCTxprm3XOl/6dHg+BIopBQShMUww9ixllXxZFy4SZurOFkE1LwFyk4RRbYQ==
+netlify-lambda@1.4.5:
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/netlify-lambda/-/netlify-lambda-1.4.5.tgz#db0aa18fee02c3aa942cabeadbce77022f6b2dbb"
+  integrity sha512-BjfH3AFpDEkGsi5ONw6fe7WZl/yNECmN07bOM9tHSd52xMy0OEO8rc0URBkolQnK297gqBZvLi4dXZenCO8lFw==
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/plugin-proposal-class-properties" "^7.0.0"
