@@ -7,6 +7,7 @@ const CountStepper = ({
   labelText,
   min,
   max,
+  defaultValue,
   field,
   form: { setFieldValue },
 }) => {
@@ -18,8 +19,8 @@ const CountStepper = ({
   } = useStepper({
     min,
     max,
+    defaultValue,
     enableReinitialize: true,
-    defaultValue: parseInt(field.value, 10) || 1,
     onNewValue: React.useCallback(
       newValue => setFieldValue(field.name, newValue),
       [field.name, setFieldValue],
@@ -94,6 +95,7 @@ CountStepper.propTypes = {
   labelText: PropTypes.string,
   min: PropTypes.number,
   max: PropTypes.number,
+  defaultValue: PropTypes.number,
   field: PropTypes.shape({
     value: PropTypes.any.isRequired,
     name: PropTypes.string.isRequired,
@@ -107,6 +109,7 @@ CountStepper.defaultProps = {
   labelText: '',
   min: 1,
   max: 9,
+  defaultValue: 1,
 };
 
 CountStepper.displayName = 'CountStepper';

@@ -36,6 +36,7 @@ export default class extends Component {
                 labelText="Number of winners:"
                 min={1}
                 max={9}
+                defaultValue={parseInt(formikProps.field.value, 10)}
                 {...formikProps}
               />
             )}

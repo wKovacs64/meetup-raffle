@@ -3,6 +3,7 @@ import { render, fireEvent } from 'react-testing-library';
 import CountStepper from './CountStepper';
 
 const countStepperProps = {
+  defaultValue: 5,
   inputId: 'foo',
   labelText: 'Count:',
   field: {
