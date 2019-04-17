@@ -20,7 +20,10 @@ const CountStepper = ({
     max,
     enableReinitialize: true,
     defaultValue: parseInt(field.value, 10) || 1,
-    onNewValue: newValue => setFieldValue(field.name, newValue),
+    onNewValue: React.useCallback(
+      newValue => setFieldValue(field.name, newValue),
+      [field.name, setFieldValue],
+    ),
   });
 
   return (
