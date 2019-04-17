@@ -38,6 +38,6 @@ Object {
   "getInputProps": [Function],
   "increment": [Function],
   "setValue": [Function],
-  "value": 0,
+  "value": "0",
 }
 `;

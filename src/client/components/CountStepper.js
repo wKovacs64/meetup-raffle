@@ -22,10 +22,14 @@ const CountStepper = ({
     defaultValue,
     enableReinitialize: true,
     onNewValue: React.useCallback(
-      newValue => setFieldValue(field.name, newValue),
+      newValue => {
+        setFieldValue(field.name, String(newValue));
+      },
       [field.name, setFieldValue],
     ),
   });
+
+  const numericValue = parseInt(value, 10);
 
   return (
     <React.Fragment>
@@ -40,9 +44,9 @@ const CountStepper = ({
         <button
           aria-label="decrement"
           type="button"
-          disabled={value <= min}
+          disabled={numericValue <= min}
           className={`bn bg-transparent h3 w3 pointer ${
-            value <= min ? 'silver' : 'near-black'
+            numericValue <= min ? 'silver' : 'near-black'
           }`}
           data-testid="decrement-button"
           {...getDecrementProps()}
@@ -67,9 +71,9 @@ const CountStepper = ({
         <button
           aria-label="increment"
           type="button"
-          disabled={value >= max}
+          disabled={numericValue >= max}
           className={`bn bg-transparent h3 w3 pointer ${
-            value >= max ? 'silver' : 'near-black'
+            numericValue >= max ? 'silver' : 'near-black'
           }`}
           data-testid="increment-button"
           {...getIncrementProps()}

@@ -29,17 +29,20 @@ function useStepper({
       switch (action.type) {
         case useStepper.types.increment: {
           const newValue = getValueClosestTo(state.value + step);
-          onNewValue(newValue);
-          return { value: newValue };
+          if (newValue !== state.value) {
+            return { value: newValue };
+          }
+          return state;
         }
         case useStepper.types.decrement: {
           const newValue = getValueClosestTo(state.value - step);
-          onNewValue(newValue);
-          return { value: newValue };
+          if (newValue !== state.value) {
+            return { value: newValue };
+          }
+          return state;
         }
         case useStepper.types.setValue: {
           if (action.payload !== state.value) {
-            onNewValue(parseFloat(action.payload));
             return { value: action.payload };
           }
 
@@ -50,7 +53,7 @@ function useStepper({
           throw new Error(`Unsupported action type: ${action.type}`);
       }
     },
-    [getValueClosestTo, onNewValue, step],
+    [getValueClosestTo, step],
   );
 
   const [{ value }, dispatch] = React.useReducer(reducer, initialState);
@@ -133,6 +136,14 @@ function useStepper({
     };
   }
 
+  // Notify the caller when the value has been updated to a valid number
+  React.useEffect(() => {
+    const numericValue = parseFloat(value);
+    if (!Number.isNaN(numericValue)) {
+      onNewValue(numericValue);
+    }
+  }, [onNewValue, value]);
+
   // If the `defaultValue` parameter changes and the current value is still the
   // original default value (e.g. the user hasn't changed it), update the value
   // to the new default. This behavior is enabled via the `enableReinitialize`
@@ -155,7 +166,7 @@ function useStepper({
   ]);
 
   return {
-    value,
+    value: String(value),
     setValue: setValueClosestTo,
     increment: handleIncrement,
     decrement: handleDecrement,

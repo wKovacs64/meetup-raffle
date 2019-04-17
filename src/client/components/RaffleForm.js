@@ -1,16 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Collapse from 'react-css-collapse';
 import { Form, Field } from 'formik';
 import CountStepper from './CountStepper';
 
-export default class extends Component {
+export default class extends React.Component {
   static displayName = 'RaffleForm';
+
+  static propTypes = {
+    defaultCount: PropTypes.number,
+  };
+
+  static defaultProps = {
+    defaultCount: 1,
+  };
 
   state = {
     advancedOpen: false,
   };
 
   render() {
+    const { defaultCount } = this.props;
+
     return (
       <Form>
         <div className="mt3 mb4 mv4-ns">
@@ -36,7 +47,7 @@ export default class extends Component {
                 labelText="Number of winners:"
                 min={1}
                 max={9}
-                defaultValue={parseInt(formikProps.field.value, 10)}
+                defaultValue={parseInt(defaultCount, 10)}
                 {...formikProps}
               />
             )}
