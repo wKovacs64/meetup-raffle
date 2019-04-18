@@ -131,7 +131,7 @@ export default class extends Component {
         </div>
       );
     }
-    return <RaffleForm defaultCount={count} />;
+    return <RaffleForm defaultCount={parseInt(count, 10)} />;
   };
 
   render() {
