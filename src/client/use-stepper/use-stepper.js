@@ -42,11 +42,19 @@ function useStepper({
           }
           return state;
         }
+        case useStepper.types.coerce: {
+          const newValue = getValueClosestTo(
+            Number.isNaN(action.payload) ? defaultValue : action.payload,
+          );
+          if (newValue !== state.value) {
+            return { value: newValue };
+          }
+          return state;
+        }
         case useStepper.types.setValue: {
           if (action.payload !== state.value) {
             return { value: action.payload };
           }
-
           return state;
         }
         /* istanbul ignore next: this will never happen */
@@ -54,7 +62,7 @@ function useStepper({
           throw new Error(`Unsupported action type: ${action.type}`);
       }
     },
-    [getValueClosestTo, step],
+    [getValueClosestTo, defaultValue, step],
   );
 
   // Expose our internal/default reducer
@@ -93,8 +101,10 @@ function useStepper({
   }
 
   function handleBlur() {
-    const inputValue = parseFloat(inputRef.current.value);
-    setValueClosestTo(Number.isNaN(inputValue) ? defaultValue : inputValue);
+    dispatch({
+      type: useStepper.types.coerce,
+      payload: parseFloat(inputRef.current.value),
+    });
   }
 
   function handleChange(ev) {
@@ -188,6 +198,7 @@ function useStepper({
 useStepper.types = {
   increment: 'increment',
   decrement: 'decrement',
+  coerce: 'coerce',
   setValue: 'setValue',
 };
 
