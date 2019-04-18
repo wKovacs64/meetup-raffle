@@ -241,6 +241,49 @@ describe('useStepper', () => {
     expect(result.current.value).toBe('-0.75');
   });
 
+  it('accepts a custom reducer', () => {
+    const cents = str => str.split('.').length === 2;
+    const dollars = str => str.split('.')[0];
+    const getPreviousEvenDollar = value => {
+      const str = String(value);
+      return cents(str) ? dollars(str) : dollars(String(value - 1));
+    };
+    const getNextEvenDollar = value => dollars(String(value + 1));
+
+    function dollarReducer(state, action) {
+      switch (action.type) {
+        case useStepper.types.increment: {
+          const newValue = parseInt(getNextEvenDollar(state.value), 10);
+          if (newValue !== state.value) {
+            return { ...state, value: newValue };
+          }
+          return state;
+        }
+        case useStepper.types.decrement: {
+          const newValue = parseInt(getPreviousEvenDollar(state.value), 10);
+          if (newValue !== state.value) {
+            return { ...state, value: newValue };
+          }
+          return state;
+        }
+        default:
+          return useStepper.defaultReducer(state, action);
+      }
+    }
+
+    const { result } = renderHook(() => useStepper({ reducer: dollarReducer }));
+
+    act(() => result.current.setValue('4.25'));
+    expect(result.current.value).toBe('4.25');
+    act(() => result.current.increment());
+    expect(result.current.value).toBe('5');
+
+    act(() => result.current.setValue('0.25'));
+    expect(result.current.value).toBe('0.25');
+    act(() => result.current.decrement());
+    expect(result.current.value).toBe('0');
+  });
+
   describe('enableReinitialize', () => {
     it('true: value is updated to new default if defaultValue changes and value has not been modified', () => {
       const { result, rerender } = renderHook(opts => useStepper(opts), {

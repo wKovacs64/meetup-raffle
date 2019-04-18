@@ -9,8 +9,9 @@ function useStepper({
   step = 1,
   min = -Number.MAX_VALUE,
   max = Number.MAX_VALUE,
-  onNewValue = () => {},
   enableReinitialize = false,
+  onNewValue = () => {},
+  reducer: userReducer,
 } = {}) {
   const previousDefaultValue = usePrevious(defaultValue);
   const inputRef = React.useRef();
@@ -24,7 +25,7 @@ function useStepper({
 
   const initialState = { value: defaultValue };
 
-  const reducer = React.useCallback(
+  const defaultReducer = React.useCallback(
     (state, action) => {
       switch (action.type) {
         case useStepper.types.increment: {
@@ -56,7 +57,13 @@ function useStepper({
     [getValueClosestTo, step],
   );
 
-  const [{ value }, dispatch] = React.useReducer(reducer, initialState);
+  // Expose our internal/default reducer
+  useStepper.defaultReducer = defaultReducer;
+
+  const [{ value }, dispatch] = React.useReducer(
+    userReducer || defaultReducer,
+    initialState,
+  );
 
   const setValue = React.useCallback(newValue => {
     dispatch({
