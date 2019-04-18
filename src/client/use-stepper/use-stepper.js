@@ -135,11 +135,11 @@ function useStepper({
     return {
       ...otherInputProps,
       type: 'text',
+      value: String(value),
       ref: mergeRefs(ref, inputRef),
       onBlur: callAll(onBlur, handleBlur),
       onFocus: callAll(onFocus, handleFocus),
       onChange: callAll(onChange, handleChange),
-      value,
     };
   }
 
