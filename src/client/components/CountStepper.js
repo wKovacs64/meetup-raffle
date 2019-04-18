@@ -11,6 +11,33 @@ const CountStepper = ({
   field,
   form: { setFieldValue },
 }) => {
+  function getValueClosestTo(newValue) {
+    return Math.min(max, Math.max(newValue, min));
+  }
+
+  function countReducer(state, action) {
+    switch (action.type) {
+      case useStepper.types.increment: {
+        return { ...state, value: parseInt(state.value, 10) + 1 };
+      }
+      case useStepper.types.decrement: {
+        return { ...state, value: parseInt(state.value, 10) - 1 };
+      }
+      case useStepper.types.coerce: {
+        const newValue = parseInt(action.payload, 10);
+        if (Number.isNaN(newValue)) {
+          return { ...state, value: defaultValue };
+        }
+        if (newValue !== state.value) {
+          return { ...state, value: getValueClosestTo(newValue) };
+        }
+        return state;
+      }
+      default:
+        return useStepper.defaultReducer(state, action);
+    }
+  }
+
   const {
     getInputProps,
     getIncrementProps,
@@ -27,6 +54,7 @@ const CountStepper = ({
       },
       [field.name, setFieldValue],
     ),
+    reducer: countReducer,
   });
 
   const numericValue = parseFloat(value);
