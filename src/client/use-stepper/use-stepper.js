@@ -133,13 +133,13 @@ function useStepper({
   function getInputProps(inputProps = {}) {
     const { ref, onBlur, onFocus, onChange, ...otherInputProps } = inputProps;
     return {
-      type: 'text',
-      value: String(value),
       ...otherInputProps,
+      type: 'text',
       ref: mergeRefs(ref, inputRef),
       onBlur: callAll(onBlur, handleBlur),
       onFocus: callAll(onFocus, handleFocus),
       onChange: callAll(onChange, handleChange),
+      value,
     };
   }
 
