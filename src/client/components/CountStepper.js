@@ -29,7 +29,7 @@ const CountStepper = ({
     ),
   });
 
-  const numericValue = parseInt(value, 10);
+  const numericValue = parseFloat(value);
 
   return (
     <React.Fragment>
