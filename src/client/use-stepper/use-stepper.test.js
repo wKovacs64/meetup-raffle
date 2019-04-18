@@ -142,6 +142,12 @@ describe('useStepper', () => {
     fireEvent.blur(input);
 
     expect(input.value).toBe(String(min));
+
+    fireEvent.focus(input);
+    fireEvent.change(input, { target: { value: '-' } });
+    fireEvent.blur(input);
+
+    expect(input.value).toBe(String(defaultValue));
   });
 
   it('blurs input on submit', () => {
