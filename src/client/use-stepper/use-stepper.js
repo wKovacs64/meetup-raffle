@@ -110,7 +110,7 @@ function useStepper({
     const { onSubmit, ...otherFormProps } = formProps;
     return {
       ...otherFormProps,
-      onSubmit: callAll(onSubmit, handleSubmit),
+      onSubmit: callAll(handleSubmit, onSubmit),
     };
   }
 
@@ -118,7 +118,7 @@ function useStepper({
     const { onClick, ...otherIncrementProps } = incrementProps;
     return {
       ...otherIncrementProps,
-      onClick: callAll(onClick, handleIncrement),
+      onClick: callAll(handleIncrement, onClick),
     };
   }
 
@@ -126,7 +126,7 @@ function useStepper({
     const { onClick, ...otherDecrementProps } = decrementProps;
     return {
       ...otherDecrementProps,
-      onClick: callAll(onClick, handleDecrement),
+      onClick: callAll(handleDecrement, onClick),
     };
   }
 
@@ -137,9 +137,9 @@ function useStepper({
       type: 'text',
       value: String(value),
       ref: mergeRefs(ref, inputRef),
-      onBlur: callAll(onBlur, handleBlur),
-      onFocus: callAll(onFocus, handleFocus),
-      onChange: callAll(onChange, handleChange),
+      onBlur: callAll(handleBlur, onBlur),
+      onFocus: callAll(handleFocus, onFocus),
+      onChange: callAll(handleChange, onChange),
     };
   }
 
