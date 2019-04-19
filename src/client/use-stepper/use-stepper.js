@@ -16,7 +16,7 @@ function useStepper({
   const previousDefaultValue = usePrevious(defaultValue);
   const inputRef = React.useRef();
 
-  const getValueClosestTo = React.useCallback(
+  const validValueClosestTo = React.useCallback(
     newValue => {
       return Math.min(max, Math.max(newValue, min));
     },
@@ -29,21 +29,21 @@ function useStepper({
     (state, action) => {
       switch (action.type) {
         case useStepper.types.increment: {
-          const newValue = getValueClosestTo(state.value + step);
+          const newValue = validValueClosestTo(state.value + step);
           if (newValue !== state.value) {
             return { value: newValue };
           }
           return state;
         }
         case useStepper.types.decrement: {
-          const newValue = getValueClosestTo(state.value - step);
+          const newValue = validValueClosestTo(state.value - step);
           if (newValue !== state.value) {
             return { value: newValue };
           }
           return state;
         }
         case useStepper.types.coerce: {
-          const newValue = getValueClosestTo(
+          const newValue = validValueClosestTo(
             Number.isNaN(action.payload) ? defaultValue : action.payload,
           );
           if (newValue !== state.value) {
@@ -62,7 +62,7 @@ function useStepper({
           throw new Error(`Unsupported action type: ${action.type}`);
       }
     },
-    [getValueClosestTo, defaultValue, step],
+    [validValueClosestTo, defaultValue, step],
   );
 
   // Expose our internal/default reducer
@@ -82,9 +82,9 @@ function useStepper({
 
   const setValueClosestTo = React.useCallback(
     newValue => {
-      setValue(getValueClosestTo(newValue));
+      setValue(validValueClosestTo(newValue));
     },
-    [getValueClosestTo, setValue],
+    [validValueClosestTo, setValue],
   );
 
   function handleIncrement() {
@@ -171,14 +171,14 @@ function useStepper({
       previousDefaultValue !== defaultValue &&
       previousDefaultValue === value
     ) {
-      setValue(getValueClosestTo(defaultValue));
+      setValue(validValueClosestTo(defaultValue));
     }
   }, [
     enableReinitialize,
     defaultValue,
     previousDefaultValue,
     value,
-    getValueClosestTo,
+    validValueClosestTo,
     setValue,
   ]);
 

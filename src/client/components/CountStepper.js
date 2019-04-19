@@ -11,7 +11,7 @@ const CountStepper = ({
   field,
   form: { setFieldValue },
 }) => {
-  function getValueClosestTo(newValue) {
+  function validValueClosestTo(newValue) {
     return Math.min(max, Math.max(newValue, min));
   }
 
@@ -29,7 +29,7 @@ const CountStepper = ({
           return { ...state, value: defaultValue };
         }
         if (newValue !== state.value) {
-          return { ...state, value: getValueClosestTo(newValue) };
+          return { ...state, value: validValueClosestTo(newValue) };
         }
         return state;
       }
