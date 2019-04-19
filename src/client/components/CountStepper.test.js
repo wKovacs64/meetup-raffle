@@ -49,4 +49,39 @@ describe('CountStepper', () => {
       parseInt(getByLabelText(countStepperProps.labelText).value, 10),
     ).toBe(initialValue - 1);
   });
+
+  it('accepts manual user input', () => {
+    const { getByLabelText } = render(<CountStepper {...countStepperProps} />);
+    const input = getByLabelText(countStepperProps.labelText);
+    const initialValue = parseInt(input.value, 10);
+    expect(initialValue).not.toEqual(3);
+
+    input.focus();
+    fireEvent.change(input, { target: { value: '3' } });
+    input.blur();
+
+    expect(parseInt(input.value, 10)).toBe(3);
+  });
+
+  it('coerces invalid input to the default value', () => {
+    const { getByLabelText } = render(<CountStepper {...countStepperProps} />);
+    const input = getByLabelText(countStepperProps.labelText);
+
+    input.focus();
+    fireEvent.change(input, { target: { value: '-' } });
+    input.blur();
+
+    expect(parseInt(input.value, 10)).toBe(countStepperProps.defaultValue);
+  });
+
+  it('maintains current value on blur when no changes were made', () => {
+    const { getByLabelText } = render(<CountStepper {...countStepperProps} />);
+    const input = getByLabelText(countStepperProps.labelText);
+    const initialValue = input.value;
+
+    input.focus();
+    input.blur();
+
+    expect(input.value).toBe(initialValue);
+  });
 });
