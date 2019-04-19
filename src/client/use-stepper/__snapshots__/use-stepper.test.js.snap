@@ -25,7 +25,7 @@ Object {
   "onFocus": [Function],
   "ref": [Function],
   "type": "text",
-  "value": 0,
+  "value": "0",
 }
 `;
 
@@ -38,6 +38,6 @@ Object {
   "getInputProps": [Function],
   "increment": [Function],
   "setValue": [Function],
-  "value": 0,
+  "value": "0",
 }
 `;

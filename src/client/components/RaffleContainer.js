@@ -19,7 +19,7 @@ export default class extends Component {
 
   initialFormValues = {
     meetup: '',
-    count: 1,
+    count: '1',
     specificEventId: '',
     meetupApiKey: '',
   };
@@ -30,8 +30,12 @@ export default class extends Component {
   };
 
   componentDidMount() {
+    this.restoreSettings();
+  }
+
+  restoreSettings = () => {
     const meetup = this.restore('meetup');
-    const count = parseInt(this.restore('count'), 10);
+    const count = this.restore('count');
     const meetupApiKey = this.restore('meetupApiKey');
 
     this.setState({
@@ -39,9 +43,10 @@ export default class extends Component {
       ...(count && { count }),
       ...(meetupApiKey && { meetupApiKey }),
     });
-  }
+  };
 
   resetResults = () => {
+    this.restoreSettings();
     this.setState(this.initialResults);
   };
 
@@ -97,6 +102,7 @@ export default class extends Component {
   };
 
   renderFormik = ({ handleSubmit, isSubmitting }) => {
+    const { count } = this.state;
     if (isSubmitting) {
       return (
         <div className="flex flex-grow-1 flex-shrink-0 justify-center items-center items-start-ns mt3 mt4-ns">
@@ -125,7 +131,7 @@ export default class extends Component {
         </div>
       );
     }
-    return <RaffleForm />;
+    return <RaffleForm defaultCount={parseInt(count, 10)} />;
   };
 
   render() {

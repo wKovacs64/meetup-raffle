@@ -11,7 +11,7 @@ const mockWinners = Array.from(Array(2), (_, idx) => ({
 
 const params = {
   meetup: 'foo',
-  count: 2,
+  count: '2',
   specificEventId: '',
   meetupApiKey: '',
 };
@@ -101,8 +101,7 @@ describe('RaffleContainer', () => {
 
     await wait(() => {
       const countInStorage = localStorage.getItem('count');
-      expect(countInStorage).toBeDefined();
-      expect(parseFloat(countInStorage)).toBe(params.count);
+      expect(countInStorage).toBe(params.count);
       expect(mockAxios.get).toHaveBeenCalledWith(expect.any(String), {
         params,
       });

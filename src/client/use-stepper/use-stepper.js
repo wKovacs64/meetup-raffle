@@ -9,28 +9,90 @@ function useStepper({
   step = 1,
   min = -Number.MAX_VALUE,
   max = Number.MAX_VALUE,
-  onNewValue = () => {},
   enableReinitialize = false,
+  onNewValue = () => {},
+  reducer: userReducer,
 } = {}) {
-  const [value, setValue] = React.useState(defaultValue);
   const previousDefaultValue = usePrevious(defaultValue);
   const inputRef = React.useRef();
 
-  const setValueClosestTo = React.useCallback(
+  const validValueClosestTo = React.useCallback(
     newValue => {
-      const adjustedValue = Math.min(max, Math.max(newValue, min));
-      setValue(adjustedValue);
-      onNewValue(adjustedValue);
+      return Math.min(max, Math.max(newValue, min));
     },
-    [max, min, onNewValue],
+    [max, min],
   );
 
-  function increment() {
-    setValueClosestTo(value + step);
+  const initialState = { value: defaultValue };
+
+  const defaultReducer = React.useCallback(
+    (state, action) => {
+      switch (action.type) {
+        case useStepper.types.increment: {
+          const newValue = validValueClosestTo(state.value + step);
+          if (newValue !== state.value) {
+            return { value: newValue };
+          }
+          return state;
+        }
+        case useStepper.types.decrement: {
+          const newValue = validValueClosestTo(state.value - step);
+          if (newValue !== state.value) {
+            return { value: newValue };
+          }
+          return state;
+        }
+        case useStepper.types.coerce: {
+          const newValue = validValueClosestTo(
+            Number.isNaN(action.payload) ? defaultValue : action.payload,
+          );
+          if (newValue !== state.value) {
+            return { value: newValue };
+          }
+          return state;
+        }
+        case useStepper.types.setValue: {
+          if (action.payload !== state.value) {
+            return { value: action.payload };
+          }
+          return state;
+        }
+        /* istanbul ignore next: this will never happen */
+        default:
+          throw new Error(`Unsupported action type: ${action.type}`);
+      }
+    },
+    [validValueClosestTo, defaultValue, step],
+  );
+
+  // Expose our internal/default reducer
+  useStepper.defaultReducer = defaultReducer;
+
+  const [{ value }, dispatch] = React.useReducer(
+    userReducer || defaultReducer,
+    initialState,
+  );
+
+  const setValue = React.useCallback(newValue => {
+    dispatch({
+      type: useStepper.types.setValue,
+      payload: newValue,
+    });
+  }, []);
+
+  const setValueClosestTo = React.useCallback(
+    newValue => {
+      setValue(validValueClosestTo(newValue));
+    },
+    [validValueClosestTo, setValue],
+  );
+
+  function handleIncrement() {
+    dispatch({ type: useStepper.types.increment });
   }
 
-  function decrement() {
-    setValueClosestTo(value - step);
+  function handleDecrement() {
+    dispatch({ type: useStepper.types.decrement });
   }
 
   function handleFocus() {
@@ -39,13 +101,14 @@ function useStepper({
   }
 
   function handleBlur() {
-    const inputValue = parseFloat(inputRef.current.value);
-    setValueClosestTo(Number.isNaN(inputValue) ? defaultValue : inputValue);
+    dispatch({
+      type: useStepper.types.coerce,
+      payload: parseFloat(inputRef.current.value),
+    });
   }
 
   function handleChange(ev) {
     setValue(ev.target.value);
-    onNewValue(parseFloat(ev.target.value));
   }
 
   function handleSubmit(ev) {
@@ -57,7 +120,7 @@ function useStepper({
     const { onSubmit, ...otherFormProps } = formProps;
     return {
       ...otherFormProps,
-      onSubmit: callAll(onSubmit, handleSubmit),
+      onSubmit: callAll(handleSubmit, onSubmit),
     };
   }
 
@@ -65,7 +128,7 @@ function useStepper({
     const { onClick, ...otherIncrementProps } = incrementProps;
     return {
       ...otherIncrementProps,
-      onClick: callAll(onClick, increment),
+      onClick: callAll(handleIncrement, onClick),
     };
   }
 
@@ -73,7 +136,7 @@ function useStepper({
     const { onClick, ...otherDecrementProps } = decrementProps;
     return {
       ...otherDecrementProps,
-      onClick: callAll(onClick, decrement),
+      onClick: callAll(handleDecrement, onClick),
     };
   }
 
@@ -82,13 +145,21 @@ function useStepper({
     return {
       ...otherInputProps,
       type: 'text',
+      value: String(value),
       ref: mergeRefs(ref, inputRef),
-      onBlur: callAll(onBlur, handleBlur),
-      onFocus: callAll(onFocus, handleFocus),
-      onChange: callAll(onChange, handleChange),
-      value,
+      onBlur: callAll(handleBlur, onBlur),
+      onFocus: callAll(handleFocus, onFocus),
+      onChange: callAll(handleChange, onChange),
     };
   }
+
+  // Notify the caller when the value has been updated to a valid number
+  React.useEffect(() => {
+    const numericValue = parseFloat(value);
+    if (!Number.isNaN(numericValue)) {
+      onNewValue(numericValue);
+    }
+  }, [onNewValue, value]);
 
   // If the `defaultValue` parameter changes and the current value is still the
   // original default value (e.g. the user hasn't changed it), update the value
@@ -100,26 +171,35 @@ function useStepper({
       previousDefaultValue !== defaultValue &&
       previousDefaultValue === value
     ) {
-      setValueClosestTo(defaultValue);
+      setValue(validValueClosestTo(defaultValue));
     }
   }, [
     enableReinitialize,
     defaultValue,
     previousDefaultValue,
     value,
-    setValueClosestTo,
+    validValueClosestTo,
+    setValue,
   ]);
 
   return {
-    value,
+    value: String(value),
     setValue: setValueClosestTo,
-    increment,
-    decrement,
+    increment: handleIncrement,
+    decrement: handleDecrement,
     getFormProps,
     getInputProps,
     getIncrementProps,
     getDecrementProps,
   };
 }
+
+// useStepper reducer action types
+useStepper.types = {
+  increment: 'increment',
+  decrement: 'decrement',
+  coerce: 'coerce',
+  setValue: 'setValue',
+};
 
 export default useStepper;

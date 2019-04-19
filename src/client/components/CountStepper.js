@@ -7,9 +7,37 @@ const CountStepper = ({
   labelText,
   min,
   max,
+  defaultValue,
   field,
   form: { setFieldValue },
 }) => {
+  function validValueClosestTo(newValue) {
+    return Math.min(max, Math.max(newValue, min));
+  }
+
+  function countReducer(state, action) {
+    switch (action.type) {
+      case useStepper.types.increment: {
+        return { ...state, value: parseInt(state.value, 10) + 1 };
+      }
+      case useStepper.types.decrement: {
+        return { ...state, value: parseInt(state.value, 10) - 1 };
+      }
+      case useStepper.types.coerce: {
+        const newValue = parseInt(action.payload, 10);
+        if (Number.isNaN(newValue)) {
+          return { ...state, value: defaultValue };
+        }
+        if (newValue !== state.value) {
+          return { ...state, value: validValueClosestTo(newValue) };
+        }
+        return state;
+      }
+      default:
+        return useStepper.defaultReducer(state, action);
+    }
+  }
+
   const {
     getInputProps,
     getIncrementProps,
@@ -18,10 +46,18 @@ const CountStepper = ({
   } = useStepper({
     min,
     max,
+    defaultValue,
     enableReinitialize: true,
-    defaultValue: parseInt(field.value, 10) || 1,
-    onNewValue: newValue => setFieldValue(field.name, newValue),
+    onNewValue: React.useCallback(
+      newValue => {
+        setFieldValue(field.name, String(newValue));
+      },
+      [field.name, setFieldValue],
+    ),
+    reducer: countReducer,
   });
+
+  const numericValue = parseFloat(value);
 
   return (
     <React.Fragment>
@@ -36,9 +72,9 @@ const CountStepper = ({
         <button
           aria-label="decrement"
           type="button"
-          disabled={value <= min}
+          disabled={numericValue <= min}
           className={`bn bg-transparent h3 w3 pointer ${
-            value <= min ? 'silver' : 'near-black'
+            numericValue <= min ? 'silver' : 'near-black'
           }`}
           data-testid="decrement-button"
           {...getDecrementProps()}
@@ -63,9 +99,9 @@ const CountStepper = ({
         <button
           aria-label="increment"
           type="button"
-          disabled={value >= max}
+          disabled={numericValue >= max}
           className={`bn bg-transparent h3 w3 pointer ${
-            value >= max ? 'silver' : 'near-black'
+            numericValue >= max ? 'silver' : 'near-black'
           }`}
           data-testid="increment-button"
           {...getIncrementProps()}
@@ -91,6 +127,7 @@ CountStepper.propTypes = {
   labelText: PropTypes.string,
   min: PropTypes.number,
   max: PropTypes.number,
+  defaultValue: PropTypes.number,
   field: PropTypes.shape({
     value: PropTypes.any.isRequired,
     name: PropTypes.string.isRequired,
@@ -104,6 +141,7 @@ CountStepper.defaultProps = {
   labelText: '',
   min: 1,
   max: 9,
+  defaultValue: 1,
 };
 
 CountStepper.displayName = 'CountStepper';
