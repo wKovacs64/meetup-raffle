@@ -258,14 +258,14 @@ describe('useStepper', () => {
 
     function dollarReducer(state, action) {
       switch (action.type) {
-        case useStepper.types.increment: {
+        case useStepper.actionTypes.increment: {
           const newValue = parseInt(getNextEvenDollar(state.value), 10);
           if (newValue !== state.value) {
             return { ...state, value: newValue };
           }
           return state;
         }
-        case useStepper.types.decrement: {
+        case useStepper.actionTypes.decrement: {
           const newValue = parseInt(getPreviousEvenDollar(state.value), 10);
           if (newValue !== state.value) {
             return { ...state, value: newValue };

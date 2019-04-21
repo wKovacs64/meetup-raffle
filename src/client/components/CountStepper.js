@@ -17,13 +17,13 @@ const CountStepper = ({
 
   function countReducer(state, action) {
     switch (action.type) {
-      case useStepper.types.increment: {
+      case useStepper.actionTypes.increment: {
         return { ...state, value: parseInt(state.value, 10) + 1 };
       }
-      case useStepper.types.decrement: {
+      case useStepper.actionTypes.decrement: {
         return { ...state, value: parseInt(state.value, 10) - 1 };
       }
-      case useStepper.types.coerce: {
+      case useStepper.actionTypes.coerce: {
         const newValue = parseInt(action.payload, 10);
         if (Number.isNaN(newValue)) {
           return { ...state, value: defaultValue };

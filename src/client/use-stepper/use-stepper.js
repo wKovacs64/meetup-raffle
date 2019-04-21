@@ -28,21 +28,21 @@ function useStepper({
   const defaultReducer = React.useCallback(
     (state, action) => {
       switch (action.type) {
-        case useStepper.types.increment: {
+        case useStepper.actionTypes.increment: {
           const newValue = validValueClosestTo(state.value + step);
           if (newValue !== state.value) {
             return { value: newValue };
           }
           return state;
         }
-        case useStepper.types.decrement: {
+        case useStepper.actionTypes.decrement: {
           const newValue = validValueClosestTo(state.value - step);
           if (newValue !== state.value) {
             return { value: newValue };
           }
           return state;
         }
-        case useStepper.types.coerce: {
+        case useStepper.actionTypes.coerce: {
           const newValue = validValueClosestTo(
             Number.isNaN(action.payload) ? defaultValue : action.payload,
           );
@@ -51,7 +51,7 @@ function useStepper({
           }
           return state;
         }
-        case useStepper.types.setValue: {
+        case useStepper.actionTypes.setValue: {
           if (action.payload !== state.value) {
             return { value: action.payload };
           }
@@ -75,7 +75,7 @@ function useStepper({
 
   const setValue = React.useCallback(newValue => {
     dispatch({
-      type: useStepper.types.setValue,
+      type: useStepper.actionTypes.setValue,
       payload: newValue,
     });
   }, []);
@@ -88,11 +88,11 @@ function useStepper({
   );
 
   function handleIncrement() {
-    dispatch({ type: useStepper.types.increment });
+    dispatch({ type: useStepper.actionTypes.increment });
   }
 
   function handleDecrement() {
-    dispatch({ type: useStepper.types.decrement });
+    dispatch({ type: useStepper.actionTypes.decrement });
   }
 
   function handleFocus() {
@@ -102,7 +102,7 @@ function useStepper({
 
   function handleBlur() {
     dispatch({
-      type: useStepper.types.coerce,
+      type: useStepper.actionTypes.coerce,
       payload: parseFloat(inputRef.current.value),
     });
   }
@@ -195,7 +195,7 @@ function useStepper({
 }
 
 // useStepper reducer action types
-useStepper.types = {
+useStepper.actionTypes = {
   increment: 'increment',
   decrement: 'decrement',
   coerce: 'coerce',
