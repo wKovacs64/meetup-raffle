@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import useStepper from '../use-stepper';
+import useStepper from 'use-stepper';
 
 const CountStepper = ({
   inputId,
@@ -12,25 +12,39 @@ const CountStepper = ({
   form: { setFieldValue },
 }) => {
   function validValueClosestTo(newValue) {
-    return Math.min(max, Math.max(newValue, min));
+    return String(Math.min(max, Math.max(newValue, min)));
   }
 
   function countReducer(state, action) {
+    const integerValue = parseInt(state.value, 10);
     switch (action.type) {
       case useStepper.actionTypes.increment: {
-        return { ...state, value: parseInt(state.value, 10) + 1 };
+        const newValue = validValueClosestTo(integerValue + 1);
+        /* istanbul ignore else: just an optimization to avoid re-renders */
+        if (newValue !== state.value) {
+          return { value: newValue };
+        }
+        /* istanbul ignore next: not worth testing */
+        return state;
       }
       case useStepper.actionTypes.decrement: {
-        return { ...state, value: parseInt(state.value, 10) - 1 };
+        const newValue = validValueClosestTo(integerValue - 1);
+        /* istanbul ignore else: just an optimization to avoid re-renders */
+        if (newValue !== state.value) {
+          return { value: newValue };
+        }
+        /* istanbul ignore next: not worth testing */
+        return state;
       }
       case useStepper.actionTypes.coerce: {
-        const newValue = parseInt(action.payload, 10);
-        if (Number.isNaN(newValue)) {
-          return { ...state, value: defaultValue };
+        if (Number.isNaN(integerValue)) {
+          return { value: String(defaultValue) };
         }
-        if (newValue !== state.value) {
-          return { ...state, value: validValueClosestTo(newValue) };
+        /* istanbul ignore else: just an optimization to avoid re-renders */
+        if (integerValue !== state.value) {
+          return { value: validValueClosestTo(integerValue) };
         }
+        /* istanbul ignore next: not worth testing */
         return state;
       }
       default:
@@ -48,14 +62,12 @@ const CountStepper = ({
     max,
     defaultValue,
     enableReinitialize: true,
-    onNewValue: React.useCallback(
-      newValue => {
-        setFieldValue(field.name, String(newValue));
-      },
-      [field.name, setFieldValue],
-    ),
-    reducer: countReducer,
+    stateReducer: countReducer,
   });
+
+  React.useEffect(() => {
+    setFieldValue(field.name, value);
+  }, [field.name, setFieldValue, value]);
 
   const numericValue = parseFloat(value);
 
