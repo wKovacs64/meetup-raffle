@@ -64,7 +64,7 @@
     "react-css-collapse": "3.6.0",
     "react-dom": "16.8.6",
     "react-github-corner": "2.3.0",
-    "react-scripts": "3.0.0",
+    "react-scripts": "3.0.1",
     "react-spinners": "0.5.4",
     "tachyons": "4.11.1",
     "use-stepper": "2.0.0"
