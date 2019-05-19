@@ -55,7 +55,7 @@
     "@emotion/core": "10.0.10",
     "axios": "0.18.0",
     "core-js-pure": "3.0.1",
-    "formik": "1.5.6",
+    "formik": "1.5.7",
     "is-number": "7.0.0",
     "lodash": "4.17.11",
     "meetup-randomizer": "3.1.0",
