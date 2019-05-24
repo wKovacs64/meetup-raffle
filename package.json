@@ -86,7 +86,7 @@
     "eslint-plugin-react-hooks": "1.6.0",
     "http-proxy-middleware": "0.19.1",
     "husky": "2.3.0",
-    "jest-dom": "3.3.0",
+    "jest-dom": "3.4.0",
     "jest-emotion": "10.0.11",
     "lint-staged": "8.1.7",
     "netlify-lambda": "1.4.13",
