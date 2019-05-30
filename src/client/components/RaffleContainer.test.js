@@ -1,5 +1,10 @@
 import React from 'react';
-import { render, fireEvent, waitForElement, wait } from 'react-testing-library';
+import {
+  render,
+  fireEvent,
+  waitForElement,
+  wait,
+} from '@testing-library/react';
 import mockAxios from 'axios';
 import RaffleContainer from './RaffleContainer';
 
