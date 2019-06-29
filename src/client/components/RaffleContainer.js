@@ -1,98 +1,80 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
-import entries from 'core-js-pure/es/object/entries';
 import get from 'lodash/get';
 import { RingLoader } from 'react-spinners';
 import { Formik } from 'formik';
+import { restore, preserve } from '../persistence';
 import ErrorMessage from './ErrorMessage';
 import RaffleForm from './RaffleForm';
 import ResetButtons from './ResetButtons';
 import Results from './Results';
 
-export default class extends Component {
-  static displayName = 'RaffleContainer';
+const initialFormValues = {
+  meetup: '',
+  count: '1',
+};
 
-  initialResults = {
-    error: '',
-    winners: [],
-  };
+const initialResults = {
+  error: '',
+  winners: [],
+};
 
-  initialFormValues = {
-    meetup: '',
-    count: '1',
-  };
+const RaffleContainer = () => {
+  const [count, setCount] = React.useState(initialFormValues.count);
+  const [meetup, setMeetup] = React.useState(initialFormValues.meetup);
+  const [error, setError] = React.useState(initialResults.error);
+  const [winners, setWinners] = React.useState(initialResults.winners);
 
-  state = {
-    ...this.initialResults,
-    ...this.initialFormValues,
-  };
-
-  componentDidMount() {
-    this.restoreSettings();
-  }
-
-  restoreSettings = () => {
-    const meetup = this.restore('meetup');
-    const count = this.restore('count');
-
-    this.setState({
-      ...(meetup && { meetup }),
-      ...(count && { count }),
-    });
-  };
-
-  resetResults = () => {
-    this.restoreSettings();
-    this.setState(this.initialResults);
-  };
-
-  restore = key => {
-    if (global.window.localStorage) {
-      return global.window.localStorage.getItem(key);
+  const restoreSettings = () => {
+    const storedMeetup = restore('meetup');
+    if (storedMeetup) {
+      setMeetup(storedMeetup);
     }
-    return undefined;
-  };
 
-  preserve = data => {
-    if (global.window.localStorage) {
-      entries(data).forEach(([key, value]) => {
-        global.window.localStorage.setItem(key, value);
-      });
+    const storedCount = restore('count');
+    if (storedCount) {
+      setCount(storedCount);
     }
   };
 
-  handleApiError = err => {
-    const error = get(err, 'response.data.error.message', err.message);
-    this.setState({ error });
+  React.useEffect(() => {
+    restoreSettings();
+  }, []);
+
+  const reset = () => {
+    restoreSettings();
+    setError(initialResults.error);
+    setWinners(initialResults.winners);
   };
 
-  handleFormikSubmit = async ({ meetup, count }, { setSubmitting }) => {
+  const handleApiError = err => {
+    setError(get(err, 'response.data.error.message', err.message));
+  };
+
+  const handleFormikSubmit = async (
+    { meetup: meetupValue, count: countValue },
+    { setSubmitting },
+  ) => {
     setSubmitting(true);
-    this.preserve({
-      meetup,
-      count,
-    });
+    preserve({ meetup: meetupValue, count: countValue });
     try {
       const response = await axios.get('/.netlify/functions/draw', {
-        params: {
-          meetup,
-          count,
-        },
+        params: { meetup: meetupValue, count: countValue },
       });
-      const winners = get(response, 'data.winners');
-      if (winners) {
-        this.setState({ winners });
+      const winnersData = get(response, 'data.winners');
+      if (winnersData) {
+        setWinners(winnersData);
       } else {
         throw new Error('Malformed response received.');
       }
     } catch (err) {
-      this.handleApiError(err);
+      handleApiError(err);
     }
     setSubmitting(false);
   };
 
-  renderFormik = ({ handleSubmit, isSubmitting }) => {
-    const { count } = this.state;
+  // eslint-disable-next-line react/prop-types
+  const renderFormik = ({ handleSubmit, isSubmitting }) => {
     if (isSubmitting) {
       return (
         <div className="flex flex-grow-1 flex-shrink-0 justify-center items-center items-start-ns mt3 mt4-ns">
@@ -102,41 +84,37 @@ export default class extends Component {
         </div>
       );
     }
-    if (this.state.error) {
+    if (error) {
       return (
         <div className="mt3 mt4-ns">
-          <ErrorMessage
-            problemText={this.state.error}
-            data-testid="error-message"
-          />
-          <ResetButtons onReset={this.resetResults} onSubmit={handleSubmit} />
+          <ErrorMessage problemText={error} data-testid="error-message" />
+          <ResetButtons onReset={reset} onSubmit={handleSubmit} />
         </div>
       );
     }
-    if (this.state.winners.length) {
+    if (winners.length) {
       return (
         <div className="mt3 mt4-ns">
-          <Results winners={this.state.winners} data-testid="results" />
-          <ResetButtons onReset={this.resetResults} onSubmit={handleSubmit} />
+          <Results winners={winners} data-testid="results" />
+          <ResetButtons onReset={reset} onSubmit={handleSubmit} />
         </div>
       );
     }
     return <RaffleForm defaultCount={parseInt(count, 10)} />;
   };
 
-  render() {
-    return (
-      <main className="flex flex-column flex-grow-1 flex-shrink-0 ph3 w-100 mw6-m mw7-l self-center-ns">
-        <Formik
-          enableReinitialize
-          initialValues={{
-            meetup: this.state.meetup,
-            count: this.state.count,
-          }}
-          onSubmit={this.handleFormikSubmit}
-          render={this.renderFormik}
-        />
-      </main>
-    );
-  }
-}
+  return (
+    <main className="flex flex-column flex-grow-1 flex-shrink-0 ph3 w-100 mw6-m mw7-l self-center-ns">
+      <Formik
+        enableReinitialize
+        initialValues={{ meetup, count }}
+        onSubmit={handleFormikSubmit}
+        render={renderFormik}
+      />
+    </main>
+  );
+};
+
+RaffleContainer.displayName = 'RaffleContainer';
+
+export default RaffleContainer;

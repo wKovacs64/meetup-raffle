@@ -53,30 +53,6 @@ describe('RaffleContainer', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it("doesn't crash if localStorage is unavailable", () => {
-    // Remove localStorage temporarily
-    delete global.window.localStorage;
-    expect(global.window.localStorage).toBeUndefined();
-    // Prevent React from logging errors thrown in RaffleContainer
-    jest.spyOn(console, 'error');
-    global.console.error.mockImplementation(() => {});
-
-    const instance = React.createRef();
-
-    expect(() => {
-      // test localStorage.getItem
-      render(<RaffleContainer ref={instance} />);
-      // test localStorage.setItem
-      instance.current.preserve({ key: 'value' });
-    }).not.toThrow();
-
-    // Restore React error logging
-    global.console.error.mockRestore();
-    // Restore localStorage
-    global.window.localStorage = localStorage;
-    expect(global.window.localStorage).toBeDefined();
-  });
-
   it('restores data from localStorage (if available)', () => {
     const firstRender = render(<RaffleContainer />);
     expect(
