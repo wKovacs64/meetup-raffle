@@ -19,11 +19,12 @@ const RaffleForm = ({ defaultCount }) => (
         required
       />
     </div>
-    <div className="mv4">
+    <div className="flex flex-column flex-row-ns items-end-ns justify-around-ns mv4">
       <Field
         name="count"
         render={formikProps => (
           <CountStepper
+            className="self-center"
             inputId="count"
             labelText="Number of winners:"
             min={1}
@@ -33,14 +34,14 @@ const RaffleForm = ({ defaultCount }) => (
           />
         )}
       />
-    </div>
-    <div className="mv4">
-      <button
-        className="db center-ns w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-white hover-bg-moon-gray pointer ph5 pv3 shadow-5"
-        type="submit"
-      >
-        Draw
-      </button>
+      <div className="mv4 mv0-ns">
+        <button
+          className="db center-ns w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-white hover-bg-moon-gray pointer ph5 pv3 shadow-5"
+          type="submit"
+        >
+          Draw
+        </button>
+      </div>
     </div>
   </Form>
 );
