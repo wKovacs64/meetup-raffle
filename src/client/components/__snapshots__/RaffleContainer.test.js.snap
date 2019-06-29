@@ -25,79 +25,83 @@ exports[`RaffleContainer renders 1`] = `
       />
     </div>
     <div
-      class="mv4"
+      class="flex flex-column flex-row-ns items-end-ns justify-around-ns mv4"
     >
       <div
-        class="mb3"
+        class="self-center"
       >
-        <label
-          class="f4 f3-ns lh-copy dark-blue"
-          for="count"
+        <div
+          class="mb3"
         >
-          Number of winners:
-        </label>
+          <label
+            class="f4 f3-ns lh-copy dark-blue"
+            for="count"
+          >
+            Number of winners:
+          </label>
+        </div>
+        <span
+          class="flex flex-row"
+        >
+          <button
+            aria-label="decrement"
+            class="bn bg-transparent h3 w3 pointer silver"
+            data-testid="decrement-button"
+            disabled=""
+            type="button"
+          >
+            <svg
+              fill="currentColor"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 40 40"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g>
+                <path
+                  d="m22.5 17.5v-5h-5v5h-5l7.5 10 7.5-10h-5z"
+                />
+              </g>
+            </svg>
+          </button>
+          <input
+            class="tc near-black w3 f3 pv1"
+            id="count"
+            name="count"
+            pattern="[0-9]*"
+            type="text"
+            value="1"
+          />
+          <button
+            aria-label="increment"
+            class="bn bg-transparent h3 w3 pointer near-black"
+            data-testid="increment-button"
+            type="button"
+          >
+            <svg
+              fill="currentColor"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 40 40"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g>
+                <path
+                  d="m20 12.5l-7.5 10h5v5h5v-5h5l-7.5-10z"
+                />
+              </g>
+            </svg>
+          </button>
+        </span>
       </div>
-      <span
-        class="flex flex-row"
+      <div
+        class="mv4 mv0-ns"
       >
         <button
-          aria-label="decrement"
-          class="bn bg-transparent h3 w3 pointer silver"
-          data-testid="decrement-button"
-          disabled=""
-          type="button"
+          class="db center-ns w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-white hover-bg-moon-gray pointer ph5 pv3 shadow-5"
+          type="submit"
         >
-          <svg
-            fill="currentColor"
-            preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 40 40"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g>
-              <path
-                d="m22.5 17.5v-5h-5v5h-5l7.5 10 7.5-10h-5z"
-              />
-            </g>
-          </svg>
+          Draw
         </button>
-        <input
-          class="tc near-black w3 f3 pv1"
-          id="count"
-          name="count"
-          pattern="[0-9]*"
-          type="text"
-          value="1"
-        />
-        <button
-          aria-label="increment"
-          class="bn bg-transparent h3 w3 pointer near-black"
-          data-testid="increment-button"
-          type="button"
-        >
-          <svg
-            fill="currentColor"
-            preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 40 40"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g>
-              <path
-                d="m20 12.5l-7.5 10h5v5h5v-5h5l-7.5-10z"
-              />
-            </g>
-          </svg>
-        </button>
-      </span>
-    </div>
-    <div
-      class="mv4"
-    >
-      <button
-        class="db center-ns w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-white hover-bg-moon-gray pointer ph5 pv3 shadow-5"
-        type="submit"
-      >
-        Draw
-      </button>
+      </div>
     </div>
   </form>
 </main>

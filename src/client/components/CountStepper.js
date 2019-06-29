@@ -10,6 +10,7 @@ const CountStepper = ({
   defaultValue,
   field,
   form: { setFieldValue },
+  ...otherProps
 }) => {
   function validValueClosestTo(newValue) {
     return String(Math.min(max, Math.max(newValue, min)));
@@ -72,7 +73,7 @@ const CountStepper = ({
   const numericValue = parseFloat(value);
 
   return (
-    <React.Fragment>
+    <div {...otherProps}>
       {labelText && (
         <div className="mb3">
           <label className="f4 f3-ns lh-copy dark-blue" htmlFor={inputId}>
@@ -130,7 +131,7 @@ const CountStepper = ({
           </svg>
         </button>
       </span>
-    </React.Fragment>
+    </div>
   );
 };
 
