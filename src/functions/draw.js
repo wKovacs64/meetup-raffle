@@ -3,12 +3,11 @@ import meetupRandomizer from 'meetup-randomizer';
 import {
   getParamsFromRequest,
   getIdFromEvent,
-  getRsvpsUrl,
   parseEventsResponse,
   validateStatus,
 } from './helpers';
 
-const handler = async (request, context) => {
+const handler = async (request /* , context */) => {
   const headers =
     process.env.NODE_ENV === 'development'
       ? { 'Access-Control-Allow-Origin': '*' }
@@ -17,12 +16,9 @@ const handler = async (request, context) => {
   let meetup;
   let count;
   let specificEventId;
-  let meetupApiKey;
 
   try {
-    ({ meetup, count, specificEventId, meetupApiKey } = getParamsFromRequest(
-      request,
-    ));
+    ({ meetup, count, specificEventId } = getParamsFromRequest(request));
   } catch (err) {
     return {
       headers,
@@ -42,10 +38,6 @@ const handler = async (request, context) => {
 
     const response = await axios.get(eventUrl, { validateStatus });
     const eventId = getIdFromEvent(parseEventsResponse(response));
-
-    meetupRandomizer.setCustomApiUrl(
-      getRsvpsUrl(baseUrl, eventId, meetupApiKey),
-    );
     const winners = await meetupRandomizer.run(meetup, eventId, count);
 
     if (Array.isArray(winners) && winners.length) {

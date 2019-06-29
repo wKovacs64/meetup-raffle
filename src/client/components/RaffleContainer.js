@@ -20,8 +20,6 @@ export default class extends Component {
   initialFormValues = {
     meetup: '',
     count: '1',
-    specificEventId: '',
-    meetupApiKey: '',
   };
 
   state = {
@@ -36,12 +34,10 @@ export default class extends Component {
   restoreSettings = () => {
     const meetup = this.restore('meetup');
     const count = this.restore('count');
-    const meetupApiKey = this.restore('meetupApiKey');
 
     this.setState({
       ...(meetup && { meetup }),
       ...(count && { count }),
-      ...(meetupApiKey && { meetupApiKey }),
     });
   };
 
@@ -70,23 +66,17 @@ export default class extends Component {
     this.setState({ error });
   };
 
-  handleFormikSubmit = async (
-    { meetup, count, specificEventId, meetupApiKey },
-    { setSubmitting },
-  ) => {
+  handleFormikSubmit = async ({ meetup, count }, { setSubmitting }) => {
     setSubmitting(true);
     this.preserve({
       meetup,
       count,
-      meetupApiKey,
     });
     try {
       const response = await axios.get('/.netlify/functions/draw', {
         params: {
           meetup,
           count,
-          specificEventId,
-          meetupApiKey,
         },
       });
       const winners = get(response, 'data.winners');
@@ -142,8 +132,6 @@ export default class extends Component {
           initialValues={{
             meetup: this.state.meetup,
             count: this.state.count,
-            specificEventId: this.initialFormValues.specificEventId,
-            meetupApiKey: this.state.meetupApiKey,
           }}
           onSubmit={this.handleFormikSubmit}
           render={this.renderFormik}

@@ -4,16 +4,11 @@ import mockAxios from 'axios';
 import { MEETUP, EVENT_ID } from '../__mocks__/fixtures';
 import { handler } from '../draw';
 
-const draw = async ({
-  meetup,
-  specificEventId = '',
-  meetupApiKey = '',
-  count = 1,
-}) =>
+const draw = async ({ meetup, specificEventId = '', count = 1 }) =>
   handler(
     {
       httpMethod: 'GET',
-      queryStringParameters: { meetup, specificEventId, meetupApiKey, count },
+      queryStringParameters: { meetup, specificEventId, count },
     },
     {},
   );

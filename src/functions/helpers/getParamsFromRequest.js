@@ -13,19 +13,12 @@ import isNumber from 'is-number';
  * to draw (default: 1)
  * @param {string} [request.queryStringParameters.specificEventId] a Meetup
  * event ID for a specific event (default: latest upcoming/in-progress event)
- * @param {string} [request.queryStringParameters.meetupApiKey] a Meetup API key
- * (default: none)
  * @returns {Object} an object containing the required Meetup API parameters
  * @throws {Error} query parameters must be valid
  */
 export const getParamsFromRequest = ({
   httpMethod,
-  queryStringParameters: {
-    meetup,
-    count = 1,
-    specificEventId = '',
-    meetupApiKey = '',
-  },
+  queryStringParameters: { meetup, count = 1, specificEventId = '' },
 }) => {
   if (httpMethod !== 'GET') {
     throw new Error('This API only accepts HTTP GET requests.');
@@ -45,14 +38,9 @@ export const getParamsFromRequest = ({
     throw new Error('The "specificEventId" query parameter must be a string.');
   }
 
-  if (typeof meetupApiKey !== 'string') {
-    throw new Error('The "meetupApiKey" query parameter must be a string.');
-  }
-
   return {
     meetup,
     count,
     specificEventId,
-    meetupApiKey,
   };
 };
