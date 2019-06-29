@@ -17,8 +17,6 @@ const mockWinners = Array.from(Array(2), (_, idx) => ({
 const params = {
   meetup: 'foo',
   count: '2',
-  specificEventId: '',
-  meetupApiKey: '',
 };
 
 describe('RaffleContainer', () => {
@@ -150,50 +148,5 @@ describe('RaffleContainer', () => {
 
     expect(meetupInput.selectionStart).toBe(0);
     expect(meetupInput.selectionEnd).toBe(meetupInput.value.length);
-  });
-
-  it('toggles advanced options section', () => {
-    const { getByLabelText } = render(<RaffleContainer />);
-    const advancedButton = getByLabelText(/toggle advanced options/i);
-    const specificEventIdInput = getByLabelText(/Specific event ID/i);
-    const meetupApiKeyInput = getByLabelText(/Meetup API key/i);
-
-    expect(specificEventIdInput).not.toBeVisible();
-    expect(meetupApiKeyInput).not.toBeVisible();
-
-    fireEvent.click(advancedButton);
-
-    expect(specificEventIdInput).toBeVisible();
-    expect(meetupApiKeyInput).toBeVisible();
-  });
-
-  it('selects current specific event ID input text on focus', () => {
-    const { getByLabelText } = render(<RaffleContainer />);
-    const specificEventIdInput = getByLabelText(/Specific event ID/);
-
-    expect(specificEventIdInput.selectionStart).toBe(0);
-    expect(specificEventIdInput.selectionEnd).toBe(0);
-
-    fireEvent.change(specificEventIdInput, { target: { value: '12345' } });
-    fireEvent.focus(specificEventIdInput);
-
-    expect(specificEventIdInput.selectionStart).toBe(0);
-    expect(specificEventIdInput.selectionEnd).toBe(
-      specificEventIdInput.value.length,
-    );
-  });
-
-  it('selects current Meetup API key input text on focus', () => {
-    const { getByLabelText } = render(<RaffleContainer />);
-    const meetupApiKeyInput = getByLabelText(/Meetup API key/);
-
-    expect(meetupApiKeyInput.selectionStart).toBe(0);
-    expect(meetupApiKeyInput.selectionEnd).toBe(0);
-
-    fireEvent.change(meetupApiKeyInput, { target: { value: '6a7b8c9d0e' } });
-    fireEvent.focus(meetupApiKeyInput);
-
-    expect(meetupApiKeyInput.selectionStart).toBe(0);
-    expect(meetupApiKeyInput.selectionEnd).toBe(meetupApiKeyInput.value.length);
   });
 });

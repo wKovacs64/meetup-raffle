@@ -236,5 +236,5 @@ $RECYCLE.BIN/
 package-lock.json
 
 ### Build ###
-build
-functions
+/build
+/functions
