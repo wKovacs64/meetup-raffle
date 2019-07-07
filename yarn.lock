@@ -12009,10 +12009,10 @@ react-scripts@3.0.1:
   optionalDependencies:
     fsevents "2.0.6"
 
-react-spinners@0.5.5:
-  version "0.5.5"
-  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.5.5.tgz#9720407ebcff1a28028804905d7646d220efd98a"
-  integrity sha512-CbkrQu+PZ4UZGzCiABQVBQXwuqT6qIRqqa1KasTYm1l9lIwcHWY1nNOeT3KzyWSDGJtFzLNnRUBEFvgdi/1Zyg==
+react-spinners@0.5.7:
+  version "0.5.7"
+  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.5.7.tgz#7ee6ea985599b70c07ba9030c7900febaaf55c37"
+  integrity sha512-RJxUajMQNZzmDRZOMlQI5Zfn4tXp1te0Kl/DfDQd9PbZAAvXwc/CXQwNP8kvevDk/56Y2OGniiKjg7xYD0cb8g==
   dependencies:
     "@emotion/core" "^10.0.4"
     prop-types "^15.5.10"
