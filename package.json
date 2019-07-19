@@ -75,7 +75,7 @@
     "@testing-library/react": "8.0.5",
     "@wkovacs64/eslint-config-react": "2.2.3",
     "codecov": "3.5.0",
-    "commitizen": "3.1.2",
+    "commitizen": "4.0.2",
     "concurrently": "4.1.1",
     "cross-env": "5.2.0",
     "cz-conventional-changelog": "2.1.0",
