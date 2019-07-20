@@ -73,7 +73,7 @@
     "@commitlint/config-conventional": "8.1.0",
     "@testing-library/jest-dom": "4.0.0",
     "@testing-library/react": "8.0.5",
-    "@wkovacs64/eslint-config-react": "2.2.3",
+    "@wkovacs64/eslint-config-react": "3.0.0",
     "codecov": "3.5.0",
     "commitizen": "4.0.3",
     "concurrently": "4.1.1",
