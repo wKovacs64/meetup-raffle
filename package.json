@@ -90,6 +90,6 @@
     "react-hooks-testing-library": "0.6.0",
     "react-test-renderer": "16.8.6",
     "rimraf": "2.6.3",
-    "semantic-release": "15.13.18"
+    "semantic-release": "15.13.19"
   }
 }
