@@ -81,7 +81,7 @@
     "eslint-plugin-emotion": "10.0.14",
     "eslint-plugin-wkovacs64": "1.1.0",
     "http-proxy-middleware": "0.19.1",
-    "husky": "3.0.2",
+    "husky": "3.0.3",
     "jest-emotion": "10.0.14",
     "lint-staged": "9.2.1",
     "netlify-lambda": "1.5.1",
