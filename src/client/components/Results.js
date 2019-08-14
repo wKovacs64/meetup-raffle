@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Winner from './Winner';
 
 const Results = ({ winners, ...props }) => (
-  <Fragment>
+  <>
     {!!winners.length && (
       <div
         className="flex flex-wrap flex-shrink-0 justify-between justify-around-ns"
@@ -14,7 +14,7 @@ const Results = ({ winners, ...props }) => (
         ))}
       </div>
     )}
-  </Fragment>
+  </>
 );
 
 Results.propTypes = {
