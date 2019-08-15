@@ -9915,10 +9915,10 @@ nerf-dart@^1.0.0:
   resolved "https://registry.yarnpkg.com/nerf-dart/-/nerf-dart-1.0.0.tgz#e6dab7febf5ad816ea81cf5c629c5a0ebde72c1a"
   integrity sha1-5tq3/r9a2Bbqgc9cYpxaDr3nLBo=
 
-netlify-lambda@1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/netlify-lambda/-/netlify-lambda-1.5.1.tgz#723f83494bd3f2fd1681d0a9c5db3df571c70074"
-  integrity sha512-i8Sd47KKUtlNziEZlwJjoE5p9gQMt8PM+NS/bimMe9lFiOoZWliSUAk2yIGsQqLCT1uxFIFFmMM99M5LuKfdJw==
+netlify-lambda@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/netlify-lambda/-/netlify-lambda-1.6.0.tgz#22ccd2fcae97ff72f6a79cde4f3305daca2531ff"
+  integrity sha512-MiNdmmigdsEQrB0PZFoZDXlu8FMJwlZ9WovHSoxmYCbNOlxb6bap/4jvL99nZvKX/vnbuPh7dyR1NE5PPdSz9w==
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/plugin-proposal-class-properties" "^7.0.0"
