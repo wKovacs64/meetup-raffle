@@ -14704,10 +14704,10 @@ urlgrey@^0.4.4:
   resolved "https://registry.yarnpkg.com/urlgrey/-/urlgrey-0.4.4.tgz#892fe95960805e85519f1cd4389f2cb4cbb7652f"
   integrity sha1-iS/pWWCAXoVRnxzUOJ8stMu3ZS8=
 
-use-stepper@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/use-stepper/-/use-stepper-2.0.0.tgz#1aec57355931dd2f544f4c7fec83a65a969ff32d"
-  integrity sha512-up9YplwqWt13eFF11iTCCv7gwQjDrdsin/DneSqq4m56W5cOgx7HM+9uWIoRk076G8RZV5+TOO6O2Tte4ocKIg==
+use-stepper@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/use-stepper/-/use-stepper-2.0.1.tgz#e2bb90f46bd9c2e9b551e48e5a9fa2a89e131199"
+  integrity sha512-dFVIt3G69l+7GVCPapoDz90jSrQJFiLmG0oVSaMSxlo0297TygPSd4s0YNJAlLcVh/DDfi0UwgIdn24OMnfZvQ==
 
 use@^3.1.0:
   version "3.1.1"
