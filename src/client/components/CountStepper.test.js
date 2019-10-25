@@ -9,6 +9,7 @@ const countStepperProps = {
   field: {
     name: 'foo',
     value: 5,
+    onBlur: jest.fn(),
     onChange: jest.fn(),
   },
   form: {

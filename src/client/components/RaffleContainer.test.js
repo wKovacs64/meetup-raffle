@@ -109,7 +109,11 @@ describe('RaffleContainer', () => {
 
     await waitForElement(() => getByText(mockWinners[0].name));
     fireEvent.click(getByText('Reset'));
-    expect(() => getByText(mockWinners[0].name)).toThrow();
+
+    // wait for the reset to resolve, then assert
+    await wait(() => {
+      expect(() => getByText(mockWinners[0].name)).toThrow();
+    });
   });
 
   it('selects current meetup input text on focus', () => {

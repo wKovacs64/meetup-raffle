@@ -73,44 +73,47 @@ const RaffleContainer = () => {
     setSubmitting(false);
   };
 
-  // eslint-disable-next-line react/prop-types
-  const renderFormik = ({ handleSubmit, isSubmitting }) => {
-    if (isSubmitting) {
-      return (
-        <div className="flex flex-grow-1 flex-shrink-0 justify-center items-center items-start-ns mt3 mt4-ns">
-          <div className="h4 w4">
-            <RingLoader size={128} color="#00449e" />
-          </div>
-        </div>
-      );
-    }
-    if (error) {
-      return (
-        <div className="mt3 mt4-ns">
-          <ErrorMessage problemText={error} data-testid="error-message" />
-          <ResetButtons onReset={reset} onSubmit={handleSubmit} />
-        </div>
-      );
-    }
-    if (winners.length) {
-      return (
-        <div className="mt3 mt4-ns">
-          <Results winners={winners} data-testid="results" />
-          <ResetButtons onReset={reset} onSubmit={handleSubmit} />
-        </div>
-      );
-    }
-    return <RaffleForm defaultCount={parseInt(count, 10)} />;
-  };
-
   return (
     <main className="flex flex-column flex-grow-1 flex-shrink-0 ph3 w-100 mw6-m mw7-l self-center-ns">
       <Formik
         enableReinitialize
         initialValues={{ meetup, count }}
         onSubmit={handleFormikSubmit}
-        render={renderFormik}
-      />
+      >
+        {({ handleSubmit, isSubmitting, setFieldValue }) => {
+          if (isSubmitting) {
+            return (
+              <div className="flex flex-grow-1 flex-shrink-0 justify-center items-center items-start-ns mt3 mt4-ns">
+                <div className="h4 w4">
+                  <RingLoader size={128} color="#00449e" />
+                </div>
+              </div>
+            );
+          }
+          if (error) {
+            return (
+              <div className="mt3 mt4-ns">
+                <ErrorMessage problemText={error} data-testid="error-message" />
+                <ResetButtons onReset={reset} onSubmit={handleSubmit} />
+              </div>
+            );
+          }
+          if (winners.length) {
+            return (
+              <div className="mt3 mt4-ns">
+                <Results winners={winners} data-testid="results" />
+                <ResetButtons onReset={reset} onSubmit={handleSubmit} />
+              </div>
+            );
+          }
+          return (
+            <RaffleForm
+              defaultCount={parseInt(count, 10)}
+              setFieldValue={setFieldValue}
+            />
+          );
+        }}
+      </Formik>
     </main>
   );
 };
