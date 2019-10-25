@@ -69,7 +69,9 @@ exports[`renders without crashing 1`] = `
   <main
     class="flex flex-column flex-grow-1 flex-shrink-0 ph3 w-100 mw6-m mw7-l self-center-ns"
   >
-    <form>
+    <form
+      action="#"
+    >
       <div
         class="mt3 mb4 mv4-ns"
       >

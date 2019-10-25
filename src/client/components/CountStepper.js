@@ -144,6 +144,8 @@ CountStepper.propTypes = {
   field: PropTypes.shape({
     value: PropTypes.any.isRequired,
     name: PropTypes.string.isRequired,
+    onBlur: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
   }).isRequired,
   form: PropTypes.shape({
     setFieldValue: PropTypes.func.isRequired,
