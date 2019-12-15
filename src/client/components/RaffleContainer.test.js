@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-  waitForElement,
-  wait,
-} from '@testing-library/react';
+import { render, fireEvent, wait } from '@testing-library/react';
 import mockAxios from 'axios';
 import RaffleContainer from './RaffleContainer';
 
@@ -50,6 +45,7 @@ describe('RaffleContainer', () => {
 
   it('renders', () => {
     const { container } = render(<RaffleContainer />);
+
     expect(container.firstChild).toMatchSnapshot();
   });
 
@@ -68,9 +64,7 @@ describe('RaffleContainer', () => {
 
   it('submits and persists data to localStorage (if available)', async () => {
     const { getByLabelText, getByText } = render(<RaffleContainer />);
-    mockAxios.get.mockImplementationOnce(() =>
-      Promise.resolve({ data: { winners: mockWinners } }),
-    );
+    mockAxios.get.mockResolvedValueOnce({ data: { winners: mockWinners } });
 
     expect(mockAxios.get).not.toHaveBeenCalled();
     expect(localStorage.getItem('count')).toBeNull();
@@ -88,35 +82,36 @@ describe('RaffleContainer', () => {
   });
 
   it('shows an error message on error', async () => {
-    const { getByLabelText, getByText } = render(<RaffleContainer />);
-    const errorMessage = 'garbage';
-    mockAxios.get.mockImplementationOnce(() => Promise.resolve(errorMessage));
+    const { getByLabelText, getByText, findByText } = render(
+      <RaffleContainer />,
+    );
+    mockAxios.get.mockResolvedValueOnce('garbage');
 
     fillOutForm({ getByLabelText });
     await submitForm({ getByText });
 
-    await waitForElement(() => getByText(/Malformed response/));
+    await findByText(/Malformed response/);
   });
 
   it('resets the form on reset button click', async () => {
-    const { getByLabelText, getByText } = render(<RaffleContainer />);
-    mockAxios.get.mockImplementationOnce(() =>
-      Promise.resolve({ data: { winners: mockWinners } }),
+    const { getByLabelText, getByText, queryByText, findByText } = render(
+      <RaffleContainer />,
     );
+    mockAxios.get.mockResolvedValueOnce({ data: { winners: mockWinners } });
 
     fillOutForm({ getByLabelText });
     await submitForm({ getByText });
 
-    await waitForElement(() => getByText(mockWinners[0].name));
+    await findByText(mockWinners[0].name);
     fireEvent.click(getByText('Reset'));
 
     // wait for the reset to resolve, then assert
     await wait(() => {
-      expect(() => getByText(mockWinners[0].name)).toThrow();
+      expect(queryByText(mockWinners[0].name)).toBeNull();
     });
   });
 
-  it('selects current meetup input text on focus', () => {
+  it('selects current meetup input text on focus', async () => {
     const { getByLabelText } = render(<RaffleContainer />);
     const meetupInput = getByLabelText(/Meetup name/);
 
@@ -126,7 +121,10 @@ describe('RaffleContainer', () => {
     fillOutForm({ getByLabelText });
     fireEvent.focus(meetupInput);
 
-    expect(meetupInput.selectionStart).toBe(0);
-    expect(meetupInput.selectionEnd).toBe(meetupInput.value.length);
+    // wait for Formik to settle, then assert
+    await wait(() => {
+      expect(meetupInput.selectionStart).toBe(0);
+      expect(meetupInput.selectionEnd).toBe(meetupInput.value.length);
+    });
   });
 });
