@@ -67,7 +67,7 @@ const CountStepper = ({
   });
 
   React.useEffect(() => {
-    setFieldValue(field.name, value);
+    setFieldValue(field.name, value, false);
   }, [field.name, setFieldValue, value]);
 
   const numericValue = parseFloat(value);
