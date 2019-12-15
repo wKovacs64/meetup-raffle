@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import ResetButtons from './ResetButtons';
 
 describe('ResetButtons', () => {
@@ -14,20 +14,16 @@ describe('ResetButtons', () => {
   });
 
   it('calls onReset appropriately', () => {
-    const { getByText } = render(
-      <ResetButtons onReset={onReset} onSubmit={onSubmit} />,
-    );
+    render(<ResetButtons onReset={onReset} onSubmit={onSubmit} />);
     expect(onReset).toHaveBeenCalledTimes(0);
-    fireEvent.click(getByText('Reset'));
+    fireEvent.click(screen.getByText('Reset'));
     expect(onReset).toHaveBeenCalledTimes(1);
   });
 
   it('calls onSubmit appropriately', () => {
-    const { getByText } = render(
-      <ResetButtons onReset={onReset} onSubmit={onSubmit} />,
-    );
+    render(<ResetButtons onReset={onReset} onSubmit={onSubmit} />);
     expect(onSubmit).toHaveBeenCalledTimes(0);
-    fireEvent.click(getByText('Draw Again'));
+    fireEvent.click(screen.getByText('Draw Again'));
     expect(onSubmit).toHaveBeenCalledTimes(1);
   });
 });

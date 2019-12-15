@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, wait } from '@testing-library/react';
+import { render, screen, fireEvent, wait } from '@testing-library/react';
 import mockAxios from 'axios';
 import RaffleContainer from './RaffleContainer';
 
@@ -17,18 +17,18 @@ const params = {
 describe('RaffleContainer', () => {
   const { localStorage } = global.window;
 
-  const fillOutForm = ({ getByLabelText }) => {
+  const fillOutForm = () => {
     // find elements
-    const meetupInput = getByLabelText(/Meetup name/);
-    const countInput = getByLabelText('Number of winners:');
+    const meetupInput = screen.getByLabelText(/Meetup name/);
+    const countInput = screen.getByLabelText('Number of winners:');
 
     // fill out form
     fireEvent.change(meetupInput, { target: { value: params.meetup } });
     fireEvent.change(countInput, { target: { value: params.count } });
   };
 
-  const submitForm = async ({ getByText }) => {
-    const drawButton = getByText('Draw');
+  const submitForm = async () => {
+    const drawButton = screen.getByText('Draw');
 
     // submit form
     fireEvent.click(drawButton);
@@ -52,25 +52,26 @@ describe('RaffleContainer', () => {
   it('restores data from localStorage (if available)', () => {
     const firstRender = render(<RaffleContainer />);
     expect(
-      parseInt(firstRender.getByLabelText(/Number of winners/i).value, 10),
+      parseInt(screen.getByLabelText(/Number of winners/i).value, 10),
     ).not.toBe(5);
     firstRender.unmount();
+
     localStorage.setItem('count', 5);
-    const secondRender = render(<RaffleContainer />);
+    render(<RaffleContainer />);
     expect(
-      parseInt(secondRender.getByLabelText(/Number of winners/i).value, 10),
+      parseInt(screen.getByLabelText(/Number of winners/i).value, 10),
     ).toBe(5);
   });
 
   it('submits and persists data to localStorage (if available)', async () => {
-    const { getByLabelText, getByText } = render(<RaffleContainer />);
+    render(<RaffleContainer />);
     mockAxios.get.mockResolvedValueOnce({ data: { winners: mockWinners } });
 
     expect(mockAxios.get).not.toHaveBeenCalled();
     expect(localStorage.getItem('count')).toBeNull();
 
-    fillOutForm({ getByLabelText });
-    await submitForm({ getByText });
+    fillOutForm();
+    await submitForm();
 
     await wait(() => {
       const countInStorage = localStorage.getItem('count');
@@ -82,43 +83,39 @@ describe('RaffleContainer', () => {
   });
 
   it('shows an error message on error', async () => {
-    const { getByLabelText, getByText, findByText } = render(
-      <RaffleContainer />,
-    );
+    render(<RaffleContainer />);
     mockAxios.get.mockResolvedValueOnce('garbage');
 
-    fillOutForm({ getByLabelText });
-    await submitForm({ getByText });
+    fillOutForm();
+    await submitForm();
 
-    await findByText(/Malformed response/);
+    await screen.findByText(/Malformed response/);
   });
 
   it('resets the form on reset button click', async () => {
-    const { getByLabelText, getByText, queryByText, findByText } = render(
-      <RaffleContainer />,
-    );
+    render(<RaffleContainer />);
     mockAxios.get.mockResolvedValueOnce({ data: { winners: mockWinners } });
 
-    fillOutForm({ getByLabelText });
-    await submitForm({ getByText });
+    fillOutForm();
+    await submitForm();
 
-    await findByText(mockWinners[0].name);
-    fireEvent.click(getByText('Reset'));
+    await screen.findByText(mockWinners[0].name);
+    fireEvent.click(screen.getByText('Reset'));
 
     // wait for the reset to resolve, then assert
     await wait(() => {
-      expect(queryByText(mockWinners[0].name)).toBeNull();
+      expect(screen.queryByText(mockWinners[0].name)).toBeNull();
     });
   });
 
   it('selects current meetup input text on focus', async () => {
-    const { getByLabelText } = render(<RaffleContainer />);
-    const meetupInput = getByLabelText(/Meetup name/);
+    render(<RaffleContainer />);
+    const meetupInput = screen.getByLabelText(/Meetup name/);
 
     expect(meetupInput.selectionStart).toBe(0);
     expect(meetupInput.selectionEnd).toBe(0);
 
-    fillOutForm({ getByLabelText });
+    fillOutForm();
     fireEvent.focus(meetupInput);
 
     // wait for Formik to settle, then assert

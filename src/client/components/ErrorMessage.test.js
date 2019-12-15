@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import ErrorMessage from './ErrorMessage';
 
 describe('ErrorMessage', () => {
@@ -9,10 +9,12 @@ describe('ErrorMessage', () => {
   });
 
   it('renders defaults', () => {
-    const { getByText } = render(<ErrorMessage />);
-    expect(getByText(ErrorMessage.defaultProps.title)).toBeTruthy();
-    expect(getByText(ErrorMessage.defaultProps.subtitle)).toBeTruthy();
-    expect(getByText(ErrorMessage.defaultProps.problemText)).toBeTruthy();
+    render(<ErrorMessage />);
+    expect(screen.getByText(ErrorMessage.defaultProps.title)).toBeTruthy();
+    expect(screen.getByText(ErrorMessage.defaultProps.subtitle)).toBeTruthy();
+    expect(
+      screen.getByText(ErrorMessage.defaultProps.problemText),
+    ).toBeTruthy();
   });
 
   it('renders overrides', () => {
@@ -21,9 +23,9 @@ describe('ErrorMessage', () => {
       subtitle: 'Test error subtitle',
       problemText: 'Test error problem text',
     };
-    const { getByText } = render(<ErrorMessage {...errorProps} />);
-    expect(getByText(errorProps.title)).toBeTruthy();
-    expect(getByText(errorProps.subtitle)).toBeTruthy();
-    expect(getByText(errorProps.problemText)).toBeTruthy();
+    render(<ErrorMessage {...errorProps} />);
+    expect(screen.getByText(errorProps.title)).toBeTruthy();
+    expect(screen.getByText(errorProps.subtitle)).toBeTruthy();
+    expect(screen.getByText(errorProps.problemText)).toBeTruthy();
   });
 });

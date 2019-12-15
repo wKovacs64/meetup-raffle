@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Results from './Results';
 
 jest.mock('./Winner', () =>
@@ -19,9 +19,9 @@ describe('Results', () => {
   });
 
   it('contains all winners', () => {
-    const { getByText } = render(<Results winners={winners} />);
+    render(<Results winners={winners} />);
     winners.forEach(winner => {
-      expect(() => getByText(winner.name)).not.toThrow();
+      expect(() => screen.getByText(winner.name)).not.toThrow();
     });
   });
 });

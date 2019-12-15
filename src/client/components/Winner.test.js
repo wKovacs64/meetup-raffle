@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Winner from './Winner';
 
 const winner = {
@@ -15,7 +15,7 @@ describe('Winner', () => {
   });
 
   it("includes the winner's name", () => {
-    const { getByTestId } = render(<Winner winner={winner} />);
-    expect(getByTestId('name').textContent).toBe(winner.name);
+    render(<Winner winner={winner} />);
+    expect(screen.getByTestId('name').textContent).toBe(winner.name);
   });
 });
