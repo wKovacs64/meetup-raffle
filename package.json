@@ -69,8 +69,8 @@
     "use-stepper": "2.0.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "8.3.3",
-    "@commitlint/config-conventional": "8.3.3",
+    "@commitlint/cli": "8.3.4",
+    "@commitlint/config-conventional": "8.3.4",
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "9.4.0",
     "codecov": "3.6.1",
