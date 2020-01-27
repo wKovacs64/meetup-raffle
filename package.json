@@ -75,7 +75,7 @@
     "@testing-library/react": "9.4.0",
     "codecov": "3.6.2",
     "commitizen": "4.0.3",
-    "concurrently": "5.0.2",
+    "concurrently": "5.1.0",
     "cross-env": "6.0.3",
     "cz-conventional-changelog": "3.0.2",
     "eslint-plugin-emotion": "10.0.27",
