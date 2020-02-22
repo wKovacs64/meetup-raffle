@@ -15,6 +15,7 @@ jobs:
       - checkout
       - node/install-yarn
       - node/with-cache:
+          cache-version: v2
           steps:
             - run: yarn install --frozen-lockfile
             - run: yarn validate
