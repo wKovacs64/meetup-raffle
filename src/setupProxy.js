@@ -1,9 +1,9 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-const proxy = require('http-proxy-middleware');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = app => {
   app.use(
-    proxy('/.netlify/functions/', {
+    createProxyMiddleware('/.netlify/functions/', {
       target: 'http://localhost:9000/',
       pathRewrite: {
         '^/\\.netlify/functions': '',
