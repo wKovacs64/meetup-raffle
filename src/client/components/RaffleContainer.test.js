@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent, wait } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import mockAxios from 'axios';
 import RaffleContainer from './RaffleContainer';
 
@@ -73,7 +73,7 @@ describe('RaffleContainer', () => {
     fillOutForm();
     await submitForm();
 
-    await wait(() => {
+    await waitFor(() => {
       const countInStorage = localStorage.getItem('count');
       expect(countInStorage).toBe(params.count);
       expect(mockAxios.get).toHaveBeenCalledWith(expect.any(String), {
@@ -103,7 +103,7 @@ describe('RaffleContainer', () => {
     fireEvent.click(screen.getByText('Reset'));
 
     // wait for the reset to resolve, then assert
-    await wait(() => {
+    await waitFor(() => {
       expect(screen.queryByText(mockWinners[0].name)).toBeNull();
     });
   });
@@ -119,7 +119,7 @@ describe('RaffleContainer', () => {
     fireEvent.focus(meetupInput);
 
     // wait for Formik to settle, then assert
-    await wait(() => {
+    await waitFor(() => {
       expect(meetupInput.selectionStart).toBe(0);
       expect(meetupInput.selectionEnd).toBe(meetupInput.value.length);
     });
