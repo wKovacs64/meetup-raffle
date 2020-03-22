@@ -20,7 +20,7 @@ describe('Results', () => {
 
   it('contains all winners', () => {
     render(<Results winners={winners} />);
-    winners.forEach(winner => {
+    winners.forEach((winner) => {
       expect(() => screen.getByText(winner.name)).not.toThrow();
     });
   });

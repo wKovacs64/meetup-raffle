@@ -47,7 +47,7 @@ const RaffleContainer = () => {
     setWinners(initialResults.winners);
   };
 
-  const handleApiError = err => {
+  const handleApiError = (err) => {
     setError(get(err, 'response.data.error.message', err.message));
   };
 

@@ -9,7 +9,7 @@ const Results = ({ winners, ...props }) => (
         className="flex flex-wrap flex-shrink-0 justify-between justify-around-ns"
         {...props}
       >
-        {winners.map(winner => (
+        {winners.map((winner) => (
           <Winner key={winner.profileURL} winner={winner} />
         ))}
       </div>

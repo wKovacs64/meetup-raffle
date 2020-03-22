@@ -74,6 +74,7 @@
     "@sheerun/mutationobserver-shim": "0.3.3",
     "@testing-library/jest-dom": "5.1.1",
     "@testing-library/react": "10.0.1",
+    "@wkovacs64/prettier-config": "2.0.0",
     "codecov": "3.6.5",
     "commitizen": "4.0.3",
     "concurrently": "5.1.0",

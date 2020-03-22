@@ -17,7 +17,7 @@ const RaffleForm = ({ defaultCount, setFieldValue }) => {
           type="text"
           id="meetup"
           name="meetup"
-          onFocus={e => e.target.select()}
+          onFocus={(e) => e.target.select()}
           placeholder="required"
           required
         />
