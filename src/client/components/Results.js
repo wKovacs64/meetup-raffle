@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Winner from './Winner';
 
 const Results = ({ winners, ...props }) => (
-  <>
+  <React.Fragment>
     {!!winners.length && (
       <div
         className="flex flex-wrap flex-shrink-0 justify-between justify-around-ns"
@@ -14,7 +14,7 @@ const Results = ({ winners, ...props }) => (
         ))}
       </div>
     )}
-  </>
+  </React.Fragment>
 );
 
 Results.propTypes = {
