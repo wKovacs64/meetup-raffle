@@ -1,10 +1,9 @@
-import axios from 'axios';
+import fetch from 'node-fetch';
 import meetupRandomizer from 'meetup-randomizer';
 import {
   getParamsFromRequest,
+  getEventFromResponseData,
   getIdFromEvent,
-  parseEventsResponse,
-  validateStatus,
 } from './helpers';
 
 const handler = async (request /* , context */) => {
@@ -36,8 +35,15 @@ const handler = async (request /* , context */) => {
       specificEventId,
     )}${eventUrlSuffix}`;
 
-    const response = await axios.get(eventUrl, { validateStatus });
-    const eventId = getIdFromEvent(parseEventsResponse(response));
+    const res = await fetch(eventUrl);
+
+    // This case covers invalid Meetup group names as well as invalid event IDs.
+    if (res.status === 404) {
+      throw new Error("Sorry, I couldn't find any information on that.");
+    }
+
+    const data = await res.json();
+    const eventId = getIdFromEvent(getEventFromResponseData(data));
     const winners = await meetupRandomizer.run(meetup, eventId, count);
 
     if (Array.isArray(winners) && winners.length) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import ResetButtons from './ResetButtons';
+import ResetButtons from '../ResetButtons';
 
 describe('ResetButtons', () => {
   const onReset = jest.fn();

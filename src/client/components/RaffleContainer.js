@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import fetch from 'unfetch';
 import get from 'lodash/get';
 import { RingLoader } from 'react-spinners';
 import { Formik } from 'formik';
@@ -47,10 +47,6 @@ const RaffleContainer = () => {
     setWinners(initialResults.winners);
   };
 
-  const handleApiError = (err) => {
-    setError(get(err, 'response.data.error.message', err.message));
-  };
-
   const handleFormikSubmit = async (
     { meetup: meetupValue, count: countValue },
     { setSubmitting },
@@ -58,19 +54,25 @@ const RaffleContainer = () => {
     setSubmitting(true);
     preserve({ meetup: meetupValue, count: countValue });
     try {
-      const response = await axios.get('/.netlify/functions/draw', {
-        params: { meetup: meetupValue, count: countValue },
-      });
-      const winnersData = get(response, 'data.winners');
-      if (winnersData) {
-        setWinners(winnersData);
-      } else {
-        throw new Error('Malformed response received.');
-      }
+      const drawUrl = new URL('/.netlify/functions/draw', window.location.href);
+      drawUrl.search = new URLSearchParams({
+        meetup: meetupValue,
+        count: countValue,
+      }).toString();
+
+      const res = await fetch(drawUrl);
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(get(data, 'error.message', res.statusText));
+      if (!data.winners) throw new Error('Malformed response received.');
+
+      // success!
+      setWinners(data.winners);
     } catch (err) {
-      handleApiError(err);
+      setError(err.message);
+    } finally {
+      setSubmitting(false);
     }
-    setSubmitting(false);
   };
 
   return (

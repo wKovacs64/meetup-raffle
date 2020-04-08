@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Results from './Results';
+import Results from '../Results';
 
-jest.mock('./Winner', () =>
+jest.mock('../Winner', () =>
   jest.fn(({ winner }) => <span>{winner.name}</span>),
 );
 
