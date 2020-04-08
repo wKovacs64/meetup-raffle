@@ -10,7 +10,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/wKovacs64/meetup-raffle.git"
+    "url": "https://github.com/wKovacs64/meetup-raffle.git"
   },
   "bugs": {
     "url": "https://github.com/wKovacs64/meetup-raffle/issues"
