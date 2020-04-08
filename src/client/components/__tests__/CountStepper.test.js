@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import CountStepper from './CountStepper';
+import CountStepper from '../CountStepper';
 
 const countStepperProps = {
   defaultValue: 5,

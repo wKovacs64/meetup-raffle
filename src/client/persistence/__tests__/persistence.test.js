@@ -1,4 +1,4 @@
-import { restore, preserve } from './persistence';
+import { restore, preserve } from '../persistence';
 
 const { localStorage } = global.window;
 

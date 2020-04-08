@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import mockAxios from 'axios';
-import RaffleContainer from './RaffleContainer';
+import mockFetch from 'unfetch';
+import RaffleContainer from '../RaffleContainer';
 
 const mockWinners = Array.from(Array(2), (_, idx) => ({
   name: `Pickle Rick ${idx}`,
@@ -9,10 +9,9 @@ const mockWinners = Array.from(Array(2), (_, idx) => ({
   profileURL: `https://en.wikipedia.org/wiki/Pickle_Rick?i=${idx}`,
 }));
 
-const params = {
-  meetup: 'foo',
-  count: '2',
-};
+const params = { meetup: 'foo', count: '2' };
+const urlParams = new URLSearchParams(params).toString();
+const drawUrlMatcher = `end:/draw?${urlParams}`;
 
 describe('RaffleContainer', () => {
   const { localStorage } = global.window;
@@ -37,6 +36,7 @@ describe('RaffleContainer', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     global.window.localStorage.clear();
+    mockFetch.restore();
   });
 
   afterAll(() => {
@@ -64,10 +64,10 @@ describe('RaffleContainer', () => {
   });
 
   it('submits and persists data to localStorage (if available)', async () => {
+    mockFetch.get(drawUrlMatcher, { winners: mockWinners });
     render(<RaffleContainer />);
-    mockAxios.get.mockResolvedValueOnce({ data: { winners: mockWinners } });
 
-    expect(mockAxios.get).not.toHaveBeenCalled();
+    expect(mockFetch).toHaveFetchedTimes(0);
     expect(localStorage.getItem('count')).toBeNull();
 
     fillOutForm();
@@ -76,25 +76,36 @@ describe('RaffleContainer', () => {
     await waitFor(() => {
       const countInStorage = localStorage.getItem('count');
       expect(countInStorage).toBe(params.count);
-      expect(mockAxios.get).toHaveBeenCalledWith(expect.any(String), {
-        params,
-      });
+      expect(mockFetch).toHaveFetched(drawUrlMatcher);
     });
   });
 
-  it('shows an error message on error', async () => {
+  it('shows an error message on malformed response', async () => {
     render(<RaffleContainer />);
-    mockAxios.get.mockResolvedValueOnce('garbage');
+    mockFetch.get(drawUrlMatcher, { garbage: 'json' });
 
     fillOutForm();
     await submitForm();
 
-    await screen.findByText(/Malformed response/);
+    await screen.findByText(/malformed response/i);
+  });
+
+  it('shows API-provided error messages', async () => {
+    render(<RaffleContainer />);
+    mockFetch.get(drawUrlMatcher, {
+      status: 404,
+      body: { error: { message: 'Sorry, something went awry.' } },
+    });
+
+    fillOutForm();
+    await submitForm();
+
+    await screen.findByText(/awry/i);
   });
 
   it('resets the form on reset button click', async () => {
+    mockFetch.get(drawUrlMatcher, { winners: mockWinners });
     render(<RaffleContainer />);
-    mockAxios.get.mockResolvedValueOnce({ data: { winners: mockWinners } });
 
     fillOutForm();
     await submitForm();

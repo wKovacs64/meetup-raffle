@@ -1,6 +1,4 @@
-// N.B. This exists in the __tests__ subfolder (rather than colocated next to
-// draw.js) to avoid being treated as a function by Netlify.
-import mockAxios from 'axios';
+import mockFetch from 'node-fetch';
 import { MEETUP, EVENT_ID } from '../__mocks__/fixtures';
 import { handler } from '../draw';
 
@@ -14,34 +12,35 @@ const draw = async ({ meetup, specificEventId = '', count = 1 }) =>
   );
 
 describe('draw', () => {
+  beforeEach(() => {
+    mockFetch.restore();
+  });
+
   it('handles invalid requests', async () => {
     expect(await draw({})).toMatchSnapshot();
   });
 
   it('handles Meetup not found', async () => {
-    mockAxios.get.mockResolvedValueOnce({ status: 404 });
+    mockFetch.getAny(404);
     expect(await draw({ meetup: 'meetup-not-found' })).toMatchSnapshot();
   });
 
   it('handles no upcoming Events found', async () => {
-    mockAxios.get.mockResolvedValueOnce({ status: 200, data: [] });
+    mockFetch.getAny([]);
     expect(await draw({ meetup: 'no-events' })).toMatchSnapshot();
   });
 
   it('handles Event not found', async () => {
-    mockAxios.get.mockResolvedValueOnce({ status: 404 });
+    mockFetch.getAny(404);
     expect(
       await draw({ meetup: MEETUP, specificEventId: 'no-events' }),
     ).toMatchSnapshot();
   });
 
   it('handles Event not public', async () => {
-    mockAxios.get.mockResolvedValueOnce({
-      status: 200,
-      data: {
-        id: 'private-event',
-        visibility: 'public_limited',
-      },
+    mockFetch.getAny({
+      id: 'private-event',
+      visibility: 'public_limited',
     });
     expect(
       await draw({ meetup: MEETUP, specificEventId: 'private-event' }),
@@ -49,9 +48,9 @@ describe('draw', () => {
   });
 
   it('handles unexpected data', async () => {
-    mockAxios.get.mockResolvedValueOnce({
+    mockFetch.getAny({
       status: 204,
-      data: {
+      body: {
         id: 'unexpected',
         visibility: 'public',
       },
@@ -62,9 +61,9 @@ describe('draw', () => {
   });
 
   it('handles a valid Meetup Event', async () => {
-    mockAxios.get.mockResolvedValueOnce({
+    mockFetch.getAny({
       status: 204,
-      data: {
+      body: {
         id: EVENT_ID,
         visibility: 'public',
       },

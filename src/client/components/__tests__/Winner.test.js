@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Winner from './Winner';
+import Winner from '../Winner';
 
 const winner = {
   name: 'Pickle Rick',

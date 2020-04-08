@@ -1,4 +1,4 @@
-import { getParamsFromRequest } from './getParamsFromRequest';
+import { getParamsFromRequest } from '../getParamsFromRequest';
 
 describe('getParamsFromRequest', () => {
   it('throws on unhandled HTTP methods', () => {
