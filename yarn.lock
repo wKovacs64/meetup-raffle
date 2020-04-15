@@ -5711,10 +5711,10 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "2.1.1"
 
-fetch-mock-jest@1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/fetch-mock-jest/-/fetch-mock-jest-1.2.5.tgz#34b31f37e5c488a14c5c248d9af13c446a5f9437"
-  integrity sha512-ujupxIvb/5pRWj+fPBvOS11edQ6mmBMm+GXjefdI3mXtQZh2n/iM5zmaBjk/EL19lmwXxlj+FGdoXaxnx+j5/w==
+fetch-mock-jest@1.2.7:
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/fetch-mock-jest/-/fetch-mock-jest-1.2.7.tgz#b62e96de710516f2f7188a80e6c4ea45bdec4d10"
+  integrity sha512-6MUyXCBQE41OAL529b2l5XJGRspsu22NWRHVBrZx1v+/VZM9LyaQeGNHMGbbULQb6wR5znAsAfnLaIEwzHxqgA==
   dependencies:
     fetch-mock "^9.0.0"
 
