@@ -16,6 +16,6 @@ describe('Winner', () => {
 
   it("includes the winner's name", () => {
     render(<Winner winner={winner} />);
-    expect(screen.getByTestId('name').textContent).toBe(winner.name);
+    expect(screen.getByTestId('name')).toHaveTextContent(winner.name);
   });
 });
