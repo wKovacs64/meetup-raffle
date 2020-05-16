@@ -44,13 +44,26 @@ describe('RaffleContainer', () => {
   });
 
   it('renders', () => {
-    const { container } = render(<RaffleContainer />);
+    render(<RaffleContainer />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(
+      screen.getByRole('textbox', { name: /meetup name/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('textbox', { name: /number of winners/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /decrement/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /increment/i }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /draw/i })).toBeInTheDocument();
   });
 
   it('restores data from localStorage (if available)', () => {
     const firstRender = render(<RaffleContainer />);
+
     expect(
       parseInt(screen.getByLabelText(/Number of winners/i).value, 10),
     ).not.toBe(5);
@@ -58,6 +71,7 @@ describe('RaffleContainer', () => {
 
     localStorage.setItem('count', 5);
     render(<RaffleContainer />);
+
     expect(
       parseInt(screen.getByLabelText(/Number of winners/i).value, 10),
     ).toBe(5);
@@ -81,8 +95,8 @@ describe('RaffleContainer', () => {
   });
 
   it('shows an error message on malformed response', async () => {
-    render(<RaffleContainer />);
     mockFetch.get(drawUrlMatcher, { garbage: 'json' });
+    render(<RaffleContainer />);
 
     fillOutForm();
     await submitForm();
@@ -91,11 +105,11 @@ describe('RaffleContainer', () => {
   });
 
   it('shows API-provided error messages', async () => {
-    render(<RaffleContainer />);
     mockFetch.get(drawUrlMatcher, {
       status: 404,
       body: { error: { message: 'Sorry, something went awry.' } },
     });
+    render(<RaffleContainer />);
 
     fillOutForm();
     await submitForm();

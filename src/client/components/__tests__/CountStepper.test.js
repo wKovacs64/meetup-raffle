@@ -18,18 +18,15 @@ const countStepperProps = {
 };
 
 describe('CountStepper', () => {
-  it('renders', () => {
-    const { container } = render(<CountStepper {...countStepperProps} />);
-    expect(container).toMatchSnapshot();
-  });
-
   it('increments', () => {
     render(<CountStepper {...countStepperProps} />);
     const initialValue = parseInt(
       screen.getByLabelText(countStepperProps.labelText).value,
       10,
     );
-    fireEvent.click(screen.getByTestId('increment-button'));
+
+    fireEvent.click(screen.getByRole('button', { name: /increment/i }));
+
     expect(
       parseInt(screen.getByLabelText(countStepperProps.labelText).value, 10),
     ).toBe(initialValue + 1);
@@ -41,7 +38,9 @@ describe('CountStepper', () => {
       screen.getByLabelText(countStepperProps.labelText).value,
       10,
     );
-    fireEvent.click(screen.getByTestId('decrement-button'));
+
+    fireEvent.click(screen.getByRole('button', { name: /decrement/i }));
+
     expect(
       parseInt(screen.getByLabelText(countStepperProps.labelText).value, 10),
     ).toBe(initialValue - 1);
