@@ -89,7 +89,6 @@ const CountStepper = ({
           className={`bn bg-transparent h3 w3 pointer ${
             numericValue <= min ? 'silver' : 'near-black'
           }`}
-          data-testid="decrement-button"
           {...getDecrementProps()}
         >
           <svg
@@ -116,7 +115,6 @@ const CountStepper = ({
           className={`bn bg-transparent h3 w3 pointer ${
             numericValue >= max ? 'silver' : 'near-black'
           }`}
-          data-testid="increment-button"
           {...getIncrementProps()}
         >
           <svg

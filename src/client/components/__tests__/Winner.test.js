@@ -9,13 +9,9 @@ const winner = {
 };
 
 describe('Winner', () => {
-  it('renders', () => {
-    const { container } = render(<Winner winner={winner} />);
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
-  it("includes the winner's name", () => {
+  it("includes the winner's name in a link", () => {
     render(<Winner winner={winner} />);
-    expect(screen.getByTestId('name')).toHaveTextContent(winner.name);
+
+    expect(screen.getByRole('link', { name: winner.name })).toBeInTheDocument();
   });
 });

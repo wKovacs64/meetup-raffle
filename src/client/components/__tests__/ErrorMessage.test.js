@@ -3,11 +3,6 @@ import { render, screen } from '@testing-library/react';
 import ErrorMessage from '../ErrorMessage';
 
 describe('ErrorMessage', () => {
-  it('renders', () => {
-    const { container } = render(<ErrorMessage />);
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
   it('renders defaults', () => {
     render(<ErrorMessage />);
     expect(screen.getByText(ErrorMessage.defaultProps.title)).toBeTruthy();
