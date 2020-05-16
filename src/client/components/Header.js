@@ -19,9 +19,9 @@ const Header = () => (
             🎟️
           </span>
         </h1>
-        <h3 className="f6 f4-m f3-l ma0 lh-title">
+        <h2 className="f6 f4-m f3-l ma0 lh-title">
           Draw raffle winners at your Meetup event
-        </h3>
+        </h2>
       </div>
     </div>
   </header>
