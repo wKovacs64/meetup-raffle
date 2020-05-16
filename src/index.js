@@ -1,13 +1,13 @@
 /** @jsx jsx */
 import 'tachyons';
-import { StrictMode } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { jsx, css, Global } from '@emotion/core';
 import App from './client/App';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-  <StrictMode>
+  <React.StrictMode>
     <Global
       styles={css`
         html,
@@ -18,7 +18,8 @@ ReactDOM.render(
       `}
     />
     <App />
-  </StrictMode>,
+  </React.StrictMode>,
   document.getElementById('root'),
 );
+
 registerServiceWorker();
