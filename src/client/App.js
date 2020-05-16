@@ -1,5 +1,6 @@
 import React from 'react';
-import { Header, RaffleContainer } from './components';
+import Header from './components/Header';
+import RaffleContainer from './components/RaffleContainer';
 
 const App = () => (
   <div className="flex flex-column h-100">
