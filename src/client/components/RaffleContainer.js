@@ -95,7 +95,7 @@ const RaffleContainer = () => {
           if (error) {
             return (
               <div className="mt3 mt4-ns">
-                <ErrorMessage problemText={error} data-testid="error-message" />
+                <ErrorMessage problemText={error} />
                 <ResetButtons onReset={reset} onSubmit={handleSubmit} />
               </div>
             );
@@ -103,7 +103,7 @@ const RaffleContainer = () => {
           if (winners.length) {
             return (
               <div className="mt3 mt4-ns">
-                <Results winners={winners} data-testid="results" />
+                <Results winners={winners} />
                 <ResetButtons onReset={reset} onSubmit={handleSubmit} />
               </div>
             );
