@@ -9,9 +9,9 @@ describe('ResetButtons', () => {
   it('renders', () => {
     render(<ResetButtons onReset={onReset} onRetry={onRetry} />);
 
-    expect(screen.getByRole('button', { name: /reset/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Reset' })).toBeInTheDocument();
     expect(
-      screen.getByRole('button', { name: /draw again/i }),
+      screen.getByRole('button', { name: 'Draw Again' }),
     ).toBeInTheDocument();
   });
 
@@ -19,7 +19,7 @@ describe('ResetButtons', () => {
     render(<ResetButtons onReset={onReset} onRetry={onRetry} />);
 
     expect(onReset).toHaveBeenCalledTimes(0);
-    fireEvent.click(screen.getByText('Reset'));
+    fireEvent.click(screen.getByRole('button', { name: 'Reset' }));
     expect(onReset).toHaveBeenCalledTimes(1);
   });
 
@@ -27,7 +27,7 @@ describe('ResetButtons', () => {
     render(<ResetButtons onReset={onReset} onRetry={onRetry} />);
 
     expect(onRetry).toHaveBeenCalledTimes(0);
-    fireEvent.click(screen.getByText('Draw Again'));
+    fireEvent.click(screen.getByRole('button', { name: 'Draw Again' }));
     expect(onRetry).toHaveBeenCalledTimes(1);
   });
 });

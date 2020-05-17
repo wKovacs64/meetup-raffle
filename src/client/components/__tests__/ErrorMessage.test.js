@@ -5,11 +5,16 @@ import ErrorMessage from '../ErrorMessage';
 describe('ErrorMessage', () => {
   it('renders defaults', () => {
     render(<ErrorMessage />);
-    expect(screen.getByText(ErrorMessage.defaultProps.title)).toBeTruthy();
-    expect(screen.getByText(ErrorMessage.defaultProps.subtitle)).toBeTruthy();
+
+    expect(
+      screen.getByText(ErrorMessage.defaultProps.title),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(ErrorMessage.defaultProps.subtitle),
+    ).toBeInTheDocument();
     expect(
       screen.getByText(ErrorMessage.defaultProps.problemText),
-    ).toBeTruthy();
+    ).toBeInTheDocument();
   });
 
   it('renders overrides', () => {
@@ -19,8 +24,9 @@ describe('ErrorMessage', () => {
       problemText: 'Test error problem text',
     };
     render(<ErrorMessage {...errorProps} />);
-    expect(screen.getByText(errorProps.title)).toBeTruthy();
-    expect(screen.getByText(errorProps.subtitle)).toBeTruthy();
-    expect(screen.getByText(errorProps.problemText)).toBeTruthy();
+
+    expect(screen.getByText(errorProps.title)).toBeInTheDocument();
+    expect(screen.getByText(errorProps.subtitle)).toBeInTheDocument();
+    expect(screen.getByText(errorProps.problemText)).toBeInTheDocument();
   });
 });

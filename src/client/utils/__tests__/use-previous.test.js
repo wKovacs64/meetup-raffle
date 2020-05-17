@@ -27,12 +27,12 @@ describe('usePrevious', () => {
     expect(screen.getByTestId('previous')).toHaveTextContent('');
     expect(screen.getByTestId('current')).toHaveTextContent('0');
 
-    fireEvent.click(screen.getByText('increment'));
+    fireEvent.click(screen.getByRole('button', { name: /increment/i }));
 
     expect(screen.getByTestId('previous')).toHaveTextContent('0');
     expect(screen.getByTestId('current')).toHaveTextContent('1');
 
-    fireEvent.click(screen.getByText('increment'));
+    fireEvent.click(screen.getByRole('button', { name: /increment/i }));
 
     expect(screen.getByTestId('previous')).toHaveTextContent('1');
     expect(screen.getByTestId('current')).toHaveTextContent('2');

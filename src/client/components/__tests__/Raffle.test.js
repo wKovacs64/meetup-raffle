@@ -58,7 +58,7 @@ describe('Raffle', () => {
     expect(
       screen.getByRole('button', { name: /increment/i }),
     ).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /draw/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Draw' })).toBeInTheDocument();
   });
 
   it('restores data from localStorage (if available)', () => {
