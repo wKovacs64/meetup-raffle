@@ -45,7 +45,8 @@
   "jest": {
     "collectCoverageFrom": [
       "src/client/**/*.js",
-      "src/functions/**/*.js"
+      "src/functions/**/*.js",
+      "!**/index.js"
     ],
     "snapshotSerializers": [
       "jest-emotion"
