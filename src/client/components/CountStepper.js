@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import useStepper from 'use-stepper';
+import { usePrevious } from '../utils';
 
 const CountStepper = ({
   inputId,
@@ -8,8 +9,7 @@ const CountStepper = ({
   min,
   max,
   defaultValue,
-  field,
-  form: { setFieldValue },
+  onNewValue,
   ...otherProps
 }) => {
   function validValueClosestTo(newValue) {
@@ -66,9 +66,13 @@ const CountStepper = ({
     stateReducer: countReducer,
   });
 
+  const previousValue = usePrevious(value);
+
   React.useEffect(() => {
-    setFieldValue(field.name, value, false);
-  }, [field.name, setFieldValue, value]);
+    // only call back with a new value if there was a previous value to avoid
+    // sending the initial value change to the raffle machine before it's ready
+    if (previousValue) onNewValue(value);
+  }, [onNewValue, previousValue, value]);
 
   const numericValue = parseFloat(value);
 
@@ -106,7 +110,11 @@ const CountStepper = ({
           id={inputId}
           className="tc near-black w3 f3 pv1"
           pattern="[0-9]*"
-          {...getInputProps({ ...field })}
+          {...getInputProps({
+            onFocus: (e) => {
+              e.target.select();
+            },
+          })}
         />
         <button
           aria-label="increment"
@@ -139,15 +147,7 @@ CountStepper.propTypes = {
   min: PropTypes.number,
   max: PropTypes.number,
   defaultValue: PropTypes.number,
-  field: PropTypes.shape({
-    value: PropTypes.any.isRequired,
-    name: PropTypes.string.isRequired,
-    onBlur: PropTypes.func.isRequired,
-    onChange: PropTypes.func.isRequired,
-  }).isRequired,
-  form: PropTypes.shape({
-    setFieldValue: PropTypes.func.isRequired,
-  }).isRequired,
+  onNewValue: PropTypes.func,
 };
 
 CountStepper.defaultProps = {
@@ -155,6 +155,7 @@ CountStepper.defaultProps = {
   min: 1,
   max: 9,
   defaultValue: 1,
+  onNewValue: () => {},
 };
 
 CountStepper.displayName = 'CountStepper';

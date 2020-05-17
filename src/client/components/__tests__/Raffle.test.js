@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import mockFetch from 'unfetch';
-import RaffleContainer from '../RaffleContainer';
+import Raffle from '../Raffle';
 
 const mockWinners = Array.from(Array(2), (_, idx) => ({
   name: `Pickle Rick ${idx}`,
@@ -13,7 +13,7 @@ const params = { meetup: 'foo', count: '2' };
 const urlParams = new URLSearchParams(params).toString();
 const drawUrlMatcher = `end:/draw?${urlParams}`;
 
-describe('RaffleContainer', () => {
+describe('Raffle', () => {
   const { localStorage } = global.window;
 
   const fillOutForm = () => {
@@ -27,7 +27,7 @@ describe('RaffleContainer', () => {
   };
 
   const submitForm = async () => {
-    const drawButton = screen.getByText('Draw');
+    const drawButton = screen.getByRole('button', { name: 'Draw' });
 
     // submit form
     fireEvent.click(drawButton);
@@ -44,7 +44,7 @@ describe('RaffleContainer', () => {
   });
 
   it('renders', () => {
-    render(<RaffleContainer />);
+    render(<Raffle />);
 
     expect(
       screen.getByRole('textbox', { name: /meetup name/i }),
@@ -62,7 +62,7 @@ describe('RaffleContainer', () => {
   });
 
   it('restores data from localStorage (if available)', () => {
-    const firstRender = render(<RaffleContainer />);
+    const firstRender = render(<Raffle />);
 
     expect(
       parseInt(screen.getByLabelText(/Number of winners/i).value, 10),
@@ -70,7 +70,7 @@ describe('RaffleContainer', () => {
     firstRender.unmount();
 
     localStorage.setItem('count', 5);
-    render(<RaffleContainer />);
+    render(<Raffle />);
 
     expect(
       parseInt(screen.getByLabelText(/Number of winners/i).value, 10),
@@ -79,7 +79,7 @@ describe('RaffleContainer', () => {
 
   it('submits and persists data to localStorage (if available)', async () => {
     mockFetch.get(drawUrlMatcher, { winners: mockWinners });
-    render(<RaffleContainer />);
+    render(<Raffle />);
 
     expect(mockFetch).toHaveFetchedTimes(0);
     expect(localStorage.getItem('count')).toBeNull();
@@ -96,7 +96,7 @@ describe('RaffleContainer', () => {
 
   it('shows an error message on malformed response', async () => {
     mockFetch.get(drawUrlMatcher, { garbage: 'json' });
-    render(<RaffleContainer />);
+    render(<Raffle />);
 
     fillOutForm();
     await submitForm();
@@ -109,7 +109,7 @@ describe('RaffleContainer', () => {
       status: 404,
       body: { error: { message: 'Sorry, something went awry.' } },
     });
-    render(<RaffleContainer />);
+    render(<Raffle />);
 
     fillOutForm();
     await submitForm();
@@ -119,22 +119,39 @@ describe('RaffleContainer', () => {
 
   it('resets the form on reset button click', async () => {
     mockFetch.get(drawUrlMatcher, { winners: mockWinners });
-    render(<RaffleContainer />);
+    render(<Raffle />);
 
     fillOutForm();
     await submitForm();
 
     await screen.findByText(mockWinners[0].name);
-    fireEvent.click(screen.getByText('Reset'));
+    fireEvent.click(screen.getByRole('button', { name: 'Reset' }));
 
-    // wait for the reset to resolve, then assert
+    expect(screen.queryByText(mockWinners[0].name)).toBeNull();
+    expect(screen.getByRole('button', { name: 'Draw' })).toBeInTheDocument();
+  });
+
+  it('draws again on retry button click', async () => {
+    mockFetch.get(drawUrlMatcher, { winners: mockWinners });
+    render(<Raffle />);
+
+    fillOutForm();
+    await submitForm();
+
+    await screen.findByText(mockWinners[0].name);
+    fireEvent.click(screen.getByRole('button', { name: 'Draw Again' }));
+
     await waitFor(() => {
       expect(screen.queryByText(mockWinners[0].name)).toBeNull();
     });
+    expect(screen.getByRole('button', { name: 'Reset' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Draw Again' }),
+    ).toBeInTheDocument();
   });
 
   it('selects current meetup input text on focus', async () => {
-    render(<RaffleContainer />);
+    render(<Raffle />);
     const meetupInput = screen.getByLabelText(/Meetup name/);
 
     expect(meetupInput.selectionStart).toBe(0);
@@ -143,10 +160,7 @@ describe('RaffleContainer', () => {
     fillOutForm();
     fireEvent.focus(meetupInput);
 
-    // wait for Formik to settle, then assert
-    await waitFor(() => {
-      expect(meetupInput.selectionStart).toBe(0);
-      expect(meetupInput.selectionEnd).toBe(meetupInput.value.length);
-    });
+    expect(meetupInput.selectionStart).toBe(0);
+    expect(meetupInput.selectionEnd).toBe(meetupInput.value.length);
   });
 });

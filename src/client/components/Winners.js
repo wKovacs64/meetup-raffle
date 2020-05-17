@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Winner from './Winner';
 
-const Results = ({ winners, ...props }) => (
+const Winners = ({ winners, ...props }) => (
   <React.Fragment>
     {!!winners.length && (
       <div
@@ -17,20 +17,20 @@ const Results = ({ winners, ...props }) => (
   </React.Fragment>
 );
 
-Results.propTypes = {
+Winners.propTypes = {
   winners: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      photoURL: PropTypes.string.isRequired,
+      photoURL: PropTypes.string,
       profileURL: PropTypes.string.isRequired,
     }),
   ),
 };
 
-Results.defaultProps = {
+Winners.defaultProps = {
   winners: [],
 };
 
-Results.displayName = 'Results';
+Winners.displayName = 'Winners';
 
-export default Results;
+export default Winners;

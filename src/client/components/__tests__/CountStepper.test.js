@@ -6,15 +6,6 @@ const countStepperProps = {
   defaultValue: 5,
   inputId: 'foo',
   labelText: 'Count:',
-  field: {
-    name: 'foo',
-    value: 5,
-    onBlur: jest.fn(),
-    onChange: jest.fn(),
-  },
-  form: {
-    setFieldValue: jest.fn(),
-  },
 };
 
 describe('CountStepper', () => {

@@ -25,7 +25,7 @@ const Winner = ({ winner }) => (
 Winner.propTypes = {
   winner: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    photoURL: PropTypes.string.isRequired,
+    photoURL: PropTypes.string,
     profileURL: PropTypes.string.isRequired,
   }).isRequired,
 };
