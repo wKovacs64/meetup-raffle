@@ -18,8 +18,8 @@ describe('Raffle', () => {
 
   const fillOutForm = () => {
     // find elements
-    const meetupInput = screen.getByLabelText(/Meetup name/);
-    const countInput = screen.getByLabelText('Number of winners:');
+    const meetupInput = screen.getByLabelText(/meetup name/i);
+    const countInput = screen.getByLabelText(/number of winners/i);
 
     // fill out form
     fireEvent.change(meetupInput, { target: { value: params.meetup } });
@@ -154,7 +154,7 @@ describe('Raffle', () => {
 
   it('selects current meetup input text on focus', async () => {
     render(<Raffle />);
-    const meetupInput = screen.getByLabelText(/Meetup name/);
+    const meetupInput = screen.getByLabelText(/meetup name/i);
 
     expect(meetupInput.selectionStart).toBe(0);
     expect(meetupInput.selectionEnd).toBe(0);
@@ -164,5 +164,32 @@ describe('Raffle', () => {
 
     expect(meetupInput.selectionStart).toBe(0);
     expect(meetupInput.selectionEnd).toBe(meetupInput.value.length);
+  });
+
+  it('disables the Draw button while the inputs are invalid', () => {
+    render(<Raffle />);
+    const meetupInput = screen.getByLabelText(/meetup name/i);
+    const countInput = screen.getByLabelText(/number of winners/i);
+    const drawButton = screen.getByRole('button', { name: 'Draw' });
+
+    // meetup: invalid, count: valid
+    fireEvent.change(meetupInput, { target: { value: '' } });
+    fireEvent.change(countInput, { target: { value: params.count } });
+    expect(meetupInput).not.toHaveValue();
+    expect(countInput).toHaveValue(params.count);
+    expect(drawButton).toBeDisabled();
+
+    // meetup: valid, count: invalid
+    fireEvent.change(meetupInput, { target: { value: params.meetup } });
+    fireEvent.change(countInput, { target: { value: '' } });
+    expect(meetupInput).toHaveValue(params.meetup);
+    expect(countInput).not.toHaveValue();
+    expect(drawButton).toBeDisabled();
+
+    // meetup: valid, count: valid
+    fillOutForm();
+    expect(meetupInput).toHaveValue(params.meetup);
+    expect(countInput).toHaveValue(params.count);
+    expect(drawButton).toBeEnabled();
   });
 });
