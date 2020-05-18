@@ -11,22 +11,6 @@ import ErrorMessage from './ErrorMessage';
 import ResetButtons from './ResetButtons';
 import Winners from './Winners';
 
-const fetchRaffleWinners = async (ctx) => {
-  const { count, meetup } = ctx;
-  preserve({ meetup, count });
-
-  const drawUrl = new URL('/.netlify/functions/draw', window.location.href);
-  drawUrl.search = new URLSearchParams({ meetup, count }).toString();
-
-  const res = await fetch(drawUrl);
-  const data = await res.json();
-
-  if (!res.ok) throw new Error(data?.error?.message || res.statusText);
-  if (!data.winners) throw new Error('Malformed response received.');
-
-  return data.winners;
-};
-
 const initialContext = {
   count: restore('count') ?? '1',
   meetup: restore('meetup') ?? '',
@@ -104,7 +88,7 @@ const raffleMachine = createMachine(
         entry: 'reset',
         invoke: {
           id: 'fetchRaffleWinners',
-          src: fetchRaffleWinners,
+          src: 'fetchRaffleWinners',
           onDone: {
             target: 'success',
             actions: ['setWinners'],
@@ -147,6 +131,26 @@ const raffleMachine = createMachine(
       isMeetupInvalid: (ctx) => !isMeetupValid(ctx),
       // TODO: remove once XState `cond` accepts an array of guards
       isFormValid: (ctx) => isCountValid(ctx) && isMeetupValid(ctx),
+    },
+    services: {
+      fetchRaffleWinners: async (ctx) => {
+        const { count, meetup } = ctx;
+        preserve({ meetup, count });
+
+        const drawUrl = new URL(
+          '/.netlify/functions/draw',
+          window.location.href,
+        );
+        drawUrl.search = new URLSearchParams({ meetup, count }).toString();
+
+        const res = await fetch(drawUrl);
+        const data = await res.json();
+
+        if (!res.ok) throw new Error(data?.error?.message || res.statusText);
+        if (!data.winners) throw new Error('Malformed response received.');
+
+        return data.winners;
+      },
     },
   },
 );
