@@ -1,4 +1,4 @@
-import { getEventFromResponseData } from '../getEventFromResponseData';
+import { getEventFromResponseData } from '../get-event-from-response-data';
 
 const RES_MULTI = [
   {

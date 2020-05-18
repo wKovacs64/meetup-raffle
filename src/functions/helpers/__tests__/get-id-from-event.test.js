@@ -1,4 +1,4 @@
-import { getIdFromEvent } from '../getIdFromEvent';
+import { getIdFromEvent } from '../get-id-from-event';
 
 const EVENT_PUB = {
   id: 'foo123',
