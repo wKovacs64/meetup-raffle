@@ -71,7 +71,7 @@ const CountStepper = ({
   React.useEffect(() => {
     // only call back with a new value if there was a previous value to avoid
     // sending the initial value change to the raffle machine before it's ready
-    if (previousValue) onNewValue(value);
+    if (previousValue !== undefined) onNewValue(value);
   }, [onNewValue, previousValue, value]);
 
   const numericValue = parseFloat(value);
