@@ -85,7 +85,7 @@
     "eslint-plugin-emotion": "10.0.27",
     "eslint-plugin-wkovacs64": "5.0.0",
     "fetch-mock-jest": "1.3.0",
-    "http-proxy-middleware": "1.0.3",
+    "http-proxy-middleware": "1.0.4",
     "husky": "4.2.5",
     "jest-emotion": "10.0.32",
     "lint-staged": "10.2.4",
