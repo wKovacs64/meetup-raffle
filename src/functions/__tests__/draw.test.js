@@ -17,24 +17,50 @@ describe('draw', () => {
   });
 
   it('handles invalid requests', async () => {
-    expect(await draw({})).toMatchSnapshot();
+    expect(await draw({})).toMatchInlineSnapshot(`
+      Object {
+        "body": "{\\"error\\":{\\"message\\":\\"The \\\\\\"meetup\\\\\\" query parameter is required and must be a string.\\"}}",
+        "headers": Object {},
+        "statusCode": 400,
+      }
+    `);
   });
 
   it('handles Meetup not found', async () => {
     mockFetch.getAny(404);
-    expect(await draw({ meetup: 'meetup-not-found' })).toMatchSnapshot();
+
+    expect(await draw({ meetup: 'meetup-not-found' })).toMatchInlineSnapshot(`
+      Object {
+        "body": "{\\"error\\":{\\"message\\":\\"Sorry, I couldn't find any information on that.\\"}}",
+        "headers": Object {},
+        "statusCode": 404,
+      }
+    `);
   });
 
   it('handles no upcoming Events found', async () => {
     mockFetch.getAny([]);
-    expect(await draw({ meetup: 'no-events' })).toMatchSnapshot();
+
+    expect(await draw({ meetup: 'no-events' })).toMatchInlineSnapshot(`
+      Object {
+        "body": "{\\"error\\":{\\"message\\":\\"Sorry, I couldn't find any upcoming events.\\"}}",
+        "headers": Object {},
+        "statusCode": 404,
+      }
+    `);
   });
 
   it('handles Event not found', async () => {
     mockFetch.getAny(404);
-    expect(
-      await draw({ meetup: MEETUP, specificEventId: 'no-events' }),
-    ).toMatchSnapshot();
+
+    expect(await draw({ meetup: MEETUP, specificEventId: 'no-events' }))
+      .toMatchInlineSnapshot(`
+      Object {
+        "body": "{\\"error\\":{\\"message\\":\\"Sorry, I couldn't find any information on that.\\"}}",
+        "headers": Object {},
+        "statusCode": 404,
+      }
+    `);
   });
 
   it('handles Event not public', async () => {
@@ -42,9 +68,15 @@ describe('draw', () => {
       id: 'private-event',
       visibility: 'public_limited',
     });
-    expect(
-      await draw({ meetup: MEETUP, specificEventId: 'private-event' }),
-    ).toMatchSnapshot();
+
+    expect(await draw({ meetup: MEETUP, specificEventId: 'private-event' }))
+      .toMatchInlineSnapshot(`
+      Object {
+        "body": "{\\"error\\":{\\"message\\":\\"Sorry, their members list is private.\\"}}",
+        "headers": Object {},
+        "statusCode": 404,
+      }
+    `);
   });
 
   it('handles unexpected data', async () => {
@@ -55,9 +87,15 @@ describe('draw', () => {
         visibility: 'public',
       },
     });
-    expect(
-      await draw({ meetup: MEETUP, specificEventId: 'unexpected' }),
-    ).toMatchSnapshot();
+
+    expect(await draw({ meetup: MEETUP, specificEventId: 'unexpected' }))
+      .toMatchInlineSnapshot(`
+      Object {
+        "body": "{\\"error\\":{\\"message\\":\\"Sorry, we received unexpected data for that request.\\"}}",
+        "headers": Object {},
+        "statusCode": 404,
+      }
+    `);
   });
 
   it('handles a valid Meetup Event', async () => {
@@ -68,6 +106,13 @@ describe('draw', () => {
         visibility: 'public',
       },
     });
-    expect(await draw({ meetup: MEETUP })).toMatchSnapshot();
+
+    expect(await draw({ meetup: MEETUP })).toMatchInlineSnapshot(`
+      Object {
+        "body": "{\\"winners\\":[{\\"name\\":\\"Tiny Rick\\",\\"photoURL\\":\\"https://i.imgur.com/rgDv1wB.jpg\\",\\"profileURL\\":\\"http://rickandmorty.wikia.com/wiki/Tiny_Rick\\"}]}",
+        "headers": Object {},
+        "statusCode": 200,
+      }
+    `);
   });
 });
