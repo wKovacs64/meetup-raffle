@@ -8,7 +8,7 @@ const ResetButtons = ({ onReset, onRetry }) => (
       type="button"
       onClick={onReset}
     >
-      Reset
+      Start Over
     </button>
     <button
       className="w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-white hover-bg-moon-gray pointer ph5 pv3 shadow-5"

@@ -125,7 +125,7 @@ describe('Raffle', () => {
     await submitForm();
 
     await screen.findByText(mockWinners[0].name);
-    fireEvent.click(screen.getByRole('button', { name: 'Reset' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Start Over' }));
 
     expect(screen.queryByText(mockWinners[0].name)).toBeNull();
     expect(screen.getByRole('button', { name: 'Draw' })).toBeInTheDocument();
@@ -144,7 +144,9 @@ describe('Raffle', () => {
     await waitFor(() => {
       expect(screen.queryByText(mockWinners[0].name)).toBeNull();
     });
-    expect(screen.getByRole('button', { name: 'Reset' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: 'Start Over' }),
+    ).toBeInTheDocument();
     expect(
       screen.getByRole('button', { name: 'Draw Again' }),
     ).toBeInTheDocument();
