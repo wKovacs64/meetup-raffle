@@ -63,7 +63,6 @@ describe('Raffle', () => {
 
   it('restores data from localStorage (if available)', () => {
     const firstRender = render(<Raffle />);
-
     expect(
       parseInt(screen.getByLabelText(/Number of winners/i).value, 10),
     ).not.toBe(5);
@@ -88,10 +87,10 @@ describe('Raffle', () => {
     await submitForm();
 
     await waitFor(() => {
-      const countInStorage = localStorage.getItem('count');
-      expect(countInStorage).toBe(params.count);
       expect(mockFetch).toHaveFetched(drawUrlMatcher);
     });
+    const countInStorage = localStorage.getItem('count');
+    expect(countInStorage).toBe(params.count);
   });
 
   it('shows an error message on malformed response', async () => {

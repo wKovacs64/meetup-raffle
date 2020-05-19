@@ -55,7 +55,6 @@
   "dependencies": {
     "@emotion/core": "10.0.28",
     "@xstate/react": "0.8.1",
-    "core-js-pure": "3.6.5",
     "is-number": "7.0.0",
     "meetup-randomizer": "3.1.0",
     "node-fetch": "2.6.0",

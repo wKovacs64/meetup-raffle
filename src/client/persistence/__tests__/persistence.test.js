@@ -1,4 +1,4 @@
-import { restore, preserve } from '../persistence';
+import { persist, restore } from '../persistence';
 
 const { localStorage } = global.window;
 
@@ -8,7 +8,7 @@ test("persistence functions don't crash if localStorage is unavailable", () => {
   expect(global.window.localStorage).toBeUndefined();
 
   expect(() => {
-    preserve({ key: 'value' });
+    persist('key', 'value');
     restore('key');
   }).not.toThrow();
 
