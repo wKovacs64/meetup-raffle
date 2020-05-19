@@ -1,24 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ResetButtons = ({ onReset, onRetry }) => (
-  <div className="flex flex-wrap flex-shrink-0 justify-around mv4">
-    <button
-      className="w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-white hover-bg-moon-gray pointer ph5 pv3 mb3 mb0-l shadow-5"
-      type="button"
-      onClick={onReset}
-    >
-      Start Over
-    </button>
-    <button
-      className="w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-white hover-bg-moon-gray pointer ph5 pv3 shadow-5"
-      type="button"
-      onClick={onRetry}
-    >
-      Draw Again
-    </button>
-  </div>
-);
+const ResetButtons = ({ onReset, onRetry }) => {
+  return (
+    <div className="flex flex-wrap flex-shrink-0 justify-around mv4">
+      <button
+        className="w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-white hover-bg-moon-gray pointer ph5 pv3 mb3 mb0-l shadow-5"
+        type="button"
+        onClick={onReset}
+      >
+        Start Over
+      </button>
+      <button
+        className="w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-white hover-bg-moon-gray pointer ph5 pv3 shadow-5"
+        type="button"
+        onClick={onRetry}
+      >
+        Draw Again
+      </button>
+    </div>
+  );
+};
 
 ResetButtons.propTypes = {
   onReset: PropTypes.func.isRequired,

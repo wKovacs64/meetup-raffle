@@ -9,13 +9,15 @@ const ErrorMessage = ({
   problemText,
   problemTextClasses,
   ...props
-}) => (
-  <section {...props}>
-    <span className={titleClasses}>{title}</span>
-    <p className={subtitleClasses}>{subtitle}</p>
-    <p className={problemTextClasses}>{problemText}</p>
-  </section>
-);
+}) => {
+  return (
+    <section {...props}>
+      <span className={titleClasses}>{title}</span>
+      <p className={subtitleClasses}>{subtitle}</p>
+      <p className={problemTextClasses}>{problemText}</p>
+    </section>
+  );
+};
 
 ErrorMessage.propTypes = {
   title: PropTypes.string,
