@@ -13,11 +13,5 @@ module.exports = {
     'emotion/no-vanilla': 'error',
     'emotion/import-from-emotion': 'error',
     'emotion/styled-import': 'error',
-    'jsx-a11y/label-has-associated-control': [
-      'error',
-      {
-        controlComponents: ['Field'], // Formik
-      },
-    ],
   },
 };
