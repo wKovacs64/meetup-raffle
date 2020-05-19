@@ -21,6 +21,7 @@
     "build:functions": "netlify-lambda build src/functions",
     "clean": "rimraf build functions coverage",
     "cm": "git-cz",
+    "develop": "npm-run-all --silent start",
     "eject": "react-scripts eject",
     "format": "prettier --write \"**/*.{html,js,json,md,yml,yaml}\"",
     "lint": "eslint --ext \".js,.ts,.tsx\" .",
