@@ -10,7 +10,7 @@ const Header = () => (
     />
     <div className="dt vh-25-ns center-ns">
       <div className="dtc v-mid">
-        <h1 className="f3 f2-m f1-l ma0 lh-title near-white">
+        <h1 className="f3 f2-m f1-l ma0 lh-title white tc-ns">
           <span role="img" aria-hidden>
             🤝
           </span>{' '}
