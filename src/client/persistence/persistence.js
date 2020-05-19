@@ -1,5 +1,3 @@
-import entries from 'core-js-pure/es/object/entries';
-
 export const restore = (key) => {
   if (global.window.localStorage) {
     return global.window.localStorage.getItem(key);
@@ -7,10 +5,8 @@ export const restore = (key) => {
   return undefined;
 };
 
-export const preserve = (data) => {
+export const persist = (key, value) => {
   if (global.window.localStorage) {
-    entries(data).forEach(([key, value]) => {
-      global.window.localStorage.setItem(key, value);
-    });
+    global.window.localStorage.setItem(key, value);
   }
 };

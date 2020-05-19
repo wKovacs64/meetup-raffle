@@ -5,17 +5,18 @@ import { jsx, css } from '@emotion/core';
 import { assign, createMachine } from 'xstate';
 import { useMachine } from '@xstate/react';
 import { RingLoader } from 'react-spinners';
-import { restore, preserve } from '../persistence';
+import { persist, restore } from '../persistence';
 import CountStepper from './CountStepper';
 import ErrorMessage from './ErrorMessage';
 import ResetButtons from './ResetButtons';
 import Winners from './Winners';
 
 const initialContext = {
-  count: restore('count') ?? '1',
-  meetup: restore('meetup') ?? '',
+  count: '1',
+  meetup: '',
   winners: [],
   error: '',
+  lastKnownGoodCount: undefined,
 };
 
 const isCountValid = (ctx) =>
@@ -25,9 +26,13 @@ const isMeetupValid = (ctx) => ctx.meetup.length > 0;
 const raffleMachine = createMachine(
   {
     id: 'raffle',
-    initial: 'idle',
+    initial: 'init',
     context: initialContext,
     states: {
+      init: {
+        entry: 'restoreSettings',
+        on: { '': 'idle' },
+      },
       idle: {
         entry: 'reset',
         on: {
@@ -85,7 +90,7 @@ const raffleMachine = createMachine(
         },
       },
       submitting: {
-        entry: 'reset',
+        entry: ['reset', 'persistSettings'],
         invoke: {
           id: 'fetchRaffleWinners',
           src: 'fetchRaffleWinners',
@@ -118,11 +123,20 @@ const raffleMachine = createMachine(
       reset: assign({
         winners: initialContext.winners,
         error: initialContext.error,
+        lastKnownGoodCount: (ctx) => parseInt(ctx.count, 10),
       }),
       setCount: assign({ count: (_, event) => event.data }),
       setMeetup: assign({ meetup: (_, event) => event.data }),
       setWinners: assign({ winners: (_, event) => event.data }),
       setError: assign({ error: (_, event) => event.data.message }),
+      persistSettings: (ctx) => {
+        persist('count', ctx.count);
+        persist('meetup', ctx.meetup);
+      },
+      restoreSettings: assign({
+        count: () => restore('count') ?? initialContext.count,
+        meetup: () => restore('meetup') ?? initialContext.meetup,
+      }),
     },
     guards: {
       isCountValid,
@@ -135,8 +149,6 @@ const raffleMachine = createMachine(
     services: {
       fetchRaffleWinners: async (ctx) => {
         const { count, meetup } = ctx;
-        preserve({ meetup, count });
-
         const drawUrl = new URL(
           '/.netlify/functions/draw',
           window.location.href,
@@ -157,7 +169,7 @@ const raffleMachine = createMachine(
 
 const Raffle = () => {
   const [current, send] = useMachine(raffleMachine);
-  const { meetup, winners, error } = current.context;
+  const { meetup, winners, error, lastKnownGoodCount } = current.context;
 
   const handleNewCountValue = React.useCallback(
     (newCount) => {
@@ -210,7 +222,7 @@ const Raffle = () => {
             labelText="Number of winners:"
             min={1}
             max={9}
-            defaultValue={parseInt(restore('count') ?? '1', 10)}
+            defaultValue={lastKnownGoodCount}
             onNewValue={handleNewCountValue}
           />
           <div className="mv4 mv0-ns">
