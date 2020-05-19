@@ -5,9 +5,10 @@ const Header = () => {
   return (
     <header className="ph3 pv3 bg-light-red">
       <GitHubCorner
-        href="https://github.com/wKovacs64/meetup-raffle"
-        octoColor="#f4f4f4"
         bannerColor="#111"
+        href="https://github.com/wKovacs64/meetup-raffle"
+        target="_blank"
+        rel="noreferrer noopener"
       />
       <div className="dt vh-25-ns center-ns">
         <div className="dtc v-mid">
