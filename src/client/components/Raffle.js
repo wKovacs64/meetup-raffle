@@ -179,12 +179,14 @@ const Raffle = () => {
     [send],
   );
 
-  const handleMeetupChange = React.useCallback(
-    (e) => {
-      send({ type: 'SET_MEETUP', data: e.target.value });
-    },
-    [send],
-  );
+  const handleMeetupChange = (e) => {
+    send({ type: 'SET_MEETUP', data: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    send('SUBMIT');
+  };
 
   if (current.matches('idle')) {
     const isSubmitDisabled =
@@ -192,12 +194,7 @@ const Raffle = () => {
       current.matches('idle.meetup.invalid');
 
     return (
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          send('SUBMIT');
-        }}
-      >
+      <form onSubmit={handleSubmit}>
         <Box sx={{ mt: [3, 4], mb: 4 }}>
           <Label htmlFor="meetup">Meetup name (from your URL):</Label>
           <Input
