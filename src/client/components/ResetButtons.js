@@ -1,24 +1,24 @@
-import React from 'react';
+/** @jsx jsx */
 import PropTypes from 'prop-types';
+import { jsx, Flex, Button } from 'theme-ui';
 
 const ResetButtons = ({ onReset, onRetry }) => {
   return (
-    <div className="flex flex-wrap flex-shrink-0 justify-around mv4">
-      <button
-        className="w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-white hover-bg-moon-gray pointer ph5 pv3 mb3 mb0-l shadow-5"
-        type="button"
-        onClick={onReset}
-      >
+    <Flex
+      sx={{
+        flexWrap: 'wrap',
+        flexShrink: 0,
+        justifyContent: 'space-around',
+        my: 4,
+      }}
+    >
+      <Button sx={{ mb: [3, 0] }} type="button" onClick={onReset}>
         Start Over
-      </button>
-      <button
-        className="w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-white hover-bg-moon-gray pointer ph5 pv3 shadow-5"
-        type="button"
-        onClick={onRetry}
-      >
+      </Button>
+      <Button type="button" onClick={onRetry}>
         Draw Again
-      </button>
-    </div>
+      </Button>
+    </Flex>
   );
 };
 

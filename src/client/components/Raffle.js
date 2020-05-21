@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from 'react';
 import fetch from 'unfetch';
-import { jsx, css } from '@emotion/core';
+import { jsx, useThemeUI, Box, Label, Input, Flex, Button } from 'theme-ui';
 import { assign, createMachine } from 'xstate';
 import { useMachine } from '@xstate/react';
 import { RingLoader } from 'react-spinners';
@@ -168,6 +168,7 @@ const raffleMachine = createMachine(
 );
 
 const Raffle = () => {
+  const { theme } = useThemeUI();
   const [current, send] = useMachine(raffleMachine);
   const { meetup, winners, error, lastKnownGoodCount } = current.context;
 
@@ -197,12 +198,17 @@ const Raffle = () => {
           send('SUBMIT');
         }}
       >
-        <div className="mt3 mb4 mv4-ns">
-          <label className="f4 f3-ns lh-copy dark-blue" htmlFor="meetup">
-            Meetup name (from your URL):
-          </label>
-          <input
-            className="input-reset f4 f3-ns near-black ba bw3 b--moon-gray mt3 pa2 w-100"
+        <Box sx={{ mt: [3, 4], mb: 4 }}>
+          <Label htmlFor="meetup">Meetup name (from your URL):</Label>
+          <Input
+            sx={{
+              fontSize: [3, 4],
+              borderWidth: 3,
+              borderColor: 'muted',
+              mt: 3,
+              p: 2,
+              width: '100%',
+            }}
             type="text"
             id="meetup"
             name="meetup"
@@ -214,10 +220,16 @@ const Raffle = () => {
             placeholder="required"
             required
           />
-        </div>
-        <div className="flex flex-column flex-row-ns items-end-ns justify-around-ns mv4">
+        </Box>
+        <Flex
+          sx={{
+            flexDirection: ['column', 'row'],
+            alignItems: ['center', 'flex-end'],
+            justifyContent: ['normal', 'space-around'],
+            my: 4,
+          }}
+        >
           <CountStepper
-            className="self-center"
             inputId="count"
             labelText="Number of winners:"
             min={1}
@@ -225,38 +237,37 @@ const Raffle = () => {
             defaultValue={lastKnownGoodCount}
             onNewValue={handleNewCountValue}
           />
-          <div className="mv4 mv0-ns">
-            <button
-              className="db center-ns w-100 w5-ns f5 f4-ns b input-reset ba near-black b--near-black bg-white hover-bg-moon-gray pointer ph5 pv3 shadow-5"
-              type="submit"
-              disabled={isSubmitDisabled}
-              css={css`
-                &:disabled {
-                  cursor: not-allowed;
-                  opacity: 0.5;
-                }
-              `}
-            >
+          <Box sx={{ my: [4, 0], width: ['100%', 'auto'] }}>
+            <Button type="submit" disabled={isSubmitDisabled}>
               Draw
-            </button>
-          </div>
-        </div>
+            </Button>
+          </Box>
+        </Flex>
       </form>
     );
   }
 
   if (current.matches('submitting')) {
     return (
-      <div className="flex flex-grow-1 flex-shrink-0 justify-center items-center items-start-ns mt3 mt4-ns">
-        <div className="h4 w4">
-          <RingLoader size={128} color="#00449e" />
-        </div>
-      </div>
+      <Flex
+        sx={{
+          flexWrap: 'wrap',
+          flexGrow: 1,
+          flexShrink: 0,
+          justifyContent: 'center',
+          alignItems: ['center', 'flex-start'],
+          mt: [3, 4],
+        }}
+      >
+        <Box sx={{ height: 4, width: 4 }}>
+          <RingLoader size={128} color={theme.colors.primary} />
+        </Box>
+      </Flex>
     );
   }
 
   return (
-    <div className="mt3 mt4-ns">
+    <Box sx={{ mt: [3, 4] }}>
       {current.matches('success') && <Winners winners={winners} />}
       {current.matches('failure') && <ErrorMessage problemText={error} />}
       <ResetButtons
@@ -267,7 +278,7 @@ const Raffle = () => {
           send('RETRY');
         }}
       />
-    </div>
+    </Box>
   );
 };
 

@@ -1,27 +1,41 @@
 /** @jsx jsx */
 import PropTypes from 'prop-types';
-import { jsx, css } from '@emotion/core';
+import { jsx, Link, Flex, AspectRatio, Text } from 'theme-ui';
 
 const Winner = ({ winner }) => {
   return (
-    <a
-      className="flex flex-column dim link ba b--dark-blue dark-blue mb3 w4 shadow-5"
+    <Link
       href={winner.profileURL}
       target="_blank"
       rel="noopener noreferrer"
+      sx={{
+        width: 4,
+        mb: 3,
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'primary',
+        boxShadow: 5,
+        '&:hover, &:focus': {
+          opacity: 0.5,
+        },
+      }}
     >
-      <span
-        className="db bg-center cover h4"
-        css={css`
-          background-image: url(${winner.photoURL}),
-            url('/user-placeholder.svg');
-        `}
-        role="img"
-      />
-      <div className="flex flex-grow-1 justify-center items-center bg-white">
-        <span className="tc pa3">{winner.name}</span>
-      </div>
-    </a>
+      <Flex sx={{ flexDirection: 'column' }}>
+        <AspectRatio
+          ratio={1}
+          role="img"
+          sx={{
+            backgroundImage: `url(${winner.photoURL}), url('/user-placeholder.svg')`,
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+          }}
+        />
+        <Text as="span" sx={{ p: 3, textAlign: 'center', bg: 'formFieldBg' }}>
+          {winner.name}
+        </Text>
+      </Flex>
+    </Link>
   );
 };
 

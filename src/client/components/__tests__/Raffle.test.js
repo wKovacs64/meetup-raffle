@@ -1,6 +1,7 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import mockFetch from 'unfetch';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
+import { render } from '../../../../test/utils';
 import Raffle from '../Raffle';
 
 const mockWinners = Array.from(Array(2), (_, idx) => ({
