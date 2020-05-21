@@ -1,40 +1,42 @@
-import React from 'react';
+/** @jsx jsx */
+import { jsx, Text } from 'theme-ui';
 import PropTypes from 'prop-types';
 
-const ErrorMessage = ({
-  title,
-  titleClasses,
-  subtitle,
-  subtitleClasses,
-  problemText,
-  problemTextClasses,
-  ...props
-}) => {
+const ErrorMessage = ({ title, subtitle, problemText, ...props }) => {
   return (
     <section {...props}>
-      <span className={titleClasses}>{title}</span>
-      <p className={subtitleClasses}>{subtitle}</p>
-      <p className={problemTextClasses}>{problemText}</p>
+      <Text as="span" sx={{ fontSize: 3, fontWeight: 'bold' }}>
+        {title}
+      </Text>
+      <Text as="p" sx={{ my: 3 }}>
+        {subtitle}
+      </Text>
+      <Text
+        as="p"
+        sx={{
+          my: 3,
+          p: 2,
+          color: 'title',
+          bg: 'accent',
+          fontFamily: 'monospace',
+        }}
+      >
+        {problemText}
+      </Text>
     </section>
   );
 };
 
 ErrorMessage.propTypes = {
   title: PropTypes.string,
-  titleClasses: PropTypes.string,
   subtitle: PropTypes.string,
-  subtitleClasses: PropTypes.string,
   problemText: PropTypes.string,
-  problemTextClasses: PropTypes.string,
 };
 
 ErrorMessage.defaultProps = {
   title: 'Oops!',
-  titleClasses: 'f4 b',
   subtitle: 'An error was encountered:',
-  subtitleClasses: '',
   problemText: 'Unknown.',
-  problemTextClasses: 'bg-red white courier pa2',
 };
 
 ErrorMessage.displayName = 'ErrorMessage';

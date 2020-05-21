@@ -1,15 +1,25 @@
-import React from 'react';
+/** @jsx jsx */
+import '@wkovacs64/normalize.css';
+import { jsx, ThemeProvider, Flex, Container } from 'theme-ui';
 import Header from './components/Header';
 import Raffle from './components/Raffle';
+import { theme } from './theme';
 
 const App = () => {
   return (
-    <div className="flex flex-column h-100">
-      <Header />
-      <main className="flex flex-column flex-grow-1 flex-shrink-0 ph3 w-100 mw6-m mw7-l self-center-ns">
-        <Raffle />
-      </main>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Flex
+        sx={{
+          flexDirection: 'column',
+          height: '100%',
+        }}
+      >
+        <Header />
+        <Container as="main">
+          <Raffle />
+        </Container>
+      </Flex>
+    </ThemeProvider>
   );
 };
 

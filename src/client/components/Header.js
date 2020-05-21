@@ -1,18 +1,34 @@
-import React from 'react';
+/** @jsx jsx */
+import { jsx, useThemeUI, Box, Flex, Heading } from 'theme-ui';
 import GitHubCorner from 'react-github-corner';
 
 const Header = () => {
+  const { theme } = useThemeUI();
+
   return (
-    <header className="ph3 pv3 bg-light-red">
+    <header sx={{ bg: 'accent', p: 3 }}>
       <GitHubCorner
-        bannerColor="#111"
+        bannerColor={theme.colors.text}
         href="https://github.com/wKovacs64/meetup-raffle"
         target="_blank"
         rel="noreferrer noopener"
       />
-      <div className="dt vh-25-ns center-ns">
-        <div className="dtc v-mid">
-          <h1 className="f3 f2-m f1-l ma0 lh-title white tc-ns">
+      <Flex
+        sx={{
+          height: ['auto', '25vh'],
+          justifyContent: ['normal', 'center'],
+          alignItems: 'center',
+        }}
+      >
+        <Box>
+          <Heading
+            as="h1"
+            variant="text.title"
+            sx={{
+              fontSize: [4, 5, 6],
+              textAlign: ['left', 'center'],
+            }}
+          >
             <span role="img" aria-hidden>
               🤝
             </span>{' '}
@@ -20,12 +36,12 @@ const Header = () => {
             <span role="img" aria-hidden>
               🎟️
             </span>
-          </h1>
-          <h2 className="f6 f4-m f3-l ma0 lh-title">
+          </Heading>
+          <Heading as="h2" variant="text.subtitle" sx={{ fontSize: [1, 3, 4] }}>
             Draw raffle winners at your Meetup event
-          </h2>
-        </div>
-      </div>
+          </Heading>
+        </Box>
+      </Flex>
     </header>
   );
 };

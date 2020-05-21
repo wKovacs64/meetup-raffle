@@ -1,21 +1,22 @@
-import React from 'react';
+/** @jsx jsx */
 import PropTypes from 'prop-types';
+import { jsx, Flex } from 'theme-ui';
 import Winner from './Winner';
 
 const Winners = ({ winners, ...props }) => {
   return (
-    <React.Fragment>
-      {!!winners.length && (
-        <div
-          className="flex flex-wrap flex-shrink-0 justify-between justify-around-ns"
-          {...props}
-        >
-          {winners.map((winner) => (
-            <Winner key={winner.profileURL} winner={winner} />
-          ))}
-        </div>
-      )}
-    </React.Fragment>
+    <Flex
+      sx={{
+        flexWrap: 'wrap',
+        flexShrink: 0,
+        justifyContent: ['space-between', 'space-around'],
+      }}
+      {...props}
+    >
+      {winners.map((winner) => (
+        <Winner key={winner.profileURL} winner={winner} />
+      ))}
+    </Flex>
   );
 };
 
