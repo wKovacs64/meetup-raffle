@@ -215,6 +215,10 @@ const Raffle = () => {
               e.target.select();
             }}
             placeholder="required"
+            autoCapitalize="off"
+            autoComplete="off"
+            autoCorrect="off"
+            spellCheck={false}
             required
           />
         </Box>

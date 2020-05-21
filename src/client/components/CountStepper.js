@@ -114,6 +114,10 @@ const CountStepper = ({
           }}
           id={inputId}
           pattern="[0-9]*"
+          autoCapitalize="off"
+          autoComplete="off"
+          autoCorrect="off"
+          spellCheck={false}
           {...getInputProps({
             onFocus: (e) => {
               e.target.select();
