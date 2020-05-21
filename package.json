@@ -1,7 +1,7 @@
 {
   "name": "meetup-raffle",
   "version": "0.0.0-semantically-released",
-  "description": "Select a raffle winner at your upcoming Meetup.",
+  "description": "Draw raffle winners at your Meetup event.",
   "author": {
     "name": "Justin Hall",
     "email": "justin.r.hall@gmail.com"
