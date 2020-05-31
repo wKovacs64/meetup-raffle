@@ -1,6 +1,7 @@
 import React from 'react';
 import mockFetch from 'unfetch';
-import { screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
+import user from '@testing-library/user-event';
 import { render } from '../../../../test/utils';
 import Raffle from '../Raffle';
 
@@ -17,21 +18,23 @@ const drawUrlMatcher = `end:/draw?${urlParams}`;
 describe('Raffle', () => {
   const { localStorage } = global.window;
 
-  const fillOutForm = () => {
+  const fillOutForm = async () => {
     // find elements
     const meetupInput = screen.getByLabelText(/meetup name/i);
     const countInput = screen.getByLabelText(/number of winners/i);
 
     // fill out form
-    fireEvent.change(meetupInput, { target: { value: params.meetup } });
-    fireEvent.change(countInput, { target: { value: params.count } });
+    user.clear(meetupInput);
+    await user.type(meetupInput, params.meetup);
+    user.clear(countInput);
+    await user.type(countInput, params.count);
   };
 
   const submitForm = async () => {
     const drawButton = screen.getByRole('button', { name: 'Draw' });
 
     // submit form
-    fireEvent.click(drawButton);
+    user.click(drawButton);
   };
 
   beforeEach(() => {
@@ -84,7 +87,7 @@ describe('Raffle', () => {
     expect(mockFetch).toHaveFetchedTimes(0);
     expect(localStorage.getItem('count')).toBeNull();
 
-    fillOutForm();
+    await fillOutForm();
     await submitForm();
 
     await waitFor(() => {
@@ -98,7 +101,7 @@ describe('Raffle', () => {
     mockFetch.get(drawUrlMatcher, { garbage: 'json' });
     render(<Raffle />);
 
-    fillOutForm();
+    await fillOutForm();
     await submitForm();
 
     await screen.findByText(/malformed response/i);
@@ -111,7 +114,7 @@ describe('Raffle', () => {
     });
     render(<Raffle />);
 
-    fillOutForm();
+    await fillOutForm();
     await submitForm();
 
     await screen.findByText(/awry/i);
@@ -121,11 +124,11 @@ describe('Raffle', () => {
     mockFetch.get(drawUrlMatcher, { winners: mockWinners });
     render(<Raffle />);
 
-    fillOutForm();
+    await fillOutForm();
     await submitForm();
 
     await screen.findByText(mockWinners[0].name);
-    fireEvent.click(screen.getByRole('button', { name: 'Start Over' }));
+    user.click(screen.getByRole('button', { name: 'Start Over' }));
 
     expect(screen.queryByText(mockWinners[0].name)).toBeNull();
     expect(screen.getByRole('button', { name: 'Draw' })).toBeInTheDocument();
@@ -135,11 +138,11 @@ describe('Raffle', () => {
     mockFetch.get(drawUrlMatcher, { winners: mockWinners });
     render(<Raffle />);
 
-    fillOutForm();
+    await fillOutForm();
     await submitForm();
 
     await screen.findByText(mockWinners[0].name);
-    fireEvent.click(screen.getByRole('button', { name: 'Draw Again' }));
+    user.click(screen.getByRole('button', { name: 'Draw Again' }));
 
     await waitFor(() => {
       expect(screen.queryByText(mockWinners[0].name)).toBeNull();
@@ -159,35 +162,39 @@ describe('Raffle', () => {
     expect(meetupInput.selectionStart).toBe(0);
     expect(meetupInput.selectionEnd).toBe(0);
 
-    fillOutForm();
-    fireEvent.focus(meetupInput);
+    await fillOutForm();
+    user.click(meetupInput);
 
     expect(meetupInput.selectionStart).toBe(0);
     expect(meetupInput.selectionEnd).toBe(meetupInput.value.length);
   });
 
-  it('disables the Draw button while the inputs are invalid', () => {
+  it('disables the Draw button while the inputs are invalid', async () => {
     render(<Raffle />);
     const meetupInput = screen.getByLabelText(/meetup name/i);
     const countInput = screen.getByLabelText(/number of winners/i);
     const drawButton = screen.getByRole('button', { name: 'Draw' });
 
     // meetup: invalid, count: valid
-    fireEvent.change(meetupInput, { target: { value: '' } });
-    fireEvent.change(countInput, { target: { value: params.count } });
+    user.clear(meetupInput);
+    await user.type(meetupInput, '');
+    user.clear(countInput);
+    await user.type(countInput, params.count);
     expect(meetupInput).not.toHaveValue();
     expect(countInput).toHaveValue(params.count);
     expect(drawButton).toBeDisabled();
 
     // meetup: valid, count: invalid
-    fireEvent.change(meetupInput, { target: { value: params.meetup } });
-    fireEvent.change(countInput, { target: { value: '' } });
+    user.clear(meetupInput);
+    await user.type(meetupInput, params.meetup);
+    user.clear(countInput);
+    await user.type(countInput, '');
     expect(meetupInput).toHaveValue(params.meetup);
     expect(countInput).not.toHaveValue();
     expect(drawButton).toBeDisabled();
 
     // meetup: valid, count: valid
-    fillOutForm();
+    await fillOutForm();
     expect(meetupInput).toHaveValue(params.meetup);
     expect(countInput).toHaveValue(params.count);
     expect(drawButton).toBeEnabled();
