@@ -1,13 +1,13 @@
 /** @jsx jsx */
 import '@wkovacs64/normalize.css';
-import { jsx, ThemeProvider, Flex, Container } from 'theme-ui';
+import { jsx, Flex, Container } from 'theme-ui';
 import Header from './components/Header';
 import Raffle from './components/Raffle';
-import { theme } from './theme';
+import AppProviders from './AppProviders';
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
+    <AppProviders>
       <Flex
         sx={{
           flexDirection: 'column',
@@ -19,7 +19,7 @@ const App = () => {
           <Raffle />
         </Container>
       </Flex>
-    </ThemeProvider>
+    </AppProviders>
   );
 };
 
