@@ -1,5 +1,6 @@
 import React from 'react';
-import { screen, fireEvent } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import user from '@testing-library/user-event';
 import { render } from '../../../../test/utils';
 import CountStepper from '../CountStepper';
 
@@ -12,52 +13,43 @@ const countStepperProps = {
 describe('CountStepper', () => {
   it('increments', () => {
     render(<CountStepper {...countStepperProps} />);
-    const initialValue = parseInt(
-      screen.getByLabelText(countStepperProps.labelText).value,
-      10,
-    );
+    const input = screen.getByLabelText(countStepperProps.labelText);
+    const initialIntValue = parseInt(input.value, 10);
 
-    fireEvent.click(screen.getByRole('button', { name: /increment/i }));
+    user.click(screen.getByRole('button', { name: /increment/i }));
 
-    expect(
-      parseInt(screen.getByLabelText(countStepperProps.labelText).value, 10),
-    ).toBe(initialValue + 1);
+    expect(parseInt(input.value, 10)).toBe(initialIntValue + 1);
   });
 
   it('decrements', () => {
     render(<CountStepper {...countStepperProps} />);
-    const initialValue = parseInt(
-      screen.getByLabelText(countStepperProps.labelText).value,
-      10,
-    );
+    const input = screen.getByLabelText(countStepperProps.labelText);
+    const initialIntValue = parseInt(input.value, 10);
 
-    fireEvent.click(screen.getByRole('button', { name: /decrement/i }));
+    user.click(screen.getByRole('button', { name: /decrement/i }));
 
-    expect(
-      parseInt(screen.getByLabelText(countStepperProps.labelText).value, 10),
-    ).toBe(initialValue - 1);
+    expect(parseInt(input.value, 10)).toBe(initialIntValue - 1);
   });
 
-  it('accepts manual user input', () => {
+  it('accepts manual user input', async () => {
     render(<CountStepper {...countStepperProps} />);
     const input = screen.getByLabelText(countStepperProps.labelText);
-    const initialValue = parseInt(input.value, 10);
-    expect(initialValue).not.toEqual(3);
+    expect(input.value).not.toEqual('3');
 
-    input.focus();
-    fireEvent.change(input, { target: { value: '3' } });
-    input.blur();
+    user.clear(input);
+    await user.type(input, '3');
+    user.tab();
 
-    expect(parseInt(input.value, 10)).toBe(3);
+    expect(input.value).toBe('3');
   });
 
-  it('coerces invalid input to the default value', () => {
+  it('coerces invalid input to the default value', async () => {
     render(<CountStepper {...countStepperProps} />);
     const input = screen.getByLabelText(countStepperProps.labelText);
 
-    input.focus();
-    fireEvent.change(input, { target: { value: '-' } });
-    input.blur();
+    user.click(input);
+    await user.type(input, '-');
+    user.tab();
 
     expect(parseInt(input.value, 10)).toBe(countStepperProps.defaultValue);
   });
@@ -67,8 +59,8 @@ describe('CountStepper', () => {
     const input = screen.getByLabelText(countStepperProps.labelText);
     const initialValue = input.value;
 
-    input.focus();
-    input.blur();
+    user.click(input);
+    user.tab();
 
     expect(input.value).toBe(initialValue);
   });
