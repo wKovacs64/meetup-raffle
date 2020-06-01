@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@2.1.1
+  node: circleci/node@3.0.0
 
 defaults: &defaults
   executor:
@@ -14,8 +14,6 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-          cache-key: yarn.lock
-          cache-version: v2
           pkg-manager: yarn
       - run: yarn validate
       - run: yarn test --coverage --maxWorkers 4
