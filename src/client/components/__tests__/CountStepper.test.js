@@ -36,7 +36,7 @@ describe('CountStepper', () => {
     const input = screen.getByLabelText(countStepperProps.labelText);
     expect(input.value).not.toEqual('3');
 
-    user.clear(input);
+    user.click(input);
     await user.type(input, '3');
     user.tab();
 

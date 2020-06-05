@@ -24,9 +24,9 @@ describe('Raffle', () => {
     const countInput = screen.getByLabelText(/number of winners/i);
 
     // fill out form
-    user.clear(meetupInput);
+    user.click(meetupInput);
     await user.type(meetupInput, params.meetup);
-    user.clear(countInput);
+    user.click(countInput);
     await user.type(countInput, params.count);
   };
 
@@ -176,19 +176,19 @@ describe('Raffle', () => {
     const drawButton = screen.getByRole('button', { name: 'Draw' });
 
     // meetup: invalid, count: valid
+    user.click(meetupInput);
     user.clear(meetupInput);
-    await user.type(meetupInput, '');
-    user.clear(countInput);
+    user.click(countInput);
     await user.type(countInput, params.count);
     expect(meetupInput).not.toHaveValue();
     expect(countInput).toHaveValue(params.count);
     expect(drawButton).toBeDisabled();
 
     // meetup: valid, count: invalid
-    user.clear(meetupInput);
+    user.click(meetupInput);
     await user.type(meetupInput, params.meetup);
+    user.click(countInput);
     user.clear(countInput);
-    await user.type(countInput, '');
     expect(meetupInput).toHaveValue(params.meetup);
     expect(countInput).not.toHaveValue();
     expect(drawButton).toBeDisabled();
