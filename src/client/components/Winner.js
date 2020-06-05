@@ -20,7 +20,7 @@ const Winner = ({ winner }) => {
         },
       }}
     >
-      <Flex sx={{ flexDirection: 'column' }}>
+      <Flex sx={{ flexDirection: 'column', height: '100%' }}>
         <AspectRatio
           ratio={1}
           role="img"
@@ -31,9 +31,19 @@ const Winner = ({ winner }) => {
             backgroundSize: 'cover',
           }}
         />
-        <Text as="span" sx={{ p: 3, textAlign: 'center', bg: 'formFieldBg' }}>
-          {winner.name}
-        </Text>
+        <Flex
+          sx={{
+            flexDirection: 'column',
+            flexGrow: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            bg: 'formFieldBg',
+          }}
+        >
+          <Text as="span" sx={{ p: 3, textAlign: 'center' }}>
+            {winner.name}
+          </Text>
+        </Flex>
       </Flex>
     </Link>
   );
