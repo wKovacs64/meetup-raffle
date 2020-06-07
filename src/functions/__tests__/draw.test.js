@@ -1,5 +1,6 @@
-import mockFetch from 'node-fetch';
-import { MEETUP, EVENT_ID } from '../__mocks__/fixtures';
+import meetupRandomizer from 'meetup-randomizer';
+import { server, rest } from '../../test/server';
+import { EVENTS_ENDPOINT } from '../../test/fixtures';
 import { handler } from '../draw';
 
 const draw = async ({ meetup, specificEventId = '', count = 1 }) =>
@@ -12,10 +13,6 @@ const draw = async ({ meetup, specificEventId = '', count = 1 }) =>
   );
 
 describe('draw', () => {
-  beforeEach(() => {
-    mockFetch.restore();
-  });
-
   it('handles invalid requests', async () => {
     expect(await draw({})).toMatchInlineSnapshot(`
       Object {
@@ -26,10 +23,14 @@ describe('draw', () => {
     `);
   });
 
-  it('handles Meetup not found', async () => {
-    mockFetch.getAny(404);
+  it('handles Meetup or Event not found', async () => {
+    server.use(
+      rest.get(EVENTS_ENDPOINT, (req, res, ctx) => {
+        return res.once(ctx.status(404));
+      }),
+    );
 
-    expect(await draw({ meetup: 'meetup-not-found' })).toMatchInlineSnapshot(`
+    expect(await draw({ meetup: 'not-found' })).toMatchInlineSnapshot(`
       Object {
         "body": "{\\"error\\":{\\"message\\":\\"Sorry, I couldn't find any information on that.\\"}}",
         "headers": Object {},
@@ -39,7 +40,11 @@ describe('draw', () => {
   });
 
   it('handles no upcoming Events found', async () => {
-    mockFetch.getAny([]);
+    server.use(
+      rest.get(EVENTS_ENDPOINT, (req, res, ctx) => {
+        return res.once(ctx.json([]));
+      }),
+    );
 
     expect(await draw({ meetup: 'no-events' })).toMatchInlineSnapshot(`
       Object {
@@ -50,27 +55,21 @@ describe('draw', () => {
     `);
   });
 
-  it('handles Event not found', async () => {
-    mockFetch.getAny(404);
+  it('handles a limited visibility Event', async () => {
+    server.use(
+      rest.get(EVENTS_ENDPOINT, (req, res, ctx) => {
+        return res.once(
+          ctx.json([
+            {
+              id: 'private-member-list',
+              visibility: 'public_limited',
+            },
+          ]),
+        );
+      }),
+    );
 
-    expect(await draw({ meetup: MEETUP, specificEventId: 'no-events' }))
-      .toMatchInlineSnapshot(`
-      Object {
-        "body": "{\\"error\\":{\\"message\\":\\"Sorry, I couldn't find any information on that.\\"}}",
-        "headers": Object {},
-        "statusCode": 404,
-      }
-    `);
-  });
-
-  it('handles Event not public', async () => {
-    mockFetch.getAny({
-      id: 'private-event',
-      visibility: 'public_limited',
-    });
-
-    expect(await draw({ meetup: MEETUP, specificEventId: 'private-event' }))
-      .toMatchInlineSnapshot(`
+    expect(await draw({ meetup: 'private-event' })).toMatchInlineSnapshot(`
       Object {
         "body": "{\\"error\\":{\\"message\\":\\"Sorry, their members list is private.\\"}}",
         "headers": Object {},
@@ -80,16 +79,9 @@ describe('draw', () => {
   });
 
   it('handles unexpected data', async () => {
-    mockFetch.getAny({
-      status: 204,
-      body: {
-        id: 'unexpected',
-        visibility: 'public',
-      },
-    });
+    jest.spyOn(meetupRandomizer, 'run').mockResolvedValueOnce('unexpected');
 
-    expect(await draw({ meetup: MEETUP, specificEventId: 'unexpected' }))
-      .toMatchInlineSnapshot(`
+    expect(await draw({ meetup: 'some-meetup' })).toMatchInlineSnapshot(`
       Object {
         "body": "{\\"error\\":{\\"message\\":\\"Sorry, we received unexpected data for that request.\\"}}",
         "headers": Object {},
@@ -99,20 +91,23 @@ describe('draw', () => {
   });
 
   it('handles a valid Meetup Event', async () => {
-    mockFetch.getAny({
-      status: 204,
-      body: {
-        id: EVENT_ID,
-        visibility: 'public',
-      },
+    const drawResponse = await draw({ meetup: 'some-meetup' });
+    expect(drawResponse).toMatchObject({
+      body: expect.any(String),
+      headers: expect.any(Object),
+      statusCode: 200,
     });
 
-    expect(await draw({ meetup: MEETUP })).toMatchInlineSnapshot(`
-      Object {
-        "body": "{\\"winners\\":[{\\"name\\":\\"Tiny Rick\\",\\"photoURL\\":\\"https://i.imgur.com/rgDv1wB.jpg\\",\\"profileURL\\":\\"http://rickandmorty.wikia.com/wiki/Tiny_Rick\\"}]}",
-        "headers": Object {},
-        "statusCode": 200,
-      }
-    `);
+    const body = JSON.parse(drawResponse.body);
+    expect(body).toMatchObject({ winners: [expect.any(Object)] });
+    expect(body.winners).toEqual(expect.any(Array));
+    expect(body.winners.length).toBeGreaterThan(0);
+    body.winners.forEach((winner) => {
+      expect(winner).toMatchObject({
+        name: expect.any(String),
+        photoURL: expect.any(String),
+        profileURL: expect.any(String),
+      });
+    });
   });
 });
