@@ -1,19 +1,12 @@
 import React from 'react';
-import mockFetch from 'unfetch';
 import { screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import { render } from '../../../../test/utils';
+import { server, rest } from '../../../test/server';
+import { render } from '../../../test/utils';
 import Raffle from '../Raffle';
 
-const mockWinners = Array.from(Array(2), (_, idx) => ({
-  name: `Pickle Rick ${idx}`,
-  photoURL: `https://i.imgur.com/3VhMoBD.png?i=${idx}`,
-  profileURL: `https://en.wikipedia.org/wiki/Pickle_Rick?i=${idx}`,
-}));
-
+const drawUrl = '/.netlify/functions/draw';
 const params = { meetup: 'foo', count: '2' };
-const urlParams = new URLSearchParams(params).toString();
-const drawUrlMatcher = `end:/draw?${urlParams}`;
 
 describe('Raffle', () => {
   const { localStorage } = global.window;
@@ -40,7 +33,6 @@ describe('Raffle', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     global.window.localStorage.clear();
-    mockFetch.restore();
   });
 
   afterAll(() => {
@@ -81,24 +73,23 @@ describe('Raffle', () => {
   });
 
   it('submits and persists data to localStorage (if available)', async () => {
-    mockFetch.get(drawUrlMatcher, { winners: mockWinners });
     render(<Raffle />);
 
-    expect(mockFetch).toHaveFetchedTimes(0);
     expect(localStorage.getItem('count')).toBeNull();
 
     await fillOutForm();
     await submitForm();
 
-    await waitFor(() => {
-      expect(mockFetch).toHaveFetched(drawUrlMatcher);
-    });
     const countInStorage = localStorage.getItem('count');
     expect(countInStorage).toBe(params.count);
   });
 
   it('shows an error message on malformed response', async () => {
-    mockFetch.get(drawUrlMatcher, { garbage: 'json' });
+    server.use(
+      rest.get(drawUrl, (_, res, ctx) => {
+        return res.once(ctx.json({ garbage: 'json' }));
+      }),
+    );
     render(<Raffle />);
 
     await fillOutForm();
@@ -108,10 +99,14 @@ describe('Raffle', () => {
   });
 
   it('shows API-provided error messages', async () => {
-    mockFetch.get(drawUrlMatcher, {
-      status: 404,
-      body: { error: { message: 'Sorry, something went awry.' } },
-    });
+    server.use(
+      rest.get(drawUrl, (_, res, ctx) => {
+        return res.once(
+          ctx.status(404),
+          ctx.json({ error: { message: 'Sorry, something went awry.' } }),
+        );
+      }),
+    );
     render(<Raffle />);
 
     await fillOutForm();
@@ -121,35 +116,40 @@ describe('Raffle', () => {
   });
 
   it('resets the form on reset button click', async () => {
-    mockFetch.get(drawUrlMatcher, { winners: mockWinners });
     render(<Raffle />);
 
     await fillOutForm();
     await submitForm();
 
-    await screen.findByText(mockWinners[0].name);
+    await waitFor(() => {
+      expect(
+        screen.getByRole('button', { name: 'Start Over' }),
+      ).toBeInTheDocument();
+    });
     user.click(screen.getByRole('button', { name: 'Start Over' }));
 
-    expect(screen.queryByText(mockWinners[0].name)).toBeNull();
+    expect(screen.queryByRole('button', { name: 'Start Over' })).toBeNull();
     expect(screen.getByRole('button', { name: 'Draw' })).toBeInTheDocument();
   });
 
   it('draws again on retry button click', async () => {
-    mockFetch.get(drawUrlMatcher, { winners: mockWinners });
     render(<Raffle />);
 
     await fillOutForm();
     await submitForm();
 
-    await screen.findByText(mockWinners[0].name);
+    await waitFor(() => {
+      expect(
+        screen.getByRole('button', { name: 'Draw Again' }),
+      ).toBeInTheDocument();
+    });
     user.click(screen.getByRole('button', { name: 'Draw Again' }));
 
     await waitFor(() => {
-      expect(screen.queryByText(mockWinners[0].name)).toBeNull();
+      expect(
+        screen.getByRole('button', { name: 'Start Over' }),
+      ).toBeInTheDocument();
     });
-    expect(
-      screen.getByRole('button', { name: 'Start Over' }),
-    ).toBeInTheDocument();
     expect(
       screen.getByRole('button', { name: 'Draw Again' }),
     ).toBeInTheDocument();

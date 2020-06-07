@@ -1,6 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import { render } from '../../../../test/utils';
+import { render } from '../../../test/utils';
 import Winners from '../Winners';
 
 const winners = Array.from(Array(2), (_, idx) => ({
