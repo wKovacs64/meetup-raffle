@@ -17,7 +17,7 @@ export const theme = {
     formFieldBg: '#fff', // white
   },
   sizes: [
-    /* 0 */ 'none',
+    /* 0 */ '0',
     /* 1 */ '1rem',
     /* 2 */ '2rem',
     /* 3 */ '4rem',
