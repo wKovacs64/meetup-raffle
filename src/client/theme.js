@@ -109,8 +109,17 @@ export const theme = {
       fontWeight: 'heading',
       lineHeight: 'heading',
     },
+    devToolsTitle: {
+      color: 'title',
+      textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+      fontSize: [3, 4],
+      fontFamily: 'heading',
+      fontWeight: 'heading',
+      lineHeight: 'heading',
+    },
   },
   buttons: {
+    // spec
     primary: {
       cursor: 'pointer',
       width: ['100%', 5],
@@ -143,8 +152,25 @@ export const theme = {
         opacity: 0.2,
       },
     },
+    // custom
+    devToolsToggle: {
+      position: 'absolute',
+      right: 4,
+      bottom: 4,
+      bg: 'formFieldBg',
+      borderWidth: 1,
+      borderStyle: 'solid',
+      borderRadius: 0,
+      boxShadow: 5,
+      zIndex: 1,
+      cursor: 'pointer',
+      height: 3,
+      width: 3,
+      p: 2,
+    },
   },
   forms: {
+    // spec
     label: {
       cursor: 'pointer',
       color: 'primary',
@@ -156,6 +182,22 @@ export const theme = {
       bg: 'formFieldBg',
       borderStyle: 'solid',
       borderRadius: 0,
+    },
+    // custom
+    devToolsLabel: {
+      alignItems: 'center',
+      cursor: 'pointer',
+      color: 'title',
+      lineHeight: 'label',
+      fontSize: [2, 3],
+    },
+    devToolsCheckbox: {
+      'input:checked ~ &, input:focus ~ &': {
+        color: 'formFieldBg',
+      },
+      'input:focus ~ &': {
+        bg: 'transparent',
+      },
     },
   },
   //
