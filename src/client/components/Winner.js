@@ -11,7 +11,7 @@ const Winner = ({ winner }) => {
       sx={{
         width: 4,
         mb: 3,
-        borderWidth: '1px',
+        borderWidth: 1,
         borderStyle: 'solid',
         borderColor: 'primary',
         boxShadow: 5,

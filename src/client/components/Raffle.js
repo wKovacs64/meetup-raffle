@@ -200,7 +200,7 @@ const Raffle = () => {
           <Input
             sx={{
               fontSize: [3, 4],
-              borderWidth: 3,
+              borderWidth: '0.5rem',
               borderColor: 'muted',
               mt: 3,
               p: 2,

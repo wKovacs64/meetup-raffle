@@ -66,14 +66,6 @@ export const theme = {
     heading: 1.25,
     label: 1.5,
   },
-  borderWidths: [
-    /* 0 */ '0',
-    /* 1 */ '.125rem',
-    /* 2 */ '.25rem',
-    /* 3 */ '.5rem',
-    /* 4 */ '1rem',
-    /* 5 */ '2rem',
-  ],
   shadows: [
     /* 0 */ 'none',
     /* 1 */ '0px 0px 4px 2px rgba(0, 0, 0, 0.2)',
@@ -129,7 +121,7 @@ export const theme = {
       fontWeight: 'bold',
       color: 'text',
       bg: 'formFieldBg',
-      borderWidth: '1px',
+      borderWidth: 1,
       borderStyle: 'solid',
       borderColor: 'text',
       borderRadius: 0,
