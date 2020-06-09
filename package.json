@@ -47,6 +47,7 @@
     "collectCoverageFrom": [
       "src/client/**/*.js",
       "src/functions/**/*.js",
+      "!src/client/dev-tools/**/*.js",
       "!**/index.js"
     ],
     "snapshotSerializers": [
