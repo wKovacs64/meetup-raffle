@@ -3,11 +3,11 @@ import { server, rest } from '../../test/server';
 import { EVENTS_ENDPOINT } from '../../test/fixtures';
 import { handler } from '../draw';
 
-const draw = async ({ meetup, specificEventId = '', count = 1 }) =>
+const draw = async ({ meetup, count = 1 }) =>
   handler(
     {
       httpMethod: 'GET',
-      queryStringParameters: { meetup, specificEventId, count },
+      queryStringParameters: { meetup, count },
     },
     {},
   );
