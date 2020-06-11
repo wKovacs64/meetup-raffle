@@ -14,10 +14,9 @@ const handler = async (request /* , context */) => {
 
   let meetup;
   let count;
-  let specificEventId;
 
   try {
-    ({ meetup, count, specificEventId } = getParamsFromRequest(request));
+    ({ meetup, count } = getParamsFromRequest(request));
   } catch (err) {
     return {
       headers,
@@ -27,13 +26,9 @@ const handler = async (request /* , context */) => {
   }
 
   try {
-    const baseUrl = `https://api.meetup.com/${encodeURIComponent(
+    const eventUrl = `https://api.meetup.com/${encodeURIComponent(
       meetup,
-    )}/events`;
-    const eventUrlSuffix = '?status=upcoming&only=id,visibility';
-    const eventUrl = `${baseUrl}/${encodeURIComponent(
-      specificEventId,
-    )}${eventUrlSuffix}`;
+    )}/events?status=upcoming&only=id,visibility`;
 
     const res = await fetch(eventUrl);
 

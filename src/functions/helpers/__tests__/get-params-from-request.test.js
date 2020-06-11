@@ -24,30 +24,11 @@ describe('getParamsFromRequest', () => {
     ).toThrow();
   });
 
-  it('throws on invalid specificEventId', () => {
-    expect(() =>
-      getParamsFromRequest({
-        httpMethod: 'GET',
-        queryStringParameters: {
-          meetup: 'meetup',
-          specificEventId: 6,
-        },
-      }),
-    ).toThrow();
-  });
-
   it('extracts query parameters successfully', () => {
-    const queryStringParameters = {
-      meetup: 'meetup',
-      count: 4,
-      specificEventId: '1234567890',
-    };
+    const queryStringParameters = { meetup: 'meetup', count: 4 };
 
     expect(
-      getParamsFromRequest({
-        httpMethod: 'GET',
-        queryStringParameters,
-      }),
+      getParamsFromRequest({ httpMethod: 'GET', queryStringParameters }),
     ).toEqual(queryStringParameters);
   });
 });
