@@ -1,8 +1,6 @@
 import React from 'react';
-import { screen, waitFor } from '@testing-library/react';
-import user from '@testing-library/user-event';
 import { server, rest } from '../../../test/server';
-import { render } from '../../../test/utils';
+import { render, screen, waitFor, user } from '../../../test/utils';
 import Raffle from '../Raffle';
 
 const drawUrl = '/.netlify/functions/draw';
