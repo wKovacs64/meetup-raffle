@@ -9625,10 +9625,10 @@ ms@^2.0.0, ms@^2.1.1:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
-msw@0.19.0:
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/msw/-/msw-0.19.0.tgz#fd37015787d40db82d243a2853be66c466675e72"
-  integrity sha512-1TpmJzJ+afBWTRNJYoeW8KwLQbCVlvvhw2u/eRuIYfel+bPqcut5NaSgo+Bi4C0Q/7M5wza00w1GEuOXQu6FCA==
+msw@0.19.1:
+  version "0.19.1"
+  resolved "https://registry.yarnpkg.com/msw/-/msw-0.19.1.tgz#7327eeb94670470a2481ca6a5f89b0f2ed1dfd9d"
+  integrity sha512-cco+DqkCb86BImS/p0eoWFt5JF8H3XUFBawJoxkhsWIF0/yWJKqmOPTT8diIeETvMuhVEBcgM7MZCZsF2ww7JA==
   dependencies:
     "@open-draft/until" "^1.0.0"
     "@types/cookie" "^0.3.3"
