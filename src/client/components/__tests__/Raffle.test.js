@@ -1,6 +1,6 @@
 import React from 'react';
 import { server, rest } from '../../../test/server';
-import { render, screen, waitFor, user } from '../../../test/utils';
+import { render, screen, user } from '../../../test/utils';
 import Raffle from '../Raffle';
 
 const drawUrl = '/.netlify/functions/draw';
@@ -119,12 +119,7 @@ describe('Raffle', () => {
     await fillOutForm();
     await submitForm();
 
-    await waitFor(() => {
-      expect(
-        screen.getByRole('button', { name: 'Start Over' }),
-      ).toBeInTheDocument();
-    });
-    user.click(screen.getByRole('button', { name: 'Start Over' }));
+    user.click(await screen.findByRole('button', { name: 'Start Over' }));
 
     expect(screen.queryByRole('button', { name: 'Start Over' })).toBeNull();
     expect(screen.getByRole('button', { name: 'Draw' })).toBeInTheDocument();
@@ -136,20 +131,11 @@ describe('Raffle', () => {
     await fillOutForm();
     await submitForm();
 
-    await waitFor(() => {
-      expect(
-        screen.getByRole('button', { name: 'Draw Again' }),
-      ).toBeInTheDocument();
-    });
-    user.click(screen.getByRole('button', { name: 'Draw Again' }));
+    user.click(await screen.findByRole('button', { name: 'Draw Again' }));
 
-    await waitFor(() => {
-      expect(
-        screen.getByRole('button', { name: 'Start Over' }),
-      ).toBeInTheDocument();
-    });
+    await screen.findByTestId('RingLoader');
     expect(
-      screen.getByRole('button', { name: 'Draw Again' }),
+      await screen.findByRole('button', { name: 'Draw Again' }),
     ).toBeInTheDocument();
   });
 
