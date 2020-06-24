@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 loadDevTools(() => {
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line global-require
-    const { worker } = require('./test/mocks');
+    const { worker } = require('./mocks/browser');
     worker.start();
   }
 

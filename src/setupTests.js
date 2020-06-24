@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
 import MutationObserver from '@sheerun/mutationobserver-shim';
-import { server } from './test/server';
+import { server } from './mocks/server';
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
