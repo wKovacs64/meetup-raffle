@@ -1,5 +1,5 @@
 import meetupRandomizer from 'meetup-randomizer';
-import { server, rest } from '../../test/server';
+import { server, rest } from '../../mocks/server';
 import { EVENTS_ENDPOINT } from '../../test/fixtures';
 import { handler } from '../draw';
 

@@ -1,11 +1,11 @@
 import faker from 'faker';
-import { setupWorker, rest } from 'msw';
+import { rest } from 'msw';
 import {
   EVENTS_ENDPOINT,
   RSVPS_ENDPOINT,
   UPCOMING_EVENTS,
   EVENT_RSVPS,
-} from './fixtures';
+} from '../test/fixtures';
 
 const generateWinners = (count = 1) => {
   return Array.from(Array(count), () => ({
@@ -51,5 +51,3 @@ export const handlers = [
     return res(ctx.json(EVENT_RSVPS));
   }),
 ];
-
-export const worker = setupWorker(...handlers);

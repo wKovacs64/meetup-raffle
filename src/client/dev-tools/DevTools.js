@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import React from 'react';
 import { jsx, Box, Heading, Grid, Label, Checkbox, IconButton } from 'theme-ui';
+import { worker } from '../../mocks/browser';
 import AppProviders from '../AppProviders';
-import { worker } from '../../test/mocks';
 
 const ToolsIcon = (props) => {
   return (

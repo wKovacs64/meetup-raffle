@@ -1,5 +1,5 @@
 import React from 'react';
-import { server, rest } from '../../../test/server';
+import { server, rest } from '../../../mocks/server';
 import { render, screen, user } from '../../../test/utils';
 import Raffle from '../Raffle';
 
