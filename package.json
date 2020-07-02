@@ -72,7 +72,7 @@
     "theme-ui": "0.3.1",
     "unfetch": "4.1.0",
     "use-stepper": "2.0.3",
-    "xstate": "4.10.0"
+    "xstate": "4.11.0"
   },
   "devDependencies": {
     "@commitlint/cli": "9.0.1",
