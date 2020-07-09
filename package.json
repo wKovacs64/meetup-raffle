@@ -88,7 +88,7 @@
     "cross-env": "7.0.2",
     "cz-conventional-changelog": "3.2.0",
     "eslint-plugin-wkovacs64": "7.0.0",
-    "http-proxy-middleware": "1.0.4",
+    "http-proxy-middleware": "1.0.5",
     "husky": "4.2.5",
     "jest-emotion": "10.0.32",
     "lint-staged": "10.2.11",
