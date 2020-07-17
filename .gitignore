@@ -238,3 +238,6 @@ package-lock.json
 ### Build ###
 /build
 /functions
+
+### Netlify ###
+.netlify
