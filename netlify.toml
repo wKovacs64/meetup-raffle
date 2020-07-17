@@ -1,3 +1,9 @@
 [build]
   command = "yarn build"
   functions = "functions"
+  publish = "build"
+
+[dev]
+  framework = "create-react-app" # probably not necessary, but added for clarity
+  autoLaunch = false # automatically open the browser
+  port = 8000 # port you should go to while developing
