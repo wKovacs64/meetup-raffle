@@ -31,7 +31,7 @@ const raffleMachine = createMachine(
     states: {
       init: {
         entry: 'restoreSettings',
-        on: { '': 'idle' },
+        always: 'idle',
       },
       idle: {
         entry: 'reset',
@@ -49,20 +49,20 @@ const raffleMachine = createMachine(
             initial: 'invalid',
             states: {
               invalid: {
-                on: {
-                  '': {
+                always: [
+                  {
                     target: 'valid',
                     cond: 'isCountValid',
                   },
-                },
+                ],
               },
               valid: {
-                on: {
-                  '': {
+                always: [
+                  {
                     target: 'invalid',
                     cond: 'isCountInvalid',
                   },
-                },
+                ],
               },
             },
           },
@@ -70,20 +70,20 @@ const raffleMachine = createMachine(
             initial: 'invalid',
             states: {
               invalid: {
-                on: {
-                  '': {
+                always: [
+                  {
                     target: 'valid',
                     cond: 'isMeetupValid',
                   },
-                },
+                ],
               },
               valid: {
-                on: {
-                  '': {
+                always: [
+                  {
                     target: 'invalid',
                     cond: 'isMeetupInvalid',
                   },
-                },
+                ],
               },
             },
           },
