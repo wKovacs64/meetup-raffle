@@ -7,13 +7,13 @@ import {
   EVENT_RSVPS,
 } from '../test/fixtures';
 
-const generateWinners = (count = 1) => {
+function generateWinners(count = 1) {
   return Array.from(Array(count), () => ({
     name: faker.name.findName(),
     photoURL: faker.internet.avatar(),
     profileURL: faker.internet.url(),
   }));
-};
+}
 
 const err400 = 'Sorry, something went wrong.';
 const err404 = "Sorry, I couldn't find any information on that.";

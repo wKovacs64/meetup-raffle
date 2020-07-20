@@ -9,7 +9,7 @@ const params = { meetup: 'foo', count: '2' };
 describe('Raffle', () => {
   const { localStorage } = global.window;
 
-  const fillOutForm = async () => {
+  async function fillOutForm() {
     // find elements
     const meetupInput = screen.getByLabelText(/meetup name/i);
     const countInput = screen.getByLabelText(/number of winners/i);
@@ -19,14 +19,14 @@ describe('Raffle', () => {
     await user.type(meetupInput, params.meetup);
     user.click(countInput);
     await user.type(countInput, params.count);
-  };
+  }
 
-  const submitForm = async () => {
+  async function submitForm() {
     const drawButton = screen.getByRole('button', { name: 'Draw' });
 
     // submit form
     user.click(drawButton);
-  };
+  }
 
   beforeEach(() => {
     jest.clearAllMocks();

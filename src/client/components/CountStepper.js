@@ -5,7 +5,7 @@ import { jsx, Box, Label, Input, Flex, IconButton } from 'theme-ui';
 import useStepper from 'use-stepper';
 import { usePrevious } from '../utils';
 
-const CountStepper = ({
+function CountStepper({
   inputId,
   labelText,
   min,
@@ -13,7 +13,7 @@ const CountStepper = ({
   defaultValue,
   onNewValue,
   ...otherProps
-}) => {
+}) {
   function validValueClosestTo(newValue) {
     return String(Math.min(max, Math.max(newValue, min)));
   }
@@ -146,7 +146,7 @@ const CountStepper = ({
       </Flex>
     </Box>
   );
-};
+}
 
 CountStepper.propTypes = {
   inputId: PropTypes.string.isRequired,

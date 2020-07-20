@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import { jsx, Link, Flex, AspectRatio, Text } from 'theme-ui';
 
-const Winner = ({ winner }) => {
+function Winner({ winner }) {
   return (
     <Link
       href={winner.profileURL}
@@ -47,7 +47,7 @@ const Winner = ({ winner }) => {
       </Flex>
     </Link>
   );
-};
+}
 
 Winner.propTypes = {
   winner: PropTypes.shape({

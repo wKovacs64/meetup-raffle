@@ -2,7 +2,7 @@
 import { jsx, useThemeUI, Box, Flex, Heading } from 'theme-ui';
 import GitHubCorner from 'react-github-corner';
 
-const Header = () => {
+function Header() {
   const { theme } = useThemeUI();
 
   return (
@@ -44,7 +44,7 @@ const Header = () => {
       </Flex>
     </header>
   );
-};
+}
 
 Header.displayName = 'Header';
 

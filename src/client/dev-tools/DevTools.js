@@ -4,7 +4,7 @@ import { jsx, Box, Heading, Grid, Label, Checkbox, IconButton } from 'theme-ui';
 import { worker } from '../../mocks/browser';
 import AppProviders from '../AppProviders';
 
-const ToolsIcon = (props) => {
+function ToolsIcon(props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19,9 +19,9 @@ const ToolsIcon = (props) => {
       ></path>
     </svg>
   );
-};
+}
 
-const CloseIcon = (props) => {
+function CloseIcon(props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -39,9 +39,9 @@ const CloseIcon = (props) => {
       <line x1="6" y1="6" x2="18" y2="18"></line>
     </svg>
   );
-};
+}
 
-const ToggleButton = (props) => {
+function ToggleButton(props) {
   return (
     <IconButton
       variant="devToolsToggle"
@@ -50,19 +50,19 @@ const ToggleButton = (props) => {
       {...props}
     />
   );
-};
+}
 
-const DevTools = () => {
+function DevTools() {
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const toggleVisibility = () => {
+  function toggleVisibility() {
     setIsOpen(!isOpen);
-  };
+  }
 
-  const toggleMocking = (e) => {
+  function toggleMocking(e) {
     if (e.target.checked) worker.start();
     else worker.stop();
-  };
+  }
 
   return (
     <AppProviders>
@@ -100,6 +100,6 @@ const DevTools = () => {
       </Box>
     </AppProviders>
   );
-};
+}
 
 export default DevTools;

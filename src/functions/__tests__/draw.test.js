@@ -3,14 +3,15 @@ import { server, rest } from '../../mocks/server';
 import { EVENTS_ENDPOINT } from '../../test/fixtures';
 import { handler } from '../draw';
 
-const draw = async ({ meetup, count = 1 }) =>
-  handler(
+async function draw({ meetup, count = 1 }) {
+  return handler(
     {
       httpMethod: 'GET',
       queryStringParameters: { meetup, count },
     },
     {},
   );
+}
 
 describe('draw', () => {
   it('handles invalid requests', async () => {

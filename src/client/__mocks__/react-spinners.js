@@ -1,3 +1,5 @@
 import React from 'react';
 
-export const RingLoader = () => <div data-testid="RingLoader" />;
+export function RingLoader() {
+  return <div data-testid="RingLoader" />;
+}

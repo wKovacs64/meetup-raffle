@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import { jsx, Flex, Button } from 'theme-ui';
 
-const ResetButtons = ({ onReset, onRetry }) => {
+function ResetButtons({ onReset, onRetry }) {
   return (
     <Flex
       sx={{
@@ -20,7 +20,7 @@ const ResetButtons = ({ onReset, onRetry }) => {
       </Button>
     </Flex>
   );
-};
+}
 
 ResetButtons.propTypes = {
   onReset: PropTypes.func.isRequired,
