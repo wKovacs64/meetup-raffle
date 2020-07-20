@@ -14,10 +14,10 @@ import isNumber from 'is-number';
  * @returns {Object} an object containing the required Meetup API parameters
  * @throws {Error} query parameters must be valid
  */
-export const getParamsFromRequest = ({
+export function getParamsFromRequest({
   httpMethod,
   queryStringParameters: { meetup, count = 1 },
-}) => {
+}) {
   if (httpMethod !== 'GET') {
     throw new Error('This API only accepts HTTP GET requests.');
   }
@@ -33,4 +33,4 @@ export const getParamsFromRequest = ({
   }
 
   return { meetup, count };
-};
+}

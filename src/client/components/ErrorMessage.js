@@ -2,7 +2,7 @@
 import { jsx, Text } from 'theme-ui';
 import PropTypes from 'prop-types';
 
-const ErrorMessage = ({ title, subtitle, problemText, ...props }) => {
+function ErrorMessage({ title, subtitle, problemText, ...props }) {
   return (
     <section {...props}>
       <Text as="span" sx={{ fontSize: 3, fontWeight: 'bold' }}>
@@ -25,7 +25,7 @@ const ErrorMessage = ({ title, subtitle, problemText, ...props }) => {
       </Text>
     </section>
   );
-};
+}
 
 ErrorMessage.propTypes = {
   title: PropTypes.string,

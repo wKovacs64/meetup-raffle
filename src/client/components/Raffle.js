@@ -19,9 +19,13 @@ const initialContext = {
   lastKnownGoodCount: undefined,
 };
 
-const isCountValid = (ctx) =>
-  ctx.count.length > 0 && parseInt(ctx.count, 10) > 0;
-const isMeetupValid = (ctx) => ctx.meetup.length > 0;
+function isCountValid(ctx) {
+  return ctx.count.length > 0 && parseInt(ctx.count, 10) > 0;
+}
+
+function isMeetupValid(ctx) {
+  return ctx.meetup.length > 0;
+}
 
 const raffleMachine = createMachine(
   {
@@ -167,7 +171,7 @@ const raffleMachine = createMachine(
   },
 );
 
-const Raffle = () => {
+function Raffle() {
   const { theme } = useThemeUI();
   const [current, send] = useMachine(raffleMachine);
   const { meetup, winners, error, lastKnownGoodCount } = current.context;
@@ -179,14 +183,14 @@ const Raffle = () => {
     [send],
   );
 
-  const handleMeetupChange = (e) => {
+  function handleMeetupChange(e) {
     send({ type: 'SET_MEETUP', data: e.target.value });
-  };
+  }
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
     send('SUBMIT');
-  };
+  }
 
   if (current.matches('idle')) {
     const isSubmitDisabled =
@@ -281,7 +285,7 @@ const Raffle = () => {
       />
     </Box>
   );
-};
+}
 
 Raffle.displayName = 'Raffle';
 

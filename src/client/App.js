@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Raffle from './components/Raffle';
 import AppProviders from './AppProviders';
 
-const App = () => {
+function App() {
   return (
     <AppProviders>
       <Flex
@@ -21,7 +21,7 @@ const App = () => {
       </Flex>
     </AppProviders>
   );
-};
+}
 
 App.displayName = 'App';
 

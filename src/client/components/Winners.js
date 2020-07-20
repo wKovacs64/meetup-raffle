@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { jsx, Flex } from 'theme-ui';
 import Winner from './Winner';
 
-const Winners = ({ winners, ...props }) => {
+function Winners({ winners, ...props }) {
   return (
     <Flex
       sx={{
@@ -18,7 +18,7 @@ const Winners = ({ winners, ...props }) => {
       ))}
     </Flex>
   );
-};
+}
 
 Winners.propTypes = {
   winners: PropTypes.arrayOf(

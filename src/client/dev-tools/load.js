@@ -1,4 +1,4 @@
-export const loadDevTools = (cb) => {
+export function loadDevTools(cb) {
   const explicitlyDisabled = window.location.search.includes('devTools=false');
   if (process.env.NODE_ENV === 'development' && !explicitlyDisabled) {
     import('./install')
@@ -7,4 +7,4 @@ export const loadDevTools = (cb) => {
   } else {
     cb();
   }
-};
+}
