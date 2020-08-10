@@ -52,7 +52,7 @@
     ]
   },
   "dependencies": {
-    "@emotion/core": "10.0.28",
+    "@emotion/core": "10.0.34",
     "@wkovacs64/normalize.css": "8.0.1",
     "@xstate/react": "0.8.1",
     "faker": "4.1.0",
