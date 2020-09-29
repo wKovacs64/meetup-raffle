@@ -67,7 +67,7 @@
     "react-scripts": "3.4.3",
     "react-spinners": "0.9.0",
     "theme-ui": "0.3.1",
-    "unfetch": "4.1.0",
+    "unfetch": "4.2.0",
     "use-stepper": "2.0.3",
     "xstate": "4.13.0"
   },
