@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import React from 'react';
 import { jsx, Box, Heading, Grid, Label, Checkbox, IconButton } from 'theme-ui';
+import { inspect } from '@xstate/inspect';
 import { worker } from '../../mocks/browser';
 import AppProviders from '../AppProviders';
 
@@ -63,6 +64,17 @@ function DevTools() {
     if (e.target.checked) worker.start();
     else worker.stop();
   }
+
+  React.useEffect(() => {
+    const inspector = inspect({
+      url: 'https://statecharts.io/inspect',
+      iframe: false,
+    });
+
+    return () => {
+      inspector.disconnect();
+    };
+  }, []);
 
   return (
     <AppProviders>
