@@ -173,7 +173,9 @@ const raffleMachine = createMachine(
 
 function Raffle() {
   const { theme } = useThemeUI();
-  const [current, send] = useMachine(raffleMachine);
+  const [current, send] = useMachine(raffleMachine, {
+    devTools: process.env.NODE_ENV === 'development',
+  });
   const { meetup, winners, error, lastKnownGoodCount } = current.context;
 
   const handleNewCountValue = React.useCallback(

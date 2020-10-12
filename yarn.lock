@@ -4216,6 +4216,11 @@
   resolved "https://registry.yarnpkg.com/@wkovacs64/prettier-config/-/prettier-config-3.0.0.tgz#e56992085ea1896a88adf36f8a279ffd6b0fc467"
   integrity sha512-lYDMjueauVIMcSRVlf7b/kqaQIUf3FexXpv0vwFG84NSJb6QhAW8cf7AutMkiG5Wlmq0Er96tNjszQel5gHEdQ==
 
+"@xstate/inspect@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@xstate/inspect/-/inspect-0.1.1.tgz#9d7b4f66c353a30e665c759c00d700bfc707f560"
+  integrity sha512-1aRFHH8DBCud9YSc/YB5T1j2AzV86ZKrJJfMohHctLuNOsLAL++Pp6BE+FbixLyhOiP66yLFoJCY2/Gdn0j/VQ==
+
 "@xstate/react@1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@xstate/react/-/react-1.0.1.tgz#cb6d64c277b20c5357eb3fc4742feeb395759090"
