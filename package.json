@@ -82,7 +82,7 @@
     "@testing-library/user-event": "12.1.8",
     "@wkovacs64/prettier-config": "3.0.0",
     "codecov": "3.8.0",
-    "commitizen": "4.2.1",
+    "commitizen": "4.2.2",
     "cross-env": "7.0.2",
     "cz-conventional-changelog": "3.3.0",
     "eslint-plugin-wkovacs64": "9.0.0",
