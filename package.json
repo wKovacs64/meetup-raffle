@@ -48,6 +48,7 @@
       "!src/client/dev-tools/**/*.js",
       "!**/index.js"
     ],
+    "resetMocks": false,
     "snapshotSerializers": [
       "jest-emotion"
     ]
