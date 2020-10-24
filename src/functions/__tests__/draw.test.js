@@ -82,7 +82,7 @@ describe('draw', () => {
   it('handles unexpected data', async () => {
     jest.spyOn(meetupRandomizer, 'run').mockResolvedValueOnce('unexpected');
 
-    expect(await draw({ meetup: 'some-meetup' })).toMatchInlineSnapshot(`
+    expect(await draw({ meetup: 'unexpected-data' })).toMatchInlineSnapshot(`
       Object {
         "body": "{\\"error\\":{\\"message\\":\\"Sorry, we received unexpected data for that request.\\"}}",
         "headers": Object {},
@@ -92,7 +92,7 @@ describe('draw', () => {
   });
 
   it('handles a valid Meetup Event', async () => {
-    const drawResponse = await draw({ meetup: 'some-meetup' });
+    const drawResponse = await draw({ meetup: 'valid-meetup' });
     expect(drawResponse).toMatchObject({
       body: expect.any(String),
       headers: expect.any(Object),
