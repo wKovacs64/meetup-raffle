@@ -1,3 +1,5 @@
+// TODO: remove next line after emotion and theme-ui support automatic runtime
+/** @jsxRuntime classic */
 /** @jsx jsx */
 import React from 'react';
 import { jsx, Box, Heading, Grid, Label, Checkbox, IconButton } from 'theme-ui';
