@@ -71,6 +71,7 @@
     "theme-ui": "0.3.1",
     "unfetch": "4.2.0",
     "use-stepper": "2.0.3",
+    "web-vitals": "0.2.4",
     "xstate": "4.13.0"
   },
   "devDependencies": {
