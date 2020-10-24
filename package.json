@@ -48,6 +48,7 @@
       "!src/client/dev-tools/**/*.js",
       "!**/index.js"
     ],
+    "resetMocks": false,
     "snapshotSerializers": [
       "jest-emotion"
     ]
@@ -66,17 +67,29 @@
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-github-corner": "2.5.0",
-    "react-scripts": "3.4.4",
+    "react-scripts": "4.0.0",
     "react-spinners": "0.9.0",
     "theme-ui": "0.3.1",
     "unfetch": "4.2.0",
     "use-stepper": "2.0.3",
+    "web-vitals": "0.2.4",
+    "workbox-background-sync": "5.1.4",
+    "workbox-broadcast-update": "5.1.4",
+    "workbox-cacheable-response": "5.1.4",
+    "workbox-core": "5.1.4",
+    "workbox-expiration": "5.1.4",
+    "workbox-google-analytics": "5.1.4",
+    "workbox-navigation-preload": "5.1.4",
+    "workbox-precaching": "5.1.4",
+    "workbox-range-requests": "5.1.4",
+    "workbox-routing": "5.1.4",
+    "workbox-strategies": "5.1.4",
+    "workbox-streams": "5.1.4",
     "xstate": "4.13.0"
   },
   "devDependencies": {
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
-    "@sheerun/mutationobserver-shim": "0.3.3",
     "@testing-library/jest-dom": "5.11.5",
     "@testing-library/react": "11.1.0",
     "@testing-library/user-event": "12.1.10",

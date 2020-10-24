@@ -1,4 +1,5 @@
 build
 coverage
 functions
-registerServiceWorker.js
+service-worker.js
+serviceWorkerRegistration.js

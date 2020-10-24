@@ -2,3 +2,5 @@ build
 coverage
 functions/**
 package.json
+service-worker.js
+serviceWorkerRegistration.js

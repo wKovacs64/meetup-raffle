@@ -1,3 +1,5 @@
+// TODO: remove next line after emotion and theme-ui support automatic runtime
+/** @jsxRuntime classic */
 /** @jsx jsx */
 import React from 'react';
 import fetch from 'unfetch';
