@@ -54,7 +54,7 @@
     ]
   },
   "dependencies": {
-    "@emotion/core": "10.0.35",
+    "@emotion/core": "10.1.0",
     "@wkovacs64/normalize.css": "8.0.1",
     "@xstate/inspect": "0.1.1",
     "@xstate/react": "1.0.1",
