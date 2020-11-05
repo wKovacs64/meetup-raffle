@@ -56,7 +56,7 @@
   "dependencies": {
     "@emotion/core": "10.1.1",
     "@wkovacs64/normalize.css": "8.0.1",
-    "@xstate/inspect": "0.1.1",
+    "@xstate/inspect": "0.2.0",
     "@xstate/react": "1.0.1",
     "faker": "5.1.0",
     "is-number": "7.0.0",
