@@ -4603,10 +4603,10 @@
   resolved "https://registry.yarnpkg.com/@xstate/inspect/-/inspect-0.2.0.tgz#c76dacc457ba503e7ee2f8649a6dd31c73f1162f"
   integrity sha512-HxxkEbJi7FwBCrKA4sw/fXu1c5S2fpRYN1ijPLrp4euSddOiVly9TtasnL3SyX2KI75c0qc6oOihwqbtDomJrg==
 
-"@xstate/react@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@xstate/react/-/react-1.0.1.tgz#cb6d64c277b20c5357eb3fc4742feeb395759090"
-  integrity sha512-FMQiXSbe2sZQdA1XSyUxTXangmpYJsLvEUyGal2C7+VMZCGoJnlxdoExKw09MR9QWpHMwsbhc8kJUvswqwxf2w==
+"@xstate/react@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@xstate/react/-/react-1.0.2.tgz#e0d9e4f2c8125f6a05056e163262776d9d375e8c"
+  integrity sha512-7UfMjnASK5GjRBM8a4YmW0aMdW5tQQRxSHkihxhTHv6z1ieGatBfOkRu9WNndgQoWN9Ns41jxDU+n4GcJ1oAmg==
   dependencies:
     use-isomorphic-layout-effect "^1.0.0"
     use-subscription "^1.3.0"
