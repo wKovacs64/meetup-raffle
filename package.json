@@ -54,7 +54,7 @@
     ]
   },
   "dependencies": {
-    "@emotion/core": "10.1.1",
+    "@emotion/core": "11.0.0",
     "@wkovacs64/normalize.css": "8.0.1",
     "@xstate/inspect": "0.2.0",
     "@xstate/react": "1.0.2",
@@ -101,7 +101,7 @@
     "eslint": "7.13.0",
     "eslint-plugin-wkovacs64": "9.0.0",
     "husky": "4.3.0",
-    "jest-emotion": "10.0.32",
+    "jest-emotion": "11.0.0",
     "lint-staged": "10.5.1",
     "netlify-cli": "2.68.4",
     "netlify-lambda": "2.0.1",
@@ -113,6 +113,6 @@
     "semantic-release": "17.2.2"
   },
   "resolutions": {
-    "@emotion/core": "10.1.1"
+    "@emotion/core": "11.0.0"
   }
 }
