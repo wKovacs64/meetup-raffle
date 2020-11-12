@@ -12,7 +12,7 @@
   },
   "packageRules": [
     {
-      "packageNames": ["eslint"],
+      "packageNames": ["eslint", "@emotion/core", "jest-emotion"],
       "updateTypes": ["major"],
       "enabled": false
     }
