@@ -35,6 +35,8 @@ workflows:
     jobs:
       - test
       - release:
+          context:
+            - release
           requires:
             - test
           filters:
