@@ -1,9 +1,7 @@
-// TODO: remove next line after emotion and theme-ui support automatic runtime
-/** @jsxRuntime classic */
-/** @jsx jsx */
+/** @jsxImportSource theme-ui */
 import React from 'react';
 import fetch from 'unfetch';
-import { jsx, useThemeUI, Box, Label, Input, Flex, Button } from 'theme-ui';
+import { useThemeUI, Box, Label, Input, Flex, Button } from 'theme-ui';
 import { assign, createMachine } from 'xstate';
 import { useMachine } from '@xstate/react';
 import { RingLoader } from 'react-spinners';

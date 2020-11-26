@@ -1,9 +1,7 @@
-// TODO: remove next line after emotion and theme-ui support automatic runtime
-/** @jsxRuntime classic */
-/** @jsx jsx */
+/** @jsxImportSource theme-ui */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { jsx, Box, Label, Input, Flex, IconButton } from 'theme-ui';
+import { Box, Label, Input, Flex, IconButton } from 'theme-ui';
 import useStepper from 'use-stepper';
 import { usePrevious } from '../utils';
 

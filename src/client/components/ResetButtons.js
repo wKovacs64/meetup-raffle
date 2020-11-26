@@ -1,8 +1,6 @@
-// TODO: remove next line after emotion and theme-ui support automatic runtime
-/** @jsxRuntime classic */
-/** @jsx jsx */
+/** @jsxImportSource theme-ui */
 import PropTypes from 'prop-types';
-import { jsx, Flex, Button } from 'theme-ui';
+import { Flex, Button } from 'theme-ui';
 
 function ResetButtons({ onReset, onRetry }) {
   return (

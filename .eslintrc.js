@@ -7,4 +7,7 @@ module.exports = {
     'prettier',
     'prettier/react',
   ],
+  rules: {
+    'react/react-in-jsx-scope': 'off',
+  },
 };

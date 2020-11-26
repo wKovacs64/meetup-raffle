@@ -1,8 +1,6 @@
-// TODO: remove next line after emotion and theme-ui support automatic runtime
-/** @jsxRuntime classic */
-/** @jsx jsx */
+/** @jsxImportSource theme-ui */
 import PropTypes from 'prop-types';
-import { jsx, Link, Flex, AspectRatio, Text } from 'theme-ui';
+import { Link, Flex, AspectRatio, Text } from 'theme-ui';
 
 function Winner({ winner }) {
   return (
