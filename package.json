@@ -92,7 +92,7 @@
     "@emotion/jest": "11.1.0",
     "@testing-library/jest-dom": "5.11.6",
     "@testing-library/react": "11.2.2",
-    "@testing-library/user-event": "12.4.0",
+    "@testing-library/user-event": "12.5.0",
     "@wkovacs64/prettier-config": "3.0.0",
     "codecov": "3.8.1",
     "commitizen": "4.2.2",
