@@ -100,7 +100,7 @@
     "cz-conventional-changelog": "3.3.0",
     "eslint": "7.15.0",
     "eslint-plugin-wkovacs64": "10.0.0",
-    "husky": "4.3.0",
+    "husky": "4.3.4",
     "lint-staged": "10.5.3",
     "netlify-cli": "2.69.1",
     "netlify-lambda": "2.0.1",
