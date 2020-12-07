@@ -29,24 +29,24 @@ describe('CountStepper', () => {
     expect(parseInt(input.value, 10)).toBe(initialIntValue - 1);
   });
 
-  it('accepts manual user input', async () => {
+  it('accepts manual user input', () => {
     render(<CountStepper {...countStepperProps} />);
     const input = screen.getByLabelText(countStepperProps.labelText);
-    expect(input.value).not.toEqual('3');
+    expect(input).not.toHaveValue('3');
 
     user.click(input);
-    await user.type(input, '3');
+    user.type(input, '3');
     user.tab();
 
-    expect(input.value).toBe('3');
+    expect(input).toHaveValue('3');
   });
 
-  it('coerces invalid input to the default value', async () => {
+  it('coerces invalid input to the default value', () => {
     render(<CountStepper {...countStepperProps} />);
     const input = screen.getByLabelText(countStepperProps.labelText);
 
     user.click(input);
-    await user.type(input, '-');
+    user.type(input, '-');
     user.tab();
 
     expect(parseInt(input.value, 10)).toBe(countStepperProps.defaultValue);
@@ -60,6 +60,6 @@ describe('CountStepper', () => {
     user.click(input);
     user.tab();
 
-    expect(input.value).toBe(initialValue);
+    expect(input).toHaveValue(initialValue);
   });
 });
