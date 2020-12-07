@@ -121,7 +121,9 @@ describe('Raffle', () => {
 
     user.click(await screen.findByRole('button', { name: 'Start Over' }));
 
-    expect(screen.queryByRole('button', { name: 'Start Over' })).toBeNull();
+    expect(
+      screen.queryByRole('button', { name: 'Start Over' }),
+    ).not.toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Draw' })).toBeInTheDocument();
   });
 
