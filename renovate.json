@@ -15,6 +15,11 @@
       "packageNames": ["eslint", "@emotion/core", "jest-emotion"],
       "updateTypes": ["major"],
       "enabled": false
+    },
+    {
+      "packagePatterns": ["^workbox-"],
+      "updateTypes": ["major"],
+      "enabled": false
     }
   ],
   "prConcurrentLimit": 0,
