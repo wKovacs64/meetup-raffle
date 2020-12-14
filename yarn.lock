@@ -4804,10 +4804,12 @@
   resolved "https://registry.yarnpkg.com/@wkovacs64/prettier-config/-/prettier-config-3.0.0.tgz#e56992085ea1896a88adf36f8a279ffd6b0fc467"
   integrity sha512-lYDMjueauVIMcSRVlf7b/kqaQIUf3FexXpv0vwFG84NSJb6QhAW8cf7AutMkiG5Wlmq0Er96tNjszQel5gHEdQ==
 
-"@xstate/inspect@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@xstate/inspect/-/inspect-0.2.0.tgz#c76dacc457ba503e7ee2f8649a6dd31c73f1162f"
-  integrity sha512-HxxkEbJi7FwBCrKA4sw/fXu1c5S2fpRYN1ijPLrp4euSddOiVly9TtasnL3SyX2KI75c0qc6oOihwqbtDomJrg==
+"@xstate/inspect@0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@xstate/inspect/-/inspect-0.3.0.tgz#f7e556b23d1527dad79ab27245db8ad19fd0f5d2"
+  integrity sha512-XJaHLyKMFaFy/5UWah0agawd57wnXn27fUqWCvLgJocroGi/960vuIvFjKZyqji7iS0e/foCAyI6060rSaxaaw==
+  dependencies:
+    fast-safe-stringify "^2.0.7"
 
 "@xstate/react@1.1.0":
   version "1.1.0"
