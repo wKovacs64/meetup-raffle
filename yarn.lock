@@ -4804,10 +4804,10 @@
   resolved "https://registry.yarnpkg.com/@wkovacs64/prettier-config/-/prettier-config-3.0.0.tgz#e56992085ea1896a88adf36f8a279ffd6b0fc467"
   integrity sha512-lYDMjueauVIMcSRVlf7b/kqaQIUf3FexXpv0vwFG84NSJb6QhAW8cf7AutMkiG5Wlmq0Er96tNjszQel5gHEdQ==
 
-"@xstate/inspect@0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@xstate/inspect/-/inspect-0.4.0.tgz#567cde11a73f1d2fbd666b15ff426543e254214d"
-  integrity sha512-jdusI2sDV/8z2FgQov1rElnj7xLA3q0CgVECpHw0bL5nJNYrye1xA748zLjSoKs7xjufhZk0RjBk7fXj1nIe6w==
+"@xstate/inspect@0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@xstate/inspect/-/inspect-0.4.1.tgz#6b00b945c03280a333de8ddf10e91830c361052d"
+  integrity sha512-tcGBUCVymP8ij0K2fXZckrwrQkmNJL1DgQAM0eSILQKb8iBDN3GeqhYkNCS4HP29EzF2TZL0+k74FPWKaU9Fhw==
   dependencies:
     fast-safe-stringify "^2.0.7"
 
