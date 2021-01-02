@@ -17448,10 +17448,10 @@ react-shallow-renderer@^16.13.1:
     object-assign "^4.1.1"
     react-is "^16.12.0 || ^17.0.0"
 
-react-spinners@0.10.2:
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.10.2.tgz#d0abe3114a22f85eaa68763687ef5d7a97f28508"
-  integrity sha512-nGkbt5DQbmDLP0hiq81Q305ZmRLJZzgubNxyfnBHQsrXTkhUXeQugkzvHe+rG+V513doVP3SnITRP8V46tBUqg==
+react-spinners@0.10.4:
+  version "0.10.4"
+  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.10.4.tgz#3789086f3c1289d904163517dfa240e13ffd460c"
+  integrity sha512-WRzHTHjx1nvMzsyTXg1J8VVDYadGGeas6pzzxGk0T+dVSZpMIN9NrKV/h76SybdsU8cUp55+u9L1V1C9/oafhw==
   dependencies:
     "@emotion/core" "^10.0.35"
 
