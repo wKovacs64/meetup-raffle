@@ -71,7 +71,7 @@
     "theme-ui": "0.5.0-alpha.2",
     "unfetch": "4.2.0",
     "use-stepper": "2.0.3",
-    "web-vitals": "1.0.1",
+    "web-vitals": "1.1.0",
     "workbox-background-sync": "5.1.4",
     "workbox-broadcast-update": "5.1.4",
     "workbox-cacheable-response": "5.1.4",
