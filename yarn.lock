@@ -14443,10 +14443,10 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.0.tgz#0fbdcf3e13fe4994781280524f8b96b0cdff9c61"
   integrity sha512-AO81vsIO1k1sM4Zrd6Hu7regmJN1NSiAja10gc4bX3F0wd+9rQmcuHQaHVQCYIEC8iFXnE+mavh23GOt7wBgug==
 
-netlify-cli@3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-3.1.2.tgz#84ae14a39ef8c1105bf7bf84ad8569bc3b78e29a"
-  integrity sha512-8BGk1UvrMi3H1jJRrVhmWmWM3kapKSGC3SFG591LmlRu78a8SqIlKCiNX98HNjrg8KSUXhmxwSs+7U6+70dKPA==
+netlify-cli@3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-3.2.0.tgz#2f30330ab28437a453d603388bc47ba5f7c393dc"
+  integrity sha512-WQgeWmeoDbdxR+bj4gfRHiSO6jdOjtnRJ9E4Xs+T7wlVfkglgrn/iHgHc+o5YKFR1++CEsqAAhmmhI3jweV9ig==
   dependencies:
     "@netlify/build" "^8.0.5"
     "@netlify/config" "^3.0.1"
@@ -14517,6 +14517,7 @@ netlify-cli@3.1.2:
     p-wait-for "^3.0.0"
     parse-github-url "^1.0.2"
     parse-gitignore "^1.0.1"
+    path-exists "^4.0.0"
     path-type "^4.0.0"
     prettyjson "^1.2.1"
     random-item "^3.0.0"
