@@ -61,7 +61,7 @@
     "faker": "5.3.1",
     "is-number": "7.0.0",
     "meetup-randomizer": "3.1.0",
-    "msw": "0.26.1",
+    "msw": "0.26.2",
     "node-fetch": "2.6.1",
     "prop-types": "15.7.2",
     "react": "17.0.1",
