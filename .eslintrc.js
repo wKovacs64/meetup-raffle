@@ -5,7 +5,6 @@ module.exports = {
     'plugin:wkovacs64/jest-dom',
     'plugin:wkovacs64/testing-library',
     'prettier',
-    'prettier/react',
   ],
   rules: {
     'react/react-in-jsx-scope': 'off',
