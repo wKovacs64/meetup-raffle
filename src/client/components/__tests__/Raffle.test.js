@@ -9,19 +9,17 @@ const params = { meetup: 'foo', count: '2' };
 describe('Raffle', () => {
   const { localStorage } = global.window;
 
-  async function fillOutForm() {
+  function fillOutForm() {
     // find elements
     const meetupInput = screen.getByLabelText(/meetup name/i);
     const countInput = screen.getByLabelText(/number of winners/i);
 
     // fill out form
-    user.click(meetupInput);
-    await user.type(meetupInput, params.meetup);
-    user.click(countInput);
-    await user.type(countInput, params.count);
+    user.type(meetupInput, params.meetup);
+    user.type(countInput, params.count);
   }
 
-  async function submitForm() {
+  function submitForm() {
     const drawButton = screen.getByRole('button', { name: 'Draw' });
 
     // submit form
@@ -70,13 +68,13 @@ describe('Raffle', () => {
     ).toBe(5);
   });
 
-  it('submits and persists data to localStorage (if available)', async () => {
+  it('submits and persists data to localStorage (if available)', () => {
     render(<Raffle />);
 
     expect(localStorage.getItem('count')).toBeNull();
 
-    await fillOutForm();
-    await submitForm();
+    fillOutForm();
+    submitForm();
 
     const countInStorage = localStorage.getItem('count');
     expect(countInStorage).toBe(params.count);
@@ -90,8 +88,8 @@ describe('Raffle', () => {
     );
     render(<Raffle />);
 
-    await fillOutForm();
-    await submitForm();
+    fillOutForm();
+    submitForm();
 
     await screen.findByText(/malformed response/i);
   });
@@ -107,8 +105,8 @@ describe('Raffle', () => {
     );
     render(<Raffle />);
 
-    await fillOutForm();
-    await submitForm();
+    fillOutForm();
+    submitForm();
 
     await screen.findByText(/awry/i);
   });
@@ -116,8 +114,8 @@ describe('Raffle', () => {
   it('resets the form on reset button click', async () => {
     render(<Raffle />);
 
-    await fillOutForm();
-    await submitForm();
+    fillOutForm();
+    submitForm();
 
     user.click(await screen.findByRole('button', { name: 'Start Over' }));
 
@@ -130,8 +128,8 @@ describe('Raffle', () => {
   it('draws again on retry button click', async () => {
     render(<Raffle />);
 
-    await fillOutForm();
-    await submitForm();
+    fillOutForm();
+    submitForm();
 
     user.click(await screen.findByRole('button', { name: 'Draw Again' }));
 
@@ -141,46 +139,42 @@ describe('Raffle', () => {
     ).toBeInTheDocument();
   });
 
-  it('selects current meetup input text on focus', async () => {
+  it('selects current meetup input text on focus', () => {
     render(<Raffle />);
     const meetupInput = screen.getByLabelText(/meetup name/i);
 
     expect(meetupInput.selectionStart).toBe(0);
     expect(meetupInput.selectionEnd).toBe(0);
 
-    await fillOutForm();
+    fillOutForm();
     user.click(meetupInput);
 
     expect(meetupInput.selectionStart).toBe(0);
     expect(meetupInput.selectionEnd).toBe(meetupInput.value.length);
   });
 
-  it('disables the Draw button while the inputs are invalid', async () => {
+  it('disables the Draw button while the inputs are invalid', () => {
     render(<Raffle />);
     const meetupInput = screen.getByLabelText(/meetup name/i);
     const countInput = screen.getByLabelText(/number of winners/i);
     const drawButton = screen.getByRole('button', { name: 'Draw' });
 
     // meetup: invalid, count: valid
-    user.click(meetupInput);
     user.clear(meetupInput);
-    user.click(countInput);
-    await user.type(countInput, params.count);
+    user.type(countInput, params.count);
     expect(meetupInput).not.toHaveValue();
     expect(countInput).toHaveValue(params.count);
     expect(drawButton).toBeDisabled();
 
     // meetup: valid, count: invalid
-    user.click(meetupInput);
-    await user.type(meetupInput, params.meetup);
-    user.click(countInput);
+    user.type(meetupInput, params.meetup);
     user.clear(countInput);
     expect(meetupInput).toHaveValue(params.meetup);
     expect(countInput).not.toHaveValue();
     expect(drawButton).toBeDisabled();
 
     // meetup: valid, count: valid
-    await fillOutForm();
+    fillOutForm();
     expect(meetupInput).toHaveValue(params.meetup);
     expect(countInput).toHaveValue(params.count);
     expect(drawButton).toBeEnabled();

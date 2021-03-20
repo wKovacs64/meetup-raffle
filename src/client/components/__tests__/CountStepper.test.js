@@ -34,7 +34,6 @@ describe('CountStepper', () => {
     const input = screen.getByLabelText(countStepperProps.labelText);
     expect(input).not.toHaveValue('3');
 
-    user.click(input);
     user.type(input, '3');
     user.tab();
 
@@ -45,7 +44,6 @@ describe('CountStepper', () => {
     render(<CountStepper {...countStepperProps} />);
     const input = screen.getByLabelText(countStepperProps.labelText);
 
-    user.click(input);
     user.type(input, '-');
     user.tab();
 
