@@ -85,7 +85,7 @@
     "workbox-routing": "5.1.4",
     "workbox-strategies": "5.1.4",
     "workbox-streams": "5.1.4",
-    "xstate": "4.16.2"
+    "xstate": "4.17.0"
   },
   "devDependencies": {
     "@commitlint/cli": "12.0.1",
