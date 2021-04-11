@@ -54,11 +54,11 @@ describe('Raffle', () => {
   });
 
   it('restores data from localStorage (if available)', () => {
-    const firstRender = render(<Raffle />);
+    const { unmount } = render(<Raffle />);
     expect(
       parseInt(screen.getByLabelText(/Number of winners/i).value, 10),
     ).not.toBe(5);
-    firstRender.unmount();
+    unmount();
 
     localStorage.setItem('count', 5);
     render(<Raffle />);
