@@ -114,6 +114,6 @@
     "semantic-release": "17.4.2"
   },
   "resolutions": {
-    "eslint-plugin-testing-library": "4.0.1"
+    "eslint-plugin-testing-library": "4.0.2"
   }
 }
