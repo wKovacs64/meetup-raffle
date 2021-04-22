@@ -1,4 +1,4 @@
-/** @jsxImportSource theme-ui */
+import * as React from 'react';
 import { useThemeUI, Box, Flex, Heading } from 'theme-ui';
 import GitHubCorner from 'react-github-corner';
 

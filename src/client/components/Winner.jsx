@@ -1,4 +1,4 @@
-/** @jsxImportSource theme-ui */
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Flex, AspectRatio, Text } from 'theme-ui';
 

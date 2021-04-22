@@ -1,6 +1,6 @@
 import meetupRandomizer from 'meetup-randomizer';
+import { EVENTS_ENDPOINT } from '../../mocks/fixtures';
 import { server, rest } from '../../mocks/server';
-import { EVENTS_ENDPOINT } from '../../test/fixtures';
 import { handler } from '../draw';
 
 async function draw({ meetup, count = 1 }) {

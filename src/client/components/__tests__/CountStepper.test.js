@@ -1,5 +1,5 @@
-import React from 'react';
-import { render, screen, user } from '../../../test/utils';
+import * as React from 'react';
+import { render, screen, user } from '../../../../test/utils';
 import CountStepper from '../CountStepper';
 
 const countStepperProps = {

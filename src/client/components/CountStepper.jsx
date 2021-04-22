@@ -1,5 +1,4 @@
-/** @jsxImportSource theme-ui */
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Label, Input, Flex, IconButton } from 'theme-ui';
 import useStepper from 'use-stepper';

@@ -1,4 +1,4 @@
-/** @jsxImportSource theme-ui */
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Flex, Button } from 'theme-ui';
 

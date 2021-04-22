@@ -1,4 +1,4 @@
-/** @jsxImportSource theme-ui */
+import * as React from 'react';
 import '@wkovacs64/normalize.css';
 import { Flex, Container } from 'theme-ui';
 import Header from './components/Header';

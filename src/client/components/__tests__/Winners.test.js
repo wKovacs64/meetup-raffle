@@ -1,5 +1,5 @@
-import React from 'react';
-import { render, screen } from '../../../test/utils';
+import * as React from 'react';
+import { render, screen } from '../../../../test/utils';
 import Winners from '../Winners';
 
 const winners = Array.from(Array(2), (_, idx) => ({

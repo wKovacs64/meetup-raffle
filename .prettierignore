@@ -1,4 +1,4 @@
-build
+dist
 coverage
 functions/**
 public/mockServiceWorker.js
