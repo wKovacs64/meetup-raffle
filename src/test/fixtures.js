@@ -15,7 +15,7 @@ export const EVENT_RSVPS = [
   {
     response: 'yes',
     member: {
-      id: faker.random.number(100000000, 999999999),
+      id: faker.datatype.number(100000000, 999999999),
       name: faker.name.firstName(),
       role: 'organizer',
       event_context: { host: true },
@@ -25,10 +25,10 @@ export const EVENT_RSVPS = [
   {
     response: 'yes',
     member: {
-      id: faker.random.number(100000000, 999999999),
+      id: faker.datatype.number(100000000, 999999999),
       name: faker.name.findName(),
       photo: {
-        id: faker.random.number(100000000, 999999999),
+        id: faker.datatype.number(100000000, 999999999),
         highres_link: faker.internet.avatar(),
         photo_link: faker.internet.avatar(),
         thumb_link: faker.internet.avatar(),
@@ -43,10 +43,10 @@ export const EVENT_RSVPS = [
   {
     response: 'yes',
     member: {
-      id: faker.random.number(100000000, 999999999),
+      id: faker.datatype.number(100000000, 999999999),
       name: faker.name.findName(),
       photo: {
-        id: faker.random.number(100000000, 999999999),
+        id: faker.datatype.number(100000000, 999999999),
         highres_link: faker.internet.avatar(),
         photo_link: faker.internet.avatar(),
         thumb_link: faker.internet.avatar(),
@@ -61,10 +61,10 @@ export const EVENT_RSVPS = [
   {
     response: 'yes',
     member: {
-      id: faker.random.number(100000000, 999999999),
+      id: faker.datatype.number(100000000, 999999999),
       name: faker.name.findName(),
       photo: {
-        id: faker.random.number(100000000, 999999999),
+        id: faker.datatype.number(100000000, 999999999),
         highres_link: faker.internet.avatar(),
         photo_link: faker.internet.avatar(),
         thumb_link: faker.internet.avatar(),
