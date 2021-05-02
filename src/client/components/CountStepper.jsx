@@ -1,6 +1,7 @@
+/** @jsx jsx */
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Label, Input, Flex, IconButton } from 'theme-ui';
+import { jsx, Box, Label, Input, Flex, IconButton } from 'theme-ui';
 import useStepper from 'use-stepper';
 import { usePrevious } from '../utils';
 

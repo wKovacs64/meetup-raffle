@@ -1,6 +1,6 @@
-import * as React from 'react';
+/** @jsx jsx */
 import '@wkovacs64/normalize.css';
-import { Flex, Container } from 'theme-ui';
+import { jsx, Flex, Container } from 'theme-ui';
 import Header from './components/Header';
 import Raffle from './components/Raffle';
 import AppProviders from './AppProviders';

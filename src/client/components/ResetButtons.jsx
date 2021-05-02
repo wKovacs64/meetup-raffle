@@ -1,6 +1,6 @@
-import * as React from 'react';
+/** @jsx jsx */
 import PropTypes from 'prop-types';
-import { Flex, Button } from 'theme-ui';
+import { jsx, Flex, Button } from 'theme-ui';
 
 function ResetButtons({ onReset, onRetry }) {
   return (

@@ -1,6 +1,6 @@
-import * as React from 'react';
+/** @jsx jsx */
 import PropTypes from 'prop-types';
-import { Link, Flex, AspectRatio, Text } from 'theme-ui';
+import { jsx, Link, Flex, AspectRatio, Text } from 'theme-ui';
 
 function Winner({ winner }) {
   return (

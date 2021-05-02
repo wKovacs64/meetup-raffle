@@ -1,6 +1,6 @@
-import * as React from 'react';
+/** @jsx jsx */
 import PropTypes from 'prop-types';
-import { Flex } from 'theme-ui';
+import { jsx, Flex } from 'theme-ui';
 import Winner from './Winner';
 
 function Winners({ winners, ...props }) {

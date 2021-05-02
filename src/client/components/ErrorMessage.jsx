@@ -1,6 +1,6 @@
-import * as React from 'react';
+/** @jsx jsx */
 import PropTypes from 'prop-types';
-import { Text } from 'theme-ui';
+import { jsx, Text } from 'theme-ui';
 
 function ErrorMessage({ title, subtitle, problemText, ...props }) {
   return (

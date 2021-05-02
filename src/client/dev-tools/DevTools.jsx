@@ -1,5 +1,6 @@
+/** @jsx jsx */
 import * as React from 'react';
-import { Box, Heading, Grid, Label, Checkbox, IconButton } from 'theme-ui';
+import { jsx, Box, Heading, Grid, Label, Checkbox, IconButton } from 'theme-ui';
 import { inspect } from '@xstate/inspect';
 import { worker } from '../../mocks/browser';
 import AppProviders from '../AppProviders';

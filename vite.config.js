@@ -4,12 +4,6 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  esbuild: {
-    // This makes the theme-ui `sx` prop work, but we still import React in
-    // every component to make jest work. :\
-    jsxFactory: 'jsx',
-    jsxInject: 'import { jsx } from "theme-ui"',
-  },
   plugins: [
     reactRefresh(),
     VitePWA({

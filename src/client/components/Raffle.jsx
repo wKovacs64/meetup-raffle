@@ -1,5 +1,6 @@
+/** @jsx jsx */
 import * as React from 'react';
-import { useThemeUI, Box, Label, Input, Flex, Button } from 'theme-ui';
+import { jsx, useThemeUI, Box, Label, Input, Flex, Button } from 'theme-ui';
 import { assign, createMachine } from 'xstate';
 import { useMachine } from '@xstate/react';
 import RingLoader from 'react-spinners/RingLoader';

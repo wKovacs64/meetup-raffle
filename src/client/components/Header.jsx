@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { useThemeUI, Box, Flex, Heading } from 'theme-ui';
+/** @jsx jsx */
+import { jsx, useThemeUI, Box, Flex, Heading } from 'theme-ui';
 import GitHubCorner from 'react-github-corner';
 
 function Header() {
