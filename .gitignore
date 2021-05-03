@@ -236,7 +236,7 @@ $RECYCLE.BIN/
 package-lock.json
 
 ### Build ###
-/build
+/dist
 /functions
 
 ### Netlify ###

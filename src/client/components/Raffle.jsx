@@ -1,10 +1,9 @@
-/** @jsxImportSource theme-ui */
-import React from 'react';
-import fetch from 'unfetch';
-import { useThemeUI, Box, Label, Input, Flex, Button } from 'theme-ui';
+/** @jsx jsx */
+import * as React from 'react';
+import { jsx, useThemeUI, Box, Label, Input, Flex, Button } from 'theme-ui';
 import { assign, createMachine } from 'xstate';
 import { useMachine } from '@xstate/react';
-import { RingLoader } from 'react-spinners';
+import RingLoader from 'react-spinners/RingLoader';
 import { persist, restore } from '../persistence';
 import CountStepper from './CountStepper';
 import ErrorMessage from './ErrorMessage';

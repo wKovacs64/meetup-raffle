@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { server, rest } from '../../../mocks/server';
-import { render, screen, user } from '../../../test/utils';
+import { render, screen, user } from '../../../../test/utils';
 import Raffle from '../Raffle';
 
 const drawUrl = '/.netlify/functions/draw';

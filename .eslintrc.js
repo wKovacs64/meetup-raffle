@@ -6,7 +6,4 @@ module.exports = {
     'plugin:wkovacs64/testing-library',
     'prettier',
   ],
-  rules: {
-    'react/react-in-jsx-scope': 'off',
-  },
 };

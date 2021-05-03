@@ -1,5 +1,5 @@
 import { render as rtlRender } from '@testing-library/react';
-import AppProviders from '../client/AppProviders';
+import AppProviders from '../src/client/AppProviders';
 
 export * from '@testing-library/react';
 export { default as user } from '@testing-library/user-event';

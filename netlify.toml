@@ -1,12 +1,14 @@
 [build]
   command = "yarn build"
   functions = "functions"
-  publish = "build"
+  publish = "dist"
 
 [dev]
-  framework = "create-react-app" # probably not necessary, but added for clarity
+  framework = "#custom"
+  command = "yarn vite"
   autoLaunch = false # automatically open the browser
   port = 8000 # port you should go to while developing
+  targetPort = 3000 # port where the frontend is running
 
 [[headers]]
   for = "/*"
@@ -14,7 +16,7 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
-    Content-Security-Policy = "default-src 'self'; connect-src 'self' https://secure.meetupstatic.com; img-src data: https:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; worker-src 'self'"
+    Content-Security-Policy = "default-src 'self'; connect-src 'self' https://secure.meetupstatic.com; img-src data: https:; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; worker-src 'self'"
     Expect-CT = "enforce, max-age=3600"
     Referrer-Policy = "no-referrer-when-downgrade"
     Permissions-Policy = "geolocation=(), camera=(), microphone=(), payment=(), usb=()"

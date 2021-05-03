@@ -17,18 +17,19 @@
   },
   "scripts": {
     "build": "npm-run-all --silent --parallel build:*",
-    "build:client": "react-scripts build",
+    "build:client": "vite build",
     "build:functions": "netlify-lambda build src/functions",
-    "clean": "rimraf build functions coverage",
+    "clean": "rimraf dist functions coverage",
     "cm": "git-cz",
-    "develop": "netlify dev",
-    "eject": "react-scripts eject",
+    "dev": "netlify dev",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,html,css,json,md,mdx,yml,yaml}\"",
     "lint": "eslint --ext \".js,.jsx,.ts,.tsx\" .",
     "husky:install": "husky install",
     "prepare": "npm run --silent husky:install",
-    "start": "react-scripts start",
-    "test": "react-scripts test",
+    "start": "vite preview",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch --onlyChanged",
     "validate": "npm-run-all --silent --parallel lint build"
   },
   "config": {
@@ -37,26 +38,8 @@
     }
   },
   "private": true,
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "msw": {
     "workerDirectory": "public"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/client/**/*.js",
-      "src/functions/**/*.js",
-      "!src/client/dev-tools/**/*.js",
-      "!**/index.js"
-    ],
-    "resetMocks": false,
-    "snapshotSerializers": [
-      "@emotion/jest/serializer"
-    ]
   },
   "dependencies": {
     "@wkovacs64/normalize.css": "8.0.3",
@@ -71,34 +54,24 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-github-corner": "2.5.0",
-    "react-scripts": "4.0.3",
     "react-spinners": "0.10.6",
     "theme-ui": "0.7.5",
-    "unfetch": "4.2.0",
     "use-stepper": "2.0.3",
-    "web-vitals": "1.1.1",
-    "workbox-background-sync": "5.1.4",
-    "workbox-broadcast-update": "5.1.4",
-    "workbox-cacheable-response": "5.1.4",
-    "workbox-core": "5.1.4",
-    "workbox-expiration": "5.1.4",
-    "workbox-google-analytics": "5.1.4",
-    "workbox-navigation-preload": "5.1.4",
-    "workbox-precaching": "5.1.4",
-    "workbox-range-requests": "5.1.4",
-    "workbox-routing": "5.1.4",
-    "workbox-strategies": "5.1.4",
-    "workbox-streams": "5.1.4",
     "xstate": "4.19.0"
   },
   "devDependencies": {
+    "@babel/core": "7.13.16",
+    "@babel/preset-env": "7.13.15",
+    "@babel/preset-react": "7.13.13",
     "@commitlint/cli": "12.1.1",
     "@commitlint/config-conventional": "12.1.1",
     "@emotion/jest": "11.3.0",
     "@testing-library/jest-dom": "5.12.0",
     "@testing-library/react": "11.2.6",
     "@testing-library/user-event": "13.1.8",
+    "@vitejs/plugin-react-refresh": "1.3.3",
     "@wkovacs64/prettier-config": "3.0.0",
+    "babel-jest": "26.6.3",
     "codecov": "3.8.1",
     "commitizen": "4.2.3",
     "cross-env": "7.0.3",
@@ -106,6 +79,7 @@
     "eslint": "7.25.0",
     "eslint-plugin-wkovacs64": "13.1.0",
     "husky": "6.0.0",
+    "jest": "26.6.3",
     "lint-staged": "10.5.4",
     "netlify-cli": "3.24.3",
     "netlify-lambda": "2.0.5",
@@ -114,9 +88,21 @@
     "react-hooks-testing-library": "0.6.0",
     "react-test-renderer": "17.0.2",
     "rimraf": "3.0.2",
-    "semantic-release": "17.4.2"
-  },
-  "resolutions": {
-    "eslint-plugin-testing-library": "4.1.2"
+    "semantic-release": "17.4.2",
+    "unfetch": "4.2.0",
+    "vite": "2.2.3",
+    "vite-plugin-pwa": "0.7.3",
+    "workbox-background-sync": "6.1.5",
+    "workbox-broadcast-update": "6.1.5",
+    "workbox-cacheable-response": "6.1.5",
+    "workbox-core": "6.1.5",
+    "workbox-expiration": "6.1.5",
+    "workbox-google-analytics": "6.1.5",
+    "workbox-navigation-preload": "6.1.5",
+    "workbox-precaching": "6.1.5",
+    "workbox-range-requests": "6.1.5",
+    "workbox-routing": "6.1.5",
+    "workbox-strategies": "6.1.5",
+    "workbox-streams": "6.1.5"
   }
 }

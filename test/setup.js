@@ -1,5 +1,6 @@
+import 'unfetch/polyfill';
 import '@testing-library/jest-dom/extend-expect';
-import { server } from './mocks/server';
+import { server } from '../src/mocks/server';
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());

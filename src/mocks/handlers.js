@@ -5,7 +5,7 @@ import {
   RSVPS_ENDPOINT,
   UPCOMING_EVENTS,
   EVENT_RSVPS,
-} from '../test/fixtures';
+} from './fixtures';
 
 function generateWinners(count = 1) {
   return Array.from(Array(count), () => ({
