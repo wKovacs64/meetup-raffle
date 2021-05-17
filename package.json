@@ -81,7 +81,7 @@
     "husky": "6.0.0",
     "jest": "26.6.3",
     "lint-staged": "11.0.0",
-    "netlify-cli": "3.29.15",
+    "netlify-cli": "3.29.16",
     "netlify-lambda": "2.0.6",
     "npm-run-all": "4.1.5",
     "prettier": "2.3.0",
