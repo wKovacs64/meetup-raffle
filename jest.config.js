@@ -11,4 +11,5 @@ module.exports = {
   resetMocks: false,
   setupFilesAfterEnv: ['<rootDir>/test/setup.js'],
   snapshotSerializers: ['@emotion/jest/serializer'],
+  testEnvironment: 'jsdom',
 };
