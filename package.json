@@ -79,7 +79,7 @@
     "eslint": "7.27.0",
     "eslint-plugin-wkovacs64": "13.3.0",
     "husky": "6.0.0",
-    "jest": "27.0.2",
+    "jest": "27.0.3",
     "lint-staged": "11.0.0",
     "netlify-cli": "3.31.16",
     "netlify-lambda": "2.0.7",
