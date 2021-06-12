@@ -16413,10 +16413,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vite-plugin-pwa@0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/vite-plugin-pwa/-/vite-plugin-pwa-0.8.0.tgz#20153f1b049a2610e8355722e5dae0e47d0324ac"
-  integrity sha512-MwmZ5TGE9kIq7iV+rvtGckoGHs8NVB4kMmB0q1tq4OTdy3uqrmtWQ0DbM0gUuSvyOlXgDqMpoUAHcqAtYYWHxw==
+vite-plugin-pwa@0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/vite-plugin-pwa/-/vite-plugin-pwa-0.8.1.tgz#8b6fc6c26fcc6fab9d39a087256ba6280173b6eb"
+  integrity sha512-Hrfz+NpZ6yroVm5yiCWQ1N9HX9o6H/CCyg7ZHiaP3ZZC29a0Z9lqnnicEAhZMLkVPJqHM60wowL0EJkyOVyxBg==
   dependencies:
     debug "^4.3.2"
     fast-glob "^3.2.5"
