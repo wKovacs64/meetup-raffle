@@ -89,7 +89,7 @@
     "rimraf": "3.0.2",
     "semantic-release": "17.4.4",
     "unfetch": "4.2.0",
-    "vite": "2.3.8",
+    "vite": "2.4.0",
     "vite-plugin-pwa": "0.8.1",
     "workbox-background-sync": "6.1.5",
     "workbox-broadcast-update": "6.1.5",
