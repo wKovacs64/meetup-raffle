@@ -2785,14 +2785,14 @@
     strict-event-emitter "^0.2.0"
     xmldom "^0.6.0"
 
-"@netlify/build@^13.0.0":
-  version "13.1.0"
-  resolved "https://registry.yarnpkg.com/@netlify/build/-/build-13.1.0.tgz#e002790c996da6ca9cbd6a7cbda6a1ec24bc49c8"
-  integrity sha512-MtfCGOzmb+wp+7vMF329GRc7Dx+qUpEvoPFursL2hfUNSOT4l07a9fK4xLpavEEQxSr+abX2h6yNM8xs9NO2uw==
+"@netlify/build@^13.3.0":
+  version "13.3.0"
+  resolved "https://registry.yarnpkg.com/@netlify/build/-/build-13.3.0.tgz#a837c82b08d79e363be3a8042d2f67d34f0f1d3b"
+  integrity sha512-cybMgDSuLDyjllxMc1HL1TdoXVty0JRthRiBN9FzJxUrSDT90NE/1BEpzArZjszLS6J8uT836McXKxEh3T3+sw==
   dependencies:
     "@bugsnag/js" "^7.0.0"
     "@netlify/cache-utils" "^1.0.7"
-    "@netlify/config" "^10.0.0"
+    "@netlify/config" "^10.3.0"
     "@netlify/functions-utils" "^1.3.13"
     "@netlify/git-utils" "^1.0.8"
     "@netlify/plugin-edge-handlers" "^1.11.20"
@@ -2821,7 +2821,6 @@
     os-name "^3.1.0"
     p-event "^4.1.0"
     p-every "^2.0.0"
-    p-filter "^2.1.0"
     p-locate "^4.1.0"
     p-reduce "^2.1.0"
     path-exists "^4.0.0"
@@ -2860,10 +2859,10 @@
     path-exists "^4.0.0"
     readdirp "^3.4.0"
 
-"@netlify/config@^10.0.0":
-  version "10.2.0"
-  resolved "https://registry.yarnpkg.com/@netlify/config/-/config-10.2.0.tgz#d1c5181d411423365464bb87d0d6c10b34208ea7"
-  integrity sha512-60+BYFg7NkJmF6KaxYOWHPb/jOmhvglcfhzePtHw2PUga4wI4K3P7oSakuzk6ZRyMP00fqcm56G7v4NxqNjKmA==
+"@netlify/config@^10.3.0":
+  version "10.3.0"
+  resolved "https://registry.yarnpkg.com/@netlify/config/-/config-10.3.0.tgz#4093438caeb2dc8d009e1a781b9d792936a45e9d"
+  integrity sha512-bgf2dLPKWIYJVJUfajpsI4A6eJqz95Mzx4aQl1Kt8gxuMuIno1Sazy5NkAixYHPS/Tl4Xe1ro/Y08K/hZFBCkQ==
   dependencies:
     "@ungap/from-entries" "^0.2.1"
     array-flat-polyfill "^1.0.1"
@@ -2883,6 +2882,7 @@
     netlify "^7.0.1"
     netlify-redirect-parser "^8.0.0"
     omit.js "^2.0.2"
+    p-filter "^2.1.0"
     p-locate "^4.1.0"
     path-exists "^4.0.0"
     path-type "^4.0.0"
@@ -2896,10 +2896,10 @@
   resolved "https://registry.yarnpkg.com/@netlify/esbuild/-/esbuild-0.13.6.tgz#ef0fda98604e708528ef0a57e853c50a6fc987f2"
   integrity sha512-tiKmDcHM2riSVN79c0mJY/67EBDafXQAMitHuLiCDAMdtz3kfv+NqdVG5krgf5lWR8Uf8AeZrUW5Q9RP25REvw==
 
-"@netlify/framework-info@^5.5.0":
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/@netlify/framework-info/-/framework-info-5.5.0.tgz#393c5ee64bb41d2daab3a0641bb1dccd17b422c4"
-  integrity sha512-kAGcUnFlJgP2lQXez1c0RKJNF1reoefLVXMzTTTCoKqt1OcfzQnWzgCT6rJbsS7wia02JoLAb7TrdMdpWDAGTg==
+"@netlify/framework-info@^5.6.0":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@netlify/framework-info/-/framework-info-5.6.0.tgz#00589546ee55558bc7c33cfe13af75e48fe783cb"
+  integrity sha512-NjGejntulKj6mBnnJjrIfrM8QKaFaoko2TWNc61vatHlTG7BwYmoMHYcfsL3lm2SnGxL1KtUt382IIRD0I1g2A==
   dependencies:
     ajv "^8.0.0"
     filter-obj "^2.0.1"
@@ -12221,14 +12221,14 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.0.tgz#0fbdcf3e13fe4994781280524f8b96b0cdff9c61"
   integrity sha512-AO81vsIO1k1sM4Zrd6Hu7regmJN1NSiAja10gc4bX3F0wd+9rQmcuHQaHVQCYIEC8iFXnE+mavh23GOt7wBgug==
 
-netlify-cli@4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-4.1.0.tgz#a1e6169a634a9d36a2f817d3b40eb9060077ae9a"
-  integrity sha512-9r7oDZ/HH4zuIUdyK9lArc7qCe81l5KJGqaaWvetD1tGgsWIMRSxYPXDVhNE1V187SnOCwuHjh0KAhDDOjiBIA==
+netlify-cli@4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-4.1.2.tgz#82eb9d136b0a996db41355f40a0f65030219d487"
+  integrity sha512-8BBSTQRrxLBFvj/PNho62fHzrJCDoxBrz7MT8ZrnGidv4P1KjpeCgRqIf15ARzML+Ub4Bc2N9M+h2Vo6eW1w0Q==
   dependencies:
-    "@netlify/build" "^13.0.0"
-    "@netlify/config" "^10.0.0"
-    "@netlify/framework-info" "^5.5.0"
+    "@netlify/build" "^13.3.0"
+    "@netlify/config" "^10.3.0"
+    "@netlify/framework-info" "^5.6.0"
     "@netlify/plugin-edge-handlers" "^1.11.20"
     "@netlify/plugins-list" "^2.18.1"
     "@netlify/routing-local-proxy" "^0.30.2"
