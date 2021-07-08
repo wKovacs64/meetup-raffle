@@ -2993,11 +2993,6 @@
     rollup-plugin-terser "^7.0.2"
     typescript "^4.1.5"
 
-"@netlify/plugins-list@^2.19.0":
-  version "2.19.0"
-  resolved "https://registry.yarnpkg.com/@netlify/plugins-list/-/plugins-list-2.19.0.tgz#68cc6526f192e0d0f409d1822bd4f45a2262cf06"
-  integrity sha512-I68SX5QX4VKvcNOdtC0Bo6scmgYTfLJ8AX5bBrIEOa4bhDpH4o4VgG8wS+joZ7NLbZI3xIRjKasdqZboipWZqQ==
-
 "@netlify/plugins-list@^2.19.1":
   version "2.19.1"
   resolved "https://registry.yarnpkg.com/@netlify/plugins-list/-/plugins-list-2.19.1.tgz#dc3539fcc8ead10383247460fd83a7f2e9b1d602"
@@ -12226,16 +12221,16 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.0.tgz#0fbdcf3e13fe4994781280524f8b96b0cdff9c61"
   integrity sha512-AO81vsIO1k1sM4Zrd6Hu7regmJN1NSiAja10gc4bX3F0wd+9rQmcuHQaHVQCYIEC8iFXnE+mavh23GOt7wBgug==
 
-netlify-cli@4.1.15:
-  version "4.1.15"
-  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-4.1.15.tgz#68d29d62aa379b66ae8cf3e8217730811ab33c2f"
-  integrity sha512-ILWJ4fADYxDGQpcOHir+YjYkymAoNfRhLqciv3Z/QkwLxqiAypBOivF3T76PP4LYPg5pZx0OGF3PeDe7a9jmqQ==
+netlify-cli@4.1.16:
+  version "4.1.16"
+  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-4.1.16.tgz#375937499f1bf2c9bbd400d1f3d43eb3b893efa4"
+  integrity sha512-iptn1M+Y63y5dK4F+Hs1rBSTBA4/HzkxzwLVoqg/MLW5b3kidb2QxYhanXLoblHswes0bk2Sk5xLPOQ4V4/gWA==
   dependencies:
     "@netlify/build" "^15.6.0"
     "@netlify/config" "^12.2.1"
     "@netlify/framework-info" "^5.6.0"
     "@netlify/plugin-edge-handlers" "^1.11.20"
-    "@netlify/plugins-list" "^2.19.0"
+    "@netlify/plugins-list" "^2.19.1"
     "@netlify/routing-local-proxy" "^0.30.2"
     "@netlify/zip-it-and-ship-it" "4.12.0"
     "@oclif/command" "^1.6.1"
