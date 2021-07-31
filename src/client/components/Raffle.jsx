@@ -184,10 +184,10 @@ const raffleMachine = raffleModel.createMachine(
 
 function Raffle() {
   const { theme } = useThemeUI();
-  const [current, send] = useMachine(raffleMachine, {
+  const [state, send] = useMachine(raffleMachine, {
     devTools: process.env.NODE_ENV === 'development',
   });
-  const { meetup, winners, error, lastKnownGoodCount } = current.context;
+  const { meetup, winners, error, lastKnownGoodCount } = state.context;
 
   const handleNewCountValue = React.useCallback(
     (newCount) => {
@@ -205,10 +205,10 @@ function Raffle() {
     send(raffleModel.events.submit());
   }
 
-  if (current.matches('idle')) {
+  if (state.matches('idle')) {
     const isSubmitDisabled =
-      current.matches('idle.count.invalid') ||
-      current.matches('idle.meetup.invalid');
+      state.matches('idle.count.invalid') ||
+      state.matches('idle.meetup.invalid');
 
     return (
       <form onSubmit={handleSubmit}>
@@ -265,7 +265,7 @@ function Raffle() {
     );
   }
 
-  if (current.matches('submitting')) {
+  if (state.matches('submitting')) {
     return (
       <Flex
         sx={{
@@ -286,8 +286,8 @@ function Raffle() {
 
   return (
     <Box sx={{ mt: [3, 4] }}>
-      {current.matches('success') && <Winners winners={winners} />}
-      {current.matches('failure') && <ErrorMessage problemText={error} />}
+      {state.matches('success') && <Winners winners={winners} />}
+      {state.matches('failure') && <ErrorMessage problemText={error} />}
       <ResetButtons
         onReset={() => {
           send(raffleModel.events.reset());
