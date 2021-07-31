@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import * as React from 'react';
 import { jsx, useThemeUI, Box, Label, Input, Flex, Button } from 'theme-ui';
-import { assign, createMachine } from 'xstate';
+import { createModel } from 'xstate/lib/model';
 import { useMachine } from '@xstate/react';
 import RingLoader from 'react-spinners/RingLoader';
 import { persist, restore } from '../persistence';
@@ -18,6 +18,18 @@ const initialContext = {
   lastKnownGoodCount: undefined,
 };
 
+const creators = {
+  events: {
+    setCount: (count) => ({ count }),
+    setMeetup: (meetup) => ({ meetup }),
+    submit: () => ({}),
+    reset: () => ({}),
+    retry: () => ({}),
+  },
+};
+
+const raffleModel = createModel(initialContext, creators);
+
 function isCountValid(ctx) {
   return ctx.count.length > 0 && parseInt(ctx.count, 10) > 0;
 }
@@ -26,23 +38,24 @@ function isMeetupValid(ctx) {
   return ctx.meetup.length > 0;
 }
 
-const raffleMachine = createMachine(
+const raffleMachine = raffleModel.createMachine(
   {
     id: 'raffle',
-    initial: 'init',
+    initial: 'initializing',
     context: initialContext,
     states: {
-      init: {
+      initializing: {
         entry: 'restoreSettings',
-        always: 'idle',
+        always: 'enteringData',
       },
-      idle: {
+      enteringData: {
+        id: 'enteringData',
         entry: 'reset',
         on: {
-          SET_COUNT: { actions: ['setCount'] },
-          SET_MEETUP: { actions: ['setMeetup'] },
-          SUBMIT: {
-            target: 'submitting',
+          setCount: { actions: ['setCount'] },
+          setMeetup: { actions: ['setMeetup'] },
+          submit: {
+            target: 'submission',
             cond: 'isFormValid',
           },
         },
@@ -92,51 +105,54 @@ const raffleMachine = createMachine(
           },
         },
       },
-      submitting: {
+      submission: {
         entry: ['reset', 'persistSettings'],
-        invoke: {
-          id: 'fetchRaffleWinners',
-          src: 'fetchRaffleWinners',
-          onDone: {
-            target: 'success',
-            actions: ['setWinners'],
+        initial: 'pending',
+        states: {
+          pending: {
+            invoke: {
+              id: 'fetchRaffleWinners',
+              src: 'fetchRaffleWinners',
+              onDone: {
+                actions: ['setWinners'],
+                target: 'idle.success',
+              },
+              onError: {
+                actions: ['setError'],
+                target: 'idle.failure',
+              },
+            },
           },
-          onError: {
-            target: 'failure',
-            actions: ['setError'],
+          idle: {
+            states: {
+              success: {},
+              failure: {},
+            },
+            on: {
+              reset: '#enteringData',
+              retry: 'pending',
+            },
           },
-        },
-      },
-      success: {
-        on: {
-          RESET: 'idle',
-          RETRY: 'submitting',
-        },
-      },
-      failure: {
-        on: {
-          RESET: 'idle',
-          RETRY: 'submitting',
         },
       },
     },
   },
   {
     actions: {
-      reset: assign({
+      reset: raffleModel.assign({
         winners: initialContext.winners,
         error: initialContext.error,
         lastKnownGoodCount: (ctx) => parseInt(ctx.count, 10),
       }),
-      setCount: assign({ count: (_, event) => event.data }),
-      setMeetup: assign({ meetup: (_, event) => event.data }),
-      setWinners: assign({ winners: (_, event) => event.data }),
-      setError: assign({ error: (_, event) => event.data.message }),
+      setCount: raffleModel.assign({ count: (_, event) => event.count }),
+      setMeetup: raffleModel.assign({ meetup: (_, event) => event.meetup }),
+      setWinners: raffleModel.assign({ winners: (_, event) => event.data }),
+      setError: raffleModel.assign({ error: (_, event) => event.data.message }),
       persistSettings: (ctx) => {
         persist('count', ctx.count);
         persist('meetup', ctx.meetup);
       },
-      restoreSettings: assign({
+      restoreSettings: raffleModel.assign({
         count: () => restore('count') ?? initialContext.count,
         meetup: () => restore('meetup') ?? initialContext.meetup,
       }),
@@ -172,31 +188,32 @@ const raffleMachine = createMachine(
 
 function Raffle() {
   const { theme } = useThemeUI();
-  const [current, send] = useMachine(raffleMachine, {
+  const [state, send] = useMachine(raffleMachine, {
     devTools: process.env.NODE_ENV === 'development',
   });
-  const { meetup, winners, error, lastKnownGoodCount } = current.context;
+  const { meetup, winners, error, lastKnownGoodCount } = state.context;
 
   const handleNewCountValue = React.useCallback(
     (newCount) => {
-      send({ type: 'SET_COUNT', data: newCount });
+      send(raffleModel.events.setCount(newCount));
     },
     [send],
   );
 
   function handleMeetupChange(e) {
-    send({ type: 'SET_MEETUP', data: e.target.value });
+    send(raffleModel.events.setMeetup(e.target.value));
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    send('SUBMIT');
+    send(raffleModel.events.submit());
   }
 
-  if (current.matches('idle')) {
-    const isSubmitDisabled =
-      current.matches('idle.count.invalid') ||
-      current.matches('idle.meetup.invalid');
+  if (state.matches('enteringData')) {
+    const isFormInvalid = [
+      'enteringData.count.invalid',
+      'enteringData.meetup.invalid',
+    ].some(state.matches);
 
     return (
       <form onSubmit={handleSubmit}>
@@ -244,7 +261,7 @@ function Raffle() {
             onNewValue={handleNewCountValue}
           />
           <Box sx={{ my: [4, 0], width: ['100%', 'auto'] }}>
-            <Button type="submit" disabled={isSubmitDisabled}>
+            <Button type="submit" disabled={isFormInvalid}>
               Draw
             </Button>
           </Box>
@@ -253,7 +270,7 @@ function Raffle() {
     );
   }
 
-  if (current.matches('submitting')) {
+  if (state.matches('submission.pending')) {
     return (
       <Flex
         sx={{
@@ -274,14 +291,18 @@ function Raffle() {
 
   return (
     <Box sx={{ mt: [3, 4] }}>
-      {current.matches('success') && <Winners winners={winners} />}
-      {current.matches('failure') && <ErrorMessage problemText={error} />}
+      {state.matches('submission.idle.success') && (
+        <Winners winners={winners} />
+      )}
+      {state.matches('submission.idle.failure') && (
+        <ErrorMessage problemText={error} />
+      )}
       <ResetButtons
         onReset={() => {
-          send('RESET');
+          send(raffleModel.events.reset());
         }}
         onRetry={() => {
-          send('RETRY');
+          send(raffleModel.events.retry());
         }}
       />
     </Box>
