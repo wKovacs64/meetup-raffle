@@ -206,9 +206,9 @@ function Raffle() {
   }
 
   if (state.matches('idle')) {
-    const isSubmitDisabled =
-      state.matches('idle.count.invalid') ||
-      state.matches('idle.meetup.invalid');
+    const isFormInvalid = ['idle.count.invalid', 'idle.meetup.invalid'].some(
+      state.matches,
+    );
 
     return (
       <form onSubmit={handleSubmit}>
@@ -256,7 +256,7 @@ function Raffle() {
             onNewValue={handleNewCountValue}
           />
           <Box sx={{ my: [4, 0], width: ['100%', 'auto'] }}>
-            <Button type="submit" disabled={isSubmitDisabled}>
+            <Button type="submit" disabled={isFormInvalid}>
               Draw
             </Button>
           </Box>
