@@ -41,20 +41,21 @@ function isMeetupValid(ctx) {
 const raffleMachine = raffleModel.createMachine(
   {
     id: 'raffle',
-    initial: 'init',
+    initial: 'initializing',
     context: initialContext,
     states: {
-      init: {
+      initializing: {
         entry: 'restoreSettings',
-        always: 'idle',
+        always: 'enteringData',
       },
-      idle: {
+      enteringData: {
+        id: 'enteringData',
         entry: 'reset',
         on: {
           setCount: { actions: ['setCount'] },
           setMeetup: { actions: ['setMeetup'] },
           submit: {
-            target: 'submitting',
+            target: 'submission',
             cond: 'isFormValid',
           },
         },
@@ -104,31 +105,34 @@ const raffleMachine = raffleModel.createMachine(
           },
         },
       },
-      submitting: {
+      submission: {
         entry: ['reset', 'persistSettings'],
-        invoke: {
-          id: 'fetchRaffleWinners',
-          src: 'fetchRaffleWinners',
-          onDone: {
-            target: 'success',
-            actions: ['setWinners'],
+        initial: 'pending',
+        states: {
+          pending: {
+            invoke: {
+              id: 'fetchRaffleWinners',
+              src: 'fetchRaffleWinners',
+              onDone: {
+                actions: ['setWinners'],
+                target: 'idle.success',
+              },
+              onError: {
+                actions: ['setError'],
+                target: 'idle.failure',
+              },
+            },
           },
-          onError: {
-            target: 'failure',
-            actions: ['setError'],
+          idle: {
+            states: {
+              success: {},
+              failure: {},
+            },
+            on: {
+              reset: '#enteringData',
+              retry: 'pending',
+            },
           },
-        },
-      },
-      success: {
-        on: {
-          reset: 'idle',
-          retry: 'submitting',
-        },
-      },
-      failure: {
-        on: {
-          reset: 'idle',
-          retry: 'submitting',
         },
       },
     },
@@ -205,10 +209,11 @@ function Raffle() {
     send(raffleModel.events.submit());
   }
 
-  if (state.matches('idle')) {
-    const isFormInvalid = ['idle.count.invalid', 'idle.meetup.invalid'].some(
-      state.matches,
-    );
+  if (state.matches('enteringData')) {
+    const isFormInvalid = [
+      'enteringData.count.invalid',
+      'enteringData.meetup.invalid',
+    ].some(state.matches);
 
     return (
       <form onSubmit={handleSubmit}>
@@ -265,7 +270,7 @@ function Raffle() {
     );
   }
 
-  if (state.matches('submitting')) {
+  if (state.matches('submission.pending')) {
     return (
       <Flex
         sx={{
@@ -286,8 +291,12 @@ function Raffle() {
 
   return (
     <Box sx={{ mt: [3, 4] }}>
-      {state.matches('success') && <Winners winners={winners} />}
-      {state.matches('failure') && <ErrorMessage problemText={error} />}
+      {state.matches('submission.idle.success') && (
+        <Winners winners={winners} />
+      )}
+      {state.matches('submission.idle.failure') && (
+        <ErrorMessage problemText={error} />
+      )}
       <ResetButtons
         onReset={() => {
           send(raffleModel.events.reset());
