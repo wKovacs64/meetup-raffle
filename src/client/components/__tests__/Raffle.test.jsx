@@ -91,7 +91,7 @@ describe('Raffle', () => {
     fillOutForm();
     submitForm();
 
-    await screen.findByText(/malformed response/i);
+    expect(await screen.findByText(/malformed response/i)).toBeInTheDocument();
   });
 
   it('shows API-provided error messages', async () => {
@@ -108,7 +108,7 @@ describe('Raffle', () => {
     fillOutForm();
     submitForm();
 
-    await screen.findByText(/awry/i);
+    expect(await screen.findByText(/awry/i)).toBeInTheDocument();
   });
 
   it('resets the form on reset button click', async () => {
@@ -133,7 +133,7 @@ describe('Raffle', () => {
 
     user.click(await screen.findByRole('button', { name: 'Draw Again' }));
 
-    await screen.findByTestId('RingLoader');
+    expect(await screen.findByTestId('RingLoader')).toBeInTheDocument();
     expect(
       await screen.findByRole('button', { name: 'Draw Again' }),
     ).toBeInTheDocument();
