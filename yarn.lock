@@ -3091,10 +3091,10 @@
   resolved "https://registry.yarnpkg.com/@netlify/esbuild/-/esbuild-0.13.6.tgz#ef0fda98604e708528ef0a57e853c50a6fc987f2"
   integrity sha512-tiKmDcHM2riSVN79c0mJY/67EBDafXQAMitHuLiCDAMdtz3kfv+NqdVG5krgf5lWR8Uf8AeZrUW5Q9RP25REvw==
 
-"@netlify/framework-info@^5.9.0":
-  version "5.9.0"
-  resolved "https://registry.yarnpkg.com/@netlify/framework-info/-/framework-info-5.9.0.tgz#e6dc45fbf4e2b67f79eb84a559336b8355a46cf0"
-  integrity sha512-rrinZyy3pj5rNe2LPPCwsKT7d4jltDe5cK1JACbvxMXAh7hLMo2nDXsLCsejci2fqfFo2k64UtRsC6XDYbrxPw==
+"@netlify/framework-info@^5.9.1":
+  version "5.9.1"
+  resolved "https://registry.yarnpkg.com/@netlify/framework-info/-/framework-info-5.9.1.tgz#be2cc3f4fcbac6e526cf8257cd993e524e7f7951"
+  integrity sha512-EBbR4grr0innWmKk43q5iLokcuJ1bZn/56KBz8WyKsarCvLkt6SqHaxXJp3Uab1D6Fhn0BTQBhIttb3KdyPGdQ==
   dependencies:
     ajv "^8.0.0"
     filter-obj "^2.0.1"
@@ -12419,14 +12419,14 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.0.tgz#0fbdcf3e13fe4994781280524f8b96b0cdff9c61"
   integrity sha512-AO81vsIO1k1sM4Zrd6Hu7regmJN1NSiAja10gc4bX3F0wd+9rQmcuHQaHVQCYIEC8iFXnE+mavh23GOt7wBgug==
 
-netlify-cli@6.5.8:
-  version "6.5.8"
-  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-6.5.8.tgz#29c05052048483c740dd0297857c16369ff8db2f"
-  integrity sha512-WMxLJT7wxevWjo58wWjosQX7jZ81GqDtvOqz1RXsanfZ4y/HjA+kftTdQSo/yb3K1BhUn8qCVRK2DYv8ypApTQ==
+netlify-cli@6.5.9:
+  version "6.5.9"
+  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-6.5.9.tgz#e21d528f2755032e801e7a2069e829352fa6fd81"
+  integrity sha512-6IgQSzRunOi93lb0OC/+3z4N+ff0CEQGGxRjcSsIwsn9Da4u8EjjkDzaY+HqLQX6PCmpJheR1c2KV5pVqf4/hw==
   dependencies:
     "@netlify/build" "^18.2.12"
     "@netlify/config" "^15.3.7"
-    "@netlify/framework-info" "^5.9.0"
+    "@netlify/framework-info" "^5.9.1"
     "@netlify/local-functions-proxy" "^1.1.1"
     "@netlify/plugin-edge-handlers" "^1.11.22"
     "@netlify/plugins-list" "^3.3.0"
