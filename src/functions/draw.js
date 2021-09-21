@@ -6,7 +6,7 @@ import {
   getIdFromEvent,
 } from './helpers';
 
-async function handler(request /* , context */) {
+export async function handler(request /* , context */) {
   const headers =
     process.env.NODE_ENV === 'development'
       ? /* istanbul ignore next */ { 'Access-Control-Allow-Origin': '*' }
@@ -58,5 +58,3 @@ async function handler(request /* , context */) {
     };
   }
 }
-
-export { handler };

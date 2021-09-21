@@ -16,10 +16,8 @@
     "url": "https://github.com/wKovacs64/meetup-raffle/issues"
   },
   "scripts": {
-    "build": "npm-run-all --silent --parallel build:*",
-    "build:client": "vite build",
-    "build:functions": "netlify-lambda build src/functions",
-    "clean": "rimraf dist functions coverage",
+    "build": "vite build",
+    "clean": "rimraf dist coverage",
     "cm": "git-cz",
     "dev": "netlify dev",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,html,css,json,md,mdx,yml,yaml}\"",
@@ -82,7 +80,6 @@
     "jest": "27.2.1",
     "lint-staged": "11.1.2",
     "netlify-cli": "6.9.12",
-    "netlify-lambda": "2.0.14",
     "npm-run-all": "4.1.5",
     "prettier": "2.4.1",
     "react-test-renderer": "17.0.2",

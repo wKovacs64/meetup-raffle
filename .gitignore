@@ -237,7 +237,6 @@ package-lock.json
 
 ### Build ###
 /dist
-/functions
 
 ### Netlify ###
 .netlify
