@@ -3096,7 +3096,7 @@
     outvariant "^1.2.0"
     strict-event-emitter "^0.2.0"
 
-"@netlify/build@^18.13.0":
+"@netlify/build@^18.13.1":
   version "18.13.1"
   resolved "https://registry.yarnpkg.com/@netlify/build/-/build-18.13.1.tgz#3c93d23f4c445de4fb04421caefe1bcf9fbb9e67"
   integrity sha512-E5tmUV+fvC5mdQUiJjQpMrWgoHkvfqKFhmbnox43yJ2bU98xL2mq/tLLQqKV9STzMa8/amSBb+CLSJ9iB0THvA==
@@ -5555,7 +5555,7 @@ bmp-js@0.0.3:
   resolved "https://registry.yarnpkg.com/bmp-js/-/bmp-js-0.0.3.tgz#64113e9c7cf1202b376ed607bf30626ebe57b18a"
   integrity sha1-ZBE+nHzxICs3btYHvzBibr5XsYo=
 
-body-parser@1.19.0, body-parser@^1.19.0:
+body-parser@1.19.0:
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.19.0.tgz#96b2709e57c9c4e09a6fd66a8fd979844f69f08a"
   integrity sha512-dhEPs72UPbDnAQJ9ZKMNTP6ptJaionhP5cBb541nXPlW60Jepo9RV/a4fX4XWW9CuFNK22krhrj1+rgzifNCsw==
@@ -11857,12 +11857,12 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.0.tgz#0fbdcf3e13fe4994781280524f8b96b0cdff9c61"
   integrity sha512-AO81vsIO1k1sM4Zrd6Hu7regmJN1NSiAja10gc4bX3F0wd+9rQmcuHQaHVQCYIEC8iFXnE+mavh23GOt7wBgug==
 
-netlify-cli@6.9.14:
-  version "6.9.14"
-  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-6.9.14.tgz#d989c6fe92b518ab505004646d83ea990543a213"
-  integrity sha512-QKYzg8foiGgdCpe5VsCUEyqCCuJ+En3Km4lzfwButGZ3XwR0zwQNiDNgiKwpPZnKnHAEBUYBzOWLF4H9YR3Qsw==
+netlify-cli@6.9.15:
+  version "6.9.15"
+  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-6.9.15.tgz#8d40571bb4236748cb1ffbb733859a3ba1e6eee1"
+  integrity sha512-745oz8iT+BdHYBJYl7AOsHyYRhEjcLBbnydJuMHOgbPzl7XrLCX1SQ7M0h/BSQ7C18C9WFZ5qihFWtF/Vi4pcw==
   dependencies:
-    "@netlify/build" "^18.13.0"
+    "@netlify/build" "^18.13.1"
     "@netlify/config" "^15.6.3"
     "@netlify/framework-info" "^5.9.2"
     "@netlify/local-functions-proxy" "^1.1.1"
@@ -11884,7 +11884,6 @@ netlify-cli@6.9.14:
     ascii-table "0.0.9"
     backoff "^2.5.0"
     better-opn "^2.1.1"
-    body-parser "^1.19.0"
     boxen "^5.0.0"
     chalk "^4.0.0"
     chokidar "^3.0.2"
