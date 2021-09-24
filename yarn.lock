@@ -11862,10 +11862,10 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.0.tgz#0fbdcf3e13fe4994781280524f8b96b0cdff9c61"
   integrity sha512-AO81vsIO1k1sM4Zrd6Hu7regmJN1NSiAja10gc4bX3F0wd+9rQmcuHQaHVQCYIEC8iFXnE+mavh23GOt7wBgug==
 
-netlify-cli@6.9.16:
-  version "6.9.16"
-  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-6.9.16.tgz#e717e44bb6bc5df8e5f0cc902c79152250bde94b"
-  integrity sha512-Agg6IALMrgQ0IOEoqePDxVqwerblImaj/0pwrYKlvWnL2Ir88I9jbvS+AiMFqlntWmRHzBuwAToETrmY1YThiw==
+netlify-cli@6.9.17:
+  version "6.9.17"
+  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-6.9.17.tgz#a1a9d06fdd76ebfefe9802094162677ba67f8af2"
+  integrity sha512-25EQmEAvuDq0U341snn8koUC6IWw1KVOwLn1pwqsuDEKU94NbQuyH5oqIPn5So/wW168luprDqr2Yte3HQthgQ==
   dependencies:
     "@netlify/build" "^18.13.1"
     "@netlify/config" "^15.6.3"
