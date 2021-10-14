@@ -3136,10 +3136,10 @@
     validate-npm-package-name "^3.0.0"
     yargs "^15.3.0"
 
-"@netlify/config@^15.7.0":
-  version "15.7.0"
-  resolved "https://registry.yarnpkg.com/@netlify/config/-/config-15.7.0.tgz#c50d16967aad6613e6f49fcbe4ac47c28065bf3e"
-  integrity sha512-cIwCzloVmQ0xxALU6yYzbA279zECOYx5D1fBFJaTbC47zuJDz6GVirISUh2V3Dv47H6Tv2eRXGrDyvPcwrj4ZQ==
+"@netlify/config@^15.7.1":
+  version "15.7.1"
+  resolved "https://registry.yarnpkg.com/@netlify/config/-/config-15.7.1.tgz#394169d65d8e9c9f55af406f2ddeb1d71910ba73"
+  integrity sha512-UmDbvqWGvmhhmfQLC5Usj4UxAhDmTIUUPZUYH41eYl/p60fB3L1gUVNLyBZ55q/tqAkGvrIAhgP4pzocfghC5A==
   dependencies:
     "@ungap/from-entries" "^0.2.1"
     array-flat-polyfill "^1.0.1"
@@ -12139,13 +12139,13 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.0.tgz#0fbdcf3e13fe4994781280524f8b96b0cdff9c61"
   integrity sha512-AO81vsIO1k1sM4Zrd6Hu7regmJN1NSiAja10gc4bX3F0wd+9rQmcuHQaHVQCYIEC8iFXnE+mavh23GOt7wBgug==
 
-netlify-cli@6.13.0:
-  version "6.13.0"
-  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-6.13.0.tgz#62d3a480f31b92a361534d3d499c762290e51ef3"
-  integrity sha512-sttoXhAVvSPrickvJ8tzM39MUNQ5R5ODwFTlj219koe3HD1Ttdeh/ItFlxvMfRlZkbwVeROyG6DXeNDeIzvJiQ==
+netlify-cli@6.13.1:
+  version "6.13.1"
+  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-6.13.1.tgz#c71b5b579f6cc40cf4674d9dcb3ebf84f82e0f05"
+  integrity sha512-7Q7rxsIANRnx2OhEPYRPcrqcYrXxOjdslb1QwdqCfy5BbRf5WUfZfB670c7cbJ3837mC9Jihr7Hj1YfuaofEgw==
   dependencies:
     "@netlify/build" "^18.17.0"
-    "@netlify/config" "^15.7.0"
+    "@netlify/config" "^15.7.1"
     "@netlify/framework-info" "^5.11.0"
     "@netlify/local-functions-proxy" "^1.1.1"
     "@netlify/plugin-edge-handlers" "^1.11.22"
