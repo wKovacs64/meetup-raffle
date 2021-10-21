@@ -76,7 +76,7 @@
     "cz-conventional-changelog": "3.3.0",
     "eslint": "7.32.0",
     "eslint-plugin-wkovacs64": "13.5.2",
-    "husky": "7.0.2",
+    "husky": "7.0.4",
     "jest": "27.3.1",
     "lint-staged": "11.2.3",
     "netlify-cli": "6.14.0",
