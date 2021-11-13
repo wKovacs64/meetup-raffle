@@ -67,7 +67,7 @@
     "@testing-library/jest-dom": "5.15.0",
     "@testing-library/react": "12.1.2",
     "@testing-library/user-event": "13.5.0",
-    "@vitejs/plugin-react": "1.0.8",
+    "@vitejs/plugin-react": "1.0.9",
     "@wkovacs64/prettier-config": "3.0.0",
     "babel-jest": "27.3.1",
     "codecov": "3.8.3",
