@@ -89,6 +89,7 @@
     "vite": "2.6.14",
     "vite-plugin-pwa": "0.11.6",
     "workbox-build": "6.4.1",
-    "workbox-window": "6.4.1"
+    "workbox-window": "6.4.1",
+    "ws": "7.3.1"
   }
 }
