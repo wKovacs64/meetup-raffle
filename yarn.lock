@@ -11,6 +11,15 @@
     jsonpointer "^4.1.0"
     leven "^3.1.0"
 
+"@apideck/better-ajv-errors@^0.2.7":
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/@apideck/better-ajv-errors/-/better-ajv-errors-0.2.7.tgz#cc71652ecb111708c01bdc10206ca85886c118ea"
+  integrity sha512-J2dW+EHYudbwI7MGovcHWLBrxasl21uuroc2zT8bH2RxYuv2g5GqsO5jcKUZz4LaMST45xhKjVuyRYkhcWyMhA==
+  dependencies:
+    json-schema "^0.3.0"
+    jsonpointer "^5.0.0"
+    leven "^3.1.0"
+
 "@babel/code-frame@7.12.11":
   version "7.12.11"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.12.11.tgz#f4ad435aa263db935b8f10f2c552d23fb716a63f"
@@ -11116,6 +11125,11 @@ jsonpointer@^4.1.0:
   resolved "https://registry.yarnpkg.com/jsonpointer/-/jsonpointer-4.1.0.tgz#501fb89986a2389765ba09e6053299ceb4f2c2cc"
   integrity sha512-CXcRvMyTlnR53xMcKnuMzfCA5i/nfblTnnr74CZb6C4vG39eu6w51t7nKmU5MfLfbTgGItliNyjO/ciNPDqClg==
 
+jsonpointer@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/jsonpointer/-/jsonpointer-5.0.0.tgz#f802669a524ec4805fa7389eadbc9921d5dc8072"
+  integrity sha512-PNYZIdMjVIvVgDSYKTT63Y+KZ6IZvGRNNWcxwD+GNnUz1MKPfv30J8ueCjdwcN0nDx2SlshgyB7Oy0epAzVRRg==
+
 jsprim@^1.2.2:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/jsprim/-/jsprim-1.4.1.tgz#313e66bc1e5cc06e438bc1b7499c2e5c56acb6a2"
@@ -16666,6 +16680,50 @@ workbox-broadcast-update@6.4.1:
   dependencies:
     workbox-core "6.4.1"
 
+workbox-build@6.4.1:
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/workbox-build/-/workbox-build-6.4.1.tgz#bc9243b814becb0b63f19beaf9827eb218782c17"
+  integrity sha512-cvH74tEO8SrziFrCntZ/35B0uaMZFKG+gnk3vZmKLSUTab/6MlhL+UwYXf1sMV5SD/W/v7pnFKZbdAOAg5Ne2w==
+  dependencies:
+    "@apideck/better-ajv-errors" "^0.2.7"
+    "@babel/core" "^7.11.1"
+    "@babel/preset-env" "^7.11.0"
+    "@babel/runtime" "^7.11.2"
+    "@rollup/plugin-babel" "^5.2.0"
+    "@rollup/plugin-node-resolve" "^11.2.1"
+    "@rollup/plugin-replace" "^2.4.1"
+    "@surma/rollup-plugin-off-main-thread" "^2.2.3"
+    ajv "^8.6.0"
+    common-tags "^1.8.0"
+    fast-json-stable-stringify "^2.1.0"
+    fs-extra "^9.0.1"
+    glob "^7.1.6"
+    lodash "^4.17.20"
+    pretty-bytes "^5.3.0"
+    rollup "^2.43.1"
+    rollup-plugin-terser "^7.0.0"
+    source-map "^0.8.0-beta.0"
+    source-map-url "^0.4.0"
+    stringify-object "^3.3.0"
+    strip-comments "^2.0.1"
+    tempy "^0.6.0"
+    upath "^1.2.0"
+    workbox-background-sync "6.4.1"
+    workbox-broadcast-update "6.4.1"
+    workbox-cacheable-response "6.4.1"
+    workbox-core "6.4.1"
+    workbox-expiration "6.4.1"
+    workbox-google-analytics "6.4.1"
+    workbox-navigation-preload "6.4.1"
+    workbox-precaching "6.4.1"
+    workbox-range-requests "6.4.1"
+    workbox-recipes "6.4.1"
+    workbox-routing "6.4.1"
+    workbox-strategies "6.4.1"
+    workbox-streams "6.4.1"
+    workbox-sw "6.4.1"
+    workbox-window "6.4.1"
+
 workbox-build@^6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/workbox-build/-/workbox-build-6.4.0.tgz#3ecd88a2a394feef99b7cbbd59f7db12f3592be5"
@@ -16828,6 +16886,18 @@ workbox-recipes@6.4.0:
     workbox-routing "6.4.0"
     workbox-strategies "6.4.0"
 
+workbox-recipes@6.4.1:
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/workbox-recipes/-/workbox-recipes-6.4.1.tgz#485112542067685506552b0a254997eafdcdb470"
+  integrity sha512-Yu9tLmgD25NorZPO3FHJUii/Y2ghrx2jD2QKMaWBBplshw1MFokqlmr3Dz3O6NI8jBBUnK5Dtbl0+SCwVGSCqg==
+  dependencies:
+    workbox-cacheable-response "6.4.1"
+    workbox-core "6.4.1"
+    workbox-expiration "6.4.1"
+    workbox-precaching "6.4.1"
+    workbox-routing "6.4.1"
+    workbox-strategies "6.4.1"
+
 workbox-routing@6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/workbox-routing/-/workbox-routing-6.4.0.tgz#7fb5a3d44579d071246a30eeebd90c172b3544a7"
@@ -16877,6 +16947,11 @@ workbox-sw@6.4.0:
   resolved "https://registry.yarnpkg.com/workbox-sw/-/workbox-sw-6.4.0.tgz#305b1cb4482aa4e04be46f3c5166241ab39db972"
   integrity sha512-2NJLCsnit44OZs5l+UiEhdPB27++8KOjLhivyY3lZ/PDwKx8OYmB+CXhWXkVbIFOIK6LbQ0fefVQCJej9S0dbg==
 
+workbox-sw@6.4.1:
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/workbox-sw/-/workbox-sw-6.4.1.tgz#1434e58114c2086d01c476235c11416b582101c9"
+  integrity sha512-IJNYcNbjugMB9v+Yx7uswohjOaYoimw5dI0Gcaj2zrJHKjV0bom+BPRCdijmttN/3uVbX57jhNe8SMzWMj7fHw==
+
 workbox-window@6.4.0, workbox-window@^6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/workbox-window/-/workbox-window-6.4.0.tgz#4646132d328ed9c1243f5d3c04bae4d13151038e"
@@ -16884,6 +16959,14 @@ workbox-window@6.4.0, workbox-window@^6.4.0:
   dependencies:
     "@types/trusted-types" "^2.0.2"
     workbox-core "6.4.0"
+
+workbox-window@6.4.1:
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/workbox-window/-/workbox-window-6.4.1.tgz#4d78285e57f98c3f0b98934812648c386ae433a9"
+  integrity sha512-v5G1U+NN0sHErvE9fzHRA75FrfRFj/0dihFnvno5yqHZZIb9G4U2AarodSDRBC3t6CsnLO68l1Bj1gsHqsM9Qw==
+  dependencies:
+    "@types/trusted-types" "^2.0.2"
+    workbox-core "6.4.1"
 
 wrap-ansi@^3.0.1:
   version "3.0.1"

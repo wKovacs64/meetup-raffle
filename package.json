@@ -88,17 +88,7 @@
     "unfetch": "4.2.0",
     "vite": "2.6.14",
     "vite-plugin-pwa": "0.11.6",
-    "workbox-background-sync": "6.4.1",
-    "workbox-broadcast-update": "6.4.1",
-    "workbox-cacheable-response": "6.4.1",
-    "workbox-core": "6.4.1",
-    "workbox-expiration": "6.4.1",
-    "workbox-google-analytics": "6.4.1",
-    "workbox-navigation-preload": "6.4.1",
-    "workbox-precaching": "6.4.1",
-    "workbox-range-requests": "6.4.1",
-    "workbox-routing": "6.4.1",
-    "workbox-strategies": "6.4.1",
-    "workbox-streams": "6.4.1"
+    "workbox-build": "6.4.1",
+    "workbox-window": "6.4.1"
   }
 }
