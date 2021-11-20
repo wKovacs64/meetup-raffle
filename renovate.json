@@ -16,7 +16,8 @@
         "eslint",
         "@emotion/core",
         "jest-emotion",
-        "node-fetch"
+        "node-fetch",
+        "ws"
       ],
       "matchUpdateTypes": ["major"],
       "enabled": false
