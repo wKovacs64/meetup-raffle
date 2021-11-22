@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@wkovacs64/normalize.css": "8.0.4",
-    "@xstate/inspect": "0.5.1",
+    "@xstate/inspect": "0.5.2",
     "@xstate/react": "1.6.2",
     "faker": "5.5.3",
     "is-number": "7.0.0",
