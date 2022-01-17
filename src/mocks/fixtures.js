@@ -1,4 +1,4 @@
-import faker from 'faker';
+import faker from '@faker-js/faker';
 
 // API routes
 export const EVENTS_ENDPOINT = 'https://api.meetup.com/:meetup/events';
