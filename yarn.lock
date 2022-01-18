@@ -4559,10 +4559,10 @@
   resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.7.2.tgz#d920079e66806b2626b5311955f6a7c4bed1cba8"
   integrity sha512-t/Zqo0ewes3iq6zGqEqJNUWI27Acr3jkmSUNp6E3nl0Z2XbtqAG5XYqPNLdYonILmhcxANsIidh69tHzjXtuRg==
 
-"@xstate/inspect@0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@xstate/inspect/-/inspect-0.6.0.tgz#a063e7c59c8b525e8f7b760ece694c75b825f669"
-  integrity sha512-MZgcFUurpgrjLzDDb+2KYp8GhSeJ5UtzTDa486x0es0xwCr0MFT9euD1xu0xqYH9b5UFY66LWt7AbMpZjgB+kw==
+"@xstate/inspect@0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@xstate/inspect/-/inspect-0.6.1.tgz#610a7ce014ab3e4586923befd0ff77040b1a1506"
+  integrity sha512-JXvTwnZVxdjXWWOr4v/D30aZYjrgOa6r3iGRd4/r/H7HpvjxDw5/OrPuYDOg6AZBxXJOQ6FBrais9JD/jNP1PQ==
   dependencies:
     fast-safe-stringify "^2.0.7"
 
