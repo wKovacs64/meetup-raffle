@@ -17,7 +17,6 @@
         "@emotion/jest",
         "@emotion/react",
         "@emotion/styled",
-        "jest-emotion",
         "node-fetch",
         "ws"
       ],
