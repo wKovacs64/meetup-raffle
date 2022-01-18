@@ -278,7 +278,7 @@ function Raffle() {
           mt: [3, 4],
         }}
       >
-        <Box sx={{ height: 4, width: 4 }}>
+        <Box sx={{ height: 4, width: 4 }} data-testid="RingLoader">
           <RingLoader size={128} color={theme.colors.primary} />
         </Box>
       </Flex>
