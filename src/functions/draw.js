@@ -9,7 +9,7 @@ import {
 export async function handler(request /* , context */) {
   const headers =
     process.env.NODE_ENV === 'development'
-      ? /* istanbul ignore next */ { 'Access-Control-Allow-Origin': '*' }
+      ? /* c8 ignore next */ { 'Access-Control-Allow-Origin': '*' }
       : {};
 
   let meetup;

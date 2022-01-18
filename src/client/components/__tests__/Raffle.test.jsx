@@ -1,3 +1,4 @@
+/* global vi */
 import * as React from 'react';
 import { server, rest } from '../../../mocks/server';
 import { render, screen, userEvent } from '../../../../test/utils';
@@ -27,12 +28,12 @@ describe('Raffle', () => {
   }
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     global.window.localStorage.clear();
   });
 
   afterAll(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   it('renders', () => {

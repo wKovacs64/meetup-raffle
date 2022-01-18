@@ -1,10 +1,11 @@
+/* global vi */
 import * as React from 'react';
 import { render, screen, userEvent } from '../../../../test/utils';
 import ResetButtons from '../ResetButtons';
 
 describe('ResetButtons', () => {
-  const onReset = jest.fn();
-  const onRetry = jest.fn();
+  const onReset = vi.fn();
+  const onRetry = vi.fn();
 
   it('renders', () => {
     render(<ResetButtons onReset={onReset} onRetry={onRetry} />);

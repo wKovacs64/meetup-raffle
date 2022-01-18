@@ -44,4 +44,18 @@ export default defineConfig({
       '~normalize.css': './node_modules/normalize.css/normalize.css',
     },
   },
+  test: {
+    setupFiles: './test/setup.js',
+    coverage: {
+      include: [
+        'src/client/**/*.js{,x}',
+        'src/functions/**/*.js',
+        '!src/client/dev-tools/**/*.js{,x}',
+        '!**/index.js',
+      ],
+      reporter: ['text', 'lcov', 'clover'],
+    },
+    globals: true,
+    environment: 'jsdom',
+  },
 });
