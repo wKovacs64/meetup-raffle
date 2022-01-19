@@ -61,8 +61,8 @@
     "xstate": "4.28.0"
   },
   "devDependencies": {
-    "@babel/core": "7.16.7",
-    "@babel/preset-env": "7.16.8",
+    "@babel/core": "7.16.10",
+    "@babel/preset-env": "7.16.10",
     "@babel/preset-react": "7.16.7",
     "@commitlint/cli": "16.0.3",
     "@commitlint/config-conventional": "16.0.0",
