@@ -2950,10 +2950,10 @@
     outvariant "^1.2.0"
     strict-event-emitter "^0.2.0"
 
-"@netlify/build@^26.1.4":
-  version "26.1.4"
-  resolved "https://registry.yarnpkg.com/@netlify/build/-/build-26.1.4.tgz#a718ecae1b6658d9f37a4737d24963dac389c048"
-  integrity sha512-05NGq1kChEifsvCdqX9rw0jHMKsdbD60Nj9bOBLrByGvw5FJ92949gpazjAggfLQoaIPZTLkPGZO86L0nu/MZw==
+"@netlify/build@^26.1.7":
+  version "26.2.0"
+  resolved "https://registry.yarnpkg.com/@netlify/build/-/build-26.2.0.tgz#14e934444cfd8fda3220ed42019464c89be643ba"
+  integrity sha512-2yNzdO0nCRIZ5TLB7WUlis2NTSonVjairWnd1s/Tt9SBF3L3Z+IU/xSiXgAwYZ/xe+tkziUltwrx9l8rxm2VGw==
   dependencies:
     "@bugsnag/js" "^7.0.0"
     "@netlify/cache-utils" "^4.0.0"
@@ -2963,8 +2963,9 @@
     "@netlify/plugin-edge-handlers" "^3.0.4"
     "@netlify/plugins-list" "^6.3.0"
     "@netlify/run-utils" "^4.0.0"
-    "@netlify/zip-it-and-ship-it" "^5.4.0"
+    "@netlify/zip-it-and-ship-it" "^5.5.0"
     "@sindresorhus/slugify" "^1.1.0"
+    "@types/node" "^16.0.0"
     ansi-escapes "^4.3.2"
     chalk "^4.1.2"
     clean-stack "^3.0.1"
@@ -3003,9 +3004,10 @@
     supports-color "^8.0.0"
     tmp-promise "^3.0.2"
     ts-node "^10.4.0"
+    typescript "^4.5.4"
     update-notifier "^5.0.0"
     uuid "^8.0.0"
-    yargs "^16.0.0"
+    yargs "^17.3.1"
 
 "@netlify/cache-utils@^4.0.0":
   version "4.0.0"
@@ -3090,10 +3092,10 @@
   resolved "https://registry.yarnpkg.com/@netlify/esbuild/-/esbuild-0.13.6.tgz#ef0fda98604e708528ef0a57e853c50a6fc987f2"
   integrity sha512-tiKmDcHM2riSVN79c0mJY/67EBDafXQAMitHuLiCDAMdtz3kfv+NqdVG5krgf5lWR8Uf8AeZrUW5Q9RP25REvw==
 
-"@netlify/framework-info@^8.0.2":
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/@netlify/framework-info/-/framework-info-8.0.2.tgz#d5c72b18780386bc92fef32fa149491f8ea01146"
-  integrity sha512-lRI4On9XVEuAtwOGtUEbljAUhyR8SLBHKxVYJ6SQ7TM8XGEZkPB23/2q7OktGTMK+qqK/QS1DohuahNFw8+pqQ==
+"@netlify/framework-info@^9.0.0":
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/@netlify/framework-info/-/framework-info-9.0.0.tgz#7a89c88288afb3c5d7125d46e974092635348bb2"
+  integrity sha512-I4TzDRKmFaagcLCwmFeSr5tPsfT/fxBBaPpDv192fb468R4WbI0TVfTAqlTGJEmc6cHllXpgbVNCRvpeJAP7Fw==
   dependencies:
     ajv "^8.0.0"
     filter-obj "^2.0.1"
@@ -3314,10 +3316,10 @@
     unixify "^1.0.0"
     yargs "^16.0.0"
 
-"@netlify/zip-it-and-ship-it@^5.4.0":
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/@netlify/zip-it-and-ship-it/-/zip-it-and-ship-it-5.4.0.tgz#c083895a7e5873747e51a4287ac1da3f2423ac48"
-  integrity sha512-JVUr7S6GTHnPpwtD+g/+qzhKvhXwXoHGeisaHt1YYARRRd+XdvwFYo8yY2JzT7hM26uz99tpKwzDSfcL+WR1rQ==
+"@netlify/zip-it-and-ship-it@^5.4.1", "@netlify/zip-it-and-ship-it@^5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@netlify/zip-it-and-ship-it/-/zip-it-and-ship-it-5.5.0.tgz#ec3c5321954966662d50ee095588af533326ef13"
+  integrity sha512-V7hVGr8xwdiPF7kmH+TSvekorjFI/OTYe34dlEvEmPhEuDG3LejRjy2XzQ0hW5TpFXvd4V+JRPH4jMh85Xt6qg==
   dependencies:
     "@babel/parser" "^7.15.7"
     "@netlify/esbuild" "^0.13.6"
@@ -3336,7 +3338,6 @@
     is-builtin-module "^3.1.0"
     junk "^3.1.0"
     locate-path "^6.0.0"
-    make-dir "^3.1.0"
     merge-options "^3.0.4"
     minimatch "^3.0.4"
     p-map "^4.0.0"
@@ -4345,7 +4346,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.41.tgz#d0b939d94c1d7bd53d04824af45f1139b8c45615"
   integrity sha512-dueRKfaJL4RTtSa7bWeTK1M+VH+Gns73oCgzvYfHZywRCoPSd8EkXBL0mZ9unPTveBn+D9phZBaxuzpwjWkW0g==
 
-"@types/node@16.11.21":
+"@types/node@16.11.21", "@types/node@^16.0.0":
   version "16.11.21"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.21.tgz#474d7589a30afcf5291f59bd49cca9ad171ffde4"
   integrity sha512-Pf8M1XD9i1ksZEcCP8vuSNwooJ/bZapNmIzpmsMaL+jMI+8mEYU3PKvs+xDNuQcJWF/x24WzY4qxLtB0zNow9A==
@@ -12111,19 +12112,19 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.0.tgz#0fbdcf3e13fe4994781280524f8b96b0cdff9c61"
   integrity sha512-AO81vsIO1k1sM4Zrd6Hu7regmJN1NSiAja10gc4bX3F0wd+9rQmcuHQaHVQCYIEC8iFXnE+mavh23GOt7wBgug==
 
-netlify-cli@8.9.8:
-  version "8.9.8"
-  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-8.9.8.tgz#64d290280cb19b174f0c55ccab7d1240f523a734"
-  integrity sha512-Ma0yPUdG/CmQ1F1yCk56UW6npDc/tKIeBLIBL2JPKj+Vn3TAbGGAqsQl8vKydRPfl1G0P+c0USOPnS+WrH3Wrg==
+netlify-cli@8.10.2:
+  version "8.10.2"
+  resolved "https://registry.yarnpkg.com/netlify-cli/-/netlify-cli-8.10.2.tgz#c676d8d6cdcb3af3b9b4da8dce62217da9a84799"
+  integrity sha512-H6F8jnK6GgY/Ji2z2eYVYGxB9KDHE6fGjAML8TAjlxKEYUWAOs5swHMYlPLmK8V67Uz0FBVIs+QCcRD/vA/jrg==
   dependencies:
-    "@netlify/build" "^26.1.4"
+    "@netlify/build" "^26.1.7"
     "@netlify/config" "^17.0.3"
-    "@netlify/framework-info" "^8.0.2"
+    "@netlify/framework-info" "^9.0.0"
     "@netlify/local-functions-proxy" "^1.1.1"
     "@netlify/plugin-edge-handlers" "^3.0.4"
     "@netlify/plugins-list" "^6.3.0"
     "@netlify/routing-local-proxy" "^0.34.1"
-    "@netlify/zip-it-and-ship-it" "^5.4.0"
+    "@netlify/zip-it-and-ship-it" "^5.4.1"
     "@octokit/rest" "^18.0.0"
     "@sindresorhus/slugify" "^1.1.0"
     ansi-escapes "^5.0.0"
@@ -15886,7 +15887,7 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@4.5.4:
+typescript@4.5.4, typescript@^4.5.4:
   version "4.5.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.4.tgz#a17d3a0263bf5c8723b9c52f43c5084edf13c2e8"
   integrity sha512-VgYs2A2QIRuGphtzFV7aQJduJ2gyfTljngLzjpfW9FoYZF6xuw1W0vW9ghCKLfcWrCFxK81CSGRAvS1pn4fIUg==
@@ -16770,6 +16771,19 @@ yargs@^17.3.0:
   version "17.3.0"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.3.0.tgz#295c4ffd0eef148ef3e48f7a2e0f58d0e4f26b1c"
   integrity sha512-GQl1pWyDoGptFPJx9b9L6kmR33TGusZvXIZUT+BOz9f7X2L94oeAskFYLEg/FkhV06zZPBYLvLZRWeYId29lew==
+  dependencies:
+    cliui "^7.0.2"
+    escalade "^3.1.1"
+    get-caller-file "^2.0.5"
+    require-directory "^2.1.1"
+    string-width "^4.2.3"
+    y18n "^5.0.5"
+    yargs-parser "^21.0.0"
+
+yargs@^17.3.1:
+  version "17.3.1"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.3.1.tgz#da56b28f32e2fd45aefb402ed9c26f42be4c07b9"
+  integrity sha512-WUANQeVgjLbNsEmGk20f+nlHgOqzRFpiGWVaBrYGYIGANIIu3lWjoyi0fNlFmJkvfhCZ6BXINe7/W2O2bV4iaA==
   dependencies:
     cliui "^7.0.2"
     escalade "^3.1.1"
