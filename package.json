@@ -58,7 +58,7 @@
     "react-spinners": "0.11.0",
     "theme-ui": "0.13.1",
     "use-stepper": "2.0.3",
-    "xstate": "4.28.0"
+    "xstate": "4.28.1"
   },
   "devDependencies": {
     "@babel/core": "7.16.10",
