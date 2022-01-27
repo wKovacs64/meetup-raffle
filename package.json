@@ -45,7 +45,7 @@
     "@faker-js/faker": "6.0.0-alpha.5",
     "@mdx-js/react": "1.6.22",
     "@wkovacs64/normalize.css": "8.0.4",
-    "@xstate/inspect": "0.6.1",
+    "@xstate/inspect": "0.6.2",
     "@xstate/react": "1.6.3",
     "is-number": "7.0.0",
     "meetup-randomizer": "3.1.0",
