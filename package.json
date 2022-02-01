@@ -43,7 +43,7 @@
     "@emotion/react": "11.7.1",
     "@emotion/styled": "11.6.0",
     "@faker-js/faker": "6.0.0-alpha.5",
-    "@mdx-js/react": "1.6.22",
+    "@mdx-js/react": "2.0.0",
     "@wkovacs64/normalize.css": "8.0.4",
     "@xstate/inspect": "0.6.2",
     "@xstate/react": "2.0.0",
