@@ -13,11 +13,10 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: yarn
-      - run: yarn validate
-      - run: yarn test --coverage --maxWorkers 4
-      - run: yarn codecov
+      - node/install-packages
+      - run: npm run validate
+      - run: npm run test:coverage
+      - run: npx codecov
       - persist_to_workspace:
           root: ~/
           paths:
@@ -27,7 +26,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/
-      - run: yarn semantic-release
+      - run: npx semantic-release
 
 workflows:
   version: 2

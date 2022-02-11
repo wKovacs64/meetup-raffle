@@ -13,7 +13,6 @@
   "packageRules": [
     {
       "matchPackageNames": [
-        "eslint",
         "@emotion/jest",
         "@emotion/react",
         "@emotion/styled",
