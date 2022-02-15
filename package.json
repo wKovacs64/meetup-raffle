@@ -90,7 +90,7 @@
     "typescript": "4.5.5",
     "unfetch": "4.2.0",
     "use-stepper": "2.0.3",
-    "vite": "2.8.2",
+    "vite": "2.8.3",
     "vite-plugin-pwa": "0.11.13",
     "workbox-build": "6.4.2",
     "workbox-window": "6.4.2",
