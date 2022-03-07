@@ -48,7 +48,7 @@
     "@emotion/jest": "11.8.0",
     "@emotion/react": "11.8.1",
     "@emotion/styled": "11.8.1",
-    "@faker-js/faker": "6.0.0-alpha.7",
+    "@faker-js/faker": "6.0.0-beta.0",
     "@mdx-js/react": "1.6.22",
     "@rushstack/eslint-patch": "1.1.0",
     "@testing-library/dom": "8.11.3",
