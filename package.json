@@ -46,7 +46,7 @@
     "@commitlint/cli": "16.2.1",
     "@commitlint/config-conventional": "16.2.1",
     "@emotion/jest": "11.8.0",
-    "@emotion/react": "11.8.1",
+    "@emotion/react": "11.8.2",
     "@emotion/styled": "11.8.1",
     "@faker-js/faker": "6.0.0-beta.0",
     "@mdx-js/react": "1.6.22",
