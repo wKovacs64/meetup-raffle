@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render, screen, user } from '../../../../test/utils';
+import { render, screen, userEvent } from '../../../../test/utils';
 import ResetButtons from '../ResetButtons';
 
 describe('ResetButtons', () => {
@@ -17,19 +17,21 @@ describe('ResetButtons', () => {
     ).toBeInTheDocument();
   });
 
-  it('calls onReset appropriately', () => {
+  it('calls onReset appropriately', async () => {
+    const user = userEvent.setup();
     render(<ResetButtons onReset={onReset} onRetry={onRetry} />);
 
     expect(onReset).toHaveBeenCalledTimes(0);
-    user.click(screen.getByRole('button', { name: 'Start Over' }));
+    await user.click(screen.getByRole('button', { name: 'Start Over' }));
     expect(onReset).toHaveBeenCalledTimes(1);
   });
 
-  it('calls onRetry appropriately', () => {
+  it('calls onRetry appropriately', async () => {
+    const user = userEvent.setup();
     render(<ResetButtons onReset={onReset} onRetry={onRetry} />);
 
     expect(onRetry).toHaveBeenCalledTimes(0);
-    user.click(screen.getByRole('button', { name: 'Draw Again' }));
+    await user.click(screen.getByRole('button', { name: 'Draw Again' }));
     expect(onRetry).toHaveBeenCalledTimes(1);
   });
 });

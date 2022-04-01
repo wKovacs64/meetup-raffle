@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
-import user from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 import { usePrevious } from '../use-previous';
 
 describe('usePrevious', () => {
-  it('returns the value of a variable from the previous render', () => {
+  it('returns the value of a variable from the previous render', async () => {
     function Comp() {
       const [currentValue, setCurrentValue] = React.useState(0);
       const previousValue = usePrevious(currentValue);
@@ -23,17 +23,18 @@ describe('usePrevious', () => {
         </div>
       );
     }
+    const user = userEvent.setup();
 
     render(<Comp />);
     expect(screen.getByTestId('previous')).toHaveTextContent('');
     expect(screen.getByTestId('current')).toHaveTextContent('0');
 
-    user.click(screen.getByRole('button', { name: /increment/i }));
+    await user.click(screen.getByRole('button', { name: /increment/i }));
 
     expect(screen.getByTestId('previous')).toHaveTextContent('0');
     expect(screen.getByTestId('current')).toHaveTextContent('1');
 
-    user.click(screen.getByRole('button', { name: /increment/i }));
+    await user.click(screen.getByRole('button', { name: /increment/i }));
 
     expect(screen.getByTestId('previous')).toHaveTextContent('1');
     expect(screen.getByTestId('current')).toHaveTextContent('2');
