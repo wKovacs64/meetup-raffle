@@ -13,7 +13,7 @@
   "packageRules": [
     {
       "matchPackageNames": [
-        "@emotion/jest",
+        "eslint",
         "@emotion/react",
         "@emotion/styled",
         "node-fetch",

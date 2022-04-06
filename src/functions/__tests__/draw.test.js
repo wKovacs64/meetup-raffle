@@ -1,3 +1,4 @@
+/* global vi */
 import meetupRandomizer from 'meetup-randomizer';
 import { EVENTS_ENDPOINT } from '../../mocks/fixtures';
 import { server, rest } from '../../mocks/server';
@@ -16,9 +17,9 @@ async function draw({ meetup, count = 1 }) {
 describe('draw', () => {
   it('handles invalid requests', async () => {
     expect(await draw({})).toMatchInlineSnapshot(`
-      Object {
+      {
         "body": "{\\"error\\":{\\"message\\":\\"The \\\\\\"meetup\\\\\\" query parameter is required and must be a string.\\"}}",
-        "headers": Object {},
+        "headers": {},
         "statusCode": 400,
       }
     `);
@@ -32,9 +33,9 @@ describe('draw', () => {
     );
 
     expect(await draw({ meetup: 'not-found' })).toMatchInlineSnapshot(`
-      Object {
+      {
         "body": "{\\"error\\":{\\"message\\":\\"Sorry, I couldn't find any information on that.\\"}}",
-        "headers": Object {},
+        "headers": {},
         "statusCode": 404,
       }
     `);
@@ -48,9 +49,9 @@ describe('draw', () => {
     );
 
     expect(await draw({ meetup: 'no-events' })).toMatchInlineSnapshot(`
-      Object {
+      {
         "body": "{\\"error\\":{\\"message\\":\\"Sorry, I couldn't find any upcoming events.\\"}}",
-        "headers": Object {},
+        "headers": {},
         "statusCode": 404,
       }
     `);
@@ -71,21 +72,21 @@ describe('draw', () => {
     );
 
     expect(await draw({ meetup: 'private-event' })).toMatchInlineSnapshot(`
-      Object {
+      {
         "body": "{\\"error\\":{\\"message\\":\\"Sorry, their members list is private.\\"}}",
-        "headers": Object {},
+        "headers": {},
         "statusCode": 404,
       }
     `);
   });
 
   it('handles unexpected data', async () => {
-    jest.spyOn(meetupRandomizer, 'run').mockResolvedValueOnce('unexpected');
+    vi.spyOn(meetupRandomizer, 'run').mockResolvedValueOnce('unexpected');
 
     expect(await draw({ meetup: 'unexpected-data' })).toMatchInlineSnapshot(`
-      Object {
+      {
         "body": "{\\"error\\":{\\"message\\":\\"Sorry, we received unexpected data for that request.\\"}}",
-        "headers": Object {},
+        "headers": {},
         "statusCode": 404,
       }
     `);
@@ -93,18 +94,18 @@ describe('draw', () => {
 
   it('handles a valid Meetup Event', async () => {
     const drawResponse = await draw({ meetup: 'valid-meetup' });
-    expect(drawResponse).toMatchObject({
+    expect(drawResponse).toEqual({
       body: expect.any(String),
       headers: expect.any(Object),
       statusCode: 200,
     });
 
     const body = JSON.parse(drawResponse.body);
-    expect(body).toMatchObject({ winners: [expect.any(Object)] });
+    expect(body).toEqual({ winners: [expect.any(Object)] });
     expect(body.winners).toEqual(expect.any(Array));
     expect(body.winners.length).toBeGreaterThan(0);
     body.winners.forEach((winner) => {
-      expect(winner).toMatchObject({
+      expect(winner).toEqual({
         name: expect.any(String),
         photoURL: expect.any(String),
         profileURL: expect.any(String),

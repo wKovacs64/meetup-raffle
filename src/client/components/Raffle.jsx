@@ -166,10 +166,14 @@ const raffleMachine = createMachine(
         );
         drawUrl.search = new URLSearchParams({ meetup, count }).toString();
 
-        const res = await fetch(drawUrl);
+        const res = await window.fetch(drawUrl);
         const data = await res.json();
 
-        if (!res.ok) throw new Error(data?.error?.message || res.statusText);
+        if (!res.ok) {
+          throw new Error(
+            data?.error?.message || /* c8 ignore next */ res.statusText,
+          );
+        }
         if (!data.winners) throw new Error('Malformed response received.');
 
         return data.winners;
@@ -274,7 +278,7 @@ function Raffle() {
           mt: [3, 4],
         }}
       >
-        <Box sx={{ height: 4, width: 4 }}>
+        <Box sx={{ height: 4, width: 4 }} data-testid="RingLoader">
           <RingLoader size={128} color={theme.colors.primary} />
         </Box>
       </Flex>

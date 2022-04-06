@@ -23,31 +23,28 @@ function CountStepper({
     switch (action.type) {
       case useStepper.actionTypes.increment: {
         const newValue = validValueClosestTo(integerValue + 1);
-        /* istanbul ignore else: just an optimization to avoid re-renders */
+        /* c8 ignore else */
         if (newValue !== state.value) {
           return { value: newValue };
         }
-        /* istanbul ignore next: not worth testing */
         return state;
       }
       case useStepper.actionTypes.decrement: {
         const newValue = validValueClosestTo(integerValue - 1);
-        /* istanbul ignore else: just an optimization to avoid re-renders */
+        /* c8 ignore else */
         if (newValue !== state.value) {
           return { value: newValue };
         }
-        /* istanbul ignore next: not worth testing */
         return state;
       }
       case useStepper.actionTypes.coerce: {
         if (Number.isNaN(integerValue)) {
           return { value: String(defaultValue) };
         }
-        /* istanbul ignore else: just an optimization to avoid re-renders */
+        /* c8 ignore else */
         if (integerValue !== state.value) {
           return { value: validValueClosestTo(integerValue) };
         }
-        /* istanbul ignore next: not worth testing */
         return state;
       }
       default:
@@ -55,18 +52,14 @@ function CountStepper({
     }
   }
 
-  const {
-    getInputProps,
-    getIncrementProps,
-    getDecrementProps,
-    value,
-  } = useStepper({
-    min,
-    max,
-    defaultValue,
-    enableReinitialize: true,
-    stateReducer: countReducer,
-  });
+  const { getInputProps, getIncrementProps, getDecrementProps, value } =
+    useStepper({
+      min,
+      max,
+      defaultValue,
+      enableReinitialize: true,
+      stateReducer: countReducer,
+    });
 
   const previousValue = usePrevious(value);
 
