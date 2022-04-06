@@ -45,7 +45,7 @@
     "@babel/preset-react": "7.16.7",
     "@commitlint/cli": "16.2.3",
     "@commitlint/config-conventional": "16.2.1",
-    "@emotion/react": "11.8.2",
+    "@emotion/react": "11.9.0",
     "@emotion/styled": "11.8.1",
     "@faker-js/faker": "6.1.2",
     "@mdx-js/react": "1.6.22",
