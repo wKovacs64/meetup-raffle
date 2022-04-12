@@ -92,8 +92,8 @@
     "vite": "2.9.1",
     "vite-plugin-pwa": "0.11.13",
     "vitest": "0.9.3",
-    "workbox-build": "6.5.2",
-    "workbox-window": "6.5.2",
+    "workbox-build": "6.5.3",
+    "workbox-window": "6.5.3",
     "ws": "8.5.0",
     "xstate": "4.31.0"
   }
