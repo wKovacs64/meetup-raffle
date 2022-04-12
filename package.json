@@ -59,7 +59,7 @@
     "@wkovacs64/normalize.css": "8.0.4",
     "@wkovacs64/prettier-config": "3.0.1",
     "@xstate/inspect": "0.6.5",
-    "@xstate/react": "2.0.1",
+    "@xstate/react": "3.0.0",
     "c8": "7.11.0",
     "codecov": "3.8.3",
     "commitizen": "4.2.4",
