@@ -1,51 +1,27 @@
-/** @jsx jsx */
 import PropTypes from 'prop-types';
-import { jsx, Link, Flex, AspectRatio, Text } from 'theme-ui';
 
 function Winner({ winner }) {
   return (
-    <Link
+    <a
       href={winner.profileURL}
       target="_blank"
       rel="noopener noreferrer"
-      sx={{
-        width: 4,
-        mb: 3,
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: 'primary',
-        boxShadow: 5,
-        '&:hover, &:focus': {
-          opacity: 0.5,
-        },
-      }}
+      className="mb-4 w-32 border border-solid border-primary shadow-lg hover:opacity-50 focus:opacity-50"
     >
-      <Flex sx={{ flexDirection: 'column', height: '100%' }}>
-        <AspectRatio
-          ratio={1}
+      <div className="flex h-full flex-col">
+        <div
+          className="aspect-square bg-cover bg-center bg-no-repeat"
           role="img"
-          sx={{
+          // TODO: is there a way to do this with Tailwind? 🤔
+          style={{
             backgroundImage: `url(${winner.photoURL}), url('/user-placeholder.svg')`,
-            backgroundPosition: 'center center',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
           }}
         />
-        <Flex
-          sx={{
-            flexDirection: 'column',
-            flexGrow: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            bg: 'formFieldBg',
-          }}
-        >
-          <Text as="span" sx={{ p: 3, textAlign: 'center' }}>
-            {winner.name}
-          </Text>
-        </Flex>
-      </Flex>
-    </Link>
+        <div className="flex flex-grow flex-col items-center justify-center bg-white">
+          <span className="p-4 text-center">{winner.name}</span>
+        </div>
+      </div>
+    </a>
   );
 }
 

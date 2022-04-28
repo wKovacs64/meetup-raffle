@@ -1,28 +1,11 @@
-/** @jsx jsx */
 import PropTypes from 'prop-types';
-import { jsx, Text } from 'theme-ui';
 
-function ErrorMessage({ title, subtitle, problemText, ...props }) {
+function ErrorMessage({ title, subtitle, problemText }) {
   return (
-    <section {...props}>
-      <Text as="span" sx={{ fontSize: 3, fontWeight: 'bold' }}>
-        {title}
-      </Text>
-      <Text as="p" sx={{ my: 3 }}>
-        {subtitle}
-      </Text>
-      <Text
-        as="p"
-        sx={{
-          my: 3,
-          p: 2,
-          color: 'title',
-          bg: 'accent',
-          fontFamily: 'monospace',
-        }}
-      >
-        {problemText}
-      </Text>
+    <section>
+      <span className="text-xl font-bold">{title}</span>
+      <p className="my-4">{subtitle}</p>
+      <p className="my-4 bg-accent p-2 font-mono text-white">{problemText}</p>
     </section>
   );
 }

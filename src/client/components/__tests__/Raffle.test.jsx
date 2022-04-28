@@ -1,7 +1,7 @@
 /* global vi */
-import * as React from 'react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { server, rest } from '../../../mocks/server';
-import { render, screen, userEvent } from '../../../../test/utils';
 import Raffle from '../Raffle';
 
 const drawUrl = '/.netlify/functions/draw';

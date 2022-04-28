@@ -12,5 +12,6 @@ module.exports = {
   rules: {
     // doesn't work with vitest as it relies on jest version detection
     'jest/no-deprecated-functions': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
 };

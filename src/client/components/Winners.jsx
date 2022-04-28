@@ -1,22 +1,13 @@
-/** @jsx jsx */
 import PropTypes from 'prop-types';
-import { jsx, Flex } from 'theme-ui';
 import Winner from './Winner';
 
-function Winners({ winners, ...props }) {
+function Winners({ winners }) {
   return (
-    <Flex
-      sx={{
-        flexWrap: 'wrap',
-        flexShrink: 0,
-        justifyContent: ['space-between', 'space-around'],
-      }}
-      {...props}
-    >
+    <div className="flex flex-shrink-0 flex-wrap justify-between sm:justify-around">
       {winners.map((winner) => (
         <Winner key={winner.profileURL} winner={winner} />
       ))}
-    </Flex>
+    </div>
   );
 }
 

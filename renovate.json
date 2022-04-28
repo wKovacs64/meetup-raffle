@@ -12,13 +12,7 @@
   },
   "packageRules": [
     {
-      "matchPackageNames": [
-        "eslint",
-        "@emotion/react",
-        "@emotion/styled",
-        "node-fetch",
-        "ws"
-      ],
+      "matchPackageNames": ["eslint", "node-fetch", "ws"],
       "matchUpdateTypes": ["major"],
       "enabled": false
     },
