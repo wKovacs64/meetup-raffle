@@ -6,6 +6,9 @@ module.exports = {
     'plugin:wkovacs64/testing-library',
     'prettier',
   ],
+  globals: {
+    globalThis: false,
+  },
   rules: {
     // doesn't work with vitest as it relies on jest version detection
     'jest/no-deprecated-functions': 'off',

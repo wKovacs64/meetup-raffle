@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 // eslint-disable-next-line import/no-unresolved
 import { registerSW } from 'virtual:pwa-register';
 import { loadDevTools } from './client/dev-tools/load';
@@ -12,11 +12,12 @@ loadDevTools(async () => {
     worker.start();
   }
 
-  ReactDOM.render(
+  const container = document.getElementById('root');
+  const root = createRoot(container);
+  root.render(
     <React.StrictMode>
       <App />
     </React.StrictMode>,
-    document.getElementById('root'),
   );
 
   registerSW();
