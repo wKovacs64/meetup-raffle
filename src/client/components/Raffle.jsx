@@ -182,7 +182,7 @@ const raffleMachine = createMachine(
 
 function Raffle() {
   const [state, send] = useMachine(raffleMachine, {
-    devTools: process.env.NODE_ENV === 'development',
+    devTools: import.meta.env.DEV,
   });
   const { meetup, winners, error, lastKnownGoodCount } = state.context;
 

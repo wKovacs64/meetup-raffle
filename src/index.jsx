@@ -7,7 +7,7 @@ import App from './client/App';
 import './index.css';
 
 loadDevTools(async () => {
-  if (process.env.NODE_ENV !== 'production') {
+  if (import.meta.env.DEV) {
     const { worker } = await import('./mocks/browser');
     worker.start();
   }
