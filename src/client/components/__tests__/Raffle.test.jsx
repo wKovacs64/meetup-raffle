@@ -139,7 +139,7 @@ describe('Raffle', () => {
 
     await user.click(await screen.findByRole('button', { name: 'Draw Again' }));
 
-    expect(screen.getByTestId('RingLoader')).toBeInTheDocument();
+    expect(screen.getByTestId('loading')).toBeInTheDocument();
     expect(
       await screen.findByRole('button', { name: 'Draw Again' }),
     ).toBeInTheDocument();

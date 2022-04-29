@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { assign, createMachine } from 'xstate';
 import { useMachine } from '@xstate/react';
-import RingLoader from 'react-spinners/RingLoader';
+import { SpinnerRoundOutlined } from 'spinners-react';
 import { persist, restore } from '../persistence';
 import CountStepper from './CountStepper';
 import ErrorMessage from './ErrorMessage';
@@ -261,8 +261,8 @@ function Raffle() {
   if (state.matches('submission.pending')) {
     return (
       <div className="mt-4 flex flex-shrink-0 flex-grow flex-wrap items-center justify-center sm:mt-8 sm:items-start">
-        <div className="h-32 w-32" data-testid="RingLoader">
-          <RingLoader size={128} color="#00449e" />
+        <div className="h-32 w-32 text-primary" data-testid="loading">
+          <SpinnerRoundOutlined size={128} color="currentColor" />
         </div>
       </div>
     );
