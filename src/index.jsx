@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { registerSW } from 'virtual:pwa-register';
 import { loadDevTools } from './client/dev-tools/load';
 import App from './client/App';
+import './index.css';
 
 loadDevTools(async () => {
   if (process.env.NODE_ENV !== 'production') {

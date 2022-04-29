@@ -1,6 +1,6 @@
 /* global vi */
-import * as React from 'react';
-import { render, screen, userEvent } from '../../../../test/utils';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import ResetButtons from '../ResetButtons';
 
 describe('ResetButtons', () => {

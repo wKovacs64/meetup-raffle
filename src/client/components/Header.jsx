@@ -1,34 +1,17 @@
-/** @jsx jsx */
-import { jsx, useThemeUI, Box, Flex, Heading } from 'theme-ui';
 import GitHubCorner from 'react-github-corner';
 
 function Header() {
-  const { theme } = useThemeUI();
-
   return (
-    <header sx={{ bg: 'accent', p: 3 }}>
+    <header className="bg-accent p-4">
       <GitHubCorner
-        bannerColor={theme.colors.text}
+        // bannerColor={theme.colors.text}
         href="https://github.com/wKovacs64/meetup-raffle"
         target="_blank"
         rel="noreferrer noopener"
       />
-      <Flex
-        sx={{
-          height: ['auto', '25vh'],
-          justifyContent: ['normal', 'center'],
-          alignItems: 'center',
-        }}
-      >
-        <Box>
-          <Heading
-            as="h1"
-            variant="text.title"
-            sx={{
-              fontSize: [4, 5, 6],
-              textAlign: ['left', 'center'],
-            }}
-          >
+      <div className="flex items-center sm:h-[25vh] sm:justify-center">
+        <div>
+          <h1 className="mb-1 text-2xl font-bold text-white [text-shadow:1px_1px_2px_rgba(0,0,0,0.5)] sm:text-center sm:text-4xl md:text-5xl">
             <span role="img" aria-hidden>
               🤝
             </span>{' '}
@@ -36,12 +19,12 @@ function Header() {
             <span role="img" aria-hidden>
               🎟️
             </span>
-          </Heading>
-          <Heading as="h2" variant="text.subtitle" sx={{ fontSize: [1, 3, 4] }}>
+          </h1>
+          <h2 className="text-sm font-bold sm:text-xl md:text-2xl">
             Draw raffle winners at your Meetup event
-          </Heading>
-        </Box>
-      </Flex>
+          </h2>
+        </div>
+      </div>
     </header>
   );
 }

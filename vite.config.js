@@ -5,9 +5,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react({
-      jsxRuntime: 'classic',
-    }),
+    react(),
     VitePWA({
       manifest: {
         short_name: 'M. Raffle',
@@ -41,7 +39,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '~normalize.css': './node_modules/normalize.css/normalize.css',
+      '~spinners-react': './node_modules/spinners-react',
     },
   },
   test: {

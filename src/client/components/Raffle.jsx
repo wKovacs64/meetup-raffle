@@ -1,9 +1,7 @@
-/** @jsx jsx */
 import * as React from 'react';
-import { jsx, useThemeUI, Box, Label, Input, Flex, Button } from 'theme-ui';
 import { assign, createMachine } from 'xstate';
 import { useMachine } from '@xstate/react';
-import RingLoader from 'react-spinners/RingLoader';
+import { SpinnerRoundOutlined } from 'spinners-react';
 import { persist, restore } from '../persistence';
 import CountStepper from './CountStepper';
 import ErrorMessage from './ErrorMessage';
@@ -183,7 +181,6 @@ const raffleMachine = createMachine(
 );
 
 function Raffle() {
-  const { theme } = useThemeUI();
   const [state, send] = useMachine(raffleMachine, {
     devTools: process.env.NODE_ENV === 'development',
   });
@@ -213,17 +210,15 @@ function Raffle() {
 
     return (
       <form onSubmit={handleSubmit}>
-        <Box sx={{ mt: [3, 4], mb: 4 }}>
-          <Label htmlFor="meetup">Meetup name (from your URL):</Label>
-          <Input
-            sx={{
-              fontSize: [3, 4],
-              borderWidth: '0.5rem',
-              borderColor: 'muted',
-              mt: 3,
-              p: 2,
-              width: '100%',
-            }}
+        <div className="mt-4 mb-8 sm:mt-8">
+          <label
+            className="block cursor-pointer text-xl text-primary sm:text-2xl"
+            htmlFor="meetup"
+          >
+            Meetup name (from your URL):
+          </label>
+          <input
+            className="mt-4 w-full border-8 border-gray-300 p-2 text-xl sm:text-2xl"
             type="text"
             id="meetup"
             name="meetup"
@@ -239,15 +234,8 @@ function Raffle() {
             spellCheck={false}
             required
           />
-        </Box>
-        <Flex
-          sx={{
-            flexDirection: ['column', 'row'],
-            alignItems: ['center', 'flex-end'],
-            justifyContent: ['normal', 'space-around'],
-            my: 4,
-          }}
-        >
+        </div>
+        <div className="my-8 flex flex-col items-center sm:flex-row sm:items-end sm:justify-around">
           <CountStepper
             inputId="count"
             labelText="Number of winners:"
@@ -256,37 +244,32 @@ function Raffle() {
             defaultValue={lastKnownGoodCount}
             onNewValue={handleNewCountValue}
           />
-          <Box sx={{ my: [4, 0], width: ['100%', 'auto'] }}>
-            <Button type="submit" disabled={isFormInvalid}>
+          <div className="my-8 w-full sm:my-0 sm:w-auto">
+            <button
+              className="w-full border border-solid border-current bg-white py-4 px-16 font-bold shadow-lg hover:bg-gray-300 focus:bg-gray-300 sm:w-64 sm:text-xl"
+              type="submit"
+              disabled={isFormInvalid}
+            >
               Draw
-            </Button>
-          </Box>
-        </Flex>
+            </button>
+          </div>
+        </div>
       </form>
     );
   }
 
   if (state.matches('submission.pending')) {
     return (
-      <Flex
-        sx={{
-          flexWrap: 'wrap',
-          flexGrow: 1,
-          flexShrink: 0,
-          justifyContent: 'center',
-          alignItems: ['center', 'flex-start'],
-          mt: [3, 4],
-        }}
-      >
-        <Box sx={{ height: 4, width: 4 }} data-testid="RingLoader">
-          <RingLoader size={128} color={theme.colors.primary} />
-        </Box>
-      </Flex>
+      <div className="mt-4 flex flex-shrink-0 flex-grow flex-wrap items-center justify-center sm:mt-8 sm:items-start">
+        <div className="h-32 w-32 text-primary" data-testid="loading">
+          <SpinnerRoundOutlined size={128} color="currentColor" />
+        </div>
+      </div>
     );
   }
 
   return (
-    <Box sx={{ mt: [3, 4] }}>
+    <div className="mt-4 sm:mt-8">
       {state.matches('submission.idle.success') && (
         <Winners winners={winners} />
       )}
@@ -301,7 +284,7 @@ function Raffle() {
           send('RETRY');
         }}
       />
-    </Box>
+    </div>
   );
 }
 

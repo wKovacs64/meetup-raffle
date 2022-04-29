@@ -1,7 +1,5 @@
-/** @jsx jsx */
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { jsx, Box, Label, Input, Flex, IconButton } from 'theme-ui';
 import useStepper from 'use-stepper';
 import { usePrevious } from '../utils';
 
@@ -12,7 +10,6 @@ function CountStepper({
   max,
   defaultValue,
   onNewValue,
-  ...otherProps
 }) {
   function validValueClosestTo(newValue) {
     return String(Math.min(max, Math.max(newValue, min)));
@@ -74,14 +71,18 @@ function CountStepper({
   const incDisabled = numericValue >= max;
 
   return (
-    <Box {...otherProps}>
-      <Label sx={{ mb: 3 }} htmlFor={inputId}>
+    <div>
+      <label
+        className="mb-4 block cursor-pointer text-xl text-primary sm:text-2xl"
+        htmlFor={inputId}
+      >
         {labelText}
-      </Label>
-      <Flex>
-        <IconButton
+      </label>
+      <div className="flex">
+        <button
           aria-label="decrement"
           type="button"
+          className="h-16 w-16 cursor-pointer p-2 disabled:cursor-not-allowed disabled:opacity-20"
           disabled={decDisabled}
           {...getDecrementProps()}
         >
@@ -97,14 +98,9 @@ function CountStepper({
               <path d="m22.5 17.5v-5h-5v5h-5l7.5 10 7.5-10h-5z" />
             </g>
           </svg>
-        </IconButton>
-        <Input
-          sx={{
-            textAlign: 'center',
-            width: 3,
-            fontSize: 4,
-            py: 1,
-          }}
+        </button>
+        <input
+          className="w-16 border border-solid border-current py-1 text-center text-2xl"
           id={inputId}
           pattern="[0-9]*"
           autoCapitalize="off"
@@ -117,9 +113,10 @@ function CountStepper({
             },
           })}
         />
-        <IconButton
+        <button
           aria-label="increment"
           type="button"
+          className="h-16 w-16 cursor-pointer p-2 disabled:cursor-not-allowed disabled:opacity-20"
           disabled={incDisabled}
           {...getIncrementProps()}
         >
@@ -135,9 +132,9 @@ function CountStepper({
               <path d="m20 12.5l-7.5 10h5v5h5v-5h5l-7.5-10z" />
             </g>
           </svg>
-        </IconButton>
-      </Flex>
-    </Box>
+        </button>
+      </div>
+    </div>
   );
 }
 

@@ -1,9 +1,7 @@
-/** @jsx jsx */
 import * as React from 'react';
-import { jsx, Box, Heading, Grid, Label, Checkbox, IconButton } from 'theme-ui';
+import clsx from 'clsx';
 import { inspect } from '@xstate/inspect';
 import { worker } from '../../mocks/browser';
-import AppProviders from '../AppProviders';
 
 function ToolsIcon(props) {
   return (
@@ -42,17 +40,6 @@ function CloseIcon(props) {
   );
 }
 
-function ToggleButton(props) {
-  return (
-    <IconButton
-      variant="devToolsToggle"
-      aria-label="Toggle Developer Tools"
-      type="button"
-      {...props}
-    />
-  );
-}
-
 function DevTools() {
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -77,40 +64,47 @@ function DevTools() {
   }, []);
 
   return (
-    <AppProviders>
-      <ToggleButton onClick={toggleVisibility}>
-        {isOpen ? <CloseIcon /> : <ToolsIcon />}
-      </ToggleButton>
-      <Box
-        sx={{
-          position: 'absolute',
-          left: 0,
-          bottom: 0,
-          overflow: 'hidden',
-          p: isOpen ? [3, 4] : 0,
-          height: isOpen ? 'auto' : 0,
-          width: '100%',
-          bg: 'rgba(0, 0, 0, 0.8)',
-        }}
+    <React.Fragment>
+      <button
+        aria-label="Toggle Developer Tools"
+        type="button"
+        className="absolute right-4 bottom-4 z-10 flex h-16 w-16 cursor-pointer items-center justify-center border border-solid border-current bg-white p-2 shadow-lg sm:bottom-8 sm:right-8"
+        onClick={toggleVisibility}
       >
-        <Heading as="h3" variant="devToolsTitle" sx={{ mb: [3, 4] }}>
+        {isOpen ? <CloseIcon /> : <ToolsIcon />}
+      </button>
+      <div
+        className={clsx(
+          'absolute left-0 bottom-0 w-full overflow-hidden bg-black/80',
+          {
+            'h-0': !isOpen,
+            'p-0': !isOpen,
+            'h-auto': isOpen,
+            'p-4': isOpen,
+            'sm:p-8': isOpen,
+          },
+        )}
+      >
+        <h3 className="mb-4 text-xl font-bold text-white [text-shadow:1px_1px_2px_rgba(0,0,0,0.5)] sm:mb-8 sm:text-2xl">
           Developer Tools
-        </Heading>
-        <Grid gap={[3, 4]} columns={[1, 1, 2]} sx={{ width: ['100%', '90%'] }}>
-          <Label htmlFor="devToolsMockToggle" variant="devToolsLabel">
+        </h3>
+        <div className="grid w-full grid-cols-1 gap-4 sm:w-[90%] sm:gap-8 md:grid-cols-2">
+          <label
+            className="inline-flex cursor-pointer items-center text-white sm:text-xl"
+            htmlFor="devToolsMockToggle"
+          >
             Mock network requests:
-            <Checkbox
+            <input
               id="devToolsMockToggle"
               type="checkbox"
               defaultChecked="true"
               onChange={toggleMocking}
-              variant="devToolsCheckbox"
-              sx={{ ml: 2 }}
+              className="ml-2 h-5 w-5"
             />
-          </Label>
-        </Grid>
-      </Box>
-    </AppProviders>
+          </label>
+        </div>
+      </div>
+    </React.Fragment>
   );
 }
 
