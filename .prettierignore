@@ -1,3 +1,4 @@
+.netlify
 dist
 coverage
 functions/**
