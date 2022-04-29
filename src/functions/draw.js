@@ -8,7 +8,7 @@ import {
 
 export async function handler(request /* , context */) {
   const headers =
-    import.meta.env.MODE === 'development'
+    process.env.NODE_ENV === 'development'
       ? /* c8 ignore next */ { 'Access-Control-Allow-Origin': '*' }
       : {};
 
