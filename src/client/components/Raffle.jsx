@@ -257,7 +257,7 @@ function Raffle() {
           />
           <div className="my-8 w-full sm:my-0 sm:w-auto">
             <button
-              className="w-full border border-solid border-current bg-white py-4 px-16 font-bold shadow-lg hover:bg-gray-300 focus:bg-gray-300 sm:w-64 sm:text-xl"
+              className="w-full border border-solid border-current bg-white py-4 px-16 font-bold shadow-lg hover:bg-gray-300 focus:bg-gray-300 disabled:cursor-not-allowed disabled:opacity-50 sm:w-64 sm:text-xl"
               type="submit"
               disabled={isFormInvalid}
             >
