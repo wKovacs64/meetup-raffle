@@ -37,6 +37,11 @@ export default defineConfig({
       },
     }),
   ],
+  resolve: {
+    alias: {
+      '~spinners-react': './node_modules/spinners-react',
+    },
+  },
   test: {
     setupFiles: './test/setup.js',
     coverage: {
