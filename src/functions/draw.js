@@ -7,9 +7,10 @@ import {
 } from './helpers';
 
 export async function handler(request /* , context */) {
-  const headers = import.meta.env.DEV
-    ? /* c8 ignore next */ { 'Access-Control-Allow-Origin': '*' }
-    : {};
+  const headers =
+    import.meta.env.MODE === 'development'
+      ? /* c8 ignore next */ { 'Access-Control-Allow-Origin': '*' }
+      : {};
 
   let meetup;
   let count;
