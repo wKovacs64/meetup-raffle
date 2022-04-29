@@ -20,30 +20,33 @@ function CountStepper({
     switch (action.type) {
       case useStepper.actionTypes.increment: {
         const newValue = validValueClosestTo(integerValue + 1);
-        /* c8 ignore else */
         if (newValue !== state.value) {
           return { value: newValue };
         }
+        /* c8 ignore start */
         return state;
       }
+      /* c8 ignore end */
       case useStepper.actionTypes.decrement: {
         const newValue = validValueClosestTo(integerValue - 1);
-        /* c8 ignore else */
         if (newValue !== state.value) {
           return { value: newValue };
         }
+        /* c8 ignore start */
         return state;
       }
+      /* c8 ignore end */
       case useStepper.actionTypes.coerce: {
         if (Number.isNaN(integerValue)) {
           return { value: String(defaultValue) };
         }
-        /* c8 ignore else */
         if (integerValue !== state.value) {
           return { value: validValueClosestTo(integerValue) };
         }
+        /* c8 ignore start */
         return state;
       }
+      /* c8 ignore end */
       default:
         return useStepper.defaultReducer(state, action);
     }
