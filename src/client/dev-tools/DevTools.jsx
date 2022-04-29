@@ -54,7 +54,7 @@ function DevTools() {
 
   React.useEffect(() => {
     const inspector = inspect({
-      url: 'https://statecharts.io/inspect',
+      url: 'https://stately.ai/viz?inspect',
       iframe: false,
     });
 
