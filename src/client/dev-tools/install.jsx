@@ -1,9 +1,11 @@
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+
 import DevTools from './DevTools';
 
 export async function install() {
-  const devToolsRoot = document.createElement('div');
-  devToolsRoot.setAttribute('id', 'devToolsRoot');
-  document.body.appendChild(devToolsRoot);
-  ReactDOM.render(<DevTools />, devToolsRoot);
+  const devToolsContainer = document.createElement('div');
+  devToolsContainer.setAttribute('id', 'devToolsRoot');
+  document.body.appendChild(devToolsContainer);
+  const devToolsRoot = createRoot(devToolsContainer);
+  devToolsRoot.render(<DevTools />);
 }
