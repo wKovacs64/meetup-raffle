@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 
-import DevTools from './DevTools';
+import DevTools from './dev-tools';
 
 export async function install() {
   const devToolsContainer = document.createElement('div');

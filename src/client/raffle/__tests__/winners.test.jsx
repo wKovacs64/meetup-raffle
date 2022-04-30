@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Winners from '../Winners';
+import Winners from '../winners';
 
 const winners = Array.from(Array(2), (_, idx) => ({
   name: `Pickle Rick ${idx}`,

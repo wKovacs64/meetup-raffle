@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import useStepper from 'use-stepper';
-import { usePrevious } from '../utils';
+import { usePrevious } from '../use-previous';
 
 export default function CountStepper({
   inputId,

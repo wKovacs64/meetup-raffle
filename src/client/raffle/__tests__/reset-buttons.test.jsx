@@ -1,7 +1,7 @@
 /* global vi */
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import ResetButtons from '../ResetButtons';
+import ResetButtons from '../reset-buttons';
 
 describe('ResetButtons', () => {
   const onReset = vi.fn();

@@ -3,8 +3,7 @@ import { createRoot } from 'react-dom/client';
 // eslint-disable-next-line import/no-unresolved
 import { registerSW } from 'virtual:pwa-register';
 import { loadDevTools } from './client/dev-tools/load';
-import App from './client/App';
-import './index.css';
+import App from './client/app';
 
 loadDevTools(async () => {
   if (import.meta.env.DEV) {

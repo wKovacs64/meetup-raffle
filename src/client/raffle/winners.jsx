@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Winner from './Winner';
+import Winner from './winner';
 
 export default function Winners({ winners }) {
   return (

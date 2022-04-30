@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import CountStepper from '../CountStepper';
+import CountStepper from '../count-stepper';
 
 const countStepperProps = {
   defaultValue: 5,

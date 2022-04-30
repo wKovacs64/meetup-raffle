@@ -1,5 +1,6 @@
-import Header from './components/Header';
-import Raffle from './components/Raffle';
+import Header from './header';
+import Raffle from './raffle/raffle';
+import './app.css';
 
 export default function App() {
   return (
