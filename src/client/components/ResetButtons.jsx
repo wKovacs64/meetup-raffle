@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function ResetButtons({ onReset, onRetry }) {
+export default function ResetButtons({ onReset, onRetry }) {
   return (
     <div className="my-8 flex flex-shrink-0 flex-wrap justify-around">
       <button
@@ -25,7 +25,3 @@ ResetButtons.propTypes = {
   onReset: PropTypes.func.isRequired,
   onRetry: PropTypes.func.isRequired,
 };
-
-ResetButtons.displayName = 'ResetButtons';
-
-export default ResetButtons;

@@ -1,6 +1,6 @@
 import GitHubCorner from 'react-github-corner';
 
-function Header() {
+export default function Header() {
   return (
     <header className="bg-accent p-4">
       <GitHubCorner
@@ -28,7 +28,3 @@ function Header() {
     </header>
   );
 }
-
-Header.displayName = 'Header';
-
-export default Header;

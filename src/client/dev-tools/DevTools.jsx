@@ -40,7 +40,7 @@ function CloseIcon(props) {
   );
 }
 
-function DevTools() {
+export default function DevTools() {
   const [isOpen, setIsOpen] = React.useState(false);
 
   function toggleVisibility() {
@@ -107,5 +107,3 @@ function DevTools() {
     </React.Fragment>
   );
 }
-
-export default DevTools;

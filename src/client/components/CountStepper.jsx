@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import useStepper from 'use-stepper';
 import { usePrevious } from '../utils';
 
-function CountStepper({
+export default function CountStepper({
   inputId,
   labelText,
   min,
@@ -157,7 +157,3 @@ CountStepper.defaultProps = {
   defaultValue: 1,
   onNewValue: () => {},
 };
-
-CountStepper.displayName = 'CountStepper';
-
-export default CountStepper;

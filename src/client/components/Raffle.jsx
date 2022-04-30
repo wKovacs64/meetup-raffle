@@ -191,7 +191,7 @@ const raffleMachine =
     },
   );
 
-function Raffle() {
+export default function Raffle() {
   const [state, send] = useMachine(raffleMachine, {
     devTools: import.meta.env.DEV,
   });
@@ -294,7 +294,3 @@ function Raffle() {
     </div>
   );
 }
-
-Raffle.displayName = 'Raffle';
-
-export default Raffle;

@@ -1,7 +1,7 @@
 import Header from './components/Header';
 import Raffle from './components/Raffle';
 
-function App() {
+export default function App() {
   return (
     <div className="flex h-full flex-col">
       <Header />
@@ -11,7 +11,3 @@ function App() {
     </div>
   );
 }
-
-App.displayName = 'App';
-
-export default App;

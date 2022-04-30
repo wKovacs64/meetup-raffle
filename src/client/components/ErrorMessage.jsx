@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function ErrorMessage({ title, subtitle, problemText }) {
+export default function ErrorMessage({ title, subtitle, problemText }) {
   return (
     <section>
       <span className="text-xl font-bold">{title}</span>
@@ -21,7 +21,3 @@ ErrorMessage.defaultProps = {
   subtitle: 'An error was encountered:',
   problemText: 'Unknown.',
 };
-
-ErrorMessage.displayName = 'ErrorMessage';
-
-export default ErrorMessage;

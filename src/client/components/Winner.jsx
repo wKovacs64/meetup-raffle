@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function Winner({ winner }) {
+export default function Winner({ winner }) {
   return (
     <a
       href={winner.profileURL}
@@ -32,7 +32,3 @@ Winner.propTypes = {
     profileURL: PropTypes.string.isRequired,
   }).isRequired,
 };
-
-Winner.displayName = 'Winner';
-
-export default Winner;
