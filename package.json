@@ -91,6 +91,6 @@
     "workbox-build": "6.5.3",
     "workbox-window": "6.5.3",
     "ws": "8.6.0",
-    "xstate": "4.32.0"
+    "xstate": "4.32.1"
   }
 }
