@@ -15,7 +15,7 @@ describe('CountStepper', () => {
     const input = screen.getByLabelText(countStepperProps.labelText);
     const initialIntValue = parseInt(input.value, 10);
 
-    await user.click(screen.getByRole('button', { name: /increment/i }));
+    await user.click(screen.getByTestId('increment-button'));
 
     expect(parseInt(input.value, 10)).toBe(initialIntValue + 1);
   });
@@ -26,7 +26,7 @@ describe('CountStepper', () => {
     const input = screen.getByLabelText(countStepperProps.labelText);
     const initialIntValue = parseInt(input.value, 10);
 
-    await user.click(screen.getByRole('button', { name: /decrement/i }));
+    await user.click(screen.getByTestId('decrement-button'));
 
     expect(parseInt(input.value, 10)).toBe(initialIntValue - 1);
   });

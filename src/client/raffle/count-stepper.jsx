@@ -69,10 +69,6 @@ export default function CountStepper({
     if (previousValue !== undefined) onNewValue(value);
   }, [onNewValue, previousValue, value]);
 
-  const numericValue = parseFloat(value);
-  const decDisabled = numericValue <= min;
-  const incDisabled = numericValue >= max;
-
   return (
     <div>
       <label
@@ -83,10 +79,9 @@ export default function CountStepper({
       </label>
       <div className="flex">
         <button
-          aria-label="decrement"
           type="button"
           className="h-16 w-16 cursor-pointer p-2 disabled:cursor-not-allowed disabled:opacity-20"
-          disabled={decDisabled}
+          data-testid="decrement-button"
           {...getDecrementProps()}
         >
           <svg
@@ -105,11 +100,8 @@ export default function CountStepper({
         <input
           className="w-16 border border-solid border-current py-1 text-center text-2xl"
           id={inputId}
+          inputMode="numeric"
           pattern="[0-9]*"
-          autoCapitalize="off"
-          autoComplete="off"
-          autoCorrect="off"
-          spellCheck={false}
           {...getInputProps({
             onFocus: (e) => {
               e.target.select();
@@ -117,10 +109,9 @@ export default function CountStepper({
           })}
         />
         <button
-          aria-label="increment"
           type="button"
           className="h-16 w-16 cursor-pointer p-2 disabled:cursor-not-allowed disabled:opacity-20"
-          disabled={incDisabled}
+          data-testid="increment-button"
           {...getIncrementProps()}
         >
           <svg

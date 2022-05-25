@@ -43,14 +43,10 @@ describe('Raffle', () => {
       screen.getByRole('textbox', { name: /meetup name/i }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('textbox', { name: /number of winners/i }),
+      screen.getByRole('spinbutton', { name: /number of winners/i }),
     ).toBeInTheDocument();
-    expect(
-      screen.getByRole('button', { name: /decrement/i }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole('button', { name: /increment/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByTestId('decrement-button')).toBeInTheDocument();
+    expect(screen.getByTestId('increment-button')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Draw' })).toBeInTheDocument();
   });
 
