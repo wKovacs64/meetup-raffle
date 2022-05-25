@@ -40,7 +40,7 @@
     "workerDirectory": "public"
   },
   "dependencies": {
-    "@commitlint/cli": "17.0.0",
+    "@commitlint/cli": "17.0.1",
     "@commitlint/config-conventional": "17.0.0",
     "@faker-js/faker": "6.3.1",
     "@testing-library/dom": "8.13.0",
