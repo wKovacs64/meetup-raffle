@@ -42,7 +42,7 @@
   "dependencies": {
     "@commitlint/cli": "17.0.2",
     "@commitlint/config-conventional": "17.0.2",
-    "@faker-js/faker": "7.1.0",
+    "@faker-js/faker": "7.2.0",
     "@testing-library/dom": "8.13.0",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "13.3.0",
