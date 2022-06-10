@@ -90,7 +90,7 @@
     "vitest": "0.14.1",
     "workbox-build": "6.5.3",
     "workbox-window": "6.5.3",
-    "ws": "8.7.0",
+    "ws": "8.8.0",
     "xstate": "4.32.1"
   }
 }
