@@ -37,7 +37,7 @@ export const handlers = [
       default: {
         const count = parseInt(req.url.searchParams.get('count'), 10);
         const winners = generateWinners(count);
-        return res(ctx.json({ winners }));
+        return res(ctx.delay(50), ctx.json({ winners }));
       }
     }
   }),
