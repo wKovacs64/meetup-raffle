@@ -26,16 +26,13 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Create Release Pull Request or Publish Release
-        id: changesets
+      - name: Create Release Pull Request
         uses: changesets/action@v1
-        with:
-          publish: npm run changeset:publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy to Netlify
-        if: steps.changesets.outputs.published == 'true'
+        if: steps.changesets.outputs.hasChangesets == 'false'
         uses: nwtgck/actions-netlify@v1.2
         with:
           publish-dir: './dist'
