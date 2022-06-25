@@ -20,6 +20,7 @@
     "clean": "rimraf dist coverage",
     "changeset": "changeset",
     "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish",
     "dev": "netlify dev",
     "format": "prettier --cache --write .",
     "lint": "eslint --ext \".js,.jsx,.ts,.tsx\" .",
