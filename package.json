@@ -1,6 +1,6 @@
 {
   "name": "meetup-raffle",
-  "version": "4.3.3",
+  "version": "0.0.0-semantically-released",
   "description": "Draw raffle winners at your Meetup event.",
   "author": {
     "name": "Justin Hall",
@@ -18,9 +18,7 @@
   "scripts": {
     "build": "vite build",
     "clean": "rimraf dist coverage",
-    "changeset": "changeset",
-    "changeset:version": "changeset version",
-    "changeset:publish": "changeset publish",
+    "cm": "git-cz",
     "dev": "netlify dev",
     "format": "prettier --cache --write .",
     "lint": "eslint --ext \".js,.jsx,.ts,.tsx\" .",
@@ -29,7 +27,8 @@
     "start": "vite preview",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "test:watch": "vitest watch"
+    "test:watch": "vitest watch",
+    "validate": "npm-run-all --silent --parallel lint build"
   },
   "config": {
     "commitizen": {
@@ -41,8 +40,6 @@
     "workerDirectory": "public"
   },
   "dependencies": {
-    "@changesets/changelog-github": "0.4.5",
-    "@changesets/cli": "2.23.0",
     "@commitlint/cli": "17.0.3",
     "@commitlint/config-conventional": "17.0.3",
     "@faker-js/faker": "7.3.0",
