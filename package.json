@@ -21,7 +21,7 @@
     "changeset": "changeset",
     "changeset:version": "changeset version",
     "dev": "netlify dev",
-    "format": "prettier --write .",
+    "format": "prettier --cache --write .",
     "lint": "eslint --ext \".js,.jsx,.ts,.tsx\" .",
     "husky:install": "husky install",
     "prepare": "npm run --silent husky:install",
