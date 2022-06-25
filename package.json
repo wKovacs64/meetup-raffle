@@ -40,8 +40,8 @@
     "workerDirectory": "public"
   },
   "dependencies": {
-    "@commitlint/cli": "17.0.2",
-    "@commitlint/config-conventional": "17.0.2",
+    "@commitlint/cli": "17.0.3",
+    "@commitlint/config-conventional": "17.0.3",
     "@faker-js/faker": "7.3.0",
     "@testing-library/dom": "8.14.0",
     "@testing-library/jest-dom": "5.16.4",
