@@ -21,7 +21,7 @@
     "cm": "git-cz",
     "dev": "netlify dev",
     "format": "prettier --cache --write .",
-    "lint": "eslint --ext \".js,.jsx,.ts,.tsx\" .",
+    "lint": "eslint .",
     "husky:install": "husky install",
     "prepare": "npm run --silent husky:install",
     "start": "vite preview",
