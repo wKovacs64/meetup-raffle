@@ -54,7 +54,7 @@
     "@xstate/react": "3.0.0",
     "autoprefixer": "10.4.7",
     "c8": "7.11.3",
-    "clsx": "1.2.0",
+    "clsx": "1.2.1",
     "codecov": "3.8.3",
     "commitizen": "4.2.4",
     "cross-env": "7.0.3",
