@@ -7,7 +7,7 @@
   command = "npx vite"
   autoLaunch = false # automatically open the browser
   port = 8000 # port you should go to while developing
-  targetPort = 3000 # port where the frontend is running
+  targetPort = 5173 # port where the frontend is running
 
 [functions]
   directory = "src/functions"
