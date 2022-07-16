@@ -24,7 +24,7 @@
     "lint": "eslint .",
     "husky:install": "husky install",
     "prepare": "npm run --silent husky:install",
-    "start": "vite preview",
+    "preview": "vite preview",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest watch",
