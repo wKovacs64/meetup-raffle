@@ -18,7 +18,6 @@
   "scripts": {
     "build": "vite build",
     "clean": "rimraf dist coverage",
-    "cm": "git-cz",
     "dev": "netlify dev",
     "format": "prettier --cache --write .",
     "lint": "eslint .",
@@ -27,8 +26,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "test:watch": "vitest watch",
-    "validate": "npm-run-all --silent --parallel lint build"
+    "test:watch": "vitest watch"
   },
   "config": {
     "commitizen": {
