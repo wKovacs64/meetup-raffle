@@ -51,7 +51,7 @@
     "@xstate/inspect": "0.7.0",
     "@xstate/react": "3.0.0",
     "autoprefixer": "10.4.7",
-    "c8": "7.11.3",
+    "c8": "7.12.0",
     "clsx": "1.2.1",
     "codecov": "3.8.3",
     "commitizen": "4.2.5",
