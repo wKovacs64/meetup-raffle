@@ -1,17 +1,20 @@
 [build]
   command = "npm run build"
-  publish = "dist"
+  publish = "public"
 
 [dev]
-  framework = "#custom"
-  command = "npx vite"
-  autoLaunch = false # automatically open the browser
-  port = 8000 # port you should go to while developing
-  targetPort = 5173 # port where the frontend is running
+  command = "remix watch"
+  port = 3000
 
-[functions]
-  directory = "src/functions"
-  node_bundler = "esbuild"
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200
+
+[[headers]]
+  for = "/build/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, s-maxage=31536000"
 
 [[headers]]
   for = "/*"
