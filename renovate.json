@@ -12,13 +12,7 @@
   },
   "packageRules": [
     {
-      "matchPackageNames": ["eslint", "node-fetch", "ws"],
-      "matchUpdateTypes": ["major"],
-      "enabled": false
-    },
-    {
-      "matchPackagePatterns": ["^workbox-"],
-      "matchUpdateTypes": ["major"],
+      "matchPackageNames": ["^@zag-js/"],
       "enabled": false
     }
   ],
