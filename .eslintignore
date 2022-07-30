@@ -1,6 +1,4 @@
-dist
-coverage
-functions
-service-worker.js
-serviceWorkerRegistration.js
-index.html
+/.cache
+/public/build
+
+/public/sw.js
