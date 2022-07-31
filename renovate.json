@@ -12,7 +12,7 @@
   },
   "packageRules": [
     {
-      "matchPackageNames": ["^@zag-js/"],
+      "matchPackagePatterns": ["^@zag-js/"],
       "enabled": false
     }
   ],
