@@ -4,4 +4,4 @@ node_modules
 
 package*.json
 **/*.generated.css
-/public/sw.js
+/public/entry.worker.js

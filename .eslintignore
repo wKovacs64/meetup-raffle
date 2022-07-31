@@ -1,4 +1,4 @@
 /.cache
 /public/build
 
-/public/sw.js
+/public/entry.worker.js

@@ -251,4 +251,4 @@ app/fonts/**/*
 !**/.gitkeep
 
 # ShafSpecs/remix-pwa
-/public/sw.js
+/public/entry.worker.js
