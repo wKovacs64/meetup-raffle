@@ -42,7 +42,7 @@
     "workerDirectory": "public"
   },
   "dependencies": {
-    "@faker-js/faker": "7.3.0",
+    "@faker-js/faker": "7.4.0",
     "@netlify/functions": "1.0.0",
     "@remix-run/netlify": "1.6.7",
     "@remix-run/node": "1.6.7",
