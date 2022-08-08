@@ -30,9 +30,7 @@ export default function handleRequest(
       `frame-ancestors 'none'`,
       `form-action 'self'`,
       `default-src 'self'`,
-      `connect-src 'self' ${
-        process.env.NODE_ENV === 'development' ? 'ws:' : ''
-      } https://secure.meetupstatic.com https://cloudflare-ipfs.com`,
+      `connect-src 'self' ws: https://secure.meetupstatic.com https://cloudflare-ipfs.com`,
       `img-src 'self' data: https:`,
       `object-src 'none'`,
       `script-src 'self' 'unsafe-inline'`,
