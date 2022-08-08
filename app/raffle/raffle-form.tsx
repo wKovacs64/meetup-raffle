@@ -1,56 +1,17 @@
-import { useFetcher } from '@remix-run/react';
+import { Form } from '@remix-run/react';
 import { useDevTools } from '~/dev-tools/dev-tools-context';
-import LoadingSpinner from '~/raffle/loading-spinner';
 import CountStepper from '~/raffle/count-stepper';
-import Winners from '~/raffle/winners';
-import ResetButtons from '~/raffle/reset-buttons';
-import ErrorMessage from '~/raffle/error-message';
-import type { UserSettings } from '~/core/cookies..server';
-import type { Winner } from '~/types';
 
-type ActionData = { formData: { count: string; meetup: string } } & (
-  | { errorMessage: string; winners: never }
-  | { errorMessage: never; winners: Winner[] }
-);
-
-export default function RaffleForm({ onReset, userSettings }: RaffleFormProps) {
+export default function RaffleForm({
+  defaultMeetup,
+  defaultCount,
+}: RaffleFormProps) {
   const [devSettings] = useDevTools();
-  const mockCheckboxValue = devSettings?.mock ? 'true' : '';
-  const defaultMeetup = userSettings?.meetup ?? '';
-  const defaultCount = userSettings?.count ?? '1';
-  const drawFetcher = useFetcher<ActionData>();
-
-  const handleRetry = () => {
-    if (drawFetcher.data?.formData) {
-      drawFetcher.submit(
-        { ...drawFetcher.data.formData, mock: mockCheckboxValue },
-        { method: 'post' },
-      );
-    }
-  };
-
-  if (drawFetcher.state === 'submitting' || drawFetcher.state === 'loading') {
-    return <LoadingSpinner />;
-  }
-
-  if (drawFetcher.state === 'idle' && drawFetcher.data) {
-    return (
-      <div className="mt-4 sm:mt-8">
-        {drawFetcher.data?.winners && (
-          <Winners winners={drawFetcher.data.winners} />
-        )}
-        {drawFetcher.data?.errorMessage && (
-          <ErrorMessage problemText={drawFetcher.data.errorMessage} />
-        )}
-        <ResetButtons onReset={onReset} onRetry={handleRetry} />
-      </div>
-    );
-  }
 
   return (
     <div className="flex flex-col">
       <main className="mx-auto w-full max-w-3xl px-4">
-        <drawFetcher.Form method="post">
+        <Form method="get" action="draw">
           <div className="mt-4 mb-8 sm:mt-8">
             <label
               className="block cursor-pointer text-xl text-primary sm:text-2xl"
@@ -93,14 +54,16 @@ export default function RaffleForm({ onReset, userSettings }: RaffleFormProps) {
               </button>
             </div>
           </div>
-          <input type="hidden" name="mock" value={mockCheckboxValue} />
-        </drawFetcher.Form>
+          {devSettings?.mock ? (
+            <input type="hidden" name="mock" value="true" />
+          ) : null}
+        </Form>
       </main>
     </div>
   );
 }
 
 interface RaffleFormProps {
-  onReset: () => void;
-  userSettings: UserSettings | null;
+  defaultMeetup: string;
+  defaultCount: string;
 }
