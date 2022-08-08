@@ -122,7 +122,7 @@ function RootLayout({ children }: { children: React.ReactNode }) {
       <body className="bg-gray-100 text-slate-900">
         <Header />
         <DevToolsProvider>
-          <main className="mx-auto w-full max-w-3xl">{children}</main>
+          <main className="mx-auto w-full max-w-3xl px-4">{children}</main>
           {process.env.NODE_ENV === 'development' && <DevToolsPanel />}
         </DevToolsProvider>
         <ScrollRestoration />
