@@ -56,7 +56,7 @@
     "react-dom": "18.2.0",
     "react-github-corner": "2.5.0",
     "spinners-react": "1.0.7",
-    "zod": "3.17.10"
+    "zod": "3.18.0"
   },
   "devDependencies": {
     "@commitlint/cli": "17.0.3",
