@@ -10,12 +10,6 @@
   "major": {
     "automerge": false
   },
-  "packageRules": [
-    {
-      "matchPackagePatterns": ["^@zag-js/"],
-      "enabled": false
-    }
-  ],
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0
 }
