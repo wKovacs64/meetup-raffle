@@ -62,6 +62,7 @@ export default function CountStepper({
           name={inputName}
           inputMode="numeric"
           pattern="[0-9]*"
+          required
           {...api.inputProps}
         />
         <button
