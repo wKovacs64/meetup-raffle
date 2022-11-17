@@ -41,7 +41,7 @@ function generateCoOrganizers(count: number) {
     response: 'yes',
     member: {
       id: faker.datatype.number({ min: 100000000, max: 999999999 }),
-      name: faker.name.findName(),
+      name: faker.name.fullName(),
       photo: {
         id: faker.datatype.number({ min: 100000000, max: 999999999 }),
         highres_link: faker.internet.avatar(),
@@ -62,7 +62,7 @@ function generateMembers(count: number) {
     response: 'yes',
     member: {
       id: faker.datatype.number({ min: 100000000, max: 999999999 }),
-      name: faker.name.findName(),
+      name: faker.name.fullName(),
       photo: {
         id: faker.datatype.number({ min: 100000000, max: 999999999 }),
         highres_link: faker.internet.avatar(),
