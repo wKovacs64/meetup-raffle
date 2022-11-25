@@ -1,8 +1,6 @@
 # Change Log
 
-The changelog is automatically updated using
-[semantic-release](https://github.com/semantic-release/semantic-release). You
-can see it on the [releases page](../../releases).
+The changelog is automatically updated using [semantic-release](https://github.com/semantic-release/semantic-release). You can see it on the [releases page](../../releases).
 
 ---
 
@@ -20,23 +18,18 @@ can see it on the [releases page](../../releases).
 
 #### Version 3.0.0 _(2018-03-25)_
 
-- Replaced [StdLib][stdlib] with [Netlify Functions][netlify-functions]
-  ([#6](https://github.com/wKovacs64/meetup-raffle/pull/6))
-- Renamed repository from `meetup-raffle-web` to `meetup-raffle` now that the
-  front-end and back-end are in a single code base
+- Replaced [StdLib][stdlib] with [Netlify Functions][netlify-functions] ([#6](https://github.com/wKovacs64/meetup-raffle/pull/6))
+- Renamed repository from `meetup-raffle-web` to `meetup-raffle` now that the front-end and back-end are in a single code base
 - Integrated [Renovate][renovate] for automated dependency updates
-- Added `displayName` property to every React component for a better React
-  DevTools experience
-- Disabled increment/decrement buttons when the number of winners to draw is
-  already at a minimum or maximum value
+- Added `displayName` property to every React component for a better React DevTools experience
+- Disabled increment/decrement buttons when the number of winners to draw is already at a minimum or maximum value
 - Vertically centered the loading animation on mobile
 - Added tests
 
 #### Version 2.3.0 _(2018-03-15)_
 
 - Polyfilled `Object.entries`
-- Replaced `Loading` component with `RingLoader` from
-  [`react-spinners`][react-spinners]
+- Replaced `Loading` component with `RingLoader` from [`react-spinners`][react-spinners]
 
 #### Version 2.2.0 _(2018-02-05)_
 
@@ -44,9 +37,7 @@ can see it on the [releases page](../../releases).
 
 #### Version 2.1.1 _(2018-01-17)_
 
-- Returned control of the count stepper value to `react-stepper-primitive` now
-  that it supports reinitialization of the `defaultValue` prop
-  ([5307a3ae][5307a3ae])
+- Returned control of the count stepper value to `react-stepper-primitive` now that it supports reinitialization of the `defaultValue` prop ([5307a3ae][5307a3ae])
 
 #### Version 2.1.0 _(2018-01-06)_
 
@@ -56,13 +47,7 @@ can see it on the [releases page](../../releases).
 
 - Migrated project from `next.js` to `create-react-app`:
 
-  Initially, this project started as a quick experiment with [Zeit's][zeit]
-  [`next.js`][next.js] framework, their CSS-in-JS implementation
-  ([`styled-jsx`][styled-jsx]), and their [`now`][now] platform. As it does not
-  benefit much from SSR or some of the other major features of `next.js`, it is
-  now based off the [`create-react-app`][cra] generator, uses
-  [`emotion`][emotion] CSS, and is deployed as a static site on
-  [Netlify][netlify].
+  Initially, this project started as a quick experiment with [Zeit's][zeit] [`next.js`][next.js] framework, their CSS-in-JS implementation ([`styled-jsx`][styled-jsx]), and their [`now`][now] platform. As it does not benefit much from SSR or some of the other major features of `next.js`, it is now based off the [`create-react-app`][cra] generator, uses [`emotion`][emotion] CSS, and is deployed as a static site on [Netlify][netlify].
 
 #### Version 1.4.0 _(2018-01-03)_
 
@@ -90,15 +75,12 @@ can see it on the [releases page](../../releases).
 #### Version 1.1.2 _(2018-01-01)_
 
 - Fixed core functionality in IE/Edge (ditched `lib-js`)
-- Fixed advanced options in IE/Edge/Safari (ditched `<details>` and `<summary>`
-  elements)
+- Fixed advanced options in IE/Edge/Safari (ditched `<details>` and `<summary>` elements)
 - Added loading text as the SVG animation doesn't work in IE/Edge
 
 #### Version 1.1.1 _(2017-12-31)_
 
-- Fixed a bug that was causing invalid
-  [`meetup-raffle-stdlib`][meetup-raffle-stdlib] requests in the scenario where
-  a Meetup API key had never been set
+- Fixed a bug that was causing invalid [`meetup-raffle-stdlib`][meetup-raffle-stdlib] requests in the scenario where a Meetup API key had never been set
 - Embedded SVGs to disguise image load times
 - Normalized input colors for consistency
 - Tweaked winner layout
@@ -123,8 +105,7 @@ can see it on the [releases page](../../releases).
 [cra]: https://github.com/facebookincubator/create-react-app
 [emotion]: https://emotion.sh/
 [netlify]: https://www.netlify.com/
-[5307a3ae]:
-  https://github.com/wKovacs64/meetup-raffle/commit/5307a3ae8b2af1beefc4fef30fd97e7f79e36676
+[5307a3ae]: https://github.com/wKovacs64/meetup-raffle/commit/5307a3ae8b2af1beefc4fef30fd97e7f79e36676
 [react-spinners]: https://github.com/davidhu2000/react-spinners
 [stdlib]: https://stdlib.com/
 [netlify-functions]: https://www.netlify.com/docs/functions/

@@ -28,14 +28,7 @@
     "generate:css": "tailwindcss --input ./app/styles/app.css --output ./app/styles/app.generated.css",
     "format": "prettier --cache --write .",
     "lint": "eslint .",
-    "husky:install": "husky install",
-    "prepare": "npm run --silent husky:install",
     "start": "cross-env NODE_ENV=production netlify dev"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   },
   "private": true,
   "msw": {
@@ -59,20 +52,14 @@
     "zod": "3.19.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.3.0",
-    "@commitlint/config-conventional": "17.3.0",
     "@remix-run/dev": "1.7.6",
     "@remix-run/eslint-config": "1.7.6",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
     "@wkovacs64/prettier-config": "3.0.3",
     "autoprefixer": "10.4.13",
-    "commitizen": "4.2.5",
     "cross-env": "7.0.3",
-    "cz-conventional-changelog": "3.3.0",
     "eslint": "8.28.0",
-    "husky": "8.0.2",
-    "lint-staged": "13.0.4",
     "netlify-cli": "12.2.7",
     "npm-run-all": "4.1.5",
     "postcss": "8.4.19",
