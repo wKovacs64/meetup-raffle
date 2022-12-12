@@ -1,7 +1,7 @@
 export default function ErrorMessage({
-  title,
-  subtitle,
-  problemText,
+  title = 'Oops!',
+  subtitle = 'An error was encountered:',
+  problemText = 'Unknown.',
 }: ErrorMessageProps) {
   return (
     <section>
@@ -17,9 +17,3 @@ interface ErrorMessageProps {
   subtitle: string;
   problemText: string;
 }
-
-ErrorMessage.defaultProps = {
-  title: 'Oops!',
-  subtitle: 'An error was encountered:',
-  problemText: 'Unknown.',
-};
