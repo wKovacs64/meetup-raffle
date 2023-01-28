@@ -203,12 +203,14 @@ export default function DrawPage({ onRetry }: { onRetry: () => void }) {
         <Link
           to=".."
           className="mb-4 w-full border border-solid border-current bg-white py-4 px-16 text-center font-bold shadow-lg hover:bg-gray-300 focus:bg-gray-300 sm:mb-0 sm:w-64 sm:text-xl"
+          replace
         >
           Start Over
         </Link>
         <Link
           to={`.?${searchParams.toString()}`}
           className="w-full border border-solid border-current bg-white py-4 px-16 text-center font-bold shadow-lg hover:bg-gray-300 focus:bg-gray-300 sm:w-64 sm:text-xl"
+          replace
         >
           Draw Again
         </Link>
