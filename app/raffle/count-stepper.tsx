@@ -41,7 +41,7 @@ export default function CountStepper({
           type="button"
           className="h-16 w-16 cursor-pointer p-2 disabled:cursor-not-allowed disabled:opacity-20"
           data-testid="decrement-button"
-          {...api.decrementButtonProps}
+          {...api.decrementTriggerProps}
         >
           <svg
             height="100%"
@@ -69,7 +69,7 @@ export default function CountStepper({
           type="button"
           className="h-16 w-16 cursor-pointer p-2 disabled:cursor-not-allowed disabled:opacity-20"
           data-testid="increment-button"
-          {...api.incrementButtonProps}
+          {...api.incrementTriggerProps}
         >
           <svg
             height="100%"
