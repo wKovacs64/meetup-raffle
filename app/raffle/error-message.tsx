@@ -13,7 +13,7 @@ export default function ErrorMessage({
 }
 
 interface ErrorMessageProps {
-  title: string;
-  subtitle: string;
-  problemText: string;
+  title?: string;
+  subtitle?: string;
+  problemText?: string;
 }
