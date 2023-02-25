@@ -40,7 +40,7 @@
     "@remix-run/netlify": "1.13.0",
     "@remix-run/node": "1.13.0",
     "@remix-run/react": "1.13.0",
-    "@zag-js/number-input": "0.2.13",
+    "@zag-js/number-input": "0.2.14",
     "@zag-js/react": "0.3.10",
     "clsx": "1.2.1",
     "meetup-randomizer": "3.1.0",
