@@ -57,7 +57,7 @@
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "@wkovacs64/prettier-config": "3.0.3",
-    "autoprefixer": "10.4.13",
+    "autoprefixer": "10.4.14",
     "cross-env": "7.0.3",
     "eslint": "8.35.0",
     "netlify-cli": "13.1.1",
