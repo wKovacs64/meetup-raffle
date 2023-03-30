@@ -19,14 +19,14 @@ export default function DevToolsPanel() {
       <button
         aria-label="Toggle Developer Tools"
         type="button"
-        className="absolute right-4 bottom-4 z-10 flex h-16 w-16 cursor-pointer items-center justify-center border border-solid border-current bg-white p-2 shadow-lg sm:bottom-8 sm:right-8"
+        className="absolute bottom-4 right-4 z-10 flex h-16 w-16 cursor-pointer items-center justify-center border border-solid border-current bg-white p-2 shadow-lg sm:bottom-8 sm:right-8"
         onClick={toggleVisibility}
       >
         {isOpen ? <CloseIcon /> : <ToolsIcon />}
       </button>
       <div
         className={clsx(
-          'absolute left-0 bottom-0 w-full overflow-hidden bg-black/80',
+          'absolute bottom-0 left-0 w-full overflow-hidden bg-black/80',
           {
             'h-0': !isOpen,
             'p-0': !isOpen,
