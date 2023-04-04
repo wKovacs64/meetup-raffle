@@ -16,16 +16,13 @@
     "url": "https://github.com/wKovacs64/meetup-raffle/issues"
   },
   "scripts": {
-    "clean": "rimraf .cache .netlify ./public/build ./public/sw.js ./**/*.generated.css",
+    "clean": "rimraf .cache .netlify ./public/build ./public/sw.js",
     "build": "run-s build:*",
-    "build:css": "run-p \"generate:css -- --minify\"",
     "build:worker": "esbuild ./app/entry.worker.ts --outfile=./public/sw.js --minify --bundle --format=esm --define:process.env.NODE_ENV='\"production\"'",
     "build:app": "remix build",
-    "dev": "npm run build && run-p dev:*",
-    "dev:css": "run-p \"generate:css -- --watch\"",
+    "dev": "run-p dev:*",
     "dev:worker": "esbuild ./app/entry.worker.ts --outfile=./public/sw.js --bundle --format=esm --define:process.env.NODE_ENV='\"development\"' --watch",
     "dev:app": "cross-env NODE_ENV=development netlify dev",
-    "generate:css": "tailwindcss --input ./app/styles/app.css --output ./app/styles/app.generated.css",
     "format": "prettier --cache --write .",
     "lint": "eslint .",
     "start": "cross-env NODE_ENV=production netlify dev"
