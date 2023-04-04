@@ -1,5 +1,5 @@
 import { json, type LoaderArgs } from '@remix-run/node';
-import { Link, useLoaderData, useTransition } from '@remix-run/react';
+import { Link, useLoaderData, useNavigation } from '@remix-run/react';
 import { z, ZodError } from '~/vendor/zod.server';
 import { meetupRandomizer } from '~/vendor/meetup-randomizer.server';
 import { mocksServer } from '~/mocks/mocks-server.server';
@@ -190,7 +190,7 @@ export default function DrawPage({ onRetry }: { onRetry: () => void }) {
     ...(devSettings?.mock && { mock: 'true' }),
   });
 
-  if (useTransition().state === 'loading') return <LoadingSpinner />;
+  if (useNavigation().state === 'loading') return <LoadingSpinner />;
 
   return (
     <div className="mt-4 sm:mt-8">

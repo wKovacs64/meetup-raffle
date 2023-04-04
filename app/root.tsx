@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Link, useLocation, useMatches } from '@remix-run/react';
-import type { LinksFunction, MetaFunction } from '@remix-run/node';
+import { Link, useLocation, useMatches, useRouteError } from '@remix-run/react';
+import type { LinksFunction, V2_MetaFunction } from '@remix-run/node';
 import {
   Links,
   LiveReload,
@@ -12,22 +12,15 @@ import {
 // @ts-ignore
 import faviconIcoUrl from '../public/favicon.ico';
 import icon32Url from '~/images/icon-32x32.png';
+import icon512Url from '~/images/icon-512x512.png';
 import appleTouchIconUrl from '~/images/apple-touch-icon.png';
-import appStylesUrl from '~/styles/app.generated.css';
-import Header from '~/core/header';
+import appStylesUrl from '~/styles/app.css';
 import { DevToolsProvider } from '~/dev-tools/dev-tools-context';
 import DevToolsPanel from '~/dev-tools/dev-tools-panel';
+import Header from '~/core/header';
+import ErrorMessage from '~/raffle/error-message';
 
-// HACK: this is a workaround for Remix issue 3414
-import icon192Url from '~/images/icon-192x192.png';
-import icon512Url from '~/images/icon-512x512.png';
-import ErrorMessage from './raffle/error-message';
-// you must "use" the imported URL for this hack or the assets won't be built
-console.assert(typeof icon192Url === 'string');
-console.assert(typeof icon512Url === 'string');
-// END HACK
-
-export const meta: MetaFunction = () => {
+export const meta: V2_MetaFunction = () => {
   const appName = 'M. Raffle';
   const title = 'Meetup Raffle';
   const description = 'Draw raffle winners at your Meetup event.';
@@ -35,26 +28,22 @@ export const meta: MetaFunction = () => {
   const socialImageUrl = icon512Url;
   const socialImageAlt = 'A white raffle ticket against a red background';
 
-  return {
-    charset: 'utf-8',
-    title: title,
-    description: description,
-    viewport: 'width=device-width,initial-scale=1',
-    'og:type': 'website',
-    'og:title': title,
-    'og:description': description,
-    'og:image': socialImageUrl,
-    'og:image:alt': socialImageAlt,
-    'twitter:card': 'summary_large_image',
-    'twitter:title': title,
-    'twitter:description': description,
-    'twitter:image': socialImageUrl,
-    'twitter:image:alt': socialImageAlt,
-    'application-name': appName,
-    'apple-mobile-web-app-title': appName,
-    'msapplication-TileColor': themeColor,
-    'theme-color': themeColor,
-  };
+  return [
+    { title },
+    { name: 'description', content: description },
+    { name: 'application-name', content: appName },
+    { name: 'apple-mobile-web-app-title', content: appName },
+    { name: 'msapplication-TileColor', content: themeColor },
+    { name: 'theme-color', content: themeColor },
+    { property: 'og:title', content: title },
+    { property: 'og:description', content: description },
+    { property: 'og:image', content: socialImageUrl },
+    { property: 'og:image:alt', content: socialImageAlt },
+    { name: 'twitter:title', content: title },
+    { name: 'twitter:description', content: description },
+    { name: 'twitter:image', content: socialImageUrl },
+    { name: 'twitter:image:alt', content: socialImageAlt },
+  ];
 };
 
 export const links: LinksFunction = () => [
@@ -116,6 +105,10 @@ function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
         <Meta />
         <Links />
       </head>
@@ -133,8 +126,12 @@ function RootLayout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function ErrorBoundary({ error }: { error: Error }) {
+export function ErrorBoundary() {
+  const error = useRouteError();
+  // TODO: may need `isRouteErrorResponse` here in the future
+
   console.error(error);
+  const message = error instanceof Error ? error.message : 'Unknown Error';
 
   return (
     <RootLayout>
@@ -143,7 +140,7 @@ export function ErrorBoundary({ error }: { error: Error }) {
           <ErrorMessage
             title="😬"
             subtitle="How embarrassing for us, something unexpected happened:"
-            problemText={error.message}
+            problemText={message}
           />
           <Link
             to="."

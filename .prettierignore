@@ -4,6 +4,5 @@ node_modules
 
 /.netlify
 package*.json
-**/*.generated.css
 /public/mockServiceWorker.js
 /public/sw.js
