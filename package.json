@@ -66,7 +66,7 @@
     "rimraf": "5.0.0",
     "semantic-release": "21.0.1",
     "tailwindcss": "3.3.2",
-    "typescript": "4.9.5"
+    "typescript": "5.0.4"
   },
   "engines": {
     "node": ">=14"
