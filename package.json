@@ -51,8 +51,8 @@
   "devDependencies": {
     "@remix-run/dev": "1.15.0",
     "@remix-run/eslint-config": "1.15.0",
-    "@types/react": "18.0.38",
-    "@types/react-dom": "18.0.11",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.1",
     "@wkovacs64/prettier-config": "3.0.3",
     "autoprefixer": "10.4.14",
     "cross-env": "7.0.3",
