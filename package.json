@@ -52,7 +52,7 @@
     "@remix-run/dev": "1.16.0",
     "@remix-run/eslint-config": "1.16.0",
     "@types/react": "18.2.5",
-    "@types/react-dom": "18.2.3",
+    "@types/react-dom": "18.2.4",
     "@wkovacs64/prettier-config": "3.0.3",
     "autoprefixer": "10.4.14",
     "cross-env": "7.0.3",
