@@ -34,9 +34,9 @@
   "dependencies": {
     "@faker-js/faker": "8.0.1",
     "@netlify/functions": "1.6.0",
-    "@remix-run/netlify": "1.16.0",
-    "@remix-run/node": "1.16.0",
-    "@remix-run/react": "1.16.0",
+    "@remix-run/netlify": "1.16.1",
+    "@remix-run/node": "1.16.1",
+    "@remix-run/react": "1.16.1",
     "@zag-js/number-input": "0.9.1",
     "@zag-js/react": "0.9.1",
     "clsx": "1.2.1",
@@ -49,8 +49,8 @@
     "zod": "3.21.4"
   },
   "devDependencies": {
-    "@remix-run/dev": "1.16.0",
-    "@remix-run/eslint-config": "1.16.0",
+    "@remix-run/dev": "1.16.1",
+    "@remix-run/eslint-config": "1.16.1",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
     "@wkovacs64/prettier-config": "3.0.3",
