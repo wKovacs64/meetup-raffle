@@ -2,10 +2,6 @@
   command = "npm run build"
   publish = "public"
 
-[dev]
-  command = "remix watch"
-  port = 3000
-
 # The previous version of this app was made with Vite and there was an
 # index.html file present. Installed instances of the PWA will still request
 # this path, which will result in a 404 Not Found without this redirect.

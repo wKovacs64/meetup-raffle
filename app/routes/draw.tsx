@@ -2,8 +2,6 @@ import { json, type LoaderArgs } from '@remix-run/node';
 import { Link, useLoaderData, useNavigation } from '@remix-run/react';
 import { z, ZodError } from '~/vendor/zod.server';
 import { meetupRandomizer } from '~/vendor/meetup-randomizer.server';
-import { mocksServer } from '~/mocks/mocks-server.server';
-import { useDevTools } from '~/dev-tools/dev-tools-context';
 import { userSettingsCookie } from '~/core/cookies.server';
 import { getEventFromResponseData } from '~/raffle/get-event-from-response-data';
 import { getIdFromEvent } from '~/raffle/get-id-from-event';
@@ -26,7 +24,6 @@ export async function loader({ request }: LoaderArgs) {
       },
     ),
     meetup: z.string().min(1, 'Meetup name is required'),
-    mock: z.nullable(z.literal('true')),
   });
 
   let userSettings = request.headers.get('Cookie') ?? '';
@@ -35,18 +32,15 @@ export async function loader({ request }: LoaderArgs) {
   const formData = {
     meetup: searchParams.get('meetup') ?? '',
     count: searchParams.get('count') ?? '',
-    mock: searchParams.get('mock'),
   };
 
   let meetup;
   let count;
-  let shouldMock;
 
   try {
     const validatedFormData = formSchema.parse(formData);
     count = validatedFormData.count;
     meetup = validatedFormData.meetup;
-    shouldMock = Boolean(validatedFormData.mock);
     userSettings = await userSettingsCookie.serialize(
       { meetup, count },
       {
@@ -70,9 +64,6 @@ export async function loader({ request }: LoaderArgs) {
     );
   }
 
-  // start the mocks server (if requested) to intercept Meetup API calls
-  if (shouldMock) mocksServer.listen({ onUnhandledRequest: 'bypass' });
-
   const eventUrl = `https://api.meetup.com/${encodeURIComponent(
     meetup,
   )}/events?status=upcoming&only=id,visibility`;
@@ -81,7 +72,6 @@ export async function loader({ request }: LoaderArgs) {
 
   // This case covers invalid Meetup group names as well as invalid event IDs.
   if (res.status === 404) {
-    if (shouldMock) mocksServer.close();
     return json(
       {
         formData,
@@ -99,7 +89,6 @@ export async function loader({ request }: LoaderArgs) {
   const event = getEventFromResponseData(data);
 
   if (!event) {
-    if (shouldMock) mocksServer.close();
     return json(
       {
         formData,
@@ -116,7 +105,6 @@ export async function loader({ request }: LoaderArgs) {
   const eventId = getIdFromEvent(event);
 
   if (eventId === null) {
-    if (shouldMock) mocksServer.close();
     return json(
       {
         formData,
@@ -138,7 +126,6 @@ export async function loader({ request }: LoaderArgs) {
     );
 
     if (Array.isArray(winners) && winners.length) {
-      if (shouldMock) mocksServer.close();
       return json(
         {
           formData,
@@ -153,7 +140,6 @@ export async function loader({ request }: LoaderArgs) {
     }
   } catch (err) {
     const isError = err instanceof Error;
-    if (shouldMock) mocksServer.close();
     return json(
       {
         formData,
@@ -167,7 +153,6 @@ export async function loader({ request }: LoaderArgs) {
     );
   }
 
-  if (shouldMock) mocksServer.close();
   return json(
     {
       formData,
@@ -183,11 +168,9 @@ export async function loader({ request }: LoaderArgs) {
 
 export default function DrawPage({ onRetry }: { onRetry: () => void }) {
   const data = useLoaderData<typeof loader>();
-  const [devSettings] = useDevTools();
   const searchParams = new URLSearchParams({
     meetup: data.formData.meetup,
     count: data.formData.count,
-    ...(devSettings?.mock && { mock: 'true' }),
   });
 
   if (useNavigation().state === 'loading') return <LoadingSpinner />;

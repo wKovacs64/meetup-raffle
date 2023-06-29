@@ -10,6 +10,12 @@ const ARTIFICIAL_DELAY_MS = 50;
 
 export const handlers = [
   //
+  // Remix dev server
+  //
+  rest.post(`${process.env.REMIX_DEV_HTTP_ORIGIN}/ping`, (req) =>
+    req.passthrough(),
+  ),
+  //
   // Raffle action function -> Meetup API
   //
   rest.get(EVENTS_ENDPOINT, async (req, res, ctx) => {
