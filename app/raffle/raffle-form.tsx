@@ -1,13 +1,10 @@
 import { Form } from '@remix-run/react';
-import { useDevTools } from '~/dev-tools/dev-tools-context';
 import CountStepper from '~/raffle/count-stepper';
 
 export default function RaffleForm({
   defaultMeetup,
   defaultCount,
 }: RaffleFormProps) {
-  const [devSettings] = useDevTools();
-
   return (
     <div className="flex flex-col">
       <Form method="get" action="draw">
@@ -53,9 +50,6 @@ export default function RaffleForm({
             </button>
           </div>
         </div>
-        {devSettings?.mock ? (
-          <input type="hidden" name="mock" value="true" />
-        ) : null}
       </Form>
     </div>
   );

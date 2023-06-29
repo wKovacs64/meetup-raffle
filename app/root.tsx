@@ -18,8 +18,6 @@ import icon32Url from '~/images/icon-32x32.png';
 import icon512Url from '~/images/icon-512x512.png';
 import appleTouchIconUrl from '~/images/apple-touch-icon.png';
 import appStylesUrl from '~/styles/app.css';
-import { DevToolsProvider } from '~/dev-tools/dev-tools-context';
-import DevToolsPanel from '~/dev-tools/dev-tools-panel';
 import Header from '~/core/header';
 import ErrorMessage from '~/raffle/error-message';
 
@@ -117,10 +115,7 @@ function RootLayout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="bg-gray-100 text-slate-900">
         <Header />
-        <DevToolsProvider>
-          <main className="mx-auto w-full max-w-3xl px-4">{children}</main>
-          {process.env.NODE_ENV === 'development' && <DevToolsPanel />}
-        </DevToolsProvider>
+        <main className="mx-auto w-full max-w-3xl px-4">{children}</main>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
