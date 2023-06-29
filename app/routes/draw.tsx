@@ -50,17 +50,13 @@ export async function loader({ request }: LoaderArgs) {
     );
   } catch (err) {
     if (err instanceof ZodError) console.error(JSON.stringify(err.issues));
-    return json(
+    return jsonWithCookie(
       {
         formData,
         errorMessage:
           'Sorry, somehow the form was submitted with invalid data.',
       },
-      {
-        headers: {
-          'Set-Cookie': userSettings,
-        },
-      },
+      userSettings,
     );
   }
 
@@ -72,16 +68,12 @@ export async function loader({ request }: LoaderArgs) {
 
   // This case covers invalid Meetup group names as well as invalid event IDs.
   if (res.status === 404) {
-    return json(
+    return jsonWithCookie(
       {
         formData,
         errorMessage: "Sorry, I couldn't find any information on that.",
       },
-      {
-        headers: {
-          'Set-Cookie': userSettings,
-        },
-      },
+      userSettings,
     );
   }
 
@@ -89,32 +81,24 @@ export async function loader({ request }: LoaderArgs) {
   const event = getEventFromResponseData(data);
 
   if (!event) {
-    return json(
+    return jsonWithCookie(
       {
         formData,
         errorMessage: "Sorry, I couldn't find any upcoming events.",
       },
-      {
-        headers: {
-          'Set-Cookie': userSettings,
-        },
-      },
+      userSettings,
     );
   }
 
   const eventId = getIdFromEvent(event);
 
   if (eventId === null) {
-    return json(
+    return jsonWithCookie(
       {
         formData,
         errorMessage: 'Sorry, their members list is private.',
       },
-      {
-        headers: {
-          'Set-Cookie': userSettings,
-        },
-      },
+      userSettings,
     );
   }
 
@@ -126,44 +110,43 @@ export async function loader({ request }: LoaderArgs) {
     );
 
     if (Array.isArray(winners) && winners.length) {
-      return json(
+      return jsonWithCookie(
         {
           formData,
           winners,
         },
-        {
-          headers: {
-            'Set-Cookie': userSettings,
-          },
-        },
+        userSettings,
       );
     }
   } catch (err) {
     const isError = err instanceof Error;
-    return json(
+    return jsonWithCookie(
       {
         formData,
         errorMessage: isError ? err.message : 'Sorry, something went wrong.',
       },
-      {
-        headers: {
-          'Set-Cookie': userSettings,
-        },
-      },
+      userSettings,
     );
   }
 
-  return json(
+  return jsonWithCookie(
     {
       formData,
       errorMessage: 'Sorry, we received unexpected data for that request.',
     },
-    {
-      headers: {
-        'Set-Cookie': userSettings,
-      },
-    },
+    userSettings,
   );
+}
+
+function jsonWithCookie<T>(
+  data: Parameters<typeof json<T>>[0],
+  cookieString: string,
+) {
+  return json<T>(data, {
+    headers: {
+      'Set-Cookie': cookieString,
+    },
+  });
 }
 
 export default function DrawPage({ onRetry }: { onRetry: () => void }) {
