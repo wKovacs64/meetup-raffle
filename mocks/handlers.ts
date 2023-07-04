@@ -1,4 +1,4 @@
-import { rest } from 'msw';
+import { rest, delay, passthrough } from 'msw';
 import {
   EVENTS_ENDPOINT,
   RSVPS_ENDPOINT,
@@ -12,28 +12,31 @@ export const handlers = [
   //
   // Remix dev server
   //
-  rest.post(`${process.env.REMIX_DEV_HTTP_ORIGIN}/ping`, (req) =>
-    req.passthrough(),
-  ),
+  rest.post(`${process.env.REMIX_DEV_HTTP_ORIGIN}/ping`, () => passthrough()),
   //
   // Raffle action function -> Meetup API
   //
-  rest.get(EVENTS_ENDPOINT, async (req, res, ctx) => {
-    if (req.url.pathname.includes('404')) {
-      return res(
-        ctx.delay(ARTIFICIAL_DELAY_MS),
-        ctx.status(404),
-        ctx.json({
+  rest.get(EVENTS_ENDPOINT, async ({ request }) => {
+    const url = new URL(request.url);
+    if (url.pathname.includes('404')) {
+      await delay(ARTIFICIAL_DELAY_MS);
+      return new Response(
+        JSON.stringify({
           error: { message: "Sorry, I couldn't find any information on that." },
         }),
+        {
+          status: 404,
+        },
       );
     }
-    if (req.url.pathname.includes('500')) {
+    if (url.pathname.includes('500')) {
       throw new Error('Oh no, 💥 explosion detected!');
     }
-    return res(ctx.delay(ARTIFICIAL_DELAY_MS), ctx.json(UPCOMING_EVENTS));
+    await delay(ARTIFICIAL_DELAY_MS);
+    return new Response(JSON.stringify(UPCOMING_EVENTS));
   }),
-  rest.get(RSVPS_ENDPOINT, (req, res, ctx) => {
-    return res(ctx.delay(ARTIFICIAL_DELAY_MS), ctx.json(EVENT_RSVPS));
+  rest.get(RSVPS_ENDPOINT, async () => {
+    await delay(ARTIFICIAL_DELAY_MS);
+    return new Response(JSON.stringify(EVENT_RSVPS));
   }),
 ];
