@@ -11,7 +11,7 @@ export const RSVPS_ENDPOINT =
 // Mock responses
 //
 export const UPCOMING_EVENTS = [
-  { visibility: 'public', id: faker.random.alphaNumeric(13) },
+  { visibility: 'public', id: faker.string.alphanumeric(13) },
 ];
 
 export const EVENT_RSVPS = [
@@ -27,12 +27,12 @@ function generateOrganizers(count: number) {
   return Array.from(Array(count), () => ({
     response: 'yes',
     member: {
-      id: faker.datatype.number({ min: 100000000, max: 999999999 }),
-      name: faker.name.firstName(),
+      id: faker.number.int({ min: 100000000, max: 999999999 }),
+      name: faker.person.firstName(),
       role: 'organizer',
       event_context: { host: true },
     },
-    group: { urlname: faker.company.bsNoun() },
+    group: { urlname: faker.company.buzzNoun() },
   }));
 }
 
@@ -40,10 +40,10 @@ function generateCoOrganizers(count: number) {
   return Array.from(Array(count), () => ({
     response: 'yes',
     member: {
-      id: faker.datatype.number({ min: 100000000, max: 999999999 }),
-      name: faker.name.fullName(),
+      id: faker.number.int({ min: 100000000, max: 999999999 }),
+      name: faker.person.fullName(),
       photo: {
-        id: faker.datatype.number({ min: 100000000, max: 999999999 }),
+        id: faker.number.int({ min: 100000000, max: 999999999 }),
         highres_link: faker.internet.avatar(),
         photo_link: faker.internet.avatar(),
         thumb_link: faker.internet.avatar(),
@@ -53,7 +53,7 @@ function generateCoOrganizers(count: number) {
       role: 'coorganizer',
       event_context: { host: true },
     },
-    group: { urlname: faker.company.bsNoun() },
+    group: { urlname: faker.company.buzzNoun() },
   }));
 }
 
@@ -61,10 +61,10 @@ function generateMembers(count: number) {
   return Array.from(Array(count), () => ({
     response: 'yes',
     member: {
-      id: faker.datatype.number({ min: 100000000, max: 999999999 }),
-      name: faker.name.fullName(),
+      id: faker.number.int({ min: 100000000, max: 999999999 }),
+      name: faker.person.fullName(),
       photo: {
-        id: faker.datatype.number({ min: 100000000, max: 999999999 }),
+        id: faker.number.int({ min: 100000000, max: 999999999 }),
         highres_link: faker.internet.avatar(),
         photo_link: faker.internet.avatar(),
         thumb_link: faker.internet.avatar(),
@@ -74,6 +74,6 @@ function generateMembers(count: number) {
       type: 'member',
       event_context: { host: false },
     },
-    group: { urlname: faker.company.bsNoun() },
+    group: { urlname: faker.company.buzzNoun() },
   }));
 }
