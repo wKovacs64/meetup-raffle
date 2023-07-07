@@ -25,7 +25,8 @@
     "dev:app": "remix dev --no-restart --command \"binode --require @esbuild-kit/cjs-loader --require ./mocks/index.ts -- @remix-run/serve:remix-serve .netlify/functions-internal/server.js\"",
     "format": "prettier --cache --write .",
     "lint": "eslint .",
-    "start": "netlify serve"
+    "start": "netlify serve",
+    "typecheck": "tsc --noEmit"
   },
   "private": true,
   "msw": {

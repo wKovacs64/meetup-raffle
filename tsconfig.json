@@ -15,6 +15,7 @@
     "paths": {
       "~/*": ["./app/*"]
     },
+    "skipLibCheck": true,
     "verbatimModuleSyntax": true,
     "module": "ES2022",
 
