@@ -22,7 +22,7 @@
     "build:app": "remix build",
     "dev": "run-p dev:*",
     "dev:worker": "esbuild ./app/entry.worker.ts --outfile=./public/sw.js --bundle --format=esm --define:process.env.NODE_ENV='\"development\"' --watch",
-    "dev:app": "remix dev --no-restart --command \"binode --require @esbuild-kit/cjs-loader --require ./mocks/index.ts -- @remix-run/serve:remix-serve .netlify/functions-internal/server.js\"",
+    "dev:app": "remix dev --manual --command \"binode --require @esbuild-kit/cjs-loader --require ./mocks/index.ts -- @remix-run/serve:remix-serve .netlify/functions-internal/server.js\"",
     "format": "prettier --cache --write .",
     "lint": "eslint .",
     "start": "netlify serve",
