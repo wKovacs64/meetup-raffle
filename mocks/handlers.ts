@@ -8,11 +8,13 @@ import {
 
 const ARTIFICIAL_DELAY_MS = 50;
 
+console.log(JSON.stringify(process.env.REMIX_DEV_HTTP_ORIGIN, null, 2));
+
 export const handlers = [
   //
   // Remix dev server
   //
-  rest.post(`${process.env.REMIX_DEV_HTTP_ORIGIN}/ping`, () => passthrough()),
+  rest.post(`${process.env.REMIX_DEV_HTTP_ORIGIN}ping`, () => passthrough()),
   //
   // Raffle action function -> Meetup API
   //
