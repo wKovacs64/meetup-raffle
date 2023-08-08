@@ -11,6 +11,12 @@
   "major": {
     "automerge": false
   },
+  "packageRules": [
+    {
+      "matchPackageNames": ["@zag-js/*"],
+      "groupName": "zag-js"
+    }
+  ],
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0
 }
