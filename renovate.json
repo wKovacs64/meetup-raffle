@@ -13,7 +13,7 @@
   },
   "packageRules": [
     {
-      "matchPackageNames": ["@zag-js/*"],
+      "matchPackagePrefixes": ["@zag-js/"],
       "groupName": "zag-js"
     }
   ],
