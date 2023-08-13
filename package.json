@@ -55,7 +55,7 @@
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
     "@wkovacs64/prettier-config": "3.0.3",
-    "autoprefixer": "10.4.14",
+    "autoprefixer": "10.4.15",
     "binode": "1.0.5",
     "eslint": "8.47.0",
     "msw": "0.0.0-fetch.rc-15",
