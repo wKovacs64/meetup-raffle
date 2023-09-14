@@ -48,7 +48,7 @@
     "zod": "3.22.2"
   },
   "devDependencies": {
-    "@esbuild-kit/cjs-loader": "2.4.3",
+    "@esbuild-kit/cjs-loader": "2.4.4",
     "@remix-run/dev": "1.19.3",
     "@remix-run/eslint-config": "1.19.3",
     "@remix-run/serve": "1.19.3",
