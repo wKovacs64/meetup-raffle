@@ -18,7 +18,7 @@ export default function CountStepper({
       maxFractionDigits: 0,
       min,
       max,
-      onFocus: ({ srcElement }) => {
+      onFocusChange: ({ srcElement }) => {
         if (isInputElement(srcElement)) {
           srcElement.select();
         }
@@ -99,7 +99,9 @@ interface CountStepperProps {
 }
 
 function isInputElement(
-  element: HTMLElement | null,
+  element: HTMLElement | null | undefined,
 ): element is HTMLInputElement {
-  return element !== null && element.tagName === 'INPUT';
+  return (
+    element !== null && element !== undefined && element.tagName === 'INPUT'
+  );
 }
