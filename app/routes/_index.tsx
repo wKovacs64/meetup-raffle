@@ -1,10 +1,10 @@
-import { json, type LoaderArgs } from '@remix-run/node';
+import { json, type LoaderFunctionArgs } from '@remix-run/node';
 import { useLoaderData, useNavigation } from '@remix-run/react';
 import { userSettingsCookie, type UserSettings } from '~/core/cookies.server';
 import LoadingSpinner from '~/raffle/loading-spinner';
 import RaffleForm from '~/raffle/raffle-form';
 
-export const loader = async ({ request }: LoaderArgs) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   const userSettings: UserSettings | null = await userSettingsCookie.parse(
     request.headers.get('Cookie'),
   );

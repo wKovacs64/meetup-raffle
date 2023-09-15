@@ -44,6 +44,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-github-corner": "2.5.0",
+    "source-map-support": "0.5.21",
     "spinners-react": "1.0.7",
     "zod": "3.22.2"
   },
@@ -54,6 +55,7 @@
     "@remix-run/serve": "2.0.0",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
+    "@types/source-map-support": "0.5.7",
     "@wkovacs64/prettier-config": "3.0.3",
     "autoprefixer": "10.4.15",
     "binode": "1.0.5",
