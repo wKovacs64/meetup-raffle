@@ -1,4 +1,4 @@
-import { json, type LoaderArgs } from '@remix-run/node';
+import { json, type LoaderFunctionArgs } from '@remix-run/node';
 import { Link, useLoaderData, useNavigation } from '@remix-run/react';
 import { z, ZodError } from '~/vendor/zod.server';
 import { meetupRandomizer } from '~/vendor/meetup-randomizer.server';
@@ -10,7 +10,7 @@ import Winners from '~/raffle/winners';
 import ErrorMessage from '~/raffle/error-message';
 import type { UpcomingEvent, Winner } from '~/types';
 
-export async function loader({ request }: LoaderArgs) {
+export async function loader({ request }: LoaderFunctionArgs) {
   const formSchema = z.object({
     count: z.string().refine(
       (value) => {

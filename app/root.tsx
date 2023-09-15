@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { LinksFunction, V2_MetaFunction } from '@remix-run/node';
+import type { LinksFunction, MetaFunction } from '@remix-run/node';
 import {
   useLocation,
   useMatches,
@@ -21,7 +21,7 @@ import appStylesUrl from '~/styles/app.css';
 import Header from '~/core/header';
 import ErrorMessage from '~/raffle/error-message';
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   const appName = 'M. Raffle';
   const title = 'Meetup Raffle';
   const description = 'Draw raffle winners at your Meetup event.';
