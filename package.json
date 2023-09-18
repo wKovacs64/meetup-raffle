@@ -53,7 +53,7 @@
     "@remix-run/dev": "2.0.0",
     "@remix-run/eslint-config": "2.0.0",
     "@remix-run/serve": "2.0.0",
-    "@types/react": "18.2.21",
+    "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
     "@types/source-map-support": "0.5.7",
     "@wkovacs64/prettier-config": "3.0.3",
