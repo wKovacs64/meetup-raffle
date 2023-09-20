@@ -61,7 +61,7 @@
     "binode": "1.0.5",
     "eslint": "8.49.0",
     "msw": "0.0.0-fetch.rc-15",
-    "netlify-cli": "16.4.0",
+    "netlify-cli": "16.4.1",
     "npm-run-all": "4.1.5",
     "postcss": "8.4.30",
     "postcss-import": "15.1.0",
