@@ -57,7 +57,7 @@
     "@types/react-dom": "18.2.7",
     "@types/source-map-support": "0.5.7",
     "@wkovacs64/prettier-config": "3.0.3",
-    "autoprefixer": "10.4.15",
+    "autoprefixer": "10.4.16",
     "binode": "1.0.5",
     "eslint": "8.49.0",
     "msw": "0.0.0-fetch.rc-15",
