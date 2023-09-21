@@ -1,4 +1,4 @@
-import { rest, delay, passthrough } from 'msw';
+import { http, delay, passthrough } from 'msw';
 import {
   EVENTS_ENDPOINT,
   RSVPS_ENDPOINT,
@@ -12,11 +12,11 @@ export const handlers = [
   //
   // Remix dev server
   //
-  rest.post(`${process.env.REMIX_DEV_ORIGIN}ping`, () => passthrough()),
+  http.post(`${process.env.REMIX_DEV_ORIGIN}ping`, () => passthrough()),
   //
   // Raffle action function -> Meetup API
   //
-  rest.get(EVENTS_ENDPOINT, async ({ request }) => {
+  http.get(EVENTS_ENDPOINT, async ({ request }) => {
     const url = new URL(request.url);
     if (url.pathname.includes('404')) {
       await delay(ARTIFICIAL_DELAY_MS);
@@ -35,7 +35,7 @@ export const handlers = [
     await delay(ARTIFICIAL_DELAY_MS);
     return new Response(JSON.stringify(UPCOMING_EVENTS));
   }),
-  rest.get(RSVPS_ENDPOINT, async () => {
+  http.get(RSVPS_ENDPOINT, async () => {
     await delay(ARTIFICIAL_DELAY_MS);
     return new Response(JSON.stringify(EVENT_RSVPS));
   }),
