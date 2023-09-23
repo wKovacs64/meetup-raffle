@@ -18,10 +18,10 @@
   "scripts": {
     "clean": "rimraf .cache .netlify ./public/build ./public/sw.js",
     "build": "run-s build:*",
-    "build:worker": "esbuild ./app/entry.worker.ts --outfile=./public/sw.js --minify --bundle --format=esm --define:process.env.NODE_ENV='\"production\"'",
+    "build:worker": "remix-pwa build",
     "build:app": "remix build",
     "dev": "run-p dev:*",
-    "dev:worker": "esbuild ./app/entry.worker.ts --outfile=./public/sw.js --bundle --format=esm --define:process.env.NODE_ENV='\"development\"' --watch",
+    "dev:worker": "remix-pwa dev",
     "dev:app": "remix dev --manual --command \"binode --require @esbuild-kit/cjs-loader --require ./mocks/index.ts -- @remix-run/serve:remix-serve .netlify/functions-internal/server.js\"",
     "format": "prettier --cache --write .",
     "lint": "eslint .",
@@ -36,6 +36,9 @@
     "@faker-js/faker": "8.1.0",
     "@netlify/functions": "1.6.0",
     "@netlify/remix-adapter": "1.0.0",
+    "@remix-pwa/cache": "2.0.12",
+    "@remix-pwa/strategy": "2.1.9",
+    "@remix-pwa/sw": "2.1.11",
     "@remix-run/node": "2.0.1",
     "@remix-run/react": "2.0.1",
     "@zag-js/number-input": "0.23.0",
@@ -50,6 +53,8 @@
   },
   "devDependencies": {
     "@esbuild-kit/cjs-loader": "2.4.4",
+    "@remix-pwa/dev": "2.0.30",
+    "@remix-pwa/worker-runtime": "2.0.7",
     "@remix-run/dev": "2.0.1",
     "@remix-run/eslint-config": "2.0.1",
     "@remix-run/serve": "2.0.1",
@@ -67,12 +72,13 @@
     "postcss-import": "15.1.0",
     "prettier": "3.0.3",
     "prettier-plugin-tailwindcss": "0.5.5",
+    "remix-pwa": "3.0.18",
     "rimraf": "5.0.5",
     "semantic-release": "22.0.5",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   }
 }
