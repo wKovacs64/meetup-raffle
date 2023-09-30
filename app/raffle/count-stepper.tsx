@@ -1,3 +1,4 @@
+import * as React from 'react';
 import * as numberInput from '@zag-js/number-input';
 import { useMachine, normalizeProps } from '@zag-js/react';
 
@@ -9,18 +10,21 @@ export default function CountStepper({
   max,
   defaultValue,
 }: CountStepperProps) {
+  const inputRef = React.useRef<HTMLInputElement>(null);
   const [state, send] = useMachine(
     numberInput.machine({
       id: inputId,
       name: inputName,
       value: defaultValue,
-      minFractionDigits: 0,
-      maxFractionDigits: 0,
+      formatOptions: {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      },
       min,
       max,
-      onFocusChange: ({ srcElement }) => {
-        if (isInputElement(srcElement)) {
-          srcElement.select();
+      onFocusChange: ({ focused }) => {
+        if (inputRef.current && focused) {
+          inputRef.current.select();
         }
       },
     }),
@@ -57,6 +61,7 @@ export default function CountStepper({
           </svg>
         </button>
         <input
+          ref={inputRef}
           className="w-16 border border-solid border-current py-1 text-center text-2xl"
           id={inputId}
           name={inputName}
@@ -96,12 +101,4 @@ interface CountStepperProps {
   min: number;
   max: number;
   defaultValue: string;
-}
-
-function isInputElement(
-  element: HTMLElement | null | undefined,
-): element is HTMLInputElement {
-  return (
-    element !== null && element !== undefined && element.tagName === 'INPUT'
-  );
 }
