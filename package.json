@@ -46,7 +46,7 @@
     "react-github-corner": "2.5.0",
     "source-map-support": "0.5.21",
     "spinners-react": "1.0.7",
-    "zod": "3.22.2"
+    "zod": "3.22.3"
   },
   "devDependencies": {
     "@esbuild-kit/cjs-loader": "2.4.4",
