@@ -1,18 +1,15 @@
 import * as React from 'react';
 import type { LinksFunction, MetaFunction } from '@remix-run/node';
 import {
-  useLocation,
-  useMatches,
   useRouteError,
   Link,
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
-// @ts-ignore
+import { useSWEffect, LiveReload } from '@remix-pwa/sw';
 import faviconIcoUrl from '../public/favicon.ico';
 import icon32Url from '~/images/icon-32x32.png';
 import icon512Url from '~/images/icon-512x512.png';
@@ -56,44 +53,7 @@ export const links: LinksFunction = () => [
 ];
 
 export default function App() {
-  const location = useLocation();
-  const matches = useMatches();
-  const isMountRef = React.useRef(true);
-
-  // credit: ShafSpecs/remix-pwa
-  React.useEffect(() => {
-    const isMount = isMountRef.current;
-    isMountRef.current = false;
-    if ('serviceWorker' in navigator) {
-      if (navigator.serviceWorker.controller) {
-        navigator.serviceWorker.controller?.postMessage({
-          type: 'REMIX_NAVIGATION',
-          isMount,
-          location,
-          matches,
-          manifest: window.__remixManifest,
-        });
-      } else {
-        let listener = async () => {
-          await navigator.serviceWorker.ready;
-          navigator.serviceWorker.controller?.postMessage({
-            type: 'REMIX_NAVIGATION',
-            isMount,
-            location,
-            matches,
-            manifest: window.__remixManifest,
-          });
-        };
-        navigator.serviceWorker.addEventListener('controllerchange', listener);
-        return () => {
-          navigator.serviceWorker.removeEventListener(
-            'controllerchange',
-            listener,
-          );
-        };
-      }
-    }
-  }, [location, matches]);
+  useSWEffect();
 
   return (
     <RootLayout>
