@@ -2,13 +2,13 @@
 /* tslint:disable */
 
 /**
- * Mock Service Worker (0.0.0-fetch.rc-20).
+ * Mock Service Worker (2.0.0).
  * @see https://github.com/mswjs/msw
  * - Please do NOT modify this file.
  * - Please do NOT serve this file on production.
  */
 
-const INTEGRITY_CHECKSUM = '3343a047c60712815551260184217eb5'
+const INTEGRITY_CHECKSUM = '0877fcdc026242810f5bfde0d7178db4'
 const IS_MOCKED_RESPONSE = Symbol('isMockedResponse')
 const activeClientIds = new Set()
 
@@ -107,7 +107,7 @@ self.addEventListener('fetch', function (event) {
   }
 
   // Generate unique request ID.
-  const requestId = Math.random().toString(16).slice(2)
+  const requestId = crypto.randomUUID()
   event.respondWith(handleRequest(event, requestId))
 })
 
