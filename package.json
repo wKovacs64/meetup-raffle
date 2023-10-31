@@ -75,7 +75,7 @@
     "prettier-plugin-tailwindcss": "0.5.6",
     "remix-pwa": "3.0.19",
     "rimraf": "5.0.5",
-    "semantic-release": "22.0.5",
+    "semantic-release": "22.0.6",
     "tailwindcss": "3.3.5",
     "typescript": "5.2.2"
   },
