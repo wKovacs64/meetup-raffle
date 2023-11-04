@@ -64,7 +64,7 @@
     "@wkovacs64/prettier-config": "3.0.3",
     "autoprefixer": "10.4.16",
     "binode": "1.0.5",
-    "eslint": "8.52.0",
+    "eslint": "8.53.0",
     "glob": "10.3.10",
     "msw": "2.0.2",
     "netlify-cli": "16.9.3",
