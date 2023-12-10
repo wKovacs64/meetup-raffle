@@ -1,8 +1,4 @@
-node_modules
-/.cache
-/public/build
+# .gitignore and...
 
-/.netlify
 package*.json
 /public/mockServiceWorker.js
-/public/sw.js

@@ -244,8 +244,10 @@ $RECYCLE.BIN/
 
 # Remix on Netlify
 /.cache
-/public/build
 /.netlify
+/build
+/public/build
+/public/_redirects
 .env
 
 # ShafSpecs/remix-pwa

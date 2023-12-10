@@ -1,4 +1,8 @@
-import GitHubCorner from 'react-github-corner';
+import GitHubCornerDefaultExport from 'react-github-corner';
+
+// @ts-expect-error - react-github-corner hasn't been updated to support ESM
+const { default: UntypedGitHubCorner } = GitHubCornerDefaultExport;
+const GitHubCorner = UntypedGitHubCorner as typeof GitHubCornerDefaultExport;
 
 export default function Header() {
   return (
