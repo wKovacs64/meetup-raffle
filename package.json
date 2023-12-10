@@ -2,6 +2,9 @@
   "name": "meetup-raffle",
   "version": "0.0.0-semantically-released",
   "description": "Draw raffle winners at your Meetup event.",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
   "author": {
     "name": "Justin Hall",
     "email": "justin.r.hall@gmail.com"
@@ -15,27 +18,29 @@
   "bugs": {
     "url": "https://github.com/wKovacs64/meetup-raffle/issues"
   },
-  "scripts": {
-    "clean": "rimraf .cache .netlify ./public/build ./public/sw.js",
-    "build": "run-s build:*",
-    "build:worker": "remix-pwa build",
-    "build:app": "remix build",
-    "dev": "run-p dev:*",
-    "dev:worker": "remix-pwa dev",
-    "dev:app": "remix dev --manual --command \"binode --require @esbuild-kit/cjs-loader --require ./mocks/index.ts -- @remix-run/serve:remix-serve .netlify/functions-internal/server.js\"",
-    "format": "prettier --cache --write .",
-    "lint": "eslint .",
-    "start": "netlify serve",
-    "typecheck": "tsc --noEmit"
-  },
-  "private": true,
   "msw": {
     "workerDirectory": "public"
   },
+  "scripts": {
+    "clean": "rimraf .cache .netlify build ./public/build ./public/_redirects ./public/sw.js",
+    "build": "run-s build:*",
+    "build:worker": "remix-pwa build",
+    "build:app": "npm run redirects:enable && remix build",
+    "dev": "run-p dev:*",
+    "dev:worker": "remix-pwa dev",
+    "dev:app": "npm run redirects:disable && cross-env NODE_OPTIONS=\"--require tsx/cjs --require ./mocks/index.ts\" remix dev --manual",
+    "format": "prettier --cache --write .",
+    "format:check": "prettier --cache --check .",
+    "lint": "eslint .",
+    "redirects:enable": "cpy .redirects --rename _redirects public",
+    "redirects:disable": "rimraf public/_redirects",
+    "start": "netlify serve",
+    "typecheck": "tsc --build"
+  },
   "dependencies": {
     "@faker-js/faker": "8.3.1",
-    "@netlify/functions": "1.6.0",
-    "@netlify/remix-adapter": "1.0.0",
+    "@netlify/functions": "2.4.0",
+    "@netlify/remix-adapter": "2.2.0",
     "@remix-pwa/cache": "2.0.12",
     "@remix-pwa/strategy": "2.1.9",
     "@remix-pwa/sw": "2.1.12",
@@ -47,12 +52,10 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-github-corner": "2.5.0",
-    "source-map-support": "0.5.21",
     "spinners-react": "1.0.7",
     "zod": "3.22.4"
   },
   "devDependencies": {
-    "@esbuild-kit/cjs-loader": "2.4.4",
     "@remix-pwa/dev": "2.0.31",
     "@remix-pwa/worker-runtime": "2.0.8",
     "@remix-run/dev": "2.3.1",
@@ -60,10 +63,10 @@
     "@remix-run/serve": "2.3.1",
     "@types/react": "18.2.43",
     "@types/react-dom": "18.2.17",
-    "@types/source-map-support": "0.5.10",
     "@wkovacs64/prettier-config": "3.0.3",
     "autoprefixer": "10.4.16",
-    "binode": "1.0.5",
+    "cpy-cli": "5.0.0",
+    "cross-env": "7.0.3",
     "eslint": "8.55.0",
     "glob": "10.3.10",
     "msw": "2.0.10",
@@ -77,9 +80,10 @@
     "rimraf": "5.0.5",
     "semantic-release": "22.0.10",
     "tailwindcss": "3.3.6",
+    "tsx": "4.6.2",
     "typescript": "5.2.2"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   }
 }
