@@ -79,7 +79,7 @@
     "remix-pwa": "3.0.19",
     "rimraf": "5.0.5",
     "semantic-release": "22.0.12",
-    "tailwindcss": "3.3.6",
+    "tailwindcss": "3.3.7",
     "tsx": "4.6.2",
     "typescript": "5.2.2"
   },
