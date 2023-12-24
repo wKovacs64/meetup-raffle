@@ -9,14 +9,14 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
-import { useSWEffect, LiveReload } from '@remix-pwa/sw';
-import faviconIcoUrl from '../public/favicon.ico';
+import { useSWEffect } from '@remix-pwa/sw';
+import faviconIcoUrl from '/favicon.ico?url';
 import icon32Url from '~/images/icon-32x32.png';
 import icon512Url from '~/images/icon-512x512.png';
 import appleTouchIconUrl from '~/images/apple-touch-icon.png';
-import appStylesUrl from '~/styles/app.css';
 import Header from '~/core/header';
 import ErrorMessage from '~/raffle/error-message';
+import appStylesHref from '~/styles/app.css?url';
 
 export const meta: MetaFunction = () => {
   const appName = 'M. Raffle';
@@ -49,7 +49,7 @@ export const links: LinksFunction = () => [
   { rel: 'icon', type: 'image/png', sizes: '32x32', href: icon32Url },
   { rel: 'apple-touch-icon', sizes: '180x180', href: appleTouchIconUrl },
   { rel: 'manifest', href: '/manifest.webmanifest' },
-  { rel: 'stylesheet', href: appStylesUrl },
+  { rel: 'stylesheet', href: appStylesHref },
 ];
 
 export default function App() {
@@ -78,7 +78,6 @@ function RootLayout({ children }: { children: React.ReactNode }) {
         <main className="mx-auto w-full max-w-3xl px-4">{children}</main>
         <ScrollRestoration />
         <Scripts />
-        <LiveReload />
       </body>
     </html>
   );
