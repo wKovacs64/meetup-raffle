@@ -22,7 +22,7 @@
     "workerDirectory": "public"
   },
   "scripts": {
-    "clean": "rimraf .cache .netlify build ./public/build ./public/_redirects ./public/sw.js",
+    "clean": "rimraf .cache .netlify build ./public/_redirects ./public/sw.js",
     "build": "npm run redirects:enable && remix vite:build",
     "dev": "npm run redirects:disable && cross-env NODE_OPTIONS=\"--require tsx/cjs --require ./mocks/index.ts\" remix vite:dev",
     "format": "prettier --cache --write .",
@@ -76,6 +76,7 @@
     "tsx": "4.7.1",
     "typescript": "5.3.3",
     "vite": "5.1.4",
+    "vite-plugin-static-copy": "1.0.1",
     "vite-tsconfig-paths": "4.3.1"
   },
   "engines": {

@@ -10,13 +10,13 @@ import {
   ScrollRestoration,
 } from '@remix-run/react';
 import { useSWEffect } from '@remix-pwa/sw';
-import faviconIcoUrl from '/favicon.ico?url';
+import appStylesHref from '~/styles/app.css?url';
+import faviconIcoUrl from '~/images/favicon.ico';
 import icon32Url from '~/images/icon-32x32.png';
 import icon512Url from '~/images/icon-512x512.png';
 import appleTouchIconUrl from '~/images/apple-touch-icon.png';
 import Header from '~/core/header';
 import ErrorMessage from '~/raffle/error-message';
-import appStylesHref from '~/styles/app.css?url';
 
 export const meta: MetaFunction = () => {
   const appName = 'M. Raffle';
