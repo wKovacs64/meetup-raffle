@@ -70,7 +70,7 @@
     "glob": "10.3.10",
     "msw": "2.1.5",
     "netlify-cli": "17.15.3",
-    "npm-run-all2": "5.0.0",
+    "npm-run-all2": "5.0.2",
     "postcss": "8.4.33",
     "postcss-import": "16.0.0",
     "prettier": "3.2.4",
