@@ -68,7 +68,7 @@
     "cross-env": "7.0.3",
     "eslint": "8.56.0",
     "glob": "10.3.10",
-    "msw": "2.1.6",
+    "msw": "2.1.7",
     "netlify-cli": "17.16.0",
     "npm-run-all2": "6.1.2",
     "postcss": "8.4.34",
