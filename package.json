@@ -40,7 +40,7 @@
   "dependencies": {
     "@faker-js/faker": "8.4.1",
     "@netlify/functions": "2.6.0",
-    "@netlify/remix-adapter": "2.2.0",
+    "@netlify/remix-adapter": "2.3.0",
     "@remix-pwa/cache": "2.0.12",
     "@remix-pwa/strategy": "2.1.9",
     "@remix-pwa/sw": "2.1.12",
