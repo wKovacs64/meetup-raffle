@@ -66,7 +66,7 @@
     "autoprefixer": "10.4.17",
     "cpy-cli": "5.0.0",
     "cross-env": "7.0.3",
-    "eslint": "8.56.0",
+    "eslint": "8.57.0",
     "glob": "10.3.10",
     "msw": "2.2.1",
     "netlify-cli": "17.17.0",
