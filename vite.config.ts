@@ -1,16 +1,9 @@
-import { installGlobals } from '@remix-run/node';
 import { vitePlugin as remix } from '@remix-run/dev';
 import { unstable_RemixPWA as remixPwa } from '@remix-pwa/dev';
 import { defineConfig, normalizePath } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import tsconfigPaths from 'vite-tsconfig-paths';
-
-installGlobals();
-
-// TODO: import from @netlify/remix-adapter once it supports Vite
-const netlifyConfig = {
-  serverBuildPath: './.netlify/functions-internal/server.mjs',
-};
+import { netlifyPlugin } from '@netlify/remix-adapter/plugin';
 
 export default defineConfig({
   build: {
@@ -19,8 +12,6 @@ export default defineConfig({
   },
   plugins: [
     remix({
-      ...(process.env.NODE_ENV === 'production' ? netlifyConfig : undefined),
-      ignoredRouteFiles: ['**/.*'],
       future: {
         v3_fetcherPersist: true,
         v3_relativeSplatPath: true,
@@ -31,6 +22,7 @@ export default defineConfig({
       workerName: 'sw',
       workerMinify: true,
     }),
+    netlifyPlugin(),
     viteStaticCopy({
       targets: [
         {
