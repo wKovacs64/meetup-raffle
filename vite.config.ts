@@ -8,7 +8,9 @@ import { netlifyPlugin } from '@netlify/remix-adapter/plugin';
 export default defineConfig({
   build: {
     assetsInlineLimit: 0,
-    cssMinify: process.env.NODE_ENV === 'production',
+  },
+  optimizeDeps: {
+    holdUntilCrawlEnd: true,
   },
   plugins: [
     remix({
