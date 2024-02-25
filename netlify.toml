@@ -1,10 +1,10 @@
 [build]
   command = "npm run build"
-  publish = "public"
+  publish = "build/client"
 
 [dev]
   command = "npm run dev"
-  targetPort = 3000
+  framework = "vite"
 
 # The previous version of this app was made with Vite and there was an
 # index.html file present. Installed instances of the PWA will still request
@@ -17,4 +17,16 @@
 [[headers]]
   for = "/build/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, s-maxage=31536000"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Expect-CT = "enforce, max-age=3600"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    Content-Security-Policy = "base-uri 'none'; frame-ancestors 'none'; form-action 'self'; default-src 'self'; connect-src 'self' ws: https://secure.meetupstatic.com https://cloudflare-ipfs.com; img-src 'self' data: https:; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; worker-src 'self';"
+    Permissions-Policy = "geolocation=(), camera=(), microphone=(), payment=(), usb=()"
