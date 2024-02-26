@@ -1,3 +1,4 @@
+/* eslint-disable no-new, no-underscore-dangle, @typescript-eslint/no-floating-promises */
 /// <reference lib="WebWorker" />
 
 import {

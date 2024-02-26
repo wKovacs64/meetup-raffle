@@ -87,6 +87,7 @@ export function ErrorBoundary() {
   const error = useRouteError();
   // TODO: may need `isRouteErrorResponse` here in the future
 
+  // eslint-disable-next-line no-console
   console.error(error);
   const message = error instanceof Error ? error.message : 'Unknown Error';
 

@@ -5,9 +5,9 @@ import LoadingSpinner from '~/raffle/loading-spinner';
 import RaffleForm from '~/raffle/raffle-form';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const userSettings: UserSettings | null = await userSettingsCookie.parse(
+  const userSettings = (await userSettingsCookie.parse(
     request.headers.get('Cookie'),
-  );
+  )) as UserSettings | null;
 
   return json({ userSettings });
 };
