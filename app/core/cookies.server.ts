@@ -9,5 +9,5 @@ export const userSettingsCookie = createCookie('userSettings', {
 
 export interface UserSettings {
   meetup: string;
-  count: string;
+  count: number;
 }

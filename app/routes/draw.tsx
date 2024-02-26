@@ -10,22 +10,12 @@ import Winners from '~/raffle/winners';
 import ErrorMessage from '~/raffle/error-message';
 import type { Winner } from '~/types';
 
-export async function loader({ request }: LoaderFunctionArgs) {
-  const formSchema = z.object({
-    count: z.string().refine(
-      (value) => {
-        const valueAsNumber = Number.parseInt(value, 10);
-        const isNumber = !Number.isNaN(valueAsNumber);
-        const isInRange = valueAsNumber > 0 && valueAsNumber < 10;
-        return isNumber && isInRange;
-      },
-      {
-        message: 'Count must be a number between 1 and 9',
-      },
-    ),
-    meetup: z.string().min(1, 'Meetup name is required'),
-  });
+const formSchema = z.object({
+  meetup: z.string().min(1),
+  count: z.coerce.number().min(1).max(9),
+});
 
+export async function loader({ request }: LoaderFunctionArgs) {
   let userSettings = request.headers.get('Cookie') ?? '';
 
   const { searchParams } = new URL(request.url);
