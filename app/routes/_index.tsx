@@ -23,7 +23,7 @@ export default function HomePage() {
   return (
     <RaffleForm
       defaultMeetup={userSettings?.meetup ?? ''}
-      defaultCount={userSettings?.count ?? '1'}
+      defaultCount={String(userSettings?.count ?? 1)}
     />
   );
 }
