@@ -1,7 +1,7 @@
 import userPlaceholderUrl from '~/images/user-placeholder.svg';
 import type { Winner } from '~/types';
 
-export default function Winners({ winners }: { winners: Array<Winner> }) {
+export default function Winners({ winners }: { winners: Winner[] }) {
   return (
     <div className="flex flex-shrink-0 flex-wrap justify-between sm:justify-around">
       {winners.map((winner) => (

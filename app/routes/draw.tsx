@@ -8,7 +8,7 @@ import { getIdFromEvent } from '~/raffle/get-id-from-event';
 import LoadingSpinner from '~/raffle/loading-spinner';
 import Winners from '~/raffle/winners';
 import ErrorMessage from '~/raffle/error-message';
-import type { UpcomingEvent, Winner } from '~/types';
+import type { Winner } from '~/types';
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const formSchema = z.object({
@@ -49,7 +49,11 @@ export async function loader({ request }: LoaderFunctionArgs) {
       },
     );
   } catch (err) {
-    if (err instanceof ZodError) console.error(JSON.stringify(err.issues));
+    if (err instanceof ZodError) {
+      // eslint-disable-next-line no-console
+      console.error(JSON.stringify(err.issues));
+    }
+
     return jsonWithCookie(
       {
         formData,
@@ -77,7 +81,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
     );
   }
 
-  const data: UpcomingEvent | Array<UpcomingEvent> = await res.json();
+  const data = (await res.json()) as unknown;
   const event = getEventFromResponseData(data);
 
   if (!event) {
@@ -103,7 +107,8 @@ export async function loader({ request }: LoaderFunctionArgs) {
   }
 
   try {
-    const winners: Array<Winner> = await meetupRandomizer.run(
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+    const winners: Winner[] = await meetupRandomizer.run(
       meetup,
       eventId,
       count,
@@ -149,7 +154,7 @@ function jsonWithCookie<T>(
   });
 }
 
-export default function DrawPage({ onRetry }: { onRetry: () => void }) {
+export default function DrawPage() {
   const data = useLoaderData<typeof loader>();
   const searchParams = new URLSearchParams({
     meetup: data.formData.meetup,
