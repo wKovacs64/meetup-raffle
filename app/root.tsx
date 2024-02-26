@@ -52,17 +52,7 @@ export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: appStylesHref },
 ];
 
-export default function App() {
-  useSWEffect();
-
-  return (
-    <RootLayout>
-      <Outlet />
-    </RootLayout>
-  );
-}
-
-function RootLayout({ children }: { children: React.ReactNode }) {
+export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
@@ -83,6 +73,12 @@ function RootLayout({ children }: { children: React.ReactNode }) {
   );
 }
 
+export default function App() {
+  useSWEffect();
+
+  return <Outlet />;
+}
+
 export function ErrorBoundary() {
   const error = useRouteError();
   // TODO: may need `isRouteErrorResponse` here in the future
@@ -92,23 +88,21 @@ export function ErrorBoundary() {
   const message = error instanceof Error ? error.message : 'Unknown Error';
 
   return (
-    <RootLayout>
-      <div className="my-4 sm:my-8">
-        <div className="flex flex-col gap-8 sm:gap-16">
-          <ErrorMessage
-            title="😬"
-            subtitle="How embarrassing for us, something unexpected happened:"
-            problemText={message}
-          />
-          <Link
-            to="."
-            className="text-center text-blue-600 underline"
-            reloadDocument
-          >
-            Reload the page to start over.
-          </Link>
-        </div>
+    <div className="my-4 sm:my-8">
+      <div className="flex flex-col gap-8 sm:gap-16">
+        <ErrorMessage
+          title="😬"
+          subtitle="How embarrassing for us, something unexpected happened:"
+          problemText={message}
+        />
+        <Link
+          to="."
+          className="text-center text-blue-600 underline"
+          reloadDocument
+        >
+          Reload the page to start over.
+        </Link>
       </div>
-    </RootLayout>
+    </div>
   );
 }
