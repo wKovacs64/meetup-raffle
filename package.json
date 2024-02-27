@@ -22,7 +22,7 @@
     "workerDirectory": "public"
   },
   "scripts": {
-    "clean": "rimraf .cache .netlify build ./public/favicon.ico ./public/sw.js",
+    "clean": "rimraf .cache .netlify build ./public/sw.js",
     "build": "remix vite:build",
     "dev": "cross-env NODE_OPTIONS=\"--require tsx/cjs --require ./mocks/index.ts\" remix vite:dev",
     "format": "prettier --cache --write .",

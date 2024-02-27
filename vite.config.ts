@@ -39,7 +39,7 @@ export default defineConfig({
       targets: [
         {
           src: 'app/images/favicon.ico',
-          dest: normalizePath(path.resolve('./public')),
+          dest: normalizePath(path.resolve('./build/client')),
         },
       ],
     }),
