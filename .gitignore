@@ -250,3 +250,6 @@ $RECYCLE.BIN/
 
 # ShafSpecs/remix-pwa
 /public/sw.js
+
+# a Vite plugin copies this from source directory to public at build time
+/public/favicon.ico
