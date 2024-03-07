@@ -78,6 +78,9 @@
     "vite-plugin-static-copy": "1.0.1",
     "vite-tsconfig-paths": "4.3.1"
   },
+  "overrides": {
+    "typescript": "5.4.2"
+  },
   "engines": {
     "node": ">=20"
   }
