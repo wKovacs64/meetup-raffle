@@ -62,7 +62,7 @@
     "eslint-plugin-wkovacs64": "16.1.0",
     "glob": "10.3.10",
     "msw": "2.2.7",
-    "netlify-cli": "17.19.4",
+    "netlify-cli": "17.19.5",
     "npm-run-all2": "6.1.2",
     "postcss": "8.4.36",
     "postcss-import": "16.0.1",
