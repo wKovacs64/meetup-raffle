@@ -60,7 +60,7 @@
     "cross-env": "7.0.3",
     "eslint": "8.57.0",
     "eslint-plugin-wkovacs64": "16.1.0",
-    "glob": "10.3.10",
+    "glob": "10.3.12",
     "msw": "2.2.13",
     "netlify-cli": "17.21.1",
     "npm-run-all2": "6.1.2",
