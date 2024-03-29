@@ -13,7 +13,11 @@
   },
   "packageRules": [
     {
-      "matchPackagePatterns": [".*remix-pwa.*"],
+      "matchPackageNames": ["remix-pwa"],
+      "groupName": "remix-pwa"
+    },
+    {
+      "matchPackagePrefixes": ["@remix-pwa/"],
       "groupName": "remix-pwa"
     },
     {
