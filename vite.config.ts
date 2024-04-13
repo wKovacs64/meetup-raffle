@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { vitePlugin as remix } from '@remix-run/dev';
-import { unstable_RemixPWA as remixPwa } from '@remix-pwa/dev';
+import { remixPWA } from '@remix-pwa/dev';
 import { defineConfig, normalizePath } from 'vite';
 import { netlifyPlugin } from '@netlify/remix-adapter/plugin';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
@@ -21,7 +21,7 @@ export default defineConfig({
         v3_throwAbortReason: true,
       },
     }),
-    remixPwa({
+    remixPWA({
       workerName: 'sw',
       workerMinify: true,
     }),

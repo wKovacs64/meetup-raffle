@@ -1,58 +1,84 @@
-/* eslint-disable no-new, no-underscore-dangle, @typescript-eslint/no-floating-promises */
+/* eslint-disable no-underscore-dangle */
 /// <reference lib="WebWorker" />
 
 import {
-  EnhancedCache,
   logger,
+  EnhancedCache,
+  isDocumentRequest,
+  isLoaderRequest,
   clearUpOldCaches,
-  NavigationHandler,
+  type DefaultFetchHandler,
 } from '@remix-pwa/sw';
+
+const CURRENT_CACHE_VERSION = 'v3';
+
+const DOCUMENT_CACHE_NAME = 'document-cache';
+const ASSET_CACHE_NAME = 'asset-cache';
+const DATA_CACHE_NAME = 'data-cache';
+
+const documentCache = new EnhancedCache(DOCUMENT_CACHE_NAME, {
+  version: CURRENT_CACHE_VERSION,
+  strategy: 'CacheFirst',
+  strategyOptions: {
+    maxEntries: 64,
+  },
+});
+
+const assetCache = new EnhancedCache(ASSET_CACHE_NAME, {
+  version: CURRENT_CACHE_VERSION,
+  strategy: 'CacheFirst',
+  strategyOptions: {
+    maxAgeSeconds: 60 * 60 * 24 * 90, // 90 days
+    maxEntries: 100,
+  },
+});
+
+const dataCache = new EnhancedCache(DATA_CACHE_NAME, {
+  version: CURRENT_CACHE_VERSION,
+  strategy: 'NetworkFirst',
+  strategyOptions: {
+    networkTimeoutInSeconds: 10,
+    maxEntries: 72,
+  },
+});
 
 declare let self: ServiceWorkerGlobalScope;
 
-const CURRENT_CACHE_VERSION = 'v2';
+self.addEventListener('install', (event) => {
+  logger.log('Service worker installed');
 
-// const assetCache = new EnhancedCache('remix-assets', {
-//   version: CURRENT_CACHE_VERSION,
-//   strategy: 'CacheFirst',
-//   strategyOptions: {
-//     maxEntries: 2,
-//     maxAgeSeconds: 60,
-//     cacheableResponse: false,
-//   },
-// });
+  event.waitUntil(self.skipWaiting());
+});
 
-self.addEventListener('install', (event: ExtendableEvent) => {
-  logger.log('installing service worker');
+self.addEventListener('activate', (event) => {
+  logger.log('Service worker activated');
+
   event.waitUntil(
     Promise.all([
-      self.skipWaiting(),
-      // assetCache.preCacheUrls(['/entry.worker.css']),
+      clearUpOldCaches(
+        [DOCUMENT_CACHE_NAME, DATA_CACHE_NAME, ASSET_CACHE_NAME],
+        CURRENT_CACHE_VERSION,
+      ),
+      self.clients.claim(),
     ]),
   );
 });
 
-self.addEventListener('activate', (event) => {
-  logger.log(self.clients, 'manifest:\n', self.__workerManifest);
-  event.waitUntil(
-    Promise.all([
-      clearUpOldCaches(['remix-assets'], CURRENT_CACHE_VERSION),
-    ]).then(() => {
-      self.clients.claim();
-    }),
-  );
-});
+export const defaultFetchHandler: DefaultFetchHandler = async ({ context }) => {
+  const { request } = context.event;
+  const url = new URL(request.url);
 
-new NavigationHandler({
-  documentCache: new EnhancedCache('remix-document', {
-    version: CURRENT_CACHE_VERSION,
-    strategy: 'CacheFirst',
-    strategyOptions: {
-      maxEntries: 10,
-      maxAgeSeconds: 60,
-      cacheableResponse: {
-        statuses: [200],
-      },
-    },
-  }),
-});
+  if (isDocumentRequest(request)) {
+    return documentCache.handleRequest(request);
+  }
+
+  if (isLoaderRequest(request)) {
+    return dataCache.handleRequest(request);
+  }
+
+  if (self.__workerManifest.assets.includes(url.pathname)) {
+    return assetCache.handleRequest(request);
+  }
+
+  return fetch(request);
+};
