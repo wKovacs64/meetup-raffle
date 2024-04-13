@@ -35,7 +35,8 @@
     "@faker-js/faker": "8.4.1",
     "@netlify/functions": "2.6.0",
     "@netlify/remix-adapter": "2.3.1",
-    "@remix-pwa/sw": "2.2.0-dev.4",
+    "@remix-pwa/sw": "3.0.1",
+    "@remix-pwa/worker-runtime": "2.1.1",
     "@remix-run/node": "2.8.1",
     "@remix-run/react": "2.8.1",
     "@zag-js/number-input": "0.46.0",
@@ -48,8 +49,7 @@
     "zod": "3.22.4"
   },
   "devDependencies": {
-    "@remix-pwa/dev": "2.1.0-dev.7",
-    "@remix-pwa/worker-runtime": "2.1.0-dev.1",
+    "@remix-pwa/dev": "3.0.4",
     "@remix-run/dev": "2.8.1",
     "@remix-run/serve": "2.8.1",
     "@types/react": "18.2.78",
@@ -68,7 +68,6 @@
     "postcss-import": "16.1.0",
     "prettier": "3.2.5",
     "prettier-plugin-tailwindcss": "0.5.13",
-    "remix-pwa": "3.0.19",
     "rimraf": "5.0.5",
     "semantic-release": "23.0.8",
     "tailwindcss": "3.4.3",
