@@ -58,7 +58,7 @@
     "autoprefixer": "10.4.19",
     "cpy-cli": "5.0.0",
     "cross-env": "7.0.3",
-    "eslint": "8.57.0",
+    "eslint": "9.2.0",
     "eslint-plugin-wkovacs64": "16.2.0",
     "glob": "10.3.12",
     "msw": "2.2.14",
