@@ -13,6 +13,11 @@
   },
   "packageRules": [
     {
+      "matchPackageNames": ["eslint"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
       "matchPackageNames": ["remix-pwa"],
       "groupName": "remix-pwa"
     },
