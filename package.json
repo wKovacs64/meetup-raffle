@@ -52,7 +52,7 @@
     "@remix-pwa/dev": "3.0.5",
     "@remix-run/dev": "2.9.2",
     "@remix-run/serve": "2.9.2",
-    "@types/react": "18.3.1",
+    "@types/react": "18.3.2",
     "@types/react-dom": "18.3.0",
     "@wkovacs64/prettier-config": "3.0.3",
     "autoprefixer": "10.4.19",
