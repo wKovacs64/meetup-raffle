@@ -1,18 +1,12 @@
 import { Form } from '@remix-run/react';
 import CountStepper from '~/raffle/count-stepper';
 
-export default function RaffleForm({
-  defaultMeetup,
-  defaultCount,
-}: RaffleFormProps) {
+export default function RaffleForm({ defaultMeetup, defaultCount }: RaffleFormProps) {
   return (
     <div className="flex flex-col">
       <Form method="get" action="draw">
         <div className="mb-8 mt-4 sm:mt-8">
-          <label
-            className="block cursor-pointer text-xl text-primary sm:text-2xl"
-            htmlFor="meetup"
-          >
+          <label className="block cursor-pointer text-xl text-primary sm:text-2xl" htmlFor="meetup">
             Meetup name (from your URL):
           </label>
           <input
