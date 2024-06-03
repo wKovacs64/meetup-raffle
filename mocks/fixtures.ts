@@ -4,15 +4,12 @@ import { faker } from '@faker-js/faker';
 // API routes
 //
 export const EVENTS_ENDPOINT = 'https://api.meetup.com/:meetup/events';
-export const RSVPS_ENDPOINT =
-  'https://api.meetup.com/:meetup/events/:eventId/rsvps';
+export const RSVPS_ENDPOINT = 'https://api.meetup.com/:meetup/events/:eventId/rsvps';
 
 //
 // Mock responses
 //
-export const UPCOMING_EVENTS = [
-  { visibility: 'public', id: faker.string.alphanumeric(13) },
-];
+export const UPCOMING_EVENTS = [{ visibility: 'public', id: faker.string.alphanumeric(13) }];
 
 export const EVENT_RSVPS = [
   ...generateOrganizers(1),

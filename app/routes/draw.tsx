@@ -47,8 +47,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
     return jsonWithCookie(
       {
         formData,
-        errorMessage:
-          'Sorry, somehow the form was submitted with invalid data.',
+        errorMessage: 'Sorry, somehow the form was submitted with invalid data.',
       },
       userSettings,
     );
@@ -98,11 +97,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
   try {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    const winners: Winner[] = await meetupRandomizer.run(
-      meetup,
-      eventId,
-      count,
-    );
+    const winners: Winner[] = await meetupRandomizer.run(meetup, eventId, count);
 
     if (Array.isArray(winners) && winners.length) {
       return jsonWithCookie(
@@ -133,10 +128,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
   );
 }
 
-function jsonWithCookie<T>(
-  data: Parameters<typeof json<T>>[0],
-  cookieString: string,
-) {
+function jsonWithCookie<T>(data: Parameters<typeof json<T>>[0], cookieString: string) {
   return json<T>(data, {
     headers: {
       'Set-Cookie': cookieString,

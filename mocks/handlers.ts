@@ -1,10 +1,5 @@
 import { http, delay, passthrough } from 'msw';
-import {
-  EVENTS_ENDPOINT,
-  RSVPS_ENDPOINT,
-  UPCOMING_EVENTS,
-  EVENT_RSVPS,
-} from './fixtures';
+import { EVENTS_ENDPOINT, RSVPS_ENDPOINT, UPCOMING_EVENTS, EVENT_RSVPS } from './fixtures';
 
 const ARTIFICIAL_DELAY_MS = 50;
 

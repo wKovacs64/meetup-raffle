@@ -95,11 +95,7 @@ export function ErrorBoundary() {
           subtitle="How embarrassing for us, something unexpected happened:"
           problemText={message}
         />
-        <Link
-          to="."
-          className="text-center text-blue-600 underline"
-          reloadDocument
-        >
+        <Link to="." className="text-center text-blue-600 underline" reloadDocument>
           Reload the page to start over.
         </Link>
       </div>
