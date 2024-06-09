@@ -33,10 +33,10 @@ export default function CountStepper({
   const api = numberInput.connect(state, send, normalizeProps);
 
   return (
-    <div {...api.rootProps}>
+    <div {...api.getRootProps()}>
       <label
         className="mb-4 block cursor-pointer text-xl text-primary sm:text-2xl"
-        {...api.labelProps}
+        {...api.getLabelProps()}
       >
         {labelText}
       </label>
@@ -45,7 +45,7 @@ export default function CountStepper({
           type="button"
           className="h-16 w-16 cursor-pointer p-2 disabled:cursor-not-allowed disabled:opacity-20"
           data-testid="decrement-button"
-          {...api.decrementTriggerProps}
+          {...api.getDecrementTriggerProps()}
         >
           <svg
             height="100%"
@@ -68,13 +68,13 @@ export default function CountStepper({
           inputMode="numeric"
           pattern="[0-9]*"
           required
-          {...api.inputProps}
+          {...api.getInputProps()}
         />
         <button
           type="button"
           className="h-16 w-16 cursor-pointer p-2 disabled:cursor-not-allowed disabled:opacity-20"
           data-testid="increment-button"
-          {...api.incrementTriggerProps}
+          {...api.getIncrementTriggerProps()}
         >
           <svg
             height="100%"
