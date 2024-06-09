@@ -18,6 +18,7 @@
   "bugs": {
     "url": "https://github.com/wKovacs64/meetup-raffle/issues"
   },
+  "prettier": "@wkovacs64/prettier-config",
   "msw": {
     "workerDirectory": "public"
   },
