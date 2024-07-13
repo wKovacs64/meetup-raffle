@@ -55,7 +55,7 @@
     "@remix-run/serve": "2.10.2",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
-    "@wkovacs64/eslint-config": "7.2.4",
+    "@wkovacs64/eslint-config": "7.2.5",
     "@wkovacs64/prettier-config": "4.1.1",
     "autoprefixer": "10.4.19",
     "cpy-cli": "5.0.0",
