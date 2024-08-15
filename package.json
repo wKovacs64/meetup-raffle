@@ -42,7 +42,7 @@
     "@remix-run/react": "2.11.1",
     "@zag-js/number-input": "0.65.0",
     "@zag-js/react": "0.65.0",
-    "isbot": "5.1.15",
+    "isbot": "5.1.16",
     "meetup-randomizer": "3.1.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
