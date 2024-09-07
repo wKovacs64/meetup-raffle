@@ -250,3 +250,6 @@ $RECYCLE.BIN/
 
 # ShafSpecs/remix-pwa
 /public/sw.js
+
+# MSW
+/public/mockServiceWorker.js
