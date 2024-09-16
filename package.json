@@ -60,7 +60,7 @@
     "autoprefixer": "10.4.20",
     "cpy-cli": "5.0.0",
     "cross-env": "7.0.3",
-    "eslint": "8.57.0",
+    "eslint": "8.57.1",
     "glob": "11.0.0",
     "msw": "2.4.7",
     "netlify-cli": "17.36.0",
