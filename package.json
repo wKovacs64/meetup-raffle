@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "9.0.3",
-    "@netlify/functions": "2.8.1",
+    "@netlify/functions": "2.8.2",
     "@netlify/remix-adapter": "2.5.1",
     "@remix-pwa/sw": "3.0.10",
     "@remix-pwa/worker-runtime": "2.1.4",
