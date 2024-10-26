@@ -33,7 +33,7 @@
     "typecheck": "tsc --build"
   },
   "dependencies": {
-    "@faker-js/faker": "9.0.3",
+    "@faker-js/faker": "9.1.0",
     "@netlify/functions": "2.8.2",
     "@netlify/remix-adapter": "2.5.1",
     "@remix-pwa/sw": "3.0.10",
