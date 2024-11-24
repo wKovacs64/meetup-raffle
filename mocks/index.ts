@@ -6,7 +6,6 @@ const mocksServer = setupServer(...handlers);
 
 mocksServer.listen({ onUnhandledRequest: 'error' });
 
-// eslint-disable-next-line no-console
 console.info('🔶 Mock server running');
 
 process.once('SIGINT', () => mocksServer.close());

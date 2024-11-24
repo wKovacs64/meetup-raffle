@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 /// <reference lib="WebWorker" />
 
 import {
