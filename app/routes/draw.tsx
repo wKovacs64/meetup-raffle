@@ -40,7 +40,6 @@ export async function loader({ request }: LoaderFunctionArgs) {
     );
   } catch (err) {
     if (err instanceof ZodError) {
-      // eslint-disable-next-line no-console
       console.error(JSON.stringify(err.issues));
     }
 
@@ -96,7 +95,6 @@ export async function loader({ request }: LoaderFunctionArgs) {
   }
 
   try {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
     const winners: Winner[] = await meetupRandomizer.run(meetup, eventId, count);
 
     if (Array.isArray(winners) && winners.length) {
