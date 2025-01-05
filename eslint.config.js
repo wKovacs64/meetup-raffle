@@ -4,7 +4,7 @@ import baseConfig from '@wkovacs64/eslint-config';
 const config = [
   ...baseConfig,
   {
-    ignores: ['public/**/*'],
+    ignores: ['.netlify/**/*', 'public/**/*'],
   },
 ];
 

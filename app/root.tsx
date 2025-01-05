@@ -1,15 +1,5 @@
 import * as React from 'react';
-import type { LinksFunction, MetaFunction } from '@remix-run/node';
-import {
-  useRouteError,
-  Link,
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from '@remix-run/react';
-import { useSWEffect } from '@remix-pwa/sw';
+import { useRouteError, Link, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import appStylesHref from '~/styles/app.css?url';
 import faviconIcoUrl from '~/images/favicon.ico';
 import icon32Url from '~/images/icon-32x32.png';
@@ -17,8 +7,9 @@ import icon512Url from '~/images/icon-512x512.png';
 import appleTouchIconUrl from '~/images/apple-touch-icon.png';
 import Header from '~/core/header';
 import ErrorMessage from '~/raffle/error-message';
+import type { Route } from './+types/root';
 
-export const meta: MetaFunction = () => {
+export const meta: Route.MetaFunction = () => {
   const appName = 'M. Raffle';
   const title = 'Meetup Raffle';
   const description = 'Draw raffle winners at your Meetup event.';
@@ -44,7 +35,7 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export const links: LinksFunction = () => [
+export const links: Route.LinksFunction = () => [
   { rel: 'icon', sizes: 'any', href: faviconIcoUrl },
   { rel: 'icon', type: 'image/png', sizes: '32x32', href: icon32Url },
   { rel: 'apple-touch-icon', sizes: '180x180', href: appleTouchIconUrl },
@@ -74,7 +65,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  useSWEffect();
+  React.useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      void navigator.serviceWorker.register('/sw.js');
+    }
+  }, []);
 
   return <Outlet />;
 }

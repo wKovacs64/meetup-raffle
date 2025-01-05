@@ -1,5 +1,4 @@
-import { json, type LoaderFunctionArgs } from '@remix-run/node';
-import { Link, useLoaderData, useNavigation } from '@remix-run/react';
+import { Link, data, useNavigation } from 'react-router';
 import { z, ZodError } from '~/vendor/zod.server';
 import { meetupRandomizer } from '~/vendor/meetup-randomizer.server';
 import { userSettingsCookie } from '~/core/cookies.server';
@@ -9,13 +8,14 @@ import LoadingSpinner from '~/raffle/loading-spinner';
 import Winners from '~/raffle/winners';
 import ErrorMessage from '~/raffle/error-message';
 import type { Winner } from '~/types';
+import type { Route } from './+types/draw';
 
 const formSchema = z.object({
   meetup: z.string().min(1),
   count: z.coerce.number().min(1).max(9),
 });
 
-export async function loader({ request }: LoaderFunctionArgs) {
+export async function loader({ request }: Route.LoaderArgs) {
   let userSettings = request.headers.get('Cookie') ?? '';
 
   const { searchParams } = new URL(request.url);
@@ -43,7 +43,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
       console.error(JSON.stringify(err.issues));
     }
 
-    return jsonWithCookie(
+    return dataWithCookie(
       {
         formData,
         errorMessage: 'Sorry, somehow the form was submitted with invalid data.',
@@ -60,7 +60,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
   // This case covers invalid Meetup group names as well as invalid event IDs.
   if (res.status === 404) {
-    return jsonWithCookie(
+    return dataWithCookie(
       {
         formData,
         errorMessage: "Sorry, I couldn't find any information on that.",
@@ -69,11 +69,10 @@ export async function loader({ request }: LoaderFunctionArgs) {
     );
   }
 
-  const data = (await res.json()) as unknown;
-  const event = getEventFromResponseData(data);
+  const event = getEventFromResponseData((await res.json()) as unknown);
 
   if (!event) {
-    return jsonWithCookie(
+    return dataWithCookie(
       {
         formData,
         errorMessage: "Sorry, I couldn't find any upcoming events.",
@@ -85,7 +84,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
   const eventId = getIdFromEvent(event);
 
   if (eventId === null) {
-    return jsonWithCookie(
+    return dataWithCookie(
       {
         formData,
         errorMessage: 'Sorry, their members list is private.',
@@ -98,7 +97,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
     const winners: Winner[] = await meetupRandomizer.run(meetup, eventId, count);
 
     if (Array.isArray(winners) && winners.length) {
-      return jsonWithCookie(
+      return dataWithCookie(
         {
           formData,
           winners,
@@ -108,7 +107,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
     }
   } catch (err) {
     const isError = err instanceof Error;
-    return jsonWithCookie(
+    return dataWithCookie(
       {
         formData,
         errorMessage: isError ? err.message : 'Sorry, something went wrong.',
@@ -117,7 +116,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
     );
   }
 
-  return jsonWithCookie(
+  return dataWithCookie(
     {
       formData,
       errorMessage: 'Sorry, we received unexpected data for that request.',
@@ -126,29 +125,28 @@ export async function loader({ request }: LoaderFunctionArgs) {
   );
 }
 
-function jsonWithCookie<T>(data: Parameters<typeof json<T>>[0], cookieString: string) {
-  return json<T>(data, {
+function dataWithCookie<TData>(theData: Parameters<typeof data<TData>>[0], cookieString: string) {
+  return data<TData>(theData, {
     headers: {
       'Set-Cookie': cookieString,
     },
   });
 }
 
-export default function DrawPage() {
-  const data = useLoaderData<typeof loader>();
+export default function DrawPage({ loaderData }: Route.ComponentProps) {
   const searchParams = new URLSearchParams({
-    meetup: data.formData.meetup,
-    count: data.formData.count,
+    meetup: loaderData.formData.meetup,
+    count: loaderData.formData.count,
   });
 
   if (useNavigation().state === 'loading') return <LoadingSpinner />;
 
   return (
     <div className="mt-4 sm:mt-8">
-      {'winners' in data ? (
-        <Winners winners={data.winners} />
-      ) : 'errorMessage' in data ? (
-        <ErrorMessage problemText={data.errorMessage} />
+      {'winners' in loaderData ? (
+        <Winners winners={loaderData.winners} />
+      ) : 'errorMessage' in loaderData ? (
+        <ErrorMessage problemText={loaderData.errorMessage} />
       ) : null}
       <div className="my-8 flex flex-shrink-0 flex-wrap justify-around">
         <Link

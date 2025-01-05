@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RemixBrowser } from '@remix-run/react';
+import { HydratedRouter } from 'react-router/dom';
 import { hydrateRoot } from 'react-dom/client';
 import { requestIdleCallbackShim } from '~/core/request-idle-callback-shim';
 
@@ -8,7 +8,7 @@ requestIdleCallbackShim(() => {
     hydrateRoot(
       document,
       <React.StrictMode>
-        <RemixBrowser />
+        <HydratedRouter />
       </React.StrictMode>,
     );
   });
