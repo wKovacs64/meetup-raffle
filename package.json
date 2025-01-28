@@ -63,7 +63,7 @@
     "eslint": "9.19.0",
     "glob": "11.0.1",
     "msw": "2.7.0",
-    "netlify-cli": "18.0.2",
+    "netlify-cli": "18.0.3",
     "postcss": "8.5.1",
     "postcss-import": "16.1.0",
     "prettier": "3.4.2",
