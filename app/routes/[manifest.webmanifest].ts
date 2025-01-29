@@ -1,9 +1,8 @@
-import { json } from '@remix-run/node';
 import icon192Url from '~/images/icon-192x192.png';
 import icon512Url from '~/images/icon-512x512.png';
 
-export const loader = async () => {
-  return json(
+export async function loader() {
+  return Response.json(
     {
       short_name: 'M. Raffle',
       name: 'Meetup Raffle',
@@ -32,4 +31,4 @@ export const loader = async () => {
       },
     },
   );
-};
+}

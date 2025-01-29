@@ -242,13 +242,13 @@ $RECYCLE.BIN/
 # Manual exclusions
 !**/.gitkeep
 
-# Remix on Netlify
-/.cache
+# React Router on Netlify
 /.netlify
+/.react-router
 /build
 .env
 
-# ShafSpecs/remix-pwa
+# Service worker in development
 /public/sw.js
 
 # MSW

@@ -1,4 +1,7 @@
-import { SpinnerRoundOutlined } from 'spinners-react';
+import * as Spinners from 'spinners-react';
+
+// work around faulty ESM exports in spinners-react
+const { SpinnerRoundOutlined } = Spinners;
 
 export default function LoadingSpinner() {
   return (

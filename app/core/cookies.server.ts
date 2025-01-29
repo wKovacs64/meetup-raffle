@@ -1,4 +1,4 @@
-import { createCookie } from '@remix-run/node';
+import { createCookie } from 'react-router';
 
 export const userSettingsCookie = createCookie('userSettings', {
   // Note to self: don't set `expires` here, set when serializing or committing
