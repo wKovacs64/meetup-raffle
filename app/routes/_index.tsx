@@ -1,6 +1,6 @@
 import { useNavigation } from 'react-router';
 import { userSettingsCookie, type UserSettings } from '~/core/cookies.server';
-import LoadingSpinner from '~/raffle/loading-spinner';
+import { LoadingSpinner } from '~/raffle/loading-spinner';
 import RaffleForm from '~/raffle/raffle-form';
 import type { Route } from './+types/_index';
 

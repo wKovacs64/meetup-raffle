@@ -4,7 +4,7 @@ import { meetupRandomizer } from '~/vendor/meetup-randomizer.server';
 import { userSettingsCookie } from '~/core/cookies.server';
 import { getEventFromResponseData } from '~/raffle/get-event-from-response-data';
 import { getIdFromEvent } from '~/raffle/get-id-from-event';
-import LoadingSpinner from '~/raffle/loading-spinner';
+import { LoadingSpinner } from '~/raffle/loading-spinner';
 import Winners from '~/raffle/winners';
 import ErrorMessage from '~/raffle/error-message';
 import type { Winner } from '~/types';
