@@ -1,45 +1,94 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-.github-corner > svg {
-  color: #fff;
-  fill: #151513;
-  position: absolute;
-  top: 0;
-  border: 0;
-  right: 0;
-}
+@theme {
+  --color-primary: #00449e;
+  --color-accent: #ff4136;
 
-.github-corner > svg > path:nth-child(2) {
-  transform-origin: 130px 106px;
-}
+  --font-mono: Courier Next, courier, monospace;
 
-.github-corner:hover .octo-arm {
-  animation: octocat-wave 560ms ease-in-out;
-}
+  --animate-ripple: ripple 1.5s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 
-@keyframes octocat-wave {
-  0%,
-  100% {
-    transform: rotate(0);
+  @keyframes ripple {
+    0% {
+      top: calc(var(--size) * 0.45);
+      left: calc(var(--size) * 0.45);
+      width: calc(var(--size) * 0.1);
+      height: calc(var(--size) * 0.1);
+      opacity: 0;
+    }
+    4.9% {
+      top: calc(var(--size) * 0.45);
+      left: calc(var(--size) * 0.45);
+      width: calc(var(--size) * 0.1);
+      height: calc(var(--size) * 0.1);
+      opacity: 0;
+    }
+    5% {
+      top: calc(var(--size) * 0.45);
+      left: calc(var(--size) * 0.45);
+      width: calc(var(--size) * 0.1);
+      height: calc(var(--size) * 0.1);
+      opacity: 1;
+    }
+    100% {
+      top: 0px;
+      left: 0px;
+      width: var(--size);
+      height: var(--size);
+      opacity: 0;
+    }
   }
-  20%,
-  60% {
-    transform: rotate(-25deg);
-  }
-  40%,
-  80% {
-    transform: rotate(10deg);
-  }
 }
 
-@media (max-width: 500px) {
+@layer base {
+  .github-corner > svg {
+    color: #fff;
+    fill: #151513;
+    position: absolute;
+    top: 0;
+    border: 0;
+    right: 0;
+  }
+
+  .github-corner > svg > path:nth-child(2) {
+    transform-origin: 130px 106px;
+  }
+
   .github-corner:hover .octo-arm {
-    animation: none;
+    animation: octocat-wave 560ms ease-in-out;
   }
 
-  .github-corner .octo-arm {
-    animation: octocat-wave 560ms ease-in-out;
+  @keyframes octocat-wave {
+    0%,
+    100% {
+      transform: rotate(0);
+    }
+    20%,
+    60% {
+      transform: rotate(-25deg);
+    }
+    40%,
+    80% {
+      transform: rotate(10deg);
+    }
+  }
+
+  @media (max-width: 500px) {
+    .github-corner:hover .octo-arm {
+      animation: none;
+    }
+
+    .github-corner .octo-arm {
+      animation: octocat-wave 560ms ease-in-out;
+    }
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+  button(:disabled),
+  [role='button'(:disabled)] {
+    cursor: not-allowed;
   }
 }

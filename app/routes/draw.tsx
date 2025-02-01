@@ -148,7 +148,7 @@ export default function DrawPage({ loaderData }: Route.ComponentProps) {
       ) : 'errorMessage' in loaderData ? (
         <ErrorMessage problemText={loaderData.errorMessage} />
       ) : null}
-      <div className="my-8 flex flex-shrink-0 flex-wrap justify-around">
+      <div className="my-8 flex shrink-0 flex-wrap justify-around">
         <Link
           to=".."
           className="mb-4 w-full border border-solid border-current bg-white px-16 py-4 text-center font-bold shadow-lg hover:bg-gray-300 focus:bg-gray-300 sm:mb-0 sm:w-64 sm:text-xl"

@@ -35,7 +35,7 @@ export default function CountStepper({
   return (
     <div {...api.getRootProps()}>
       <label
-        className="mb-4 block cursor-pointer text-xl text-primary sm:text-2xl"
+        className="text-primary mb-4 block cursor-pointer text-xl sm:text-2xl"
         {...api.getLabelProps()}
       >
         {labelText}

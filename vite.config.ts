@@ -1,4 +1,5 @@
 import path from 'node:path';
+import tailwindcss from '@tailwindcss/vite';
 import { reactRouter } from '@react-router/dev/vite';
 import { defineConfig, normalizePath } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
@@ -14,6 +15,7 @@ export default defineConfig(({ isSsrBuild }) => ({
       : undefined,
   },
   plugins: [
+    tailwindcss(),
     reactRouter(),
     viteStaticCopy({
       targets: [
