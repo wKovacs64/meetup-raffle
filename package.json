@@ -33,7 +33,6 @@
     "format": "prettier --cache --write .",
     "format:check": "prettier --cache --check .",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
-    "postinstall": "patch-package",
     "start": "netlify serve",
     "typecheck": "react-router typegen && tsc",
     "validate": "run-p format:check lint typecheck"
@@ -46,7 +45,6 @@
     "@zag-js/react": "0.82.1",
     "isbot": "5.1.22",
     "meetup-randomizer": "3.1.0",
-    "patch-package": "8.0.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-router": "7.1.5",
