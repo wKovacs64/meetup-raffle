@@ -7,7 +7,7 @@ export default function ErrorMessage({
     <section>
       <span className="text-xl font-bold">{title}</span>
       <p className="my-4">{subtitle}</p>
-      <p className="my-4 bg-accent p-2 font-mono text-white">{problemText}</p>
+      <p className="bg-accent my-4 p-2 font-mono text-white">{problemText}</p>
     </section>
   );
 }

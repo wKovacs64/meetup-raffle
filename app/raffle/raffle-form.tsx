@@ -5,8 +5,8 @@ export default function RaffleForm({ defaultMeetup, defaultCount }: RaffleFormPr
   return (
     <div className="flex flex-col">
       <Form method="get" action="draw">
-        <div className="mb-8 mt-4 sm:mt-8">
-          <label className="block cursor-pointer text-xl text-primary sm:text-2xl" htmlFor="meetup">
+        <div className="mt-4 mb-8 sm:mt-8">
+          <label className="text-primary block cursor-pointer text-xl sm:text-2xl" htmlFor="meetup">
             Meetup name (from your URL):
           </label>
           <input
