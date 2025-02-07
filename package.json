@@ -51,7 +51,7 @@
     "zod": "3.24.1"
   },
   "devDependencies": {
-    "@mjackson/node-fetch-server": "0.5.1",
+    "@mjackson/node-fetch-server": "0.6.1",
     "@react-router/dev": "7.1.5",
     "@react-router/fs-routes": "7.1.5",
     "@tailwindcss/vite": "4.0.4",
