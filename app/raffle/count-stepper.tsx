@@ -9,28 +9,33 @@ export default function CountStepper({
   min,
   max,
   defaultValue,
-}: CountStepperProps) {
+}: {
+  inputId: string;
+  inputName: string;
+  labelText: string;
+  min: number;
+  max: number;
+  defaultValue: string;
+}) {
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const [state, send] = useMachine(
-    numberInput.machine({
-      id: inputId,
-      name: inputName,
-      value: defaultValue,
-      formatOptions: {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-      },
-      min,
-      max,
-      onFocusChange: ({ focused }) => {
-        if (inputRef.current && focused) {
-          inputRef.current.select();
-        }
-      },
-    }),
-  );
+  const service = useMachine(numberInput.machine, {
+    id: inputId,
+    name: inputName,
+    formatOptions: {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    },
+    defaultValue,
+    min,
+    max,
+    onFocusChange: ({ focused }) => {
+      if (inputRef.current && focused) {
+        inputRef.current.select();
+      }
+    },
+  });
 
-  const api = numberInput.connect(state, send, normalizeProps);
+  const api = numberInput.connect(service, normalizeProps);
 
   return (
     <div {...api.getRootProps()}>
@@ -92,13 +97,4 @@ export default function CountStepper({
       </div>
     </div>
   );
-}
-
-interface CountStepperProps {
-  inputId: string;
-  inputName: string;
-  labelText: string;
-  min: number;
-  max: number;
-  defaultValue: string;
 }
