@@ -64,7 +64,7 @@
     "cross-env": "7.0.3",
     "esbuild": "0.25.2",
     "eslint": "9.23.0",
-    "express": "4.21.2",
+    "express": "5.1.0",
     "glob": "11.0.1",
     "msw": "2.7.3",
     "netlify-cli": "19.1.4",
