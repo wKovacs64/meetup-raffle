@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useRouteError, Link, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
+import { useRouteError, Link, Links, Outlet, Scripts, ScrollRestoration } from 'react-router';
 import appStylesHref from '~/styles/app.css?url';
 import faviconIcoUrl from '~/images/favicon.ico';
 import icon32Url from '~/images/icon-32x32.png';
@@ -9,32 +9,6 @@ import Header from '~/core/header';
 import ErrorMessage from '~/raffle/error-message';
 import type { Route } from './+types/root';
 
-export const meta: Route.MetaFunction = () => {
-  const appName = 'M. Raffle';
-  const title = 'Meetup Raffle';
-  const description = 'Draw raffle winners at your Meetup event.';
-  const themeColor = '#ff4136';
-  const socialImageUrl = icon512Url;
-  const socialImageAlt = 'A white raffle ticket against a red background';
-
-  return [
-    { title },
-    { name: 'description', content: description },
-    { name: 'application-name', content: appName },
-    { name: 'apple-mobile-web-app-title', content: appName },
-    { name: 'msapplication-TileColor', content: themeColor },
-    { name: 'theme-color', content: themeColor },
-    { property: 'og:title', content: title },
-    { property: 'og:description', content: description },
-    { property: 'og:image', content: socialImageUrl },
-    { property: 'og:image:alt', content: socialImageAlt },
-    { name: 'twitter:title', content: title },
-    { name: 'twitter:description', content: description },
-    { name: 'twitter:image', content: socialImageUrl },
-    { name: 'twitter:image:alt', content: socialImageAlt },
-  ];
-};
-
 export const links: Route.LinksFunction = () => [
   { rel: 'icon', sizes: 'any', href: faviconIcoUrl },
   { rel: 'icon', type: 'image/png', sizes: '32x32', href: icon32Url },
@@ -43,15 +17,35 @@ export const links: Route.LinksFunction = () => [
   { rel: 'stylesheet', href: appStylesHref },
 ];
 
+const APP_NAME = 'M. Raffle';
+const TITLE = 'Meetup Raffle';
+const DESCRIPTION = 'Draw raffle winners at your Meetup event.';
+const THEME_COLOR = '#ff4136';
+const SOCIAL_IMAGE_URL = icon512Url;
+const SOCIAL_IMAGE_ALT = 'A white raffle ticket against a red background';
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <title>{TITLE}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="description" content={DESCRIPTION} />
+        <meta name="application-name" content={APP_NAME} />
+        <meta name="apple-mobile-web-app-title" content={APP_NAME} />
+        <meta name="msapplication-TileColor" content={THEME_COLOR} />
+        <meta name="theme-color" content={THEME_COLOR} />
         <meta property="og:type" content="website" />
+        <meta property="og:title" content={TITLE} />
+        <meta property="og:description" content={DESCRIPTION} />
+        <meta property="og:image" content={SOCIAL_IMAGE_URL} />
+        <meta property="og:image:alt" content={SOCIAL_IMAGE_ALT} />
         <meta name="twitter:card" content="summary_large_image" />
-        <Meta />
+        <meta name="twitter:title" content={TITLE} />
+        <meta name="twitter:description" content={DESCRIPTION} />
+        <meta name="twitter:image" content={SOCIAL_IMAGE_URL} />
+        <meta name="twitter:image:alt" content={SOCIAL_IMAGE_ALT} />
         <Links />
       </head>
       <body className="bg-gray-100 text-slate-900">
