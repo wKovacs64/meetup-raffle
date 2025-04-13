@@ -38,7 +38,7 @@
     "validate": "run-p format:check lint typecheck"
   },
   "dependencies": {
-    "@faker-js/faker": "9.6.0",
+    "@faker-js/faker": "9.7.0",
     "@netlify/functions": "3.0.4",
     "@react-router/node": "7.5.0",
     "@zag-js/number-input": "1.9.3",
