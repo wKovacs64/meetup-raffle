@@ -65,7 +65,7 @@
     "esbuild": "0.25.3",
     "eslint": "9.25.1",
     "express": "5.1.0",
-    "glob": "11.0.1",
+    "glob": "11.0.2",
     "msw": "2.7.5",
     "netlify-cli": "20.0.3",
     "npm-run-all2": "7.0.2",
