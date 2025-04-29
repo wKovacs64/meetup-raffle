@@ -75,7 +75,7 @@
     "rimraf": "6.0.1",
     "semantic-release": "24.2.3",
     "tailwindcss": "4.1.4",
-    "tsx": "4.19.3",
+    "tsx": "4.19.4",
     "typescript": "5.8.3",
     "vite": "6.3.3",
     "vite-plugin-static-copy": "2.3.1",
