@@ -67,7 +67,7 @@
     "express": "5.1.0",
     "glob": "11.0.2",
     "msw": "2.7.6",
-    "netlify-cli": "21.2.0",
+    "netlify-cli": "21.2.1",
     "npm-run-all2": "8.0.1",
     "postcss-import": "16.1.0",
     "prettier": "3.5.3",
