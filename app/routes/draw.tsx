@@ -40,7 +40,6 @@ export async function loader({ request }: Route.LoaderArgs) {
     );
   } catch (err) {
     if (err instanceof ZodError) {
-      // Use Zod v4's improved error pretty-printing for better debugging
       console.error(z.prettifyError(err));
     }
 
