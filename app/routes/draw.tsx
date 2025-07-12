@@ -1,5 +1,5 @@
 import { Link, data, useNavigation } from 'react-router';
-import { z, ZodError } from '~/vendor/zod.server';
+import { z, ZodError } from 'zod';
 import { meetupRandomizer } from '~/vendor/meetup-randomizer.server';
 import { userSettingsCookie } from '~/core/cookies.server';
 import { getEventFromResponseData } from '~/raffle/get-event-from-response-data';
@@ -40,7 +40,8 @@ export async function loader({ request }: Route.LoaderArgs) {
     );
   } catch (err) {
     if (err instanceof ZodError) {
-      console.error(JSON.stringify(err.issues));
+      // Use Zod v4's improved error pretty-printing for better debugging
+      console.error(z.prettifyError(err));
     }
 
     return dataWithCookie(
