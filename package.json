@@ -62,7 +62,7 @@
     "@wkovacs64/prettier-config": "4.2.1",
     "cpy-cli": "5.0.0",
     "cross-env": "7.0.3",
-    "esbuild": "0.25.6",
+    "esbuild": "0.25.7",
     "eslint": "9.31.0",
     "express": "5.1.0",
     "glob": "11.0.3",
