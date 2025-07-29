@@ -43,7 +43,7 @@
     "@react-router/node": "7.7.1",
     "@zag-js/number-input": "1.21.0",
     "@zag-js/react": "1.21.0",
-    "isbot": "5.1.28",
+    "isbot": "5.1.29",
     "meetup-randomizer": "3.1.0",
     "react": "19.1.1",
     "react-dom": "19.1.1",
