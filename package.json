@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "10.0.0",
-    "@netlify/functions": "4.2.2",
+    "@netlify/functions": "4.2.4",
     "@react-router/node": "7.8.2",
     "@zag-js/number-input": "1.21.9",
     "@zag-js/react": "1.21.9",
