@@ -4,15 +4,11 @@ import { reactRouter } from '@react-router/dev/vite';
 import { defineConfig, normalizePath } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import netlifyPlugin from '@netlify/vite-plugin-react-router';
 
-export default defineConfig(({ isSsrBuild }) => ({
+export default defineConfig(() => ({
   build: {
     assetsInlineLimit: 0,
-    rollupOptions: isSsrBuild
-      ? {
-          input: './server/app.ts',
-        }
-      : undefined,
   },
   plugins: [
     tailwindcss(),
@@ -26,5 +22,6 @@ export default defineConfig(({ isSsrBuild }) => ({
       ],
     }),
     tsconfigPaths(),
+    netlifyPlugin(),
   ],
 }));
