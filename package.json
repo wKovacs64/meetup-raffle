@@ -58,7 +58,7 @@
     "@react-router/fs-routes": "7.9.4",
     "@tailwindcss/vite": "4.1.14",
     "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.1",
+    "@types/react-dom": "19.2.2",
     "@wkovacs64/eslint-config": "7.10.0",
     "@wkovacs64/prettier-config": "4.2.2",
     "cpy-cli": "6.0.0",
