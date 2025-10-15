@@ -71,7 +71,7 @@
     "netlify-cli": "23.9.1",
     "npm-run-all2": "8.0.4",
     "prettier": "3.6.2",
-    "prettier-plugin-tailwindcss": "0.6.14",
+    "prettier-plugin-tailwindcss": "0.7.0",
     "semantic-release": "24.2.9",
     "tailwindcss": "4.1.14",
     "tsx": "4.20.6",
