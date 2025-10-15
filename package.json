@@ -40,7 +40,7 @@
     "validate": "run-p format:check lint typecheck"
   },
   "dependencies": {
-    "@faker-js/faker": "10.0.0",
+    "@faker-js/faker": "10.1.0",
     "@react-router/node": "7.9.4",
     "@react-router/serve": "7.9.4",
     "@zag-js/number-input": "1.26.2",
