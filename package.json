@@ -53,7 +53,7 @@
     "zod": "4.1.12"
   },
   "devDependencies": {
-    "@netlify/vite-plugin-react-router": "1.0.1",
+    "@netlify/vite-plugin-react-router": "2.0.0",
     "@react-router/dev": "7.9.4",
     "@react-router/fs-routes": "7.9.4",
     "@tailwindcss/vite": "4.1.14",
