@@ -65,7 +65,7 @@
     "cross-env": "10.1.0",
     "del-cli": "7.0.0",
     "esbuild": "0.25.11",
-    "eslint": "9.37.0",
+    "eslint": "9.38.0",
     "glob": "11.0.3",
     "msw": "2.11.5",
     "netlify-cli": "23.9.1",
